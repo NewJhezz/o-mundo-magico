@@ -43,16 +43,22 @@
         <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
             data-danger="{{ creature.danger }}">
 
-            <div class="card-header">
+            <div class="card-header creature-header">
                 <span class="mini-icon">{{ creature.icon }}</span>
-                <h3 class="wood-name">{{ creature.name }}</h3>
-                <div class="mom-badge" title="Classificação M.O.M.">{{ creature.danger }}</div>
+                <div class="header-text">
+                    <h3 class="wood-name">{{ creature.name }}</h3>
+                    <div class="danger-stars" title="Periculosidade: {{ creature.danger }}">
+                        {% for i in range(creature.danger_level) %}⭐{% endfor %}
+                    </div>
+                </div>
             </div>
 
             <div class="creature-body">
                 <p class="creature-label">{{ creature.category_label }}</p>
                 <p class="creature-desc">{{ creature.desc }}</p>
-                <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
+                <div class="creature-origin-wrapper">
+                    <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -91,16 +97,24 @@
 
 <style>
     /* Estilos Específicos para Criaturas */
-    .mom-badge {
-        font-family: var(--font-heading);
-        font-size: 0.7rem;
-        color: #ff4444;
-        /* Vermelho perigo */
-        background: rgba(50, 0, 0, 0.5);
-        border: 1px solid #ff4444;
-        padding: 2px 6px;
-        border-radius: 4px;
-        letter-spacing: 1px;
+    .creature-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+    }
+
+    .danger-stars {
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+        color: #FFD700;
+        letter-spacing: 2px;
     }
 
     .creature-body {
@@ -111,6 +125,8 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        flex: 1;
+        /* Ocupa o espaço para empurrar a origem */
     }
 
     .creature-label {
@@ -120,11 +136,15 @@
         font-size: 0.75rem;
     }
 
-    .creature-origin {
-        font-size: 0.8rem;
+    .creature-origin-wrapper {
         margin-top: auto;
+        width: 100%;
         padding-top: 0.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .creature-origin {
+        font-size: 0.8rem;
     }
 
     /* Cores por Categoria */
