@@ -515,3 +515,68 @@ h1 {
         flex-wrap: wrap;
     }
 }
+
+/* --- Efeitos Mágicos da Home --- */
+@keyframes magical-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+@keyframes float-card {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Card Varinhas (Ativo) */
+.category-card:not(.locked) {
+    background: linear-gradient(145deg, #102035, #081020);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de Brilho ao passar o mouse */
+.category-card:not(.locked):hover {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.1);
+    transform: translateY(-5px) scale(1.02);
+}
+
+.category-card:not(.locked):hover .category-icon {
+    animation: float-card 2s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* Botão Voltar */
+.tab-link.back-btn {
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    margin-right: 0.5rem;
+}
+
+.tab-link.back-btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--gold-primary);
+    border-color: var(--gold-primary);
+}

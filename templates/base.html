@@ -18,9 +18,11 @@
 
 <body>
     <div class="container">
+        {% block header %}
         <header class="main-header">
             <h1><a href="{{ url_for('home') }}" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
         </header>
+        {% endblock %}
 
         <main>
             {% block content %}{% endblock %}
