@@ -1,35 +1,31 @@
 :root {
-    /* Paleta Deep Blue */
-    --bg-dark: #050a14;
-    /* Fundo da página */
-    --bg-card: #0f1c2e;
-    /* Fundo dos Cards */
-    --bg-header: #081020;
-    /* Header background */
+    /* Paleta Deep Blue & Magical Gold */
+    --bg-dark: #020408;
+    --bg-card: rgba(15, 28, 46, 0.4);
+    /* Glassmorphism Base */
+    --bg-header: rgba(8, 16, 32, 0.6);
+
+    /* Luxury Overlays */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --gold-glow: 0 0 20px rgba(212, 175, 55, 0.2);
 
     /* Textos */
-    --text-main: #e6e6e6;
-    --text-muted: #8fa3bf;
+    --text-main: #f0f2f5;
+    --text-muted: #a0aec0;
     --gold-primary: #d4af37;
+    --gold-secondary: #f6e05e;
 
-    /* Bordas e Efeitos */
-    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
     --font-heading: 'Cinzel', serif;
     --font-body: 'Lato', sans-serif;
 
     /* Cores de Raridade */
     --rarity-common: #b0b0b0;
-    /* Cinza/Branco */
     --rarity-uncommon: #90ee90;
-    /* Verde Claro */
     --rarity-rare: #00bfff;
-    /* Azul Vibrante */
     --rarity-epic: #9932cc;
-    /* Roxo */
     --rarity-legendary: #ff8c00;
-    /* Laranja/Dourado */
     --rarity-supreme: #ffd700;
-    /* Amarelo Ouro */
 }
 
 * {
@@ -40,11 +36,28 @@
 
 body {
     background-color: var(--bg-dark);
-    /* Sutil degradê azulado no fundo */
-    background-image: linear-gradient(to bottom, #050a14 0%, #0a1428 100%);
+    /* Fundo com imagem fixa e overlay escuro */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+        url('../images/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-main);
     font-family: var(--font-body);
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Container de Particulas (será adicionado no HTML) */
+.magic-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* Typography */
@@ -92,21 +105,24 @@ h1 {
     text-decoration: none;
     color: var(--text-muted);
     font-family: var(--font-heading);
-    font-size: 1.1rem;
-    padding: 0.6rem 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    transition: all 0.3s;
-    background: rgba(15, 28, 46, 0.5);
+    font-size: 0.9rem;
+    padding: 0.8rem 1.8rem;
+    border: var(--glass-border);
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .tab-link:hover,
 .tab-link.active {
     color: #fff;
-    background: #1c3a63;
-    /* Azul médio */
-    border-color: #3b6ca1;
-    box-shadow: 0 0 10px rgba(59, 108, 161, 0.4);
+    background: rgba(214, 175, 55, 0.1);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 20px rgba(214, 175, 55, 0.2);
+    transform: translateY(-2px);
 }
 
 /* Grid Compacto */
@@ -119,24 +135,25 @@ h1 {
 
 /* Cards */
 .wood-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1rem;
+    background: rgba(8, 16, 30, 0.4);
+    backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    padding: 1.5rem;
     text-align: left;
-    /* Alinhamento padrão esquerda para o header */
-    border-radius: 6px;
+    border-radius: 12px;
     position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .wood-card:hover {
-    transform: translateY(-3px);
-    z-index: 2;
-    background: #15253d;
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 55, 0.4);
+    background: rgba(15, 28, 46, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
 }
 
 /* Header do Card: Ícone + Nome + Badge */
@@ -373,32 +390,32 @@ h1 {
 /* Modal Styles */
 .modal-overlay {
     display: none;
-    /* Oculto por padrão */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #102035 0%, #081020 100%);
-    border: 1px solid var(--gold-primary);
-    border-radius: 12px;
-    padding: 2.5rem;
+    background: rgba(10, 20, 35, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 20px;
+    padding: 3rem;
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
     position: relative;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.1);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     color: var(--text-main);
 }
 
@@ -517,66 +534,100 @@ h1 {
 }
 
 /* --- Efeitos Mágicos da Home --- */
-@keyframes magical-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+.hero-section {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding: 6rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.main-title {
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+    from {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
     }
 
-    70% {
-        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    to {
+        text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.4);
     }
 }
 
-@keyframes float-card {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* Card Varinhas (Ativo) */
-.category-card:not(.locked) {
-    background: linear-gradient(145deg, #102035, #081020);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+.category-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
     position: relative;
     overflow: hidden;
 }
 
-/* Efeito de Brilho ao passar o mouse */
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+    transition: 0.5s;
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+.category-card:not(.locked) {
+    border-color: rgba(212, 175, 55, 0.2);
+}
+
 .category-card:not(.locked):hover {
+    transform: translateY(-15px) scale(1.02);
     border-color: var(--gold-primary);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.1);
-    transform: translateY(-5px) scale(1.02);
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
-.category-card:not(.locked):hover .category-icon {
-    animation: float-card 2s ease-in-out infinite;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+.category-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    transition: all 0.5s ease;
 }
 
-/* Botão Voltar */
-.tab-link.back-btn {
-    padding: 0.6rem 1rem;
+.category-card:hover .category-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 20px var(--gold-primary));
+}
+
+.category-card.locked {
+    opacity: 0.4;
+    filter: grayscale(1);
+    cursor: default;
+}
+
+.category-card.locked::after {
+    content: '🔒';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     font-size: 1.2rem;
-    line-height: 1;
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
-    margin-right: 0.5rem;
-}
-
-.tab-link.back-btn:hover {
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--gold-primary);
-    border-color: var(--gold-primary);
+    opacity: 0.5;
 }
