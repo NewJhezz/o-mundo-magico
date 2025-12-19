@@ -445,13 +445,23 @@ def wands_cores():
 CREATURES_DATA = [
     # --- FERAS (Beasts) ---
     {
+        'name': 'Dragão',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'danger_level': 5,
+        'icon': '🐉',
+        'desc': 'A mais perigosa das criaturas. Dividida em várias raças, todas são mortíferas e impossíveis de domesticar.',
+        'origin': 'Global'
+    },
+    {
         'name': 'Acromântula',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXXX',
         'danger_level': 5,
         'icon': '🕷️',
-        'desc': 'Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e impossível de treinar.',
+        'desc': 'Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e altamente agressiva.',
         'origin': 'Bornéu / Floresta Proibida'
     },
     {
@@ -461,38 +471,138 @@ CREATURES_DATA = [
         'danger': 'XXXXX',
         'danger_level': 5,
         'icon': '🐍',
-        'desc': 'O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno é um dos poucos que destroem Horcruxes.',
-        'origin': 'Herpo, o Sujo (Criador)'
+        'desc': 'O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno corrói quase qualquer substância.',
+        'origin': 'Europa (Grécia)'
     },
     {
-        'name': 'Dragão (Barriga-de-Ferro)',
+        'name': 'Mantícora',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXXX',
         'danger_level': 5,
-        'icon': '🐉',
-        'desc': 'A maior raça de dragão. Metálico e imenso, guardava os cofres profundos de Gringotes.',
-        'origin': 'Ucrânia'
+        'icon': '🦁',
+        'desc': 'Cabeça humana, corpo de leão e cauda de escorpião. Sua pele repele quase todos os feitiços.',
+        'origin': 'Grécia / Ásia'
     },
     {
-        'name': 'Fênix',
+        'name': 'Quimera',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'danger_level': 5,
+        'icon': '🐐',
+        'desc': 'Incrivelmente rara e feroz. Possui cabeça de leão, corpo de bode e cauda de dragão.',
+        'origin': 'Grécia'
+    },
+    {
+        'name': 'Nundu',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'danger_level': 5,
+        'icon': '🐆',
+        'desc': 'Talvez a mais perigosa do mundo. Seu hálito tóxico é capaz de dizimar vilas inteiras.',
+        'origin': 'África Oriental'
+    },
+    {
+        'name': 'Trolls',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXX',
         'danger_level': 4,
-        'icon': '🔥',
-        'desc': 'Pássaro escarlate fiel. Renasce das cinzas, cura com lágrimas e carrega cargas imensas.',
-        'origin': 'Egito / Índia / China'
+        'icon': '👹',
+        'desc': 'Humanoides imensos de força colossal e inteligência mínima. Comem carne humana.',
+        'origin': 'Escandinávia'
     },
     {
-        'name': 'Hipogrifo',
+        'name': 'Grifos',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '🦅',
+        'desc': 'Metade leão, metade águia. São guardiões ferozes de tesouros e locais secretos.',
+        'origin': 'Grécia'
+    },
+    {
+        'name': 'Thestrais',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '💀',
+        'desc': 'Cavalos alados esqueléticos visíveis apenas por quem já testemunhou a morte de perto.',
+        'origin': 'Ilhas Britânicas'
+    },
+    {
+        'name': 'Erumpent',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '🦏',
+        'desc': 'Grande animal com um chifre explosivo. Sua pele dura resiste à maioria dos feitiços.',
+        'origin': 'África'
+    },
+    {
+        'name': 'Hipogrifos',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXX',
         'danger_level': 3,
         'icon': '🦅',
-        'desc': 'Cabeça de águia, corpo de cavalo. Orgulhoso, exige respeito antes de permitir aproximação.',
+        'desc': 'Criatura orgulhosa que exige reverência. Metade águia gigante, metade cavalo.',
         'origin': 'Europa'
+    },
+    {
+        'name': 'Fênix',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXX',
+        'danger_level': 3,
+        'icon': '🔥',
+        'desc': 'Pássaro magnífico que renasce das cinzas. Suas lágrimas têm imenso poder curativo.',
+        'origin': 'Global'
+    },
+    {
+        'name': 'Unicórnios',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXX',
+        'danger_level': 3,
+        'icon': '🦄',
+        'desc': 'Símbolo de pureza. Criaturas brancas e velozes cujo chifre e pelos são itens de alto valor.',
+        'origin': 'Europa Setentrional'
+    },
+    {
+        'name': 'Kappas',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXX',
+        'danger_level': 3,
+        'icon': '🐢',
+        'desc': 'Demônios aquáticos nipônicos que estrangulam humanos. Perdem a força se a água em sua cabeça cair.',
+        'origin': 'Japão'
+    },
+    {
+        'name': 'Kelpie',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXX',
+        'danger_level': 3,
+        'icon': '🐎',
+        'desc': 'Demônio aquático metamorfo. Atrai pessoas para cavalgarem sobre ele e as afoga.',
+        'origin': 'Reino Unido / Irlanda'
+    },
+    {
+        'name': 'Augurey',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XX',
+        'danger_level': 2,
+        'icon': '🦅',
+        'desc': 'Pássaro melancólico que prevê chuva. Suas penas repelem tinta de qualquer espécie.',
+        'origin': 'Irlanda'
     },
     {
         'name': 'Puffskein',
@@ -501,51 +611,161 @@ CREATURES_DATA = [
         'danger': 'XX',
         'danger_level': 2,
         'icon': '🧶',
-        'desc': 'Bola de pelos fofa e dócil. Popular animal de estimação bruxo. Gosta de comer catotas.',
+        'desc': 'Bola de pelos dócil e fofa. Popular animal de estimação que gosta de comer catotas.',
         'origin': 'Mundo todo'
     },
     {
-        'name': 'Verme-Cego',
+        'name': 'Kneazle',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XX',
+        'danger_level': 2,
+        'icon': '🐱',
+        'desc': 'Felino inteligente capaz de detectar pessoas suspeitas e guiar seus donos para casa.',
+        'origin': 'Global'
+    },
+    {
+        'name': 'Fwooper',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'X',
         'danger_level': 1,
-        'icon': '🐛',
-        'desc': 'Entediante. Move-se pouco e produz muco usado em poções. Prefere alface.',
-        'origin': 'Valas úmidas'
+        'icon': '🦜',
+        'desc': 'Pássaro africano de cores berrantes. Seu canto constante pode levar o ouvinte à loucura.',
+        'origin': 'África'
+    },
+    {
+        'name': 'Chizpurfle',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'X',
+        'danger_level': 1,
+        'icon': '🦀',
+        'desc': 'Pequenos parasitas mágicos de aparência lupina que se alimentam de resquícios mágicos.',
+        'origin': 'Global'
     },
     # --- SERES (Beings) ---
     {
-        'name': 'Centauro',
+        'name': 'Gigantes',
         'category': 'being',
-        'category_label': 'Fera-Autodeclarado',
+        'category_label': 'Ser',
         'danger': 'XXXX',
         'danger_level': 4,
+        'icon': '🌋',
+        'desc': 'Humanoides imensos de pele grossa e resistência a feitiços. Vivem em tribos montanhosas.',
+        'origin': 'Montanhas Remotas'
+    },
+    {
+        'name': 'Vampiros',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '🧛',
+        'desc': 'Humanos undead que dependem de sangue. Possuem grande agilidade e força noturna.',
+        'origin': 'Europa Central / Transilvânia'
+    },
+    {
+        'name': 'H. Lobo (Humano)',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '👨‍💼',
+        'desc': 'Vítimas de licantropia. Enquanto humanos, são cidadãos de pleno direito na sociedade bruxa.',
+        'origin': 'Global'
+    },
+    {
+        'name': 'Centauros',
+        'category': 'being',
+        'category_label': 'Fera-Autodeclarado',
+        'danger': 'XXX',
+        'danger_level': 3,
         'icon': '🏹',
-        'desc': 'Mestre em cura, divinação e astronomia. Vivem em rebanhos e evitam humanos. Orgulhosos.',
-        'origin': 'Florestas da Europa'
+        'desc': 'Criaturas inteligentes que estudam as estrelas. Recusaram a categoria de "Ser" na história.',
+        'origin': 'Florestas Europeias'
     },
     {
-        'name': 'Sereiano (Selkie)',
+        'name': 'Sereianos / Tritões',
         'category': 'being',
         'category_label': 'Fera-Autodeclarado',
-        'danger': 'XXXX',
-        'danger_level': 4,
+        'danger': 'XXX',
+        'danger_level': 3,
         'icon': '🧜‍♀️',
-        'desc': 'Povo da água da Escócia e Irlanda. Beleza rústica e vozes que só soam belas embaixo d\'água.',
-        'origin': 'Lago Negro (Hogwarts)'
+        'desc': 'Povos da água com cultura e linguagens complexas. Habitam lagos e oceanos profundos.',
+        'origin': 'Lagos e Antilhas'
     },
     {
-        'name': 'Duende (Goblin)',
+        'name': 'Goblins',
         'category': 'being',
         'category_label': 'Ser',
         'danger': 'XXX',
         'danger_level': 3,
         'icon': '💰',
-        'desc': 'Artesãos de metais habilidosos e guardiões de Gringotes. Possuem magia própria sem varinha.',
-        'origin': 'Desconhecida'
+        'desc': 'Mestres de finanças e ferreiros habilidosos. Criaram as defesas mágicas de Gringotes.',
+        'origin': 'Reino Unido / Global'
+    },
+    {
+        'name': 'Veelas',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XXX',
+        'danger_level': 3,
+        'icon': '👱‍♀️',
+        'desc': 'Belas mulheres que hipnotizam com sua dança. Transformam-se em feras se enfurecidas.',
+        'origin': 'Europa Oriental'
+    },
+    {
+        'name': 'Elfos domésticos',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XX',
+        'danger_level': 2,
+        'icon': '🧹',
+        'desc': 'Pequenos seres servos ligados a famílias bruxas. Possuem magia instintiva muito poderosa.',
+        'origin': 'Reino Unido'
+    },
+    {
+        'name': 'Leprechauns',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XX',
+        'danger_level': 2,
+        'icon': '🍀',
+        'desc': 'Pequenos seres travessos que distribuem moedas de ouro que desaparecem depois.',
+        'origin': 'Irlanda'
     },
     # --- ESPÍRITOS (Spirits) ---
+    {
+        'name': 'Dementadores',
+        'category': 'spirit',
+        'category_label': 'Não-Ser',
+        'danger': 'XXXXX',
+        'danger_level': 5,
+        'icon': '🌑',
+        'desc': 'Sugam a esperança e alegria. Seu beijo pode extrair a alma de uma pessoa viva.',
+        'origin': 'Azkaban'
+    },
+    {
+        'name': 'Inferi',
+        'category': 'spirit',
+        'category_label': 'Não-Ser',
+        'danger': 'XXXXX',
+        'danger_level': 5,
+        'icon': '🧟',
+        'desc': 'Cadáveres reanimados por feitiços das trevas para servirem como soldados ou guardiões.',
+        'origin': 'Geral'
+    },
+    {
+        'name': 'Banshee',
+        'category': 'spirit',
+        'category_label': 'Espírito',
+        'danger': 'XXXX',
+        'danger_level': 4,
+        'icon': '🗣️',
+        'desc': 'Fantasma feminino melancólico cujo grito sinistro prediz desgraça ou morte iminente.',
+        'origin': 'Irlanda / Escócia'
+    },
     {
         'name': 'Poltergeist',
         'category': 'spirit',
@@ -553,28 +773,18 @@ CREATURES_DATA = [
         'danger': 'XXX',
         'danger_level': 3,
         'icon': '👻',
-        'desc': 'Espírito do caos indestrutível. Pirraça é o exemplo mais famoso de Hogwarts.',
-        'origin': 'Locais com alta emoção adolescente'
+        'desc': 'Entidade do caos pura. Pirraça é o exemplo mais famoso residente em Hogwarts.',
+        'origin': 'Hogwarts'
     },
     {
-        'name': 'Fantasma',
+        'name': 'Fantasmas',
         'category': 'spirit',
         'category_label': 'Espírito',
         'danger': 'XX',
         'danger_level': 2,
         'icon': '💀',
-        'desc': 'A impressão deixada por uma alma que partiu. Atravessam paredes e deixam o ar gelado.',
-        'origin': 'Todo lugar onde alguém morreu infeliz'
-    },
-    {
-        'name': 'Dementador',
-        'category': 'spirit',
-        'category_label': 'Não-Ser',
-        'danger': 'XXXXX',
-        'danger_level': 5,
-        'icon': '🌑',
-        'desc': 'Guardiões de Azkaban. Sugam a felicidade e a alma (Beijo do Dementador).',
-        'origin': 'Azkaban'
+        'desc': 'A marca transparente deixada por uma alma que não conseguiu seguir em frente.',
+        'origin': 'Global'
     }
 ]
 
