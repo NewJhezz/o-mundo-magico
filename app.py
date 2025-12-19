@@ -449,6 +449,7 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXXX',
+        'danger_level': 5,
         'icon': '🕷️',
         'desc': 'Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e impossível de treinar.',
         'origin': 'Bornéu / Floresta Proibida'
@@ -458,6 +459,7 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXXX',
+        'danger_level': 5,
         'icon': '🐍',
         'desc': 'O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno é um dos poucos que destroem Horcruxes.',
         'origin': 'Herpo, o Sujo (Criador)'
@@ -467,6 +469,7 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXXX',
+        'danger_level': 5,
         'icon': '🐉',
         'desc': 'A maior raça de dragão. Metálico e imenso, guardava os cofres profundos de Gringotes.',
         'origin': 'Ucrânia'
@@ -476,8 +479,9 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXXX',
+        'danger_level': 4,
         'icon': '🔥',
-        'desc': 'Pássaro escarlate fiel. Renasce das cinzas, cura com lágrimas e carrega cargas imensas. Extremamente difícil de domesticar.',
+        'desc': 'Pássaro escarlate fiel. Renasce das cinzas, cura com lágrimas e carrega cargas imensas.',
         'origin': 'Egito / Índia / China'
     },
     {
@@ -485,6 +489,7 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XXX',
+        'danger_level': 3,
         'icon': '🦅',
         'desc': 'Cabeça de águia, corpo de cavalo. Orgulhoso, exige respeito antes de permitir aproximação.',
         'origin': 'Europa'
@@ -494,15 +499,17 @@ CREATURES_DATA = [
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'XX',
+        'danger_level': 2,
         'icon': '🧶',
         'desc': 'Bola de pelos fofa e dócil. Popular animal de estimação bruxo. Gosta de comer catotas.',
         'origin': 'Mundo todo'
     },
     {
-        'name': 'Verme-Cego (Flobberworm)',
+        'name': 'Verme-Cego',
         'category': 'beast',
         'category_label': 'Fera',
         'danger': 'X',
+        'danger_level': 1,
         'icon': '🐛',
         'desc': 'Entediante. Move-se pouco e produz muco usado em poções. Prefere alface.',
         'origin': 'Valas úmidas'
@@ -511,17 +518,19 @@ CREATURES_DATA = [
     {
         'name': 'Centauro',
         'category': 'being',
-        'category_label': 'Ser (Classificado como Fera por pedido)',
+        'category_label': 'Fera-Autodeclarado',
         'danger': 'XXXX',
+        'danger_level': 4,
         'icon': '🏹',
-        'desc': 'Mestre em cura, divinação e astronomia. Vivem em rebanhos e evitam humanos. Orgulhosos e misteriosos.',
+        'desc': 'Mestre em cura, divinação e astronomia. Vivem em rebanhos e evitam humanos. Orgulhosos.',
         'origin': 'Florestas da Europa'
     },
     {
         'name': 'Sereiano (Selkie)',
         'category': 'being',
-        'category_label': 'Ser (Classificado como Fera por pedido)',
+        'category_label': 'Fera-Autodeclarado',
         'danger': 'XXXX',
+        'danger_level': 4,
         'icon': '🧜‍♀️',
         'desc': 'Povo da água da Escócia e Irlanda. Beleza rústica e vozes que só soam belas embaixo d\'água.',
         'origin': 'Lago Negro (Hogwarts)'
@@ -531,6 +540,7 @@ CREATURES_DATA = [
         'category': 'being',
         'category_label': 'Ser',
         'danger': 'XXX',
+        'danger_level': 3,
         'icon': '💰',
         'desc': 'Artesãos de metais habilidosos e guardiões de Gringotes. Possuem magia própria sem varinha.',
         'origin': 'Desconhecida'
@@ -541,6 +551,7 @@ CREATURES_DATA = [
         'category': 'spirit',
         'category_label': 'Espírito',
         'danger': 'XXX',
+        'danger_level': 3,
         'icon': '👻',
         'desc': 'Espírito do caos indestrutível. Pirraça é o exemplo mais famoso de Hogwarts.',
         'origin': 'Locais com alta emoção adolescente'
@@ -550,15 +561,17 @@ CREATURES_DATA = [
         'category': 'spirit',
         'category_label': 'Espírito',
         'danger': 'XX',
+        'danger_level': 2,
         'icon': '💀',
         'desc': 'A impressão deixada por uma alma que partiu. Atravessam paredes e deixam o ar gelado.',
         'origin': 'Todo lugar onde alguém morreu infeliz'
     },
     {
         'name': 'Dementador',
-        'category': 'spirit', # Classificação ambígua, mas se encaixa em não-ser/espírito maligno
+        'category': 'spirit',
         'category_label': 'Não-Ser',
         'danger': 'XXXXX',
+        'danger_level': 5,
         'icon': '🌑',
         'desc': 'Guardiões de Azkaban. Sugam a felicidade e a alma (Beijo do Dementador).',
         'origin': 'Azkaban'
