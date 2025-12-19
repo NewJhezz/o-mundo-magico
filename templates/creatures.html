@@ -5,16 +5,22 @@
 {% block content %}
 <div class="creatures-section animate-fade-in">
     <!-- Navbar interna de Criaturas (se houver subcategorias no futuro) -->
-    <div class="header-decoration">
-        <h2
-            style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 2rem;">
+    <div class="header-decoration"
+        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
+        <!-- Botão Voltar (topo esquerda) -->
+        <a href="{{ url_for('world') }}" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
+            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
+            ⬅
+        </a>
+
+        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
             Bestiário do Mundo Mágico
         </h2>
     </div>
 
     <!-- Toolbar de Filtros -->
-    <div class="filter-toolbar">
-        <div class="filter-group">
+    <div class="filter-toolbar" style="margin-bottom: 2rem;">
+        <div class="filter-group" style="margin: 0;">
             <span class="filter-label">Classificação (M.O.M.):</span>
             <select id="filterCategory" class="custom-select" onchange="updateCreatures()">
                 <option value="all">Todas</option>
