@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varinhas | Wiki Harry Potter</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>O Mundo Mágico</h1>
+        </header>
+
+        <main>
+            
+<div class="wands-section">
+    <!-- Navegação de Abas -->
+    <nav class="tabs">
+        <a href="./index.html" class="tab-link active">
+            Madeiras
+        </a>
+        <a href="./nucleos.html" class="tab-link ">
+            Núcleos
+        </a>
+    </nav>
+
+    
+
+    <!-- Toolbar de Filtros (Apenas para Madeiras por enquanto, ou adaptado) -->
+    <div class="filter-toolbar animate-fade-in">
+        
+        <div class="filter-group">
+            <span class="filter-label">Afinidade:</span>
+            <select id="filterAffinity" class="custom-select" onchange="updateView()">
+                <option value="all">Todas</option>
+                <option value="combat">Combate ⚔️</option>
+                <option value="defense">Defesa 🛡️</option>
+                <option value="charms">Encantamentos ✨</option>
+                <option value="complex">Magia Avançada 🔮</option>
+                <option value="healing">Cura 🌱</option>
+                <option value="wisdom">Sabedoria 🧠</option>
+                <option value="dark">Trevas ☠️</option>
+            </select>
+        </div>
+        
+
+        <div class="filter-group">
+            <span class="filter-label">Bruxo(a):</span>
+            <select id="filterWizard" class="custom-select" onchange="updateView()">
+                <option value="all">Todos</option>
+                
+                <option value="Albus Dumbledore">Albus Dumbledore</option>
+                
+                <option value="Antioch Peverell">Antioch Peverell</option>
+                
+                <option value="Bellatrix Lestrange">Bellatrix Lestrange</option>
+                
+                <option value="Cedric Diggory">Cedric Diggory</option>
+                
+                <option value="Draco Malfoy (Esp)">Draco Malfoy (Esp)</option>
+                
+                <option value="Garrick Ollivander">Garrick Ollivander</option>
+                
+                <option value="Gilderoy Lockhart">Gilderoy Lockhart</option>
+                
+                <option value="Harry Potter">Harry Potter</option>
+                
+                <option value="Hermione Granger">Hermione Granger</option>
+                
+                <option value="Lucius Malfoy">Lucius Malfoy</option>
+                
+                <option value="Minerva McGonagall">Minerva McGonagall</option>
+                
+                <option value="Neville Longbottom">Neville Longbottom</option>
+                
+                <option value="Remus Lupin">Remus Lupin</option>
+                
+                <option value="Ron Weasley">Ron Weasley</option>
+                
+                <option value="Rubeus Hagrid">Rubeus Hagrid</option>
+                
+                <option value="Tom Riddle (Lord Voldemort)">Tom Riddle (Lord Voldemort)</option>
+                
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Classificar:</span>
+            <select id="sortSelect" class="custom-select" onchange="updateView()">
+                <option value="rank_desc">Raridade (Mais Raro)</option>
+                <option value="rank_asc">Raridade (Mais Comum)</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+            </select>
+        </div>
+    </div>
+
+    <section id="woodsGrid" class="woods-grid animate-fade-in">
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Abeto"
+            data-rank="1"
+            data-affinity="combat"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Abeto")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Abeto</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Abeto-vermelho"
+            data-rank="2"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Abeto-vermelho")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Abeto-vermelho</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Acácia"
+            data-rank="3"
+            data-affinity="complex"
+            data-owner="Membros selecionados da nobreza bruxa"
+            onclick='openModal({"curiosity": "Ollivander parou de estoc\u00e1-las pois \u00e9 dif\u00edcil encontrar o dono certo, mas quando encontra, \u00e9 formid\u00e1vel.", "desc": "Muito incomum. Recusa-se a fazer magia para qualquer um que n\u00e3o seja seu dono. N\u00e3o serve para \"feiti\u00e7os de exibi\u00e7\u00e3o\".", "owner": "Membros selecionados da nobreza bruxa", "skill": "Magia sutil e poderosa"}, "Acácia")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Acácia</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Amieiro"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Amieiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Amieiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Aveleira"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Aveleira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Aveleira</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Azevinho"
+            data-rank="2"
+            data-affinity="defense"
+            data-owner="Harry Potter"
+            onclick='openModal({"curiosity": "Tradicionalmente considerada a ant\u00edtese do Teixo. S\u00edmbolo de vida e prote\u00e7\u00e3o.", "desc": "Rara e protetora, funciona melhor para quem precisa vencer a raiva e impetuosidade. Escolhe bruxos em jornadas perigosas.", "owner": "Harry Potter", "skill": "Prote\u00e7\u00e3o contra o mal, Duelos defensivos"}, "Azevinho")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Azevinho</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Bordo"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Bordo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Bordo</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Carvalho"
+            data-rank="1"
+            data-affinity="combat"
+            data-owner="Hagrid (provavelmente), Merlin"
+            onclick='openModal({"curiosity": "O Rei da Floresta do solst\u00edcio de inverno ao de ver\u00e3o. N\u00e3o deve ser colhida fora do tempo.", "desc": "Exige for\u00e7a, coragem e fidelidade. Parceira de bruxos com forte intui\u00e7\u00e3o e afinidade com a natureza.", "owner": "Hagrid (provavelmente), Merlin", "skill": "Magia da Natureza, Feiti\u00e7os de Defesa"}, "Carvalho")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Carvalho</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Carvalho-vermelho"
+            data-rank="1"
+            data-affinity="combat"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Carvalho-vermelho")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Carvalho-vermelho</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Castanheiro"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Castanheiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Castanheiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Cedro"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Cedro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Cedro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card epic" title="Clique para saber mais" data-name="Cerejeira"
+            data-rank="4"
+            data-affinity="wisdom"
+            data-owner="Neville Longbottom, Gilderoy Lockhart"
+            onclick='openModal({"curiosity": "Nosso preconceito ocidental muitas vezes subestima essa madeira por suas flores rosas, um erro fatal em duelo.", "desc": "Muito apreciada em Mahoutokoro (Jap\u00e3o). N\u00e3o \u00e9 apenas decorativa: possui poder letal e exige autocontrole f\u00e9rreo.", "owner": "Neville Longbottom, Gilderoy Lockhart", "skill": "Magia combativa, Charme e eleg\u00e2ncia"}, "Cerejeira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Cerejeira</h3>
+                <div class="rarity-badge">E</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card epic" title="Clique para saber mais" data-name="Cipreste"
+            data-rank="4"
+            data-affinity="wisdom"
+            data-owner="Remus Lupin (em algumas versões)"
+            onclick='openModal({"curiosity": "Grandes her\u00f3is da hist\u00f3ria bruxa e m\u00e1rtires frequentemente portavam cipreste.", "desc": "Associada \u00e0 nobreza. Dizem que o dono de uma varinha dessas ter\u00e1 uma morte her\u00f3ica. Almas bravas e auto-sacrificantes.", "owner": "Remus Lupin (em algumas vers\u00f5es)", "skill": "Magia de prote\u00e7\u00e3o, Feiti\u00e7os de coragem"}, "Cipreste")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Cipreste</h3>
+                <div class="rarity-badge">E</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Corniso"
+            data-rank="1"
+            data-affinity="combat"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Corniso")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Corniso</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Espinheiro"
+            data-rank="2"
+            data-affinity="complex"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Espinheiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Espinheiro</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Espinheiro-alvo"
+            data-rank="3"
+            data-affinity="defense complex"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Espinheiro-alvo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Espinheiro-alvo</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️ 🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Espinheiro-negro"
+            data-rank="3"
+            data-affinity="complex dark"
+            data-owner="Sir Cadogan"
+            onclick='openModal({"curiosity": "Seu arbusto tem espinhos cru\u00e9is e frutos amargos, refletindo a natureza dura de sua magia.", "desc": "Uma madeira de guerreiro. Surpreendentemente adequada tanto para Aurores quanto para Comensais da Morte. Precisa passar por perigo para se unir ao dono.", "owner": "Sir Cadogan", "skill": "Maldi\u00e7\u00f5es, Magia de Combate"}, "Espinheiro-negro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Espinheiro-negro</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮 ☠️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Faia"
+            data-rank="1"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Faia")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Faia</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Figueira"
+            data-rank="3"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Figueira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Figueira</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Freixo"
+            data-rank="2"
+            data-affinity="combat"
+            data-owner="Cedric Diggory, Ron Weasley (primeira varinha)"
+            onclick='openModal({"curiosity": "Existe um ditado antigo: \"Freixo teimoso, castanheiro ranzinza...\" que alerta sobre sua lealdade fixa.", "desc": "Teimosa e leal. Se dada ou herdada, perde poder. O dono ideal \u00e9 firme em suas cren\u00e7as e nunca grosseiro.", "owner": "Cedric Diggory, Ron Weasley (primeira varinha)", "skill": "Feiti\u00e7os focados, Transfigura\u00e7\u00e3o"}, "Freixo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Freixo</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Haya"
+            data-rank="1"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Haya")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Haya</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Jacarandá"
+            data-rank="2"
+            data-affinity="wisdom"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Jacarandá")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Jacarandá</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Lariço"
+            data-rank="2"
+            data-affinity="wisdom"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Lariço")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Lariço</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Lima-prata"
+            data-rank="2"
+            data-affinity="wisdom"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Lima-prata")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Lima-prata</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Limoeiro"
+            data-rank="2"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Limoeiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Limoeiro</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Loureiro"
+            data-rank="1"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Loureiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Loureiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Macieira"
+            data-rank="1"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Macieira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Macieira</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Mogno"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Mogno")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Mogno</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Nogueira"
+            data-rank="3"
+            data-affinity="complex"
+            data-owner="Bellatrix Lestrange"
+            onclick='openModal({"curiosity": "Diferente de outras, uma vez subjugada, ela far\u00e1 qualquer coisa que o dono pedir, por mais vil que seja.", "desc": "Para bruxos de intelig\u00eancia superior. Vers\u00e1til e adapt\u00e1vel, mas se o dono perder a confian\u00e7a, ela perde o poder. Uma arma letal nas m\u00e3os de quem n\u00e3o tem conflitos internos.", "owner": "Bellatrix Lestrange", "skill": "Versatilidade total, Invencionice m\u00e1gica"}, "Nogueira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Nogueira</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Nogueira-preta"
+            data-rank="3"
+            data-affinity="complex"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Nogueira-preta")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Nogueira-preta</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Olmo"
+            data-rank="1"
+            data-affinity="complex"
+            data-owner="Lucius Malfoy"
+            onclick='openModal({"curiosity": "Havia um boato de que apenas sangue-puros poderiam usar Olmo, o que Ollivander provou ser falso.", "desc": "Prefere donos com presen\u00e7a, dignidade e destreza m\u00e1gica. Produz o menor n\u00famero de acidentes e erros tolos.", "owner": "Lucius Malfoy", "skill": "Magias elegantes, Feiti\u00e7os de Puro-Sangue (tradicionalmente)"}, "Olmo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Olmo</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card legendary" title="Clique para saber mais" data-name="Pau-brasil"
+            data-rank="5"
+            data-affinity="wisdom"
+            data-owner="Castelobruxo Grandmasters"
+            onclick='openModal({"curiosity": "Quase extinta na natureza m\u00e1gica, varinhas dessa madeira s\u00e3o rel\u00edquias passadas de gera\u00e7\u00e3o em gera\u00e7\u00e3o.", "desc": "Madeira lend\u00e1ria da Am\u00e9rica do Sul, ardente e vibrante. Conhecida por sua \"brasa\" interna que responde a bruxos de esp\u00edrito indom\u00e1vel.", "owner": "Castelobruxo Grandmasters", "skill": "Magia Elemental (Fogo), Transfigura\u00e7\u00e3o Avan\u00e7ada"}, "Pau-brasil")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Pau-brasil</h3>
+                <div class="rarity-badge">L</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Pereira"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Pereira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Pereira</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Pinheiro"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Pinheiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Pinheiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Plátano"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Plátano")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Plátano</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card rare" title="Clique para saber mais" data-name="Romeira"
+            data-rank="3"
+            data-affinity="wisdom"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Romeira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Romeira</h3>
+                <div class="rarity-badge">R</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card legendary" title="Clique para saber mais" data-name="Sabugueiro"
+            data-rank="5"
+            data-affinity="dark"
+            data-owner="Antioch Peverell, Albus Dumbledore, Harry Potter"
+            onclick='openModal({"curiosity": "Dizem que a Varinha das Varinhas nunca perde um duelo se seu mestre for verdadeiro.", "desc": "A mais rara de todas as madeiras e com fama de trazer azar. Cont\u00e9m magia poderosa, mas despreza donos que n\u00e3o sejam superiores. Dif\u00edcil de dominar.", "owner": "Antioch Peverell, Albus Dumbledore, Harry Potter", "skill": "Magia extremamente poderosa, Artes das Trevas"}, "Sabugueiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Sabugueiro</h3>
+                <div class="rarity-badge">L</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ☠️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Salgueiro"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Ron Weasley (segunda varinha), Lily Potter"
+            onclick='openModal({"curiosity": "Ideal para feiti\u00e7os n\u00e3o-verbais, o que atrai bruxos avan\u00e7ados.", "desc": "Incomum e com poder de cura. O salgueiro busca donos com inseguran\u00e7as ocultas, mas grande potencial. Dizem que quem tem muito a viajar vai mais r\u00e1pido com Salgueiro.", "owner": "Ron Weasley (segunda varinha), Lily Potter", "skill": "Cura, Feiti\u00e7os n\u00e3o-verbais"}, "Salgueiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Salgueiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Sicômoro"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Sicômoro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Sicômoro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Sorveira"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Sorveira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Sorveira</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card epic" title="Clique para saber mais" data-name="Teixo"
+            data-rank="4"
+            data-affinity="combat dark"
+            data-owner="Tom Riddle (Lord Voldemort), Ginny Weasley"
+            onclick='openModal({"curiosity": "Costumam ser enterradas com seus donos. Se uma varinha de teixo for enterrada, dizem que ela brota em uma \u00e1rvore para guardar o t\u00famulo.", "desc": "Varinhas de teixo s\u00e3o raras, associadas a duelos e maldi\u00e7\u00f5es. Diz-se que conferem ao dono poder de vida e morte.", "owner": "Tom Riddle (Lord Voldemort), Ginny Weasley", "skill": "Artes das Trevas, Duelos letais"}, "Teixo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Teixo</h3>
+                <div class="rarity-badge">E</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️ ☠️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Tília"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Tília")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Tília</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Ulmeiro"
+            data-rank="1"
+            data-affinity="charms"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Ulmeiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Ulmeiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ✨
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card uncommon" title="Clique para saber mais" data-name="Videira"
+            data-rank="2"
+            data-affinity="complex wisdom"
+            data-owner="Hermione Granger"
+            onclick='openModal({"curiosity": "Embora n\u00e3o seja tecnicamente uma \"madeira\" (\u00e9 um caule), Ollivander a classifica como tal devido \u00e0s suas propriedades \u00fanicas.", "desc": "Pertence a personalidades de profundidade oculta. Varinhas de videira parecem saber quando seu mestre ideal entra na sala.", "owner": "Hermione Granger", "skill": "Vis\u00e3o, Feiti\u00e7os Complexos"}, "Videira")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Videira</h3>
+                <div class="rarity-badge">I</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮 🧠
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Vidoeiro"
+            data-rank="1"
+            data-affinity="healing"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Vidoeiro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Vidoeiro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🌱
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Zimbro"
+            data-rank="1"
+            data-affinity="defense"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Zimbro")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Zimbro</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🛡️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card common" title="Clique para saber mais" data-name="Álamo"
+            data-rank="1"
+            data-affinity="combat"
+            data-owner="Desconhecido"
+            onclick='openModal({"curiosity": "Ainda h\u00e1 muito a ser descoberto sobre esta madeira.", "desc": "Uma madeira nobre e cheia de personalidade. Reage bem a bruxos que demonstram respeito por sua origem.", "owner": "Desconhecido", "skill": "Magia Geral"}, "Álamo")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Álamo</h3>
+                <div class="rarity-badge">C</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                ⚔️
+                
+            </div>
+
+            
+
+        </div>
+        
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card epic" title="Clique para saber mais" data-name="Ébano"
+            data-rank="4"
+            data-affinity="complex"
+            data-owner="Membros da Ordem da Fênix e Comensais"
+            onclick='openModal({"curiosity": "N\u00e3o perde poder com o tempo, pelo contr\u00e1rio, enrijece em sua lealdade.", "desc": "Preto azeviche, impressionante. Para aqueles que t\u00eam a coragem de ser eles mesmos. Combina com donos n\u00e3o-conformistas.", "owner": "Membros da Ordem da F\u00eanix e Comensais", "skill": "Combate e Transfigura\u00e7\u00e3o"}, "Ébano")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    🪄
+                </span>
+                <h3 class="wood-name">Ébano</h3>
+                <div class="rarity-badge">E</div>
+            </div>
+
+            <div class="wood-affinity">
+                
+                🔮
+                
+            </div>
+
+            
+
+        </div>
+        
+    </section>
+
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Nome da Madeira</h2>
+                <button class="modal-close" onclick="closeModal(null)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <span class="detail-label">Descrição</span>
+                <p id="modalDesc" class="detail-value">...</p>
+
+                <span class="detail-label">Especialidade / Perfil</span>
+                <p id="modalSkill" class="detail-value">...</p>
+
+                <span class="detail-label">Donos Notáveis</span>
+                <p id="modalOwner" class="detail-value">...</p>
+            </div>
+            <div class="modal-footer">
+                <p id="modalCuriosity">Did you know?...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Lógica do Modal ---
+        function openModal(details, name) {
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalDesc').textContent = details.desc;
+            document.getElementById('modalSkill').textContent = details.skill;
+            document.getElementById('modalOwner').textContent = details.owner;
+            document.getElementById('modalCuriosity').textContent = details.curiosity;
+
+            const modal = document.getElementById('infoModal');
+            modal.classList.add('open');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'infoModal') {
+                document.getElementById('infoModal').classList.remove('open');
+            }
+        }
+
+        // --- Lógica de Filtros e Ordenação ---
+        function updateView() {
+            // Elemento pode não existir se estivermos na aba Cores
+            const affinitySelect = document.getElementById('filterAffinity');
+            const affinityFilter = affinitySelect ? affinitySelect.value : 'all';
+
+            const wizardFilter = document.getElementById('filterWizard').value;
+            const sortCriterion = document.getElementById('sortSelect').value;
+            const grid = document.getElementById('woodsGrid');
+            const cards = Array.from(grid.getElementsByClassName('wood-card'));
+
+            cards.forEach(card => {
+                const cardAffinities = card.dataset.affinity || "";
+                const cardOwners = card.dataset.owner || "";
+
+                let show = true;
+
+                if (affinityFilter !== 'all' && !cardAffinities.includes(affinityFilter)) {
+                    show = false;
+                }
+
+                if (wizardFilter !== 'all') {
+                    if (!cardOwners.includes(wizardFilter)) {
+                        show = false;
+                    }
+                }
+
+                if (show) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Ordenação (mantida)
+            const visibleCards = cards.filter(c => c.style.display !== 'none');
+
+            visibleCards.sort((a, b) => {
+                const rankA = parseInt(a.dataset.rank) || 0;
+                const rankB = parseInt(b.dataset.rank) || 0;
+
+                if (sortCriterion === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+                if (sortCriterion === 'za') return b.dataset.name.localeCompare(a.dataset.name);
+
+                if (sortCriterion === 'rank_asc') {
+                    if (rankA === rankB) return a.dataset.name.localeCompare(b.dataset.name);
+                    return rankA - rankB;
+                }
+                if (sortCriterion === 'rank_desc') {
+                    if (rankA === rankB) return a.dataset.name.localeCompare(b.dataset.name);
+                    return rankB - rankA;
+                }
+            });
+
+            grid.innerHTML = '';
+            visibleCards.forEach(card => grid.appendChild(card));
+            cards.forEach(card => {
+                if (card.style.display === 'none') grid.appendChild(card);
+            });
+        }
+
+        // Garante a ordenação inicial ao carregar a página
+        window.addEventListener('load', updateView);
+    </script>
+
+    
+
+</div>
+
+        </main>
+
+        <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+        </footer>
+    </div>
+</body>
+</html>

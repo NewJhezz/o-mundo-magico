@@ -1,0 +1,481 @@
+:root {
+    /* Paleta Deep Blue */
+    --bg-dark: #050a14;
+    /* Fundo da página */
+    --bg-card: #0f1c2e;
+    /* Fundo dos Cards */
+    --bg-header: #081020;
+    /* Header background */
+
+    /* Textos */
+    --text-main: #e6e6e6;
+    --text-muted: #8fa3bf;
+    --gold-primary: #d4af37;
+
+    /* Bordas e Efeitos */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Lato', sans-serif;
+
+    /* Cores de Raridade */
+    --rarity-common: #b0b0b0;
+    /* Cinza/Branco */
+    --rarity-uncommon: #90ee90;
+    /* Verde Claro */
+    --rarity-rare: #00bfff;
+    /* Azul Vibrante */
+    --rarity-epic: #9932cc;
+    /* Roxo */
+    --rarity-legendary: #ff8c00;
+    /* Laranja/Dourado */
+    --rarity-supreme: #ffd700;
+    /* Amarelo Ouro */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* Sutil degradê azulado no fundo */
+    background-image: linear-gradient(to bottom, #050a14 0%, #0a1428 100%);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    /* Degradê metálico no título */
+    background: linear-gradient(to right, #cfc7f8 0%, #ebb400 50%, #cfc7f8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Navigation Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.tab-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s;
+    background: rgba(15, 28, 46, 0.5);
+}
+
+.tab-link:hover,
+.tab-link.active {
+    color: #fff;
+    background: #1c3a63;
+    /* Azul médio */
+    border-color: #3b6ca1;
+    box-shadow: 0 0 10px rgba(59, 108, 161, 0.4);
+}
+
+/* Grid Compacto */
+.woods-grid {
+    display: grid;
+    /* Grid um pouco mais largo para caber nomes (min 180px) */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+/* Cards */
+.wood-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    text-align: left;
+    /* Alinhamento padrão esquerda para o header */
+    border-radius: 6px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wood-card:hover {
+    transform: translateY(-3px);
+    z-index: 2;
+    background: #15253d;
+}
+
+/* Header do Card: Ícone + Nome + Badge */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.mini-icon {
+    font-size: 1rem;
+    opacity: 0.4;
+    /* Levemente apagado */
+    filter: grayscale(100%);
+}
+
+.wood-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-main);
+    flex-grow: 1;
+    /* Permitir quebra de linha se necessário */
+    white-space: normal;
+    line-height: 1.2;
+    text-align: center;
+    /* Centralizar entre ícone e badge */
+}
+
+/* Badge de Raridade (Agora no fluxo do header) */
+.rarity-badge {
+    position: static;
+    /* Remove absolute */
+    font-size: 0.65rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    width: 20px;
+    height: 20px;
+    /* Flexbox para centralização perfeita */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: var(--bg-dark);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    /* Não encolher */
+}
+
+/* Estilos Específicos de Raridade (Bordas e Cores Badge) */
+
+/* Comum */
+.wood-card.common:hover {
+    border-color: var(--rarity-common);
+}
+
+.wood-card.common .rarity-badge {
+    background: var(--rarity-common);
+}
+
+/* Incomum */
+.wood-card.uncommon:hover {
+    border-color: var(--rarity-uncommon);
+}
+
+.wood-card.uncommon .wood-name {
+    color: #d0f0d0;
+}
+
+.wood-card.uncommon .rarity-badge {
+    background: var(--rarity-uncommon);
+}
+
+/* Raro */
+.wood-card.rare:hover {
+    border-color: var(--rarity-rare);
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+.wood-card.rare .wood-name {
+    color: #cceeff;
+    font-weight: bold;
+}
+
+.wood-card.rare .rarity-badge {
+    background: var(--rarity-rare);
+}
+
+/* Épico */
+.wood-card.epic {
+    background: linear-gradient(135deg, #0f1c2e 0%, #1a0f2e 100%);
+}
+
+.wood-card.epic:hover {
+    border-color: var(--rarity-epic);
+    box-shadow: 0 0 15px rgba(153, 50, 204, 0.3);
+}
+
+.wood-card.epic .wood-name {
+    color: #eec3ff;
+    font-weight: bold;
+}
+
+.wood-card.epic .rarity-badge {
+    background: var(--rarity-epic);
+    color: #fff;
+}
+
+/* Lendário */
+.wood-card.legendary {
+    background: linear-gradient(135deg, #0f1c2e 0%, #2e1a0f 100%);
+    border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.wood-card.legendary:hover {
+    border-color: var(--rarity-legendary);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+}
+
+.wood-card.legendary .wood-name {
+    color: #ffdb99;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.wood-card.legendary .rarity-badge {
+    background: var(--rarity-legendary);
+    color: #000;
+    border: 1px solid #fff;
+}
+
+/* Supremo (Amarelo) */
+.wood-card.supreme {
+    background: linear-gradient(135deg, #0f1c2e 0%, #2e2a0f 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.wood-card.supreme:hover {
+    border-color: var(--rarity-supreme);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.wood-card.supreme .wood-name {
+    color: #ffeeb0;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.wood-card.supreme .rarity-badge {
+    background: var(--rarity-supreme);
+    color: #000;
+    border: 1px solid #fff;
+}
+
+/* Placeholder */
+.placeholder-content {
+    background: rgba(15, 28, 46, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Toolbar de Filtros */
+.filter-toolbar {
+    background: rgba(15, 28, 46, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-label {
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.custom-select {
+    background-color: var(--bg-card);
+    color: var(--gold-primary);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 250px;
+}
+
+.custom-select:hover,
+.custom-select:focus {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    background-color: rgba(15, 28, 46, 0.9);
+}
+
+.custom-select option {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+/* Ícones de Afinidade nos Cards */
+.wood-affinity {
+    font-size: 1.4rem;
+    /* Maior destaque */
+    color: var(--text-muted);
+    letter-spacing: 5px;
+    text-align: center;
+    min-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #102035 0%, #081020 100%);
+    border: 1px solid var(--gold-primary);
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    color: var(--text-main);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--gold-primary);
+    font-family: var(--font-heading);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-body p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.detail-label {
+    color: var(--gold-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.detail-value {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.modal-footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Animação de Entrada */
+.modal-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-overlay.open .modal-content {
+    transform: scale(1);
+}
+
+/* Footer do Card (Tipo de Núcleo) */
+.card-footer-type {
+    margin-top: auto;
+    /* Empurra para o fundo do flex container */
+    text-align: center;
+    color: var(--gold-primary);
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Varinhas | Wiki Harry Potter{% endblock %}
+
+{% block content %}
+<div class="wands-section">
+    <!-- Navegação de Abas -->
+    <!-- Navegação de Abas -->
+    {% include 'nav.html' %}
+
+    {% if active_tab == 'woods' or active_tab == 'cores' %}
+
+    <!-- Toolbar de Filtros (Apenas para Madeiras por enquanto, ou adaptado) -->
+    <div class="filter-toolbar animate-fade-in">
+        {% if active_tab == 'woods' %}
+        <div class="filter-group">
+            <span class="filter-label">Afinidade:</span>
+            <select id="filterAffinity" class="custom-select" onchange="updateView()">
+                <option value="all">Todas</option>
+                <option value="combat">Combate ⚔️</option>
+                <option value="defense">Defesa 🛡️</option>
+                <option value="charms">Encantamentos ✨</option>
+                <option value="complex">Magia Avançada 🔮</option>
+                <option value="healing">Cura 🌱</option>
+                <option value="wisdom">Sabedoria 🧠</option>
+                <option value="dark">Trevas ☠️</option>
+            </select>
+        </div>
+        {% endif %}
+
+        <div class="filter-group">
+            <span class="filter-label">Bruxo(a):</span>
+            <select id="filterWizard" class="custom-select" onchange="updateView()">
+                <option value="all">Todos</option>
+                {% for wiz in wizards %}
+                <option value="{{ wiz }}">{{ wiz }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Classificar:</span>
+            <select id="sortSelect" class="custom-select" onchange="updateView()">
+                <option value="rank_desc">Raridade (Mais Raro)</option>
+                <option value="rank_asc">Raridade (Mais Comum)</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+            </select>
+        </div>
+    </div>
+
+    <section id="woodsGrid" class="woods-grid animate-fade-in">
+        {% for wood in woods %}
+        <!-- Card Genérico (Madeira ou Núcleo) -->
+        <div class="wood-card {{ wood.rarity }}" title="Clique para saber mais" data-name="{{ wood.name }}"
+            data-rank="{{ wood.rank }}"
+            data-affinity="{{ wood.affinities_slugs if wood.affinities_slugs is defined else '' }}"
+            data-owner="{{ wood.details.owner if wood.details is defined else wood.owner }}"
+            onclick='openModal({{ (wood.details if wood.details is defined else wood) | tojson }}, "{{ wood.name }}")'>
+
+            <div class="card-header">
+                <span class="mini-icon">
+                    {% if active_tab == 'cores' %}🔮{% else %}🪄{% endif %}
+                </span>
+                <h3 class="wood-name">{{ wood.name }}</h3>
+                <div class="rarity-badge">{{ wood.badge }}</div>
+            </div>
+
+            <div class="wood-affinity">
+                {% if active_tab == 'cores' %}
+                <span style="font-size: 2rem;">{{ wood.icon }}</span>
+                {% else %}
+                {{ wood.affinities_icons }}
+                {% endif %}
+            </div>
+
+            {% if active_tab == 'cores' %}
+            <div class="card-footer-type">
+                {{ wood.type }}
+            </div>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Nome da Madeira</h2>
+                <button class="modal-close" onclick="closeModal(null)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <span class="detail-label">Descrição</span>
+                <p id="modalDesc" class="detail-value">...</p>
+
+                <span class="detail-label">Especialidade / Perfil</span>
+                <p id="modalSkill" class="detail-value">...</p>
+
+                <span class="detail-label">Donos Notáveis</span>
+                <p id="modalOwner" class="detail-value">...</p>
+            </div>
+            <div class="modal-footer">
+                <p id="modalCuriosity">Did you know?...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Lógica do Modal ---
+        function openModal(details, name) {
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalDesc').textContent = details.desc;
+            document.getElementById('modalSkill').textContent = details.skill;
+            document.getElementById('modalOwner').textContent = details.owner;
+            document.getElementById('modalCuriosity').textContent = details.curiosity;
+
+            const modal = document.getElementById('infoModal');
+            modal.classList.add('open');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'infoModal') {
+                document.getElementById('infoModal').classList.remove('open');
+            }
+        }
+
+        // --- Lógica de Filtros e Ordenação ---
+        function updateView() {
+            // Elemento pode não existir se estivermos na aba Cores
+            const affinitySelect = document.getElementById('filterAffinity');
+            const affinityFilter = affinitySelect ? affinitySelect.value : 'all';
+
+            const wizardFilter = document.getElementById('filterWizard').value;
+            const sortCriterion = document.getElementById('sortSelect').value;
+            const grid = document.getElementById('woodsGrid');
+            const cards = Array.from(grid.getElementsByClassName('wood-card'));
+
+            cards.forEach(card => {
+                const cardAffinities = card.dataset.affinity || "";
+                const cardOwners = card.dataset.owner || "";
+
+                let show = true;
+
+                if (affinityFilter !== 'all' && !cardAffinities.includes(affinityFilter)) {
+                    show = false;
+                }
+
+                if (wizardFilter !== 'all') {
+                    if (!cardOwners.includes(wizardFilter)) {
+                        show = false;
+                    }
+                }
+
+                if (show) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Ordenação (mantida)
+            const visibleCards = cards.filter(c => c.style.display !== 'none');
+
+            visibleCards.sort((a, b) => {
+                const rankA = parseInt(a.dataset.rank) || 0;
+                const rankB = parseInt(b.dataset.rank) || 0;
+
+                if (sortCriterion === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+                if (sortCriterion === 'za') return b.dataset.name.localeCompare(a.dataset.name);
+
+                if (sortCriterion === 'rank_asc') {
+                    if (rankA === rankB) return a.dataset.name.localeCompare(b.dataset.name);
+                    return rankA - rankB;
+                }
+                if (sortCriterion === 'rank_desc') {
+                    if (rankA === rankB) return a.dataset.name.localeCompare(b.dataset.name);
+                    return rankB - rankA;
+                }
+            });
+
+            grid.innerHTML = '';
+            visibleCards.forEach(card => grid.appendChild(card));
+            cards.forEach(card => {
+                if (card.style.display === 'none') grid.appendChild(card);
+            });
+        }
+
+        // Garante a ordenação inicial ao carregar a página
+        window.addEventListener('load', updateView);
+    </script>
+
+    {% endif %}
+
+</div>
+{% endblock %}

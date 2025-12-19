@@ -1,0 +1,11 @@
+<nav class="tabs">
+    <a href="{{ url_for('home') }}" class="tab-link {% if active_tab == 'woods' %}active{% endif %}">
+        Madeiras
+    </a>
+    <a href="{{ url_for('cores') }}" class="tab-link {% if active_tab == 'cores' %}active{% endif %}">
+        Núcleos
+    </a>
+    <a href="{{ url_for('world') }}" class="tab-link {% if active_tab == 'world' %}active{% endif %}">
+        O Mundo Mágico
+    </a>
+</nav>

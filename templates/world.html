@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}O Mundo Mágico | Wiki Harry Potter{% endblock %}
+
+{% block content %}
+<div class="wands-section">
+    <!-- Navegação de Abas -->
+    {% include 'nav.html' %}
+
+    <div class="animate-fade-in" style="margin-top: 2rem;">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: var(--gold);">Casas de Hogwarts</h2>
+
+        <div class="house-grid"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 1rem;">
+            {% for house in houses %}
+            <div class="house-card {{ house.id }}"
+                style="background: rgba(var(--card-bg-rgb), 0.1); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 2rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div class="card-header" style="justify-content: center; margin-bottom: 1.5rem;">
+                    <span style="font-size: 3rem; margin-right: 0.5rem;">{{ house.symbol }}</span>
+                    <h3 style="font-size: 1.8rem; font-family: 'Cinzel', serif;">{{ house.name }}</h3>
+                </div>
+
+                <div class="house-colors"
+                    style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem;">
+                    {% for color in house.colors %}
+                    <div
+                        style="width: 20px; height: 20px; border-radius: 50%; background-color: {{ color }}; border: 1px solid #fff;">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="house-details" style="text-align: center;">
+                    <p style="font-style: italic; margin-bottom: 1rem;">"{{ house.desc }}"</p>
+
+                    <div style="margin-top: 1rem; text-align: left; font-size: 0.9rem;">
+                        <p><strong>Fundador:</strong> {{ house.founder }}</p>
+                        <p><strong>Fantasma:</strong> {{ house.ghost }}</p>
+                        <p><strong>Elemento:</strong> {{ house.element }}</p>
+                        <p><strong>Traços:</strong> {{ house.traits|join(', ') }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .house-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .house-card.gryffindor {
+        border-top: 4px solid #740001;
+    }
+
+    .house-card.slytherin {
+        border-top: 4px solid #1A472A;
+    }
+
+    .house-card.ravenclaw {
+        border-top: 4px solid #0E1A40;
+    }
+
+    .house-card.hufflepuff {
+        border-top: 4px solid #ECB939;
+    }
+</style>
+{% endblock %}
