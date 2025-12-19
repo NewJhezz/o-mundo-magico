@@ -5,7 +5,7 @@ def build_static():
     """
     Gera arquivos HTML estáticos a partir do aplicativo Flask.
     """
-    print("🔮 Iniciando ritual de petrificação (Gerando site estático)...")
+    print("...Iniciando geracao do site estatico...")
 
     # 1. Cria a pasta 'build' se não existir
     if not os.path.exists('build'):
@@ -26,10 +26,31 @@ def build_static():
         from app import home
         content = home()
         with open('index.html', 'w', encoding='utf-8') as f:
-            f.write(content_world)
-        print("✅ mundo.html gerado com sucesso!")
+            f.write(fix_links(content))
+        print("OK: index.html (Home) gerado!")
 
-    print("\n✨ Feito! Agora você pode abrir 'index.html' diretamente.")
+        # --- 2. Varinhas: Origem ---
+        from app import wands_origin
+        content = wands_origin()
+        with open('varinhas_origem.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: varinhas_origem.html gerado!")
+
+        # --- 3. Varinhas: Madeiras ---
+        from app import wands_woods
+        content = wands_woods()
+        with open('varinhas_madeiras.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: varinhas_madeiras.html gerado!")
+
+        # --- 4. Varinhas: Núcleos ---
+        from app import wands_cores
+        content = wands_cores()
+        with open('varinhas_nucleos.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: varinhas_nucleos.html gerado!")
+
+    print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 
 if __name__ == "__main__":
     build_static()
