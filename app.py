@@ -421,10 +421,24 @@ WORLD_DATA = [
 
 @app.route('/')
 def home():
+    # Landing Page Mágica
+    return render_template('world.html')
+
+@app.route('/varinhas')
+def wands_hub():
+    # Redireciona para o início da jornada das varinhas (Origem)
+    return wands_origin()
+
+@app.route('/varinhas/origem')
+def wands_origin():
+    return render_template('origin.html', active_tab='origin')
+
+@app.route('/varinhas/madeiras')
+def wands_woods():
     return render_template('wands.html', woods=WAND_WOODS, active_tab='woods', wizards=sorted(WIZARD_LIST))
 
-@app.route('/nucleos')
-def cores():
+@app.route('/varinhas/nucleos')
+def wands_cores():
     return render_template('wands.html', woods=WAND_CORES, active_tab='cores', wizards=sorted(WIZARD_LIST))
 
 @app.route('/mundo')

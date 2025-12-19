@@ -59,6 +59,7 @@ h3 {
 h1 {
     /* Degradê metálico no título */
     background: linear-gradient(to right, #cfc7f8 0%, #ebb400 50%, #cfc7f8 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 3rem;
@@ -313,6 +314,8 @@ h1 {
     gap: 1.5rem;
     margin-bottom: 2rem;
     align-items: center;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .filter-group {
