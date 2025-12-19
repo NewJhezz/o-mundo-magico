@@ -651,32 +651,49 @@
 </style>
 
 <script>
+    // Uso do filtro safe para garantir que o JSON não seja escapado
     const allWizards = [{"desc": "Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald e descobrir os doze usos do sangue de drag\u00e3o.", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore", "name": "Alvo Dumbledore", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Grande Diretor"}, {"desc": "Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da Ordem de Merlin.", "icon": "\u2728", "id": "merlin", "name": "Merlin", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Pr\u00edncipe dos Magos"}, {"desc": "Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome \u00e0 casa dos corajosos e ousados.", "icon": "\ud83e\udd81", "id": "gryffindor", "name": "Godric Gryffindor", "rarity": "rare", "rarity_label": "Raro", "title": "Bravo Duelista"}, {"desc": "Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus feiti\u00e7os culin\u00e1rios.", "icon": "\ud83e\udda1", "id": "hufflepuff", "name": "Helga Hufflepuff", "rarity": "rare", "rarity_label": "Raro", "title": "Bondade Infinita"}, {"desc": "Co-fundadora de Hogwarts. A bruxa mais brilhante de sua \u00e9poca. Criou o diadema que conferia sabedoria.", "icon": "\ud83e\udd85", "id": "ravenclaw", "name": "Rowena Ravenclaw", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"}, {"desc": "Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilim\u00eancia.", "icon": "\ud83d\udc0d", "id": "slytherin", "name": "Salazar Slytherin", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Ofidioglossia"}, {"desc": "O \u00fanico fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos.", "icon": "\ud83d\udc8e", "id": "flamel", "name": "Nicolau Flamel", "rarity": "rare", "rarity_label": "Raro", "title": "O Imortal Alquimista"}, {"desc": "Famoso Magizoologista e autor de \"Animais Fant\u00e1sticos e Onde Habitam\". Especialista em criaturas m\u00e1gicas.", "icon": "\ud83d\udcbc", "id": "newt", "name": "Newt Scamander", "rarity": "rare", "rarity_label": "Raro", "title": "O Magizoologista"}, {"desc": "Autor de in\u00fameros best-sellers sobre suas \"aventuras\" e cinco vezes vencedor do pr\u00eamio do Sorriso Mais Charmoso.", "icon": "\ud83d\ude01", "id": "lockhart", "name": "Gilderoy Lockhart", "rarity": "common", "rarity_label": "Comum", "title": "Mestre do Charme"}, {"desc": "Poderosa bruxa medieval, meia-irm\u00e3 do Rei Arthur. Inimiga jurada de Merlin e mestra em artes das trevas.", "icon": "\ud83c\udf18", "id": "morgana", "name": "Morgana le Fay", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Rainha das Sombras"}, {"desc": "Bruxo cujas figurinhas s\u00e3o extremamente raras. Um alquimista e m\u00edstico que escreveu sobre magia natural.", "icon": "\ud83d\udcdc", "id": "agripa", "name": "Corn\u00e9lio Agripa", "rarity": "rare", "rarity_label": "Raro", "title": "O Alqumista M\u00edstico"}, {"desc": "Bruxo cuja figurinha \u00e9 celebrada por sua raridade. Astr\u00f4nomo e ge\u00f3grafo famoso do mundo bruxo antigo.", "icon": "\ud83e\ude90", "id": "ptolemy", "name": "Ptolomeu", "rarity": "common", "rarity_label": "Comum", "title": "O Astr\u00f4nomo Antigo"}, {"desc": "Criador dos Feij\u00e3ozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um feij\u00e3o normal.", "icon": "\ud83c\udf6c", "id": "bertie_bott", "name": "Bertie Bott", "rarity": "common", "rarity_label": "Comum", "title": "Mestre dos Doces"}];
-    let myCollection = JSON.parse(localStorage.getItem('frogCollection')) || [];
+    let myCollection = [];
+
+    try {
+        myCollection = JSON.parse(localStorage.getItem('frogCollection')) || [];
+    } catch (e) {
+        console.error("Erro ao carregar coleção:", e);
+        myCollection = [];
+    }
 
     // Inicializa abas e álbum
-    updateAlbumUI();
-    switchFrogTab('gacha'); // Default tab
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAlbumUI();
+        switchFrogTab('gacha');
+    });
 
     function switchFrogTab(tab) {
-        document.getElementById('section-gacha').classList.toggle('hidden', tab !== 'gacha');
-        document.getElementById('section-album').classList.toggle('hidden', tab !== 'album');
-        document.getElementById('tab-gacha').classList.toggle('active', tab === 'gacha');
-        document.getElementById('tab-album').classList.toggle('active', tab === 'album');
+        const gachaSection = document.getElementById('section-gacha');
+        const albumSection = document.getElementById('section-album');
+        const tabGacha = document.getElementById('tab-gacha');
+        const tabAlbum = document.getElementById('tab-album');
+
+        if (gachaSection) gachaSection.classList.toggle('hidden', tab !== 'gacha');
+        if (albumSection) albumSection.classList.toggle('hidden', tab !== 'album');
+        if (tabGacha) tabGacha.classList.toggle('active', tab === 'gacha');
+        if (tabAlbum) tabAlbum.classList.toggle('active', tab === 'album');
     }
 
     function openPackage() {
         const pkg = document.getElementById('frogPackage');
+        if (!pkg) return;
+
         pkg.classList.add('shaking');
 
-        // Animação espalhafatosa
         setTimeout(() => {
-            document.getElementById('magicExplosion').classList.remove('hidden');
+            const explosion = document.getElementById('magicExplosion');
+            if (explosion) explosion.classList.remove('hidden');
 
             setTimeout(() => {
                 pkg.classList.add('hidden');
                 pkg.classList.remove('shaking');
-                document.getElementById('magicExplosion').classList.add('hidden');
+                if (explosion) explosion.classList.add('hidden');
                 revealReward();
             }, 600);
         }, 1200);
@@ -692,7 +709,10 @@
         if (pool.length === 0) pool = allWizards;
         const prize = pool[Math.floor(Math.random() * pool.length)];
 
-        document.getElementById('rewardArea').innerHTML = `
+        const rewardArea = document.getElementById('rewardArea');
+        if (!rewardArea) return;
+
+        rewardArea.innerHTML = `
             <div class="wizard-card-pentagon ${prize.rarity}">
                 <div class="card-rarity ${prize.rarity}">${prize.rarity_label}</div>
                 <div class="card-icon">${prize.icon}</div>
@@ -702,56 +722,69 @@
                 <button class="collect-btn" onclick="collectCard('${prize.id}')">Adicionar ao Álbum</button>
             </div>
         `;
-        document.getElementById('rewardArea').classList.remove('hidden');
+        rewardArea.classList.remove('hidden');
     }
 
     function collectCard(id) {
+        console.log("Coletando figurinha:", id);
+
         if (!myCollection.includes(id)) {
             myCollection.push(id);
-            localStorage.setItem('frogCollection', JSON.stringify(myCollection));
+            try {
+                localStorage.setItem('frogCollection', JSON.stringify(myCollection));
+            } catch (e) {
+                console.error("Erro ao salvar no localStorage:", e);
+            }
         }
 
         // Esconde a figurinha e limpa a área de recompensa
         const rewardArea = document.getElementById('rewardArea');
-        rewardArea.classList.add('hidden');
-        rewardArea.innerHTML = ''; // Limpa o conteúdo
+        if (rewardArea) {
+            rewardArea.classList.add('hidden');
+            rewardArea.innerHTML = '';
+        }
 
-        // Mostra o pacote novamente para uma nova abertura
+        // Mostra o pacote novamente
         const pkgWrapper = document.getElementById('frogPackage');
-        pkgWrapper.classList.remove('hidden');
+        if (pkgWrapper) pkgWrapper.classList.remove('hidden');
 
         updateAlbumUI();
 
         // Feedback visual na aba álbum
         const albumTab = document.getElementById('tab-album');
-        albumTab.style.borderColor = "var(--gold-primary)";
-        albumTab.style.boxShadow = "0 0 20px var(--gold-primary)";
-        setTimeout(() => {
-            albumTab.style.borderColor = "";
-            albumTab.style.boxShadow = "";
-        }, 2000);
+        if (albumTab) {
+            albumTab.style.borderColor = "var(--gold-primary)";
+            albumTab.style.boxShadow = "0 0 20px var(--gold-primary)";
+            setTimeout(() => {
+                albumTab.style.borderColor = "";
+                albumTab.style.boxShadow = "";
+            }, 2000);
+        }
     }
 
     function updateAlbumUI() {
         let count = 0;
         allWizards.forEach(w => {
             const slot = document.getElementById(`slot-${w.id}`);
+            if (!slot) return;
+
             const placeholder = slot.querySelector('.card-placeholder');
             const miniCard = slot.querySelector('.mini-card');
             const nameLabel = slot.querySelector('.mini-name');
 
             if (myCollection.includes(w.id)) {
-                placeholder.classList.add('hidden');
-                miniCard.classList.remove('hidden');
-                nameLabel.style.opacity = "1";
+                if (placeholder) placeholder.classList.add('hidden');
+                if (miniCard) miniCard.classList.remove('hidden');
+                if (nameLabel) nameLabel.style.opacity = "1";
                 count++;
             } else {
-                placeholder.classList.remove('hidden');
-                miniCard.classList.add('hidden');
-                nameLabel.style.opacity = "0.4";
+                if (placeholder) placeholder.classList.remove('hidden');
+                if (miniCard) miniCard.classList.add('hidden');
+                if (nameLabel) nameLabel.style.opacity = "0.4";
             }
         });
-        document.getElementById('collectedCount').innerText = count;
+        const counter = document.getElementById('collectedCount');
+        if (counter) counter.innerText = count;
     }
 
     function resetCollection() {
