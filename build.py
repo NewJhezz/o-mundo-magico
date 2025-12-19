@@ -22,6 +22,7 @@ def build_static():
             content = content.replace('href="/varinhas"', 'href="./varinhas_origem.html"')
             content = content.replace('href="/mundo"', 'href="./index.html"')
             content = content.replace('href="/criaturas"', 'href="./criaturas.html"')
+            content = content.replace('href="/sapos"', 'href="./sapos.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
@@ -58,6 +59,13 @@ def build_static():
         with open('criaturas.html', 'w', encoding='utf-8') as f:
             f.write(fix_links(content))
         print("OK: criaturas.html gerado!")
+
+        # --- 6. Sapos de Chocolate ---
+        from app import frogs
+        content = frogs()
+        with open('sapos.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: sapos.html gerado!")
 
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 

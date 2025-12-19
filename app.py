@@ -788,6 +788,131 @@ CREATURES_DATA = [
     }
 ]
 
+# --- DADOS DOS SAPOS DE CHOCOLATE ---
+FROGS_DATA = [
+    {
+        'id': 'dumbledore',
+        'name': 'Alvo Dumbledore',
+        'desc': 'Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald e descobrir os doze usos do sangue de dragão.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'O Grande Diretor',
+        'icon': '🧙‍♂️'
+    },
+    {
+        'id': 'merlin',
+        'name': 'Merlin',
+        'desc': 'Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da Ordem de Merlin.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Príncipe dos Magos',
+        'icon': '✨'
+    },
+    {
+        'id': 'gryffindor',
+        'name': 'Godric Gryffindor',
+        'desc': 'Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome à casa dos corajosos e ousados.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Bravo Duelista',
+        'icon': '🦁'
+    },
+    {
+        'id': 'hufflepuff',
+        'name': 'Helga Hufflepuff',
+        'desc': 'Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus feitiços culinários.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Bondade Infinita',
+        'icon': '🦡'
+    },
+    {
+        'id': 'ravenclaw',
+        'name': 'Rowena Ravenclaw',
+        'desc': 'Co-fundadora de Hogwarts. A bruxa mais brilhante de sua época. Criou o diadema que conferia sabedoria.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Mente Brilhante',
+        'icon': '🦅'
+    },
+    {
+        'id': 'slytherin',
+        'name': 'Salazar Slytherin',
+        'desc': 'Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilimência.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Mestre da Ofidioglossia',
+        'icon': '🐍'
+    },
+    {
+        'id': 'flamel',
+        'name': 'Nicolau Flamel',
+        'desc': 'O único fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Imortal Alquimista',
+        'icon': '💎'
+    },
+    {
+        'id': 'newt',
+        'name': 'Newt Scamander',
+        'desc': 'Famoso Magizoologista e autor de "Animais Fantásticos e Onde Habitam". Especialista em criaturas mágicas.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Magizoologista',
+        'icon': '💼'
+    },
+    {
+        'id': 'lockhart',
+        'name': 'Gilderoy Lockhart',
+        'desc': 'Autor de inúmeros best-sellers sobre suas "aventuras" e cinco vezes vencedor do prêmio do Sorriso Mais Charmoso.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Mestre do Charme',
+        'icon': '😁'
+    },
+    {
+        'id': 'morgana',
+        'name': 'Morgana le Fay',
+        'desc': 'Poderosa bruxa medieval, meia-irmã do Rei Arthur. Inimiga jurada de Merlin e mestra em artes das trevas.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Rainha das Sombras',
+        'icon': '🌘'
+    },
+    {
+        'id': 'agripa',
+        'name': 'Cornélio Agripa',
+        'desc': 'Bruxo cujas figurinhas são extremamente raras. Um alquimista e místico que escreveu sobre magia natural.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Alqumista Místico',
+        'icon': '📜'
+    },
+    {
+        'id': 'ptolemy',
+        'name': 'Ptolomeu',
+        'desc': 'Bruxo cuja figurinha é celebrada por sua raridade. Astrônomo e geógrafo famoso do mundo bruxo antigo.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Astrônomo Antigo',
+        'icon': '🪐'
+    },
+    {
+        'id': 'bertie_bott',
+        'name': 'Bertie Bott',
+        'desc': 'Criador dos Feijãozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um feijão normal.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Mestre dos Doces',
+        'icon': '🍬'
+    }
+]
+
+@app.route('/sapos')
+def frogs():
+    return render_template('frogs.html', wizards=FROGS_DATA, active_tab='frogs')
+
 @app.route('/criaturas')
 def creatures():
     return render_template('creatures.html', creatures=CREATURES_DATA, active_tab='creatures')
