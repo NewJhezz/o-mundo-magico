@@ -711,13 +711,18 @@
             localStorage.setItem('frogCollection', JSON.stringify(myCollection));
         }
 
+        // Esconde a figurinha e limpa a área de recompensa
+        const rewardArea = document.getElementById('rewardArea');
+        rewardArea.classList.add('hidden');
+        rewardArea.innerHTML = ''; // Limpa o conteúdo
+
+        // Mostra o pacote novamente para uma nova abertura
+        const pkgWrapper = document.getElementById('frogPackage');
+        pkgWrapper.classList.remove('hidden');
+
         updateAlbumUI();
 
-        // Volta para o estado inicial
-        document.getElementById('rewardArea').classList.add('hidden');
-        document.getElementById('frogPackage').classList.remove('hidden');
-
-        // Pequena notificação/brilho na aba Álbum
+        // Feedback visual na aba álbum
         const albumTab = document.getElementById('tab-album');
         albumTab.style.borderColor = "var(--gold-primary)";
         albumTab.style.boxShadow = "0 0 20px var(--gold-primary)";
