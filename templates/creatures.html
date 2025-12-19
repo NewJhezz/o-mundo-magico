@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Criaturas Mágicas | Wiki{% endblock %}
+
+{% block content %}
+<div class="creatures-section animate-fade-in">
+    <!-- Navbar interna de Criaturas (se houver subcategorias no futuro) -->
+    <div class="header-decoration">
+        <h2
+            style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 2rem;">
+            Bestiário do Mundo Mágico
+        </h2>
+    </div>
+
+    <!-- Toolbar de Filtros -->
+    <div class="filter-toolbar">
+        <div class="filter-group">
+            <span class="filter-label">Classificação (M.O.M.):</span>
+            <select id="filterCategory" class="custom-select" onchange="updateCreatures()">
+                <option value="all">Todas</option>
+                <option value="beast">Feras (Beasts) 🐾</option>
+                <option value="being">Seres (Beings) 🗣️</option>
+                <option value="spirit">Espíritos (Spirits) 👻</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Periculosidade:</span>
+            <select id="filterDanger" class="custom-select" onchange="updateCreatures()">
+                <option value="all">Todas</option>
+                <option value="XXXXX">XXXXX (Matador de Bruxos)</option>
+                <option value="XXXX">XXXX (Perigoso)</option>
+                <option value="XXX">XXX (Bruxo Competente)</option>
+                <option value="XX">XX (Inofensivo)</option>
+                <option value="X">X (Tediante)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grid de Criaturas -->
+    <div id="creaturesGrid" class="woods-grid">
+        {% for creature in creatures %}
+        <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
+            data-danger="{{ creature.danger }}">
+
+            <div class="card-header">
+                <span class="mini-icon">{{ creature.icon }}</span>
+                <h3 class="wood-name">{{ creature.name }}</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">{{ creature.danger }}</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">{{ creature.category_label }}</p>
+                <p class="creature-desc">{{ creature.desc }}</p>
+                <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Botão Voltar para Dashboard (No rodapé também) -->
+    <div style="text-align: center; margin-top: 3rem;">
+        <a href="{{ url_for('world') }}" class="tab-link back-btn">
+            ⬅ Voltar ao Mundo
+        </a>
+    </div>
+</div>
+
+<script>
+    function updateCreatures() {
+        const catFilter = document.getElementById('filterCategory').value;
+        const dangerFilter = document.getElementById('filterDanger').value;
+        const grid = document.getElementById('creaturesGrid');
+        const cards = Array.from(grid.getElementsByClassName('creature-card'));
+
+        cards.forEach(card => {
+            const cardCat = card.dataset.category;
+            const cardDanger = card.dataset.danger;
+
+            let show = true;
+
+            if (catFilter !== 'all' && cardCat !== catFilter) show = false;
+            // Filtro de perigo exato (pode ser melhorado para 'pelo menos X')
+            // Por enquanto, match exato para simplificar a UI
+            if (dangerFilter !== 'all' && cardDanger !== dangerFilter) show = false;
+
+            card.style.display = show ? 'flex' : 'none';
+        });
+    }
+</script>
+
+<style>
+    /* Estilos Específicos para Criaturas */
+    .mom-badge {
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        color: #ff4444;
+        /* Vermelho perigo */
+        background: rgba(50, 0, 0, 0.5);
+        border: 1px solid #ff4444;
+        padding: 2px 6px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+    }
+
+    .creature-body {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .creature-label {
+        font-weight: bold;
+        color: var(--gold-primary);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+    }
+
+    .creature-origin {
+        font-size: 0.8rem;
+        margin-top: auto;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Cores por Categoria */
+    .wood-card.beast {
+        border-color: #cd853f;
+    }
+
+    /* Marrom Fera */
+    .wood-card.being {
+        border-color: #87ceeb;
+    }
+
+    /* Azul Ser */
+    .wood-card.spirit {
+        border-color: #e6e6fa;
+    }
+
+    /* Fantasma Pálido */
+</style>
+{% endblock %}

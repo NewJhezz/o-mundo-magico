@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criaturas Mágicas | Wiki</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <header class="main-header">
+            <h1><a href="./index.html" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
+        </header>
+        
+
+        <main>
+            
+<div class="creatures-section animate-fade-in">
+    <!-- Navbar interna de Criaturas (se houver subcategorias no futuro) -->
+    <div class="header-decoration">
+        <h2
+            style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 2rem;">
+            Bestiário do Mundo Mágico
+        </h2>
+    </div>
+
+    <!-- Toolbar de Filtros -->
+    <div class="filter-toolbar">
+        <div class="filter-group">
+            <span class="filter-label">Classificação (M.O.M.):</span>
+            <select id="filterCategory" class="custom-select" onchange="updateCreatures()">
+                <option value="all">Todas</option>
+                <option value="beast">Feras (Beasts) 🐾</option>
+                <option value="being">Seres (Beings) 🗣️</option>
+                <option value="spirit">Espíritos (Spirits) 👻</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Periculosidade:</span>
+            <select id="filterDanger" class="custom-select" onchange="updateCreatures()">
+                <option value="all">Todas</option>
+                <option value="XXXXX">XXXXX (Matador de Bruxos)</option>
+                <option value="XXXX">XXXX (Perigoso)</option>
+                <option value="XXX">XXX (Bruxo Competente)</option>
+                <option value="XX">XX (Inofensivo)</option>
+                <option value="X">X (Tediante)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grid de Criaturas -->
+    <div id="creaturesGrid" class="woods-grid">
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XXXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🕷️</span>
+                <h3 class="wood-name">Acromântula</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e impossível de treinar.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Bornéu / Floresta Proibida</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XXXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🐍</span>
+                <h3 class="wood-name">Basilisco</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno é um dos poucos que destroem Horcruxes.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Herpo, o Sujo (Criador)</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XXXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🐉</span>
+                <h3 class="wood-name">Dragão (Barriga-de-Ferro)</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">A maior raça de dragão. Metálico e imenso, guardava os cofres profundos de Gringotes.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Ucrânia</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🔥</span>
+                <h3 class="wood-name">Fênix</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">Pássaro escarlate fiel. Renasce das cinzas, cura com lágrimas e carrega cargas imensas. Extremamente difícil de domesticar.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Egito / Índia / China</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🦅</span>
+                <h3 class="wood-name">Hipogrifo</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">Cabeça de águia, corpo de cavalo. Orgulhoso, exige respeito antes de permitir aproximação.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Europa</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="XX">
+
+            <div class="card-header">
+                <span class="mini-icon">🧶</span>
+                <h3 class="wood-name">Puffskein</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">Bola de pelos fofa e dócil. Popular animal de estimação bruxo. Gosta de comer catotas.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Mundo todo</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card beast" data-category="beast"
+            data-danger="X">
+
+            <div class="card-header">
+                <span class="mini-icon">🐛</span>
+                <h3 class="wood-name">Verme-Cego (Flobberworm)</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">X</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Fera</p>
+                <p class="creature-desc">Entediante. Move-se pouco e produz muco usado em poções. Prefere alface.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Valas úmidas</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card being" data-category="being"
+            data-danger="XXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🏹</span>
+                <h3 class="wood-name">Centauro</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Ser (Classificado como Fera por pedido)</p>
+                <p class="creature-desc">Mestre em cura, divinação e astronomia. Vivem em rebanhos e evitam humanos. Orgulhosos e misteriosos.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Florestas da Europa</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card being" data-category="being"
+            data-danger="XXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🧜‍♀️</span>
+                <h3 class="wood-name">Sereiano (Selkie)</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Ser (Classificado como Fera por pedido)</p>
+                <p class="creature-desc">Povo da água da Escócia e Irlanda. Beleza rústica e vozes que só soam belas embaixo d&#39;água.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Lago Negro (Hogwarts)</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card being" data-category="being"
+            data-danger="XXX">
+
+            <div class="card-header">
+                <span class="mini-icon">💰</span>
+                <h3 class="wood-name">Duende (Goblin)</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Ser</p>
+                <p class="creature-desc">Artesãos de metais habilidosos e guardiões de Gringotes. Possuem magia própria sem varinha.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Desconhecida</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card spirit" data-category="spirit"
+            data-danger="XXX">
+
+            <div class="card-header">
+                <span class="mini-icon">👻</span>
+                <h3 class="wood-name">Poltergeist</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Espírito</p>
+                <p class="creature-desc">Espírito do caos indestrutível. Pirraça é o exemplo mais famoso de Hogwarts.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Locais com alta emoção adolescente</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card spirit" data-category="spirit"
+            data-danger="XX">
+
+            <div class="card-header">
+                <span class="mini-icon">💀</span>
+                <h3 class="wood-name">Fantasma</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Espírito</p>
+                <p class="creature-desc">A impressão deixada por uma alma que partiu. Atravessam paredes e deixam o ar gelado.</p>
+                <p class="creature-origin"><strong>Origem:</strong> Todo lugar onde alguém morreu infeliz</p>
+            </div>
+        </div>
+        
+        <div class="wood-card creature-card spirit" data-category="spirit"
+            data-danger="XXXXX">
+
+            <div class="card-header">
+                <span class="mini-icon">🌑</span>
+                <h3 class="wood-name">Dementador</h3>
+                <div class="mom-badge" title="Classificação M.O.M.">XXXXX</div>
+            </div>
+
+            <div class="creature-body">
+                <p class="creature-label">Não-Ser</p>
+                <p class="creature-desc">Guardiões de Azkaban. Sugam a felicidade e a alma (Beijo do Dementador).</p>
+                <p class="creature-origin"><strong>Origem:</strong> Azkaban</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Botão Voltar para Dashboard (No rodapé também) -->
+    <div style="text-align: center; margin-top: 3rem;">
+        <a href="/mundo" class="tab-link back-btn">
+            ⬅ Voltar ao Mundo
+        </a>
+    </div>
+</div>
+
+<script>
+    function updateCreatures() {
+        const catFilter = document.getElementById('filterCategory').value;
+        const dangerFilter = document.getElementById('filterDanger').value;
+        const grid = document.getElementById('creaturesGrid');
+        const cards = Array.from(grid.getElementsByClassName('creature-card'));
+
+        cards.forEach(card => {
+            const cardCat = card.dataset.category;
+            const cardDanger = card.dataset.danger;
+
+            let show = true;
+
+            if (catFilter !== 'all' && cardCat !== catFilter) show = false;
+            // Filtro de perigo exato (pode ser melhorado para 'pelo menos X')
+            // Por enquanto, match exato para simplificar a UI
+            if (dangerFilter !== 'all' && cardDanger !== dangerFilter) show = false;
+
+            card.style.display = show ? 'flex' : 'none';
+        });
+    }
+</script>
+
+<style>
+    /* Estilos Específicos para Criaturas */
+    .mom-badge {
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        color: #ff4444;
+        /* Vermelho perigo */
+        background: rgba(50, 0, 0, 0.5);
+        border: 1px solid #ff4444;
+        padding: 2px 6px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+    }
+
+    .creature-body {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .creature-label {
+        font-weight: bold;
+        color: var(--gold-primary);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+    }
+
+    .creature-origin {
+        font-size: 0.8rem;
+        margin-top: auto;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Cores por Categoria */
+    .wood-card.beast {
+        border-color: #cd853f;
+    }
+
+    /* Marrom Fera */
+    .wood-card.being {
+        border-color: #87ceeb;
+    }
+
+    /* Azul Ser */
+    .wood-card.spirit {
+        border-color: #e6e6fa;
+    }
+
+    /* Fantasma Pálido */
+</style>
+
+        </main>
+
+        <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

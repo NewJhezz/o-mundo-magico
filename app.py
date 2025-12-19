@@ -441,6 +441,134 @@ def wands_woods():
 def wands_cores():
     return render_template('wands.html', woods=WAND_CORES, active_tab='cores', wizards=sorted(WIZARD_LIST))
 
+# --- DADOS DE CRIATURAS ---
+CREATURES_DATA = [
+    # --- FERAS (Beasts) ---
+    {
+        'name': 'Acromântula',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'icon': '🕷️',
+        'desc': 'Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e impossível de treinar.',
+        'origin': 'Bornéu / Floresta Proibida'
+    },
+    {
+        'name': 'Basilisco',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'icon': '🐍',
+        'desc': 'O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno é um dos poucos que destroem Horcruxes.',
+        'origin': 'Herpo, o Sujo (Criador)'
+    },
+    {
+        'name': 'Dragão (Barriga-de-Ferro)',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXXX',
+        'icon': '🐉',
+        'desc': 'A maior raça de dragão. Metálico e imenso, guardava os cofres profundos de Gringotes.',
+        'origin': 'Ucrânia'
+    },
+    {
+        'name': 'Fênix',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXXX',
+        'icon': '🔥',
+        'desc': 'Pássaro escarlate fiel. Renasce das cinzas, cura com lágrimas e carrega cargas imensas. Extremamente difícil de domesticar.',
+        'origin': 'Egito / Índia / China'
+    },
+    {
+        'name': 'Hipogrifo',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XXX',
+        'icon': '🦅',
+        'desc': 'Cabeça de águia, corpo de cavalo. Orgulhoso, exige respeito antes de permitir aproximação.',
+        'origin': 'Europa'
+    },
+    {
+        'name': 'Puffskein',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'XX',
+        'icon': '🧶',
+        'desc': 'Bola de pelos fofa e dócil. Popular animal de estimação bruxo. Gosta de comer catotas.',
+        'origin': 'Mundo todo'
+    },
+    {
+        'name': 'Verme-Cego (Flobberworm)',
+        'category': 'beast',
+        'category_label': 'Fera',
+        'danger': 'X',
+        'icon': '🐛',
+        'desc': 'Entediante. Move-se pouco e produz muco usado em poções. Prefere alface.',
+        'origin': 'Valas úmidas'
+    },
+    # --- SERES (Beings) ---
+    {
+        'name': 'Centauro',
+        'category': 'being',
+        'category_label': 'Ser (Classificado como Fera por pedido)',
+        'danger': 'XXXX',
+        'icon': '🏹',
+        'desc': 'Mestre em cura, divinação e astronomia. Vivem em rebanhos e evitam humanos. Orgulhosos e misteriosos.',
+        'origin': 'Florestas da Europa'
+    },
+    {
+        'name': 'Sereiano (Selkie)',
+        'category': 'being',
+        'category_label': 'Ser (Classificado como Fera por pedido)',
+        'danger': 'XXXX',
+        'icon': '🧜‍♀️',
+        'desc': 'Povo da água da Escócia e Irlanda. Beleza rústica e vozes que só soam belas embaixo d\'água.',
+        'origin': 'Lago Negro (Hogwarts)'
+    },
+    {
+        'name': 'Duende (Goblin)',
+        'category': 'being',
+        'category_label': 'Ser',
+        'danger': 'XXX',
+        'icon': '💰',
+        'desc': 'Artesãos de metais habilidosos e guardiões de Gringotes. Possuem magia própria sem varinha.',
+        'origin': 'Desconhecida'
+    },
+    # --- ESPÍRITOS (Spirits) ---
+    {
+        'name': 'Poltergeist',
+        'category': 'spirit',
+        'category_label': 'Espírito',
+        'danger': 'XXX',
+        'icon': '👻',
+        'desc': 'Espírito do caos indestrutível. Pirraça é o exemplo mais famoso de Hogwarts.',
+        'origin': 'Locais com alta emoção adolescente'
+    },
+    {
+        'name': 'Fantasma',
+        'category': 'spirit',
+        'category_label': 'Espírito',
+        'danger': 'XX',
+        'icon': '💀',
+        'desc': 'A impressão deixada por uma alma que partiu. Atravessam paredes e deixam o ar gelado.',
+        'origin': 'Todo lugar onde alguém morreu infeliz'
+    },
+    {
+        'name': 'Dementador',
+        'category': 'spirit', # Classificação ambígua, mas se encaixa em não-ser/espírito maligno
+        'category_label': 'Não-Ser',
+        'danger': 'XXXXX',
+        'icon': '🌑',
+        'desc': 'Guardiões de Azkaban. Sugam a felicidade e a alma (Beijo do Dementador).',
+        'origin': 'Azkaban'
+    }
+]
+
+@app.route('/criaturas')
+def creatures():
+    return render_template('creatures.html', creatures=CREATURES_DATA, active_tab='creatures')
+
 @app.route('/mundo')
 def world():
     return render_template('world.html', houses=WORLD_DATA, active_tab='world')

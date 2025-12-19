@@ -20,6 +20,7 @@ def build_static():
             content = content.replace('href="/varinhas/madeiras"', 'href="./varinhas_madeiras.html"')
             content = content.replace('href="/varinhas/nucleos"', 'href="./varinhas_nucleos.html"')
             content = content.replace('href="/varinhas"', 'href="./varinhas_origem.html"')
+            content = content.replace('href="/criaturas"', 'href="./criaturas.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
@@ -49,6 +50,13 @@ def build_static():
         with open('varinhas_nucleos.html', 'w', encoding='utf-8') as f:
             f.write(fix_links(content))
         print("OK: varinhas_nucleos.html gerado!")
+
+        # --- 5. Criaturas ---
+        from app import creatures
+        content = creatures()
+        with open('criaturas.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: criaturas.html gerado!")
 
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 
