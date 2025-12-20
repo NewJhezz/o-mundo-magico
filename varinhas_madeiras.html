@@ -1545,39 +1545,91 @@
     </div>
 
     <script>
-        function createParticle() {
-            const particles = document.getElementById('particles');
+        <script>
+            function createMagicEffect(type = 'spark') {
+            const container = document.getElementById('particles');
+            if (!container) return;
+
             const particle = document.createElement('div');
-
-            const size = Math.random() * 3 + 1;
-            const x = Math.random() * window.innerWidth;
-            const y = window.innerHeight + 10;
-
             particle.style.position = 'absolute';
+            particle.style.pointerEvents = 'none';
+            particle.style.borderRadius = '50%';
+            particle.style.zIndex = '-1';
+
+            let size, x, y, duration, animation;
+
+            if (type === 'spark') {
+                size = Math.random() * 2 + 1;
+            x = Math.random() * window.innerWidth;
+            y = window.innerHeight + 10;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
-            particle.style.background = 'rgba(212, 175, 55, 0.4)';
-            particle.style.borderRadius = '50%';
+            particle.style.background = 'rgba(212, 175, 55, 0.6)';
+            particle.style.boxShadow = '0 0 8px rgba(212, 175, 55, 0.8)';
             particle.style.left = x + 'px';
             particle.style.top = y + 'px';
-            particle.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.8)';
-            particle.style.pointerEvents = 'none';
 
-            particles.appendChild(particle);
+            duration = Math.random() * 3000 + 2000;
+            animation = particle.animate([
+            {transform: 'translateY(0) scale(1)', opacity: 1 },
+            {transform: `translateY(-${window.innerHeight + 50}px) scale(0)`, opacity: 0 }
+            ], {duration: duration, easing: 'ease-out' });
 
-            const duration = Math.random() * 5000 + 3000;
-            const animation = particle.animate([
-                { transform: 'translateY(0) scale(1)', opacity: 0.8 },
-                { transform: `translateY(-${window.innerHeight + 20}px) scale(0)`, opacity: 0 }
-            ], {
-                duration: duration,
-                easing: 'linear'
-            });
+            } else if (type === 'firefly') {
+                size = Math.random() * 3 + 2;
+            x = Math.random() * window.innerWidth;
+            y = Math.random() * window.innerHeight;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = 'rgba(255, 230, 100, 0.8)';
+            particle.style.boxShadow = '0 0 15px rgba(255, 220, 0, 1)';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
 
+            duration = Math.random() * 10000 + 5000;
+            const driftX = (Math.random() - 0.5) * 200;
+            const driftY = (Math.random() - 0.5) * 200;
+
+            animation = particle.animate([
+            {transform: 'translate(0, 0) scale(1)', opacity: 0 },
+            {transform: `translate(${driftX / 2}px, ${driftY / 2}px) scale(1.2)`, opacity: 0.8, offset: 0.5 },
+            {transform: `translate(${driftX}px, ${driftY}px) scale(0.5)`, opacity: 0 }
+            ], {duration: duration, easing: 'ease-in-out' });
+
+            } else if (type === 'rare') {
+                // O Pomo de Ouro (Douratudo) passa raramente
+                particle.innerHTML = '✨';
+            particle.style.fontSize = '1.2rem';
+            particle.style.borderRadius = '0';
+            particle.style.background = 'none';
+            particle.style.boxShadow = 'none';
+            particle.style.left = '-50px';
+            particle.style.top = Math.random() * 80 + '%';
+
+            duration = 2000; // Rápido!
+            animation = particle.animate([
+            {left: '-50px', transform: 'rotate(0deg) scale(1)' },
+            {left: '110vw', transform: 'rotate(720deg) scale(1.5)' }
+            ], {duration: duration, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' });
+            }
+
+            container.appendChild(particle);
             animation.onfinish = () => particle.remove();
         }
 
-        setInterval(createParticle, 200);
+        // Loop de geração
+        setInterval(() => {
+            const rand = Math.random();
+            if (rand < 0.7) {
+                createMagicEffect('spark');
+            } else if (rand < 0.98) {
+                createMagicEffect('firefly');
+            } else if (rand > 0.9995) {
+                // Muito raro! (Aproximadamente 1 a cada 2000 ticks)
+                createMagicEffect('rare');
+            }
+        }, 100); // 10 partículas por segundo em média
+    </script>
     </script>
 </body>
 
