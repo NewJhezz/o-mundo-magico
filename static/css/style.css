@@ -378,17 +378,23 @@ h1 {
     color: var(--text-main);
 }
 
-/* Ícones de Afinidade nos Cards */
+/* Texto de Afinidade/Efeito nos Cards */
 .wood-affinity {
-    font-size: 1.4rem;
-    /* Maior destaque */
+    font-size: 0.85rem;
+    /* Tamanho mais elegante */
     color: var(--text-muted);
-    letter-spacing: 5px;
+    letter-spacing: 1px;
+    /* Reduzido para não espalhar demais o texto */
     text-align: center;
-    min-height: 1.5rem;
+    min-height: 3rem;
+    /* Espaço fixo para manter alinhamento */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-style: italic;
+    /* Toque de sofisticação */
+    padding: 0 0.5rem;
+    line-height: 1.3;
 }
 
 /* Modal Styles */
