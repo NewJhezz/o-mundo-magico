@@ -978,28 +978,6 @@ SPELLS_DATA = [
         'icon': '💧'
     },
     {
-        'id': 'expecto-patronum',
-        'name': 'Expecto Patronum',
-        'incantation': 'Expecto Patronum',
-        'type': 'defense',
-        'type_label': 'Defesa',
-        'effect': 'Conjura um Patrono protetor',
-        'description': 'A única defesa conhecida contra Dementadores. Exige a lembrança mais feliz do bruxo.',
-        'difficulty': 'Muito Difícil',
-        'icon': '🦌'
-    },
-    {
-        'id': 'protego',
-        'name': 'Protego',
-        'incantation': 'Protego',
-        'type': 'defense',
-        'type_label': 'Defesa',
-        'effect': 'Cria um escudo mágico',
-        'description': 'Reflete feitiços menores e protege contra ataques físicos leves.',
-        'difficulty': 'Intermediário',
-        'icon': '🛡️'
-    },
-    {
         'id': 'riddikulus',
         'name': 'Riddikulus',
         'incantation': 'Riddikulus',
