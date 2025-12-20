@@ -380,21 +380,57 @@ h1 {
 
 /* Texto de Afinidade/Efeito nos Cards */
 .wood-affinity {
-    font-size: 0.85rem;
-    /* Tamanho mais elegante */
+    font-size: 0.75rem;
+    /* Reduzido ainda mais conforme pedido */
+    font-family: var(--font-body);
+    /* Mudado para Lato para ser mais elegante/legível */
     color: var(--text-muted);
-    letter-spacing: 1px;
-    /* Reduzido para não espalhar demais o texto */
+    letter-spacing: 0.5px;
     text-align: center;
-    min-height: 3rem;
-    /* Espaço fixo para manter alinhamento */
+    min-height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-style: italic;
-    /* Toque de sofisticação */
-    padding: 0 0.5rem;
-    line-height: 1.3;
+    padding: 0 0.8rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* Novo Layout de Cabeçalho dos Cards */
+.header-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.card-difficulty-label {
+    font-size: 0.65rem;
+    color: var(--gold-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* Botão Voltar */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--gold-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.back-link:hover {
+    opacity: 1;
+    color: var(--gold-primary);
+    transform: translateX(-5px);
 }
 
 /* Modal Styles */

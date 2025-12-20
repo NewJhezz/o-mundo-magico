@@ -28,1137 +28,951 @@
 
         <main>
             
-<div class="spells-page animate-fade-in">
-    <div class="header-decoration"
-        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
-        <a href="./index.html" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
-            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
-            ⬅
-        </a>
-        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
-            Biblioteca de Feitiços
-        </h2>
-    </div>
+<div class="hero-section">
+    <a href="./index.html" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Biblioteca de Feitiços</h1>
+    <p class="hero-subtitle">Encantamentos, Maldições e Truques do universo bruxo.</p>
+</div>
 
-    <!-- Barra de Busca, Filtros e Ordenação -->
-    <div class="filter-toolbar">
-        <div class="toolbar-top">
-            <div class="search-box">
-                <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
-                    onkeyup="filterSpells()">
-                <span class="search-icon">🔍</span>
-            </div>
-
-            <div class="sort-box">
-                <select id="spellSort" onchange="sortSpells()" class="custom-select">
-                    <option value="none">Ordenar por...</option>
-                    <option value="az">Nome (A-Z)</option>
-                    <option value="za">Nome (Z-A)</option>
-                    <option value="diff_asc">Dificuldade (Fácil → Difícil)</option>
-                    <option value="diff_desc">Dificuldade (Difícil → Fácil)</option>
-                </select>
-            </div>
+<!-- Barra de Busca, Filtros e Ordenação -->
+<div class="filter-toolbar">
+    <div class="toolbar-top">
+        <div class="search-box">
+            <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
+                onkeyup="filterSpells()">
+            <span class="search-icon">🔍</span>
         </div>
 
-        <div class="filter-group">
-            <span class="filter-label">Filtrar por:</span>
-            <div class="filter-options">
-                <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
-                <button class="filter-chip" onclick="setSpellFilter('utility', this)">Utilidade</button>
-                <button class="filter-chip" onclick="setSpellFilter('defense', this)">Defesa</button>
-                <button class="filter-chip" onclick="setSpellFilter('combat', this)">Combate</button>
-                <button class="filter-chip" onclick="setSpellFilter('unforgivable', this)">Imperdoáveis</button>
-                <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
-            </div>
+        <div class="sort-box">
+            <select id="spellSort" onchange="sortSpells()" class="custom-select">
+                <option value="none">Ordenar por...</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+                <option value="diff_asc">Dificuldade (Fácil → Difícil)</option>
+                <option value="diff_desc">Dificuldade (Difícil → Fácil)</option>
+            </select>
         </div>
     </div>
 
-    <!-- Grid de Feitiços -->
-    <div class="spells-grid" id="spellsGrid">
-        
-        
-        
-
-        <div class="spell-card" data-name="alohomora" data-incantation="alohomora"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🔑</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Alohomora</h3>
-                <p class="spell-incantation">"Alohomora"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Destranca portas e fechaduras comuns</p>
-                    <p class="spell-description">Um feitiço essencial para exploração, capaz de abrir fechaduras que não foram seladas magicamente.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
+    <div class="filter-group">
+        <span class="filter-label">Filtrar por:</span>
+        <div class="filter-options">
+            <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
+            <button class="filter-chip" onclick="setSpellFilter('utility', this)">Utilidade</button>
+            <button class="filter-chip" onclick="setSpellFilter('defense', this)">Defesa</button>
+            <button class="filter-chip" onclick="setSpellFilter('combat', this)">Combate</button>
+            <button class="filter-chip" onclick="setSpellFilter('unforgivable', this)">Imperdoáveis</button>
+            <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
         </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="lumos" data-incantation="lumos"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">💡</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Lumos</h3>
-                <p class="spell-incantation">"Lumos"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cria uma fonte de luz na ponta da varinha</p>
-                    <p class="spell-description">Ilumina ambientes escuros. A luz pode ser movida junto com a varinha.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="nox" data-incantation="nox"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🌑</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Nox</h3>
-                <p class="spell-incantation">"Nox"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Extingue a luz da varinha</p>
-                    <p class="spell-description">O contra-feitiço direto para o Lumos.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="wingardium leviosa" data-incantation="wingardium leviosa"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🍃</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Wingardium Leviosa</h3>
-                <p class="spell-incantation">"Wingardium Leviosa"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Levita objetos</p>
-                    <p class="spell-description">Exige um movimento preciso de &#34;girar e sacudir&#34; com a varinha.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="accio" data-incantation="accio"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧲</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Accio</h3>
-                <p class="spell-incantation">"Accio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Convoca objetos para a mão do bruxo</p>
-                    <p class="spell-description">Funciona mesmo com objetos fora do campo de visão, desde que o bruxo se concentre neles.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="aguamenti" data-incantation="aguamenti"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">💧</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Aguamenti</h3>
-                <p class="spell-incantation">"Aguamenti"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Produz um jato de água pura</p>
-                    <p class="spell-description">Pode ser usado para beber ou apagar incêndios mágicos simples.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="riddikulus" data-incantation="riddikulus"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🤡</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Riddikulus</h3>
-                <p class="spell-incantation">"Riddikulus"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Vence um Bicho-Papão com humor</p>
-                    <p class="spell-description">Obriga a criatura a assumir uma forma que o bruxo considere engraçada.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="incendio" data-incantation="incendio"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🔥</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade / Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Incendio</h3>
-                <p class="spell-incantation">"Incendio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Produz chamas</p>
-                    <p class="spell-description">Pode ser usado para acender lareiras ou como um ataque ofensivo de fogo.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="scourgify" data-incantation="scourgify"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧼</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Scourgify</h3>
-                <p class="spell-incantation">"Scourgify"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Limpa objetos</p>
-                    <p class="spell-description">Remove sujeira e manchas instantaneamente. Útil para tarefas domésticas mágicas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="finite incantatem" data-incantation="finite incantatem"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">⏹️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Finite Incantatem</h3>
-                <p class="spell-incantation">"Finite Incantatem"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cessa efeitos mágicos</p>
-                    <p class="spell-description">Finaliza o efeito de feitiços e encantamentos em uma área ou alvo específico.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="muffliato" data-incantation="muffliato"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🤫</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade (Privacidade)</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Muffliato</h3>
-                <p class="spell-incantation">"Muffliato"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Gera um zumbido nos ouvidos de terceiros</p>
-                    <p class="spell-description">Impede que pessoas próximas ouçam conversas privadas, criando um ruído de fundo.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="obliviate" data-incantation="obliviate"
-            data-type="utility" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧠</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade / Perigoso</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Obliviate</h3>
-                <p class="spell-incantation">"Obliviate"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Apaga memórias</p>
-                    <p class="spell-description">Usado para fazer o alvo esquecer eventos específicos ou toda a sua vida.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="engorgio" data-incantation="engorgio"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🔍</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Engorgio</h3>
-                <p class="spell-incantation">"Engorgio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Aumenta o tamanho de objetos ou criaturas</p>
-                    <p class="spell-description">Faz com que o alvo cresça rapidamente. O contra-feitiço é o Reducio.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="geminio" data-incantation="geminio"
-            data-type="utility" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">👯</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Geminio</h3>
-                <p class="spell-incantation">"Geminio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Duplica objetos</p>
-                    <p class="spell-description">Cria uma cópia exata de um objeto. Cópias criadas por este feitiço costumam ser menos valiosas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="expelliarmus" data-incantation="expelliarmus"
-            data-type="combat" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🪄</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Expelliarmus</h3>
-                <p class="spell-incantation">"Expelliarmus"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Desarma o oponente</p>
-                    <p class="spell-description">Faz com que a varinha ou arma do oponente voe para longe de suas mãos.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="estupore (stupefy)" data-incantation="stupefy"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">💥</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Estupore (Stupefy)</h3>
-                <p class="spell-incantation">"Stupefy"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Atordoa e desmaia o alvo</p>
-                    <p class="spell-description">O feitiço de combate mais comum em duelos, projeta um feixe de luz vermelha.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="bombarda" data-incantation="bombarda"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧨</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate (Explosivo)</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Bombarda</h3>
-                <p class="spell-incantation">"Bombarda"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cria uma pequena explosão</p>
-                    <p class="spell-description">Usado para destruir obstáculos como portas trancadas ou paredes finas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="reducto" data-incantation="reducto"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧱</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Reducto</h3>
-                <p class="spell-incantation">"Reducto"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Pulveriza objetos sólidos</p>
-                    <p class="spell-description">Reduz objetos a pó ou pedaços minúsculos através de uma explosão focada.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="impedimenta" data-incantation="impedimenta"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🛑</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate / Defesa</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Impedimenta</h3>
-                <p class="spell-incantation">"Impedimenta"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Lentidão ou paralisia temporária</p>
-                    <p class="spell-description">Atrasa o oponente, impedindo-o de se mover em direção ao bruxo.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="incarcerous" data-incantation="incarcerous"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧶</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Incarcerous</h3>
-                <p class="spell-incantation">"Incarcerous"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Conjura cordas para prender o alvo</p>
-                    <p class="spell-description">Cordas grossas e resistentes surgem do nada para amarrar o oponente.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="levicorpus" data-incantation="levicorpus"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🤸</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate (Não-Verbal)</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Levicorpus</h3>
-                <p class="spell-incantation">"Levicorpus"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Lança o alvo no ar pelo tornozelo</p>
-                    <p class="spell-description">O alvo é içado de cabeça para baixo, como se estivesse pendurado por um fio invisível.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="petrificus totalus" data-incantation="petrificus totalus"
-            data-type="combat" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🗿</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Petrificus Totalus</h3>
-                <p class="spell-incantation">"Petrificus Totalus"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Paralisia total do corpo</p>
-                    <p class="spell-description">O alvo fica rígido como uma estátua, incapaz de se mover ou falar.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="confundo" data-incantation="confundo"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">😵‍💫</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Confundo</h3>
-                <p class="spell-incantation">"Confundo"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Causa confusão mental temporária</p>
-                    <p class="spell-description">Faz o alvo ficar desorientado e suscetível a ordens simples ou erros de julgamento.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="expulso" data-incantation="expulso"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">💣</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Expulso</h3>
-                <p class="spell-incantation">"Expulso"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Empurra objetos ou pessoas com força explosiva</p>
-                    <p class="spell-description">Cria uma pequena explosão de pressão que arremessa alvos para longe.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="sectumsempra" data-incantation="sectumsempra"
-            data-type="combat" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">⚔️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate (Trevas)</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Sectumsempra</h3>
-                <p class="spell-incantation">"Sectumsempra"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Provoca cortes profundos</p>
-                    <p class="spell-description">Um feitiço perigoso que corta o alvo como se fosse uma espada invisível.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="diffindo" data-incantation="diffindo"
-            data-type="combat" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">✂️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate / Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Diffindo</h3>
-                <p class="spell-incantation">"Diffindo"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Rasga ou corta objetos com precisão</p>
-                    <p class="spell-description">Muito usado para rasgar tecidos, abrir embalagens ou desamarrar cordas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="silencio" data-incantation="silencio"
-            data-type="combat" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🔇</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge combat">Combate / Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Silencio</h3>
-                <p class="spell-incantation">"Silencio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Emudece o alvo</p>
-                    <p class="spell-description">Impede que o alvo emita sons ou realize feitiços verbais.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="expecto patronum" data-incantation="expecto patronum"
-            data-type="defense" data-difficulty="4">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🦌</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge defense">Defesa</span>
-                        <span class="spell-difficulty">Dificuldade: Muito Difícil</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Expecto Patronum</h3>
-                <p class="spell-incantation">"Expecto Patronum"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Conjura um Patrono protetor</p>
-                    <p class="spell-description">A única defesa conhecida contra Dementadores. Exige a lembrança mais feliz do bruxo.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="protego" data-incantation="protego"
-            data-type="defense" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🛡️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge defense">Defesa</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Protego</h3>
-                <p class="spell-incantation">"Protego"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cria um escudo mágico</p>
-                    <p class="spell-description">Reflete feitiços menores e protege contra ataques físicos leves.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="protego totalum" data-incantation="protego totalum"
-            data-type="defense" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🏰</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge defense">Defesa de Área</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Protego Totalum</h3>
-                <p class="spell-incantation">"Protego Totalum"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Protege uma área contra moradores</p>
-                    <p class="spell-description">Forma uma barreira protetora ao redor de um acampamento ou morada.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="salvio hexia" data-incantation="salvio hexia"
-            data-type="defense" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">✨</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge defense">Defesa de Área</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Salvio Hexia</h3>
-                <p class="spell-incantation">"Salvio Hexia"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Protege contra feitiços externos</p>
-                    <p class="spell-description">Frequentemente usado com outros feitiços de proteção para ocultar e defender áreas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="crucio" data-incantation="cruciatus"
-            data-type="unforgivable" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">⚡</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge unforgivable">Maldição Imperdoável</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil (Intencional)</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Crucio</h3>
-                <p class="spell-incantation">"Cruciatus"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Tortura física insuportável</p>
-                    <p class="spell-description">Causa uma dor agoniante. Exige que o bruxo realmente deseje causar sofrimento.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="imperio" data-incantation="imperio"
-            data-type="unforgivable" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧠</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge unforgivable">Maldição Imperdoável</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil (Foco)</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Imperio</h3>
-                <p class="spell-incantation">"Imperio"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Controle total sobre a vítima</p>
-                    <p class="spell-description">A vítima entra em um estado de transe e obedece a qualquer comando do mestre.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="avada kedavra" data-incantation="avada kedavra"
-            data-type="unforgivable" data-difficulty="5">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">💀</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge unforgivable">Maldição Imperdoável</span>
-                        <span class="spell-difficulty">Dificuldade: Extrema</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Avada Kedavra</h3>
-                <p class="spell-incantation">"Avada Kedavra"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Morte instantânea</p>
-                    <p class="spell-description">A maldição final. Não possui contra-feitiço e mata instantaneamente sem deixar marcas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="reparo" data-incantation="reparo"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🛠️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Reparo</h3>
-                <p class="spell-incantation">"Reparo"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Conserta objetos quebrados</p>
-                    <p class="spell-description">Restaura a forma original de itens danificados, desde que todos os pedaços estejam presentes.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="episkey" data-incantation="episkey"
-            data-type="healing" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🩹</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge healing">Cura</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Episkey</h3>
-                <p class="spell-incantation">"Episkey"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cura ferimentos leves</p>
-                    <p class="spell-description">Corrige ossos quebrados pequenos (como narizes) e estanca sangramentos menores.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="rennervate" data-incantation="rennervate"
-            data-type="healing" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">👁️</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge healing">Cura</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Rennervate</h3>
-                <p class="spell-incantation">"Rennervate"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Desperta alguém inconsciente</p>
-                    <p class="spell-description">O contra-feitiço para o Estupore. Revive pessoas que foram atordoadas.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="ferula" data-incantation="ferula"
-            data-type="healing" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🩹</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge healing">Cura</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Ferula</h3>
-                <p class="spell-incantation">"Ferula"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Conjura talas e bandagens</p>
-                    <p class="spell-description">Cria curativos físicos para imobilizar membros quebrados.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="anapneo" data-incantation="anapneo"
-            data-type="healing" data-difficulty="2">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🫁</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge healing">Cura</span>
-                        <span class="spell-difficulty">Dificuldade: Intermediário</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Anapneo</h3>
-                <p class="spell-incantation">"Anapneo"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Limpa as vias respiratórias</p>
-                    <p class="spell-description">Desobstrui a garganta de alguém que esteja engasgado.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-
-        <div class="spell-card" data-name="tergeo" data-incantation="tergeo"
-            data-type="utility" data-difficulty="1">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🧼</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge utility">Utilidade</span>
-                        <span class="spell-difficulty">Dificuldade: Iniciante</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Tergeo</h3>
-                <p class="spell-incantation">"Tergeo"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Limpa superfícies e estanca sangue</p>
-                    <p class="spell-description">Suga líquidos como sangue, poeira ou lama de roupas e superfícies.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
-        
-        
-        
-
-        <div class="spell-card" data-name="vulnera sanentur" data-incantation="vulnera sanentur"
-            data-type="healing" data-difficulty="3">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">🩸</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge healing">Cura Avançada</span>
-                        <span class="spell-difficulty">Dificuldade: Difícil</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">Vulnera Sanentur</h3>
-                <p class="spell-incantation">"Vulnera Sanentur"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> Cura cortes profundos de magia negra</p>
-                    <p class="spell-description">Eficaz contra o Sectumsempra. Exige um cântico específico e movimentos rítmicos.</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
-        </div>
-        
     </div>
+</div>
 
-    <div id="noResults" class="no-results hidden">
-        <p>Nenhum segredo mágico encontrado para esta busca...</p>
+<!-- Grid de Feitiços -->
+<div class="spells-grid" id="spellsGrid">
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="alohomora"
+        data-incantation="alohomora" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🔑</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Alohomora</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Destranca portas e fechaduras comuns</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
     </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="lumos"
+        data-incantation="lumos" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">💡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Lumos</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cria uma fonte de luz na ponta da varinha</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="nox"
+        data-incantation="nox" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🌑</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Nox</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Extingue a luz da varinha</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="wingardium leviosa"
+        data-incantation="wingardium leviosa" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🍃</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Wingardium Leviosa</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Levita objetos</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="accio"
+        data-incantation="accio" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🧲</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Accio</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Convoca objetos para a mão do bruxo</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="aguamenti"
+        data-incantation="aguamenti" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">💧</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Aguamenti</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Produz um jato de água pura</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="riddikulus"
+        data-incantation="riddikulus" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🤡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Riddikulus</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Vence um Bicho-Papão com humor</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="incendio"
+        data-incantation="incendio" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🔥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Incendio</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Produz chamas</div>
+
+        <div class="card-footer-type">Utilidade / Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="scourgify"
+        data-incantation="scourgify" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🧼</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Scourgify</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Limpa objetos</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="finite incantatem"
+        data-incantation="finite incantatem" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">⏹️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Finite Incantatem</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cessa efeitos mágicos</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="muffliato"
+        data-incantation="muffliato" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🤫</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Muffliato</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Gera um zumbido nos ouvidos de terceiros</div>
+
+        <div class="card-footer-type">Utilidade (Privacidade)</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="obliviate"
+        data-incantation="obliviate" data-type="utility"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">🧠</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Obliviate</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Apaga memórias</div>
+
+        <div class="card-footer-type">Utilidade / Perigoso</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="engorgio"
+        data-incantation="engorgio" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🔍</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Engorgio</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Aumenta o tamanho de objetos ou criaturas</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="geminio"
+        data-incantation="geminio" data-type="utility"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">👯</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Geminio</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Duplica objetos</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="expelliarmus"
+        data-incantation="expelliarmus" data-type="combat"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🪄</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Expelliarmus</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Desarma o oponente</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="estupore (stupefy)"
+        data-incantation="stupefy" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">💥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Estupore (Stupefy)</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Atordoa e desmaia o alvo</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="bombarda"
+        data-incantation="bombarda" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🧨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Bombarda</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cria uma pequena explosão</div>
+
+        <div class="card-footer-type">Combate (Explosivo)</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="reducto"
+        data-incantation="reducto" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🧱</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Reducto</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Pulveriza objetos sólidos</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="impedimenta"
+        data-incantation="impedimenta" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🛑</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Impedimenta</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Lentidão ou paralisia temporária</div>
+
+        <div class="card-footer-type">Combate / Defesa</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="incarcerous"
+        data-incantation="incarcerous" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🧶</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Incarcerous</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Conjura cordas para prender o alvo</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="levicorpus"
+        data-incantation="levicorpus" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🤸</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Levicorpus</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Lança o alvo no ar pelo tornozelo</div>
+
+        <div class="card-footer-type">Combate (Não-Verbal)</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="petrificus totalus"
+        data-incantation="petrificus totalus" data-type="combat"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🗿</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Petrificus Totalus</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Paralisia total do corpo</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="confundo"
+        data-incantation="confundo" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">😵‍💫</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Confundo</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Causa confusão mental temporária</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="expulso"
+        data-incantation="expulso" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">💣</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Expulso</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Empurra objetos ou pessoas com força explosiva</div>
+
+        <div class="card-footer-type">Combate</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="sectumsempra"
+        data-incantation="sectumsempra" data-type="combat"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">⚔️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Sectumsempra</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Provoca cortes profundos</div>
+
+        <div class="card-footer-type">Combate (Trevas)</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="diffindo"
+        data-incantation="diffindo" data-type="combat"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">✂️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Diffindo</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Rasga ou corta objetos com precisão</div>
+
+        <div class="card-footer-type">Combate / Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="silencio"
+        data-incantation="silencio" data-type="combat"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🔇</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Silencio</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Emudece o alvo</div>
+
+        <div class="card-footer-type">Combate / Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="expecto patronum"
+        data-incantation="expecto patronum" data-type="defense"
+        data-difficulty="4">
+
+        <div class="card-header">
+            <span class="mini-icon">🦌</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Expecto Patronum</h3>
+                <div class="card-difficulty-label">Dificuldade: Muito Difícil</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Conjura um Patrono protetor</div>
+
+        <div class="card-footer-type">Defesa</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="protego"
+        data-incantation="protego" data-type="defense"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🛡️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Protego</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cria um escudo mágico</div>
+
+        <div class="card-footer-type">Defesa</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="protego totalum"
+        data-incantation="protego totalum" data-type="defense"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">🏰</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Protego Totalum</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Protege uma área contra moradores</div>
+
+        <div class="card-footer-type">Defesa de Área</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="salvio hexia"
+        data-incantation="salvio hexia" data-type="defense"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">✨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Salvio Hexia</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Protege contra feitiços externos</div>
+
+        <div class="card-footer-type">Defesa de Área</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="crucio"
+        data-incantation="cruciatus" data-type="unforgivable"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">⚡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Crucio</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil (Intencional)</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Tortura física insuportável</div>
+
+        <div class="card-footer-type">Maldição Imperdoável</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="imperio"
+        data-incantation="imperio" data-type="unforgivable"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">🧠</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Imperio</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil (Foco)</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Controle total sobre a vítima</div>
+
+        <div class="card-footer-type">Maldição Imperdoável</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="avada kedavra"
+        data-incantation="avada kedavra" data-type="unforgivable"
+        data-difficulty="5">
+
+        <div class="card-header">
+            <span class="mini-icon">💀</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Avada Kedavra</h3>
+                <div class="card-difficulty-label">Dificuldade: Extrema</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Morte instantânea</div>
+
+        <div class="card-footer-type">Maldição Imperdoável</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="reparo"
+        data-incantation="reparo" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🛠️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Reparo</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Conserta objetos quebrados</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="episkey"
+        data-incantation="episkey" data-type="healing"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🩹</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Episkey</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cura ferimentos leves</div>
+
+        <div class="card-footer-type">Cura</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="rennervate"
+        data-incantation="rennervate" data-type="healing"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">👁️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Rennervate</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Desperta alguém inconsciente</div>
+
+        <div class="card-footer-type">Cura</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="ferula"
+        data-incantation="ferula" data-type="healing"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🩹</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Ferula</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Conjura talas e bandagens</div>
+
+        <div class="card-footer-type">Cura</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="anapneo"
+        data-incantation="anapneo" data-type="healing"
+        data-difficulty="2">
+
+        <div class="card-header">
+            <span class="mini-icon">🫁</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Anapneo</h3>
+                <div class="card-difficulty-label">Dificuldade: Intermediário</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Limpa as vias respiratórias</div>
+
+        <div class="card-footer-type">Cura</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="tergeo"
+        data-incantation="tergeo" data-type="utility"
+        data-difficulty="1">
+
+        <div class="card-header">
+            <span class="mini-icon">🧼</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Tergeo</h3>
+                <div class="card-difficulty-label">Dificuldade: Iniciante</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Limpa superfícies e estanca sangue</div>
+
+        <div class="card-footer-type">Utilidade</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card spell-card" data-name="vulnera sanentur"
+        data-incantation="vulnera sanentur" data-type="healing"
+        data-difficulty="3">
+
+        <div class="card-header">
+            <span class="mini-icon">🩸</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">Vulnera Sanentur</h3>
+                <div class="card-difficulty-label">Dificuldade: Difícil</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">Cura cortes profundos de magia negra</div>
+
+        <div class="card-footer-type">Cura Avançada</div>
+        <span class="click-hint">Toque para detalhes</span>
+    </div>
+    
+</div>
+
+<div id="noResults" class="no-results hidden">
+    <p>Nenhum segredo mágico encontrado para esta busca...</p>
+</div>
 </div>
 
 <style>
     .spells-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
     }
 
     .spell-card {
-        background: var(--bg-card);
-        backdrop-filter: blur(12px);
-        border: var(--glass-border);
-        border-radius: 15px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        overflow: hidden;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .spell-card:hover {
-        transform: translateY(-10px);
-        border-color: var(--gold-primary);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(214, 175, 55, 0.1);
-    }
-
-    .spell-card-inner {
-        padding: 1.5rem;
+        cursor: pointer;
     }
 
     .spell-header {

@@ -3,115 +3,89 @@
 {% block title %}Biblioteca de Feitiços | O Mundo Mágico{% endblock %}
 
 {% block content %}
-<div class="spells-page animate-fade-in">
-    <div class="header-decoration"
-        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
-        <a href="{{ url_for('home') }}" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
-            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
-            ⬅
-        </a>
-        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
-            Biblioteca de Feitiços
-        </h2>
-    </div>
+<div class="hero-section">
+    <a href="{{ url_for('home') }}" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Biblioteca de Feitiços</h1>
+    <p class="hero-subtitle">Encantamentos, Maldições e Truques do universo bruxo.</p>
+</div>
 
-    <!-- Barra de Busca, Filtros e Ordenação -->
-    <div class="filter-toolbar">
-        <div class="toolbar-top">
-            <div class="search-box">
-                <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
-                    onkeyup="filterSpells()">
-                <span class="search-icon">🔍</span>
-            </div>
-
-            <div class="sort-box">
-                <select id="spellSort" onchange="sortSpells()" class="custom-select">
-                    <option value="none">Ordenar por...</option>
-                    <option value="az">Nome (A-Z)</option>
-                    <option value="za">Nome (Z-A)</option>
-                    <option value="diff_asc">Dificuldade (Fácil → Difícil)</option>
-                    <option value="diff_desc">Dificuldade (Difícil → Fácil)</option>
-                </select>
-            </div>
+<!-- Barra de Busca, Filtros e Ordenação -->
+<div class="filter-toolbar">
+    <div class="toolbar-top">
+        <div class="search-box">
+            <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
+                onkeyup="filterSpells()">
+            <span class="search-icon">🔍</span>
         </div>
 
-        <div class="filter-group">
-            <span class="filter-label">Filtrar por:</span>
-            <div class="filter-options">
-                <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
-                <button class="filter-chip" onclick="setSpellFilter('utility', this)">Utilidade</button>
-                <button class="filter-chip" onclick="setSpellFilter('defense', this)">Defesa</button>
-                <button class="filter-chip" onclick="setSpellFilter('combat', this)">Combate</button>
-                <button class="filter-chip" onclick="setSpellFilter('unforgivable', this)">Imperdoáveis</button>
-                <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
-            </div>
+        <div class="sort-box">
+            <select id="spellSort" onchange="sortSpells()" class="custom-select">
+                <option value="none">Ordenar por...</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+                <option value="diff_asc">Dificuldade (Fácil → Difícil)</option>
+                <option value="diff_desc">Dificuldade (Difícil → Fácil)</option>
+            </select>
         </div>
     </div>
 
-    <!-- Grid de Feitiços -->
-    <div class="spells-grid" id="spellsGrid">
-        {% for spell in spells %}
-        {% set diff_score = 1 %}
-        {% if 'Intermedi' in spell.difficulty %}{% set diff_score = 2 %}
-        {% elif 'Dif' in spell.difficulty and 'Muito' not in spell.difficulty %}{% set diff_score = 3 %}
-        {% elif 'Muito Dif' in spell.difficulty %}{% set diff_score = 4 %}
-        {% elif 'Extrema' in spell.difficulty %}{% set diff_score = 5 %}{% endif %}
-
-        <div class="spell-card" data-name="{{ spell.name|lower }}" data-incantation="{{ spell.incantation|lower }}"
-            data-type="{{ spell.type }}" data-difficulty="{{ diff_score }}">
-            <div class="spell-card-inner">
-                <div class="spell-header">
-                    <span class="spell-icon">{{ spell.icon }}</span>
-                    <div class="spell-meta">
-                        <span class="spell-type-badge {{ spell.type }}">{{ spell.type_label }}</span>
-                        <span class="spell-difficulty">Dificuldade: {{ spell.difficulty }}</span>
-                    </div>
-                </div>
-
-                <h3 class="spell-name">{{ spell.name }}</h3>
-                <p class="spell-incantation">"{{ spell.incantation }}"</p>
-
-                <div class="spell-body">
-                    <p class="spell-effect"><strong>Efeito:</strong> {{ spell.effect }}</p>
-                    <p class="spell-description">{{ spell.description }}</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
+    <div class="filter-group">
+        <span class="filter-label">Filtrar por:</span>
+        <div class="filter-options">
+            <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
+            <button class="filter-chip" onclick="setSpellFilter('utility', this)">Utilidade</button>
+            <button class="filter-chip" onclick="setSpellFilter('defense', this)">Defesa</button>
+            <button class="filter-chip" onclick="setSpellFilter('combat', this)">Combate</button>
+            <button class="filter-chip" onclick="setSpellFilter('unforgivable', this)">Imperdoáveis</button>
+            <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
         </div>
-        {% endfor %}
     </div>
+</div>
 
-    <div id="noResults" class="no-results hidden">
-        <p>Nenhum segredo mágico encontrado para esta busca...</p>
+<!-- Grid de Feitiços -->
+<div class="spells-grid" id="spellsGrid">
+    {% for spell in spells %}
+    {% set diff_score = 1 %}
+    {% if 'Intermedi' in spell.difficulty %}{% set diff_score = 2 %}
+    {% elif 'Dif' in spell.difficulty and 'Muito' not in spell.difficulty %}{% set diff_score = 3 %}
+    {% elif 'Muito Dif' in spell.difficulty %}{% set diff_score = 4 %}
+    {% elif 'Extrema' in spell.difficulty %}{% set diff_score = 5 %}{% endif %}
+
+    <div class="wood-card spell-card" data-name="{{ spell.name|lower }}"
+        data-incantation="{{ spell.incantation|lower }}" data-type="{{ spell.type }}"
+        data-difficulty="{{ diff_score }}">
+
+        <div class="card-header">
+            <span class="mini-icon">{{ spell.icon }}</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">{{ spell.name }}</h3>
+                <div class="card-difficulty-label">Dificuldade: {{ spell.difficulty }}</div>
+            </div>
+        </div>
+
+        <div class="wood-affinity">{{ spell.effect }}</div>
+
+        <div class="card-footer-type">{{ spell.type_label }}</div>
+        <span class="click-hint">Toque para detalhes</span>
     </div>
+    {% endfor %}
+</div>
+
+<div id="noResults" class="no-results hidden">
+    <p>Nenhum segredo mágico encontrado para esta busca...</p>
+</div>
 </div>
 
 <style>
     .spells-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
     }
 
     .spell-card {
-        background: var(--bg-card);
-        backdrop-filter: blur(12px);
-        border: var(--glass-border);
-        border-radius: 15px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        overflow: hidden;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .spell-card:hover {
-        transform: translateY(-10px);
-        border-color: var(--gold-primary);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(214, 175, 55, 0.1);
-    }
-
-    .spell-card-inner {
-        padding: 1.5rem;
+        cursor: pointer;
     }
 
     .spell-header {

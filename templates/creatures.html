@@ -3,80 +3,68 @@
 {% block title %}Criaturas Mágicas | Wiki{% endblock %}
 
 {% block content %}
-<div class="creatures-section animate-fade-in">
-    <!-- Navbar interna de Criaturas (se houver subcategorias no futuro) -->
-    <div class="header-decoration"
-        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
-        <!-- Botão Voltar (topo esquerda) -->
-        <a href="{{ url_for('world') }}" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
-            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
-            ⬅
-        </a>
+<div class="hero-section">
+    <a href="{{ url_for('home') }}" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Bestiário Mágico</h1>
+    <p class="hero-subtitle">Seres, Feras e Espíritos que habitam o universo bruxo.</p>
+</div>
 
-        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
-            Bestiário do Mundo Mágico
-        </h2>
+<!-- Toolbar de Filtros -->
+<div class="filter-toolbar">
+    <div class="filter-group">
+        <span class="filter-label">Classificação (M.O.M.):</span>
+        <select id="filterCategory" class="custom-select" onchange="updateCreatures()">
+            <option value="all">Todas</option>
+            <option value="beast">Feras (Beasts) 🐾</option>
+            <option value="being">Seres (Beings) 🗣️</option>
+            <option value="spirit">Espíritos (Spirits) 👻</option>
+        </select>
     </div>
 
-    <!-- Toolbar de Filtros -->
-    <div class="filter-toolbar" style="margin-bottom: 2rem;">
-        <div class="filter-group" style="margin: 0;">
-            <span class="filter-label">Classificação (M.O.M.):</span>
-            <select id="filterCategory" class="custom-select" onchange="updateCreatures()">
-                <option value="all">Todas</option>
-                <option value="beast">Feras (Beasts) 🐾</option>
-                <option value="being">Seres (Beings) 🗣️</option>
-                <option value="spirit">Espíritos (Spirits) 👻</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <span class="filter-label">Periculosidade:</span>
-            <select id="filterDanger" class="custom-select" onchange="updateCreatures()">
-                <option value="all">Todas</option>
-                <option value="XXXXX">XXXXX (Mortal ☠️)</option>
-                <option value="XXXX">XXXX (Perigoso)</option>
-                <option value="XXX">XXX (Quase Perigoso 😅)</option>
-                <option value="XX">XX (Inofensivo)</option>
-                <option value="X">X (Tediante)</option>
-            </select>
-        </div>
+    <div class="filter-group">
+        <span class="filter-label">Periculosidade:</span>
+        <select id="filterDanger" class="custom-select" onchange="updateCreatures()">
+            <option value="all">Todas</option>
+            <option value="XXXXX">XXXXX (Mortal ☠️)</option>
+            <option value="XXXX">XXXX (Perigoso)</option>
+            <option value="XXX">XXX (Quase Perigoso 😅)</option>
+            <option value="XX">XX (Inofensivo)</option>
+            <option value="X">X (Tediante)</option>
+        </select>
     </div>
+</div>
 
-    <!-- Grid de Criaturas -->
-    <div id="creaturesGrid" class="woods-grid">
-        {% for creature in creatures %}
-        <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
-            data-danger="{{ creature.danger }}">
+<!-- Grid de Criaturas -->
+<div id="creaturesGrid" class="woods-grid">
+    {% for creature in creatures %}
+    <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
+        data-danger="{{ creature.danger }}">
 
-            <div class="card-header creature-header">
-                <span class="mini-icon">{{ creature.icon }}</span>
-                <div class="header-text">
-                    <h3 class="wood-name">{{ creature.name }}</h3>
-                    <div class="danger-stars" title="Periculosidade: {{ creature.danger }}">
-                        {% for i in range(creature.danger_level) %}⭐{% endfor %}
-                    </div>
-                </div>
+        <div class="card-header">
+            <span class="mini-icon">{{ creature.icon }}</span>
+            <div class="header-text-group">
+                <h3 class="wood-name">{{ creature.name }}</h3>
+                <div class="card-difficulty-label">M.O.M: {{ creature.danger }}</div>
             </div>
-
-            <div class="creature-body">
-                <p class="creature-label">{{ creature.category_label }}</p>
-                <p class="creature-desc">{{ creature.desc }}</p>
-                <div class="creature-origin-wrapper">
-                    <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
-                </div>
-            </div>
-            <span class="click-hint">Toque para detalhes</span>
         </div>
-        {% endfor %}
-    </div>
 
-    <!-- Botão Voltar para Dashboard (No rodapé também) -->
-    <div style="text-align: center; margin-top: 3rem;">
-        <a href="{{ url_for('world') }}" class="tab-link back-btn">
-            ⬅ Voltar ao Mundo
-        </a>
+        <div class="wood-affinity">{{ creature.desc }}</div>
+
+        <div class="creature-origin-wrapper">
+            <p class="creature-label">{{ creature.category_label }}</p>
+            <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
+        </div>
+        <span class="click-hint">Toque para detalhes</span>
     </div>
+    {% endfor %}
+</div>
+
+<!-- Botão Voltar para Dashboard (No rodapé também) -->
+<div style="text-align: center; margin-top: 3rem;">
+    <a href="{{ url_for('world') }}" class="tab-link back-btn">
+        ⬅ Voltar ao Mundo
+    </a>
+</div>
 </div>
 
 <script>

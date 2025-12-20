@@ -5,6 +5,7 @@
 {% block content %}
 <div class="world-container animate-fade-in">
     <div class="hero-section">
+        <a href="{{ url_for('home') }}" class="back-link">← Voltar para o Mundo</a>
         <h1 class="main-title">Laboratório de Poções</h1>
         <p class="hero-subtitle">Misteriosas misturas, elixires poderosos e venenos letais.</p>
     </div>
@@ -43,8 +44,9 @@
 
             <div class="card-header">
                 <span class="mini-icon">{{ potion.icon }}</span>
-                <h3 class="wood-name">{{ potion.name }}</h3>
-                <div class="rarity-badge" title="Dificuldade: {{ potion.difficulty }}">{{ potion.difficulty_level }}
+                <div class="header-text-group">
+                    <h3 class="wood-name">{{ potion.name }}</h3>
+                    <div class="card-difficulty-label">{{ potion.difficulty }}</div>
                 </div>
             </div>
 
@@ -99,7 +101,7 @@
 </div>
 
 <script>
-    const potionsData = {{ potions| tojson }};
+    const potionsData = JSON.parse('{{ potions|tojson|safe }}');
 
     function openPotionModal(id) {
         const potion = potionsData.find(p => p.id === id);
