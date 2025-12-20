@@ -52,8 +52,8 @@
     <section id="woodsGrid" class="woods-grid animate-fade-in">
         {% for wood in woods %}
         <!-- Card Genérico (Madeira ou Núcleo) -->
-        <div class="wood-card {{ wood.rarity }} magic-interactive stagger-{{ (loop.index0 % 12) + 1 }}"
-            title="Clique para saber mais" data-name="{{ wood.name }}" data-rank="{{ wood.rank }}"
+        <div class="wood-card {{ wood.rarity }}" title="Clique para saber mais" data-name="{{ wood.name }}"
+            data-rank="{{ wood.rank }}"
             data-affinity="{{ wood.affinities_slugs if wood.affinities_slugs is defined else '' }}"
             data-owner="{{ wood.details.owner if wood.details is defined else wood.owner }}"
             onclick='openModal({{ (wood.details if wood.details is defined else wood) | tojson }}, "{{ wood.name }}")'>
