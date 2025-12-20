@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca de Feitiços | O Mundo Mágico{% endblock %}
+
+{% block content %}
+<div class="spells-page animate-fade-in">
+    <div class="header-decoration"
+        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
+        <a href="{{ url_for('home') }}" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
+            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
+            ⬅
+        </a>
+        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
+            Biblioteca de Feitiços
+        </h2>
+    </div>
+
+    <!-- Barra de Busca e Filtros -->
+    <div class="filter-toolbar">
+        <div class="search-box">
+            <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
+                onkeyup="filterSpells()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Tipo:</span>
+            <div class="filter-options">
+                <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
+                <button class="filter-chip" onclick="setSpellFilter('charm', this)">Encantamentos</button>
+                <button class="filter-chip" onclick="setSpellFilter('curse', this)">Maldições</button>
+                <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de Feitiços -->
+    <div class="spells-grid" id="spellsGrid">
+        {% for spell in spells %}
+        <div class="spell-card" data-name="{{ spell.name|lower }}" data-incantation="{{ spell.incantation|lower }}"
+            data-type="{{ spell.type }}">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">{{ spell.icon }}</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge {{ spell.type }}">{{ spell.type_label }}</span>
+                        <span class="spell-difficulty">Dificuldade: {{ spell.difficulty }}</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">{{ spell.name }}</h3>
+                <p class="spell-incantation">"{{ spell.incantation }}"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> {{ spell.effect }}</p>
+                    <p class="spell-description">{{ spell.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="noResults" class="no-results hidden">
+        <p>Nenhum segredo mágico encontrado para esta busca...</p>
+    </div>
+</div>
+
+<style>
+    .spells-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .spell-card {
+        background: var(--bg-card);
+        backdrop-filter: blur(12px);
+        border: var(--glass-border);
+        border-radius: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .spell-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--gold-primary);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(214, 175, 55, 0.1);
+    }
+
+    .spell-card-inner {
+        padding: 1.5rem;
+    }
+
+    .spell-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .spell-icon {
+        font-size: 2.5rem;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    }
+
+    .spell-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+    }
+
+    .spell-type-badge {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-family: var(--font-heading);
+        letter-spacing: 1px;
+    }
+
+    .spell-type-badge.charm {
+        background: rgba(0, 191, 255, 0.2);
+        color: #00bfff;
+        border: 1px solid rgba(0, 191, 255, 0.3);
+    }
+
+    .spell-type-badge.curse {
+        background: rgba(255, 69, 0, 0.2);
+        color: #ff4500;
+        border: 1px solid rgba(255, 69, 0, 0.3);
+    }
+
+    .spell-type-badge.healing {
+        background: rgba(50, 205, 50, 0.2);
+        color: #32cd32;
+        border: 1px solid rgba(50, 205, 50, 0.3);
+    }
+
+    .spell-difficulty {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    .spell-name {
+        font-family: var(--font-heading);
+        color: var(--gold-primary);
+        font-size: 1.4rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .spell-incantation {
+        font-family: var(--font-body);
+        font-style: italic;
+        color: #fff;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .spell-body {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 1rem;
+    }
+
+    .spell-effect {
+        color: var(--gold-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .spell-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: var(--text-muted);
+    }
+
+    /* Toolbar de Filtros */
+    .filter-toolbar {
+        background: rgba(8, 16, 32, 0.4);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: var(--glass-border);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .search-box {
+        position: relative;
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.8rem 1rem 0.8rem 2.8rem;
+        border-radius: 8px;
+        color: #fff;
+        font-family: var(--font-body);
+        transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+        outline: none;
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 15px rgba(214, 175, 55, 0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+    }
+
+    .filter-options {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-chip {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        padding: 0.4rem 1.2rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.85rem;
+    }
+
+    .filter-chip:hover,
+    .filter-chip.active {
+        background: rgba(214, 175, 55, 0.1);
+        color: #fff;
+        border-color: var(--gold-primary);
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 4rem;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+</style>
+
+<script>
+    let currentFilter = 'all';
+
+    function setSpellFilter(type, el) {
+        currentFilter = type;
+
+        // Update UI
+        document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+        el.classList.add('active');
+
+        filterSpells();
+    }
+
+    function filterSpells() {
+        const query = document.getElementById('spellSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.spell-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            const incantation = card.getAttribute('data-incantation');
+            const type = card.getAttribute('data-type');
+
+            const matchesQuery = name.includes(query) || incantation.includes(query);
+            const matchesFilter = currentFilter === 'all' || type === currentFilter;
+
+            if (matchesQuery && matchesFilter) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+    }
+</script>
+{% endblock %}

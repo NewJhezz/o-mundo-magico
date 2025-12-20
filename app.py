@@ -908,6 +908,123 @@ FROGS_DATA = [
         'icon': '🍬'
     }
 ]
+# --- DADOS DOS FEITIÇOS ---
+SPELLS_DATA = [
+    {
+        'id': 'expelliarmus',
+        'name': 'Expelliarmus',
+        'incantation': 'Expelliarmus',
+        'type': 'charm',
+        'type_label': 'Encantamento',
+        'effect': 'Desarma o oponente',
+        'description': 'Um dos feitiços defensivos mais importantes do arsenal de um bruxo. Força o objeto que o alvo está segurando a voar longe.',
+        'difficulty': 'Média',
+        'icon': '🪄'
+    },
+    {
+        'id': 'expecto-patronum',
+        'name': 'Expecto Patronum',
+        'incantation': 'Expecto Patronum',
+        'type': 'charm',
+        'type_label': 'Encantamento',
+        'effect': 'Convoca um Patrono',
+        'description': 'Magia altamente avançada que evoca um guardião de energia positiva para repelir Dementadores.',
+        'difficulty': 'Muito Alta',
+        'icon': '🦌'
+    },
+    {
+        'id': 'avada-kedavra',
+        'name': 'Avada Kedavra',
+        'incantation': 'Avada Kedavra',
+        'type': 'curse',
+        'type_label': 'Maldição Imperdoável',
+        'effect': 'Morte instantânea',
+        'description': 'A mais terrível das Maldições Imperdoáveis. Causa morte imediata e indolor sem deixar marcas.',
+        'difficulty': 'Extrema',
+        'icon': '💀'
+    },
+    {
+        'id': 'wingardium-leviosa',
+        'name': 'Wingardium Leviosa',
+        'incantation': 'Wingardium Leviosa',
+        'type': 'charm',
+        'type_label': 'Encantamento',
+        'effect': 'Levitação de objetos',
+        'description': 'Um dos primeiros feitiços aprendidos por jovens bruxos. Permite fazer objetos flutuarem no ar.',
+        'difficulty': 'Baixa',
+        'icon': '🍃'
+    },
+    {
+        'id': 'crucio',
+        'name': 'Crucio',
+        'incantation': 'Cruciatus',
+        'type': 'curse',
+        'type_label': 'Maldição Imperdoável',
+        'effect': 'Tortura extrema',
+        'description': 'Inflige uma dor insuportável no alvo. Uma das três Maldições Imperdoáveis.',
+        'difficulty': 'Extrema',
+        'icon': '⚡'
+    },
+    {
+        'id': 'lumos',
+        'name': 'Lumos',
+        'incantation': 'Lumos',
+        'type': 'charm',
+        'type_label': 'Encantamento',
+        'effect': 'Iluminação',
+        'description': 'Cria uma luz na ponta da varinha do bruxo, funcionando como uma lanterna mágica.',
+        'difficulty': 'Muito Baixa',
+        'icon': '💡'
+    },
+    {
+        'id': 'alohomora',
+        'name': 'Alohomora',
+        'incantation': 'Alohomora',
+        'type': 'charm',
+        'type_label': 'Encantamento',
+        'effect': 'Destrancar fechaduras',
+        'description': 'Usado para abrir portas e janelas que não foram trancadas magicamente.',
+        'difficulty': 'Baixa',
+        'icon': '🔑'
+    },
+    {
+        'id': 'sectumsempra',
+        'name': 'Sectumsempra',
+        'incantation': 'Sectumsempra',
+        'type': 'curse',
+        'type_label': 'Maldição',
+        'effect': 'Cortes profundos',
+        'description': 'Criado por Severo Snape. Cria cortes profundos e invisíveis no alvo, como se ele tivesse sido esfaqueado.',
+        'difficulty': 'Alta',
+        'icon': '⚔️'
+    },
+    {
+        'id': 'episkey',
+        'name': 'Episkey',
+        'incantation': 'Episkey',
+        'type': 'healing',
+        'type_label': 'Cura',
+        'effect': 'Cura ferimentos leves',
+        'description': 'Usado para curar pequenos ferimentos, como narizes quebrados ou dedos machucados.',
+        'difficulty': 'Média',
+        'icon': '🩹'
+    },
+    {
+        'id': 'accio',
+        'name': 'Accio',
+        'incantation': 'Accio',
+        'type': 'charm',
+        'type_label': 'Encantamento convocatório',
+        'effect': 'Convoca objetos',
+        'description': 'Traz um objeto distante até o bruxo que realiza o feitiço.',
+        'difficulty': 'Média',
+        'icon': '🧲'
+    }
+]
+
+@app.route('/feiticos')
+def spells():
+    return render_template('spells.html', spells=SPELLS_DATA, active_tab='spells')
 
 @app.route('/sapos')
 def frogs():

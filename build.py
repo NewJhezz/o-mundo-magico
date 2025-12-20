@@ -23,6 +23,7 @@ def build_static():
             content = content.replace('href="/mundo"', 'href="./index.html"')
             content = content.replace('href="/criaturas"', 'href="./criaturas.html"')
             content = content.replace('href="/sapos"', 'href="./sapos.html"')
+            content = content.replace('href="/feiticos"', 'href="./feiticos.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
