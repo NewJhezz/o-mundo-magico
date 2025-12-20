@@ -534,22 +534,32 @@ h1 {
     }
 }
 
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
 .category-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 3rem 2rem;
+    padding: 2rem;
     text-decoration: none;
     color: var(--text-main);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1rem;
     position: relative;
     overflow: hidden;
+    aspect-ratio: 1 / 1.1;
+    /* Quase quadrado, mas com espaço pro texto */
 }
 
 .category-card::before {
@@ -608,6 +618,7 @@ h1 {
 }
 
 /* --- Responsividade Crítica (Sempre ao final para garantir precedência) --- */
+/* --- Responsividade Crítica --- */
 @media (max-width: 768px) {
     .filter-toolbar {
         flex-direction: column;
@@ -625,6 +636,30 @@ h1 {
         width: 100%;
     }
 
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .category-card {
+        padding: 1.2rem;
+        aspect-ratio: 1 / 1;
+        gap: 0.5rem;
+    }
+
+    .category-icon {
+        font-size: 3rem;
+    }
+
+    .category-info h2 {
+        font-size: 1rem;
+    }
+
+    .category-info p {
+        display: none;
+        /* Mantém limpo e quadrado no mobile */
+    }
+
     .main-title {
         font-size: clamp(1.8rem, 12vw, 2.5rem);
     }
@@ -632,58 +667,29 @@ h1 {
     h1 {
         font-size: 1.6rem;
     }
-
-    .tabs {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero-section {
-        padding: 4rem 1rem;
-    }
 }
 
 @media (max-width: 480px) {
     .main-title {
         font-size: clamp(1.5rem, 15vw, 1.8rem);
-        /* Mais agressivo */
     }
 
     .hero-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .category-icon {
+        font-size: 2.5rem;
     }
 }
 
-/* --- Interatividade Mágica --- */
-@keyframes magic-pulse {
-    0% {
-        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-        border-color: rgba(212, 175, 55, 0.2);
-    }
-
-    50% {
-        box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-        border-color: var(--gold-primary);
-    }
-
-    100% {
-        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-        border-color: rgba(212, 175, 55, 0.2);
-    }
-}
-
-.magic-interactive {
-    position: relative;
-    animation: magic-pulse 6s infinite ease-in-out;
-}
-
+/* --- Interatividade de Click (Hint) --- */
 .click-hint {
     position: absolute;
-    bottom: 0.8rem;
+    bottom: 0.3rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     color: var(--gold-secondary);
     opacity: 0;
     font-family: var(--font-heading);
@@ -701,54 +707,5 @@ h1 {
 .frog-card:hover .click-hint,
 .spell-card:hover .click-hint {
     opacity: 0.8;
-    bottom: 1rem;
-}
-
-/* Staggered Delay para o pulso (percorrendo a grade) */
-.stagger-1 {
-    animation-delay: 0.4s;
-}
-
-.stagger-2 {
-    animation-delay: 0.8s;
-}
-
-.stagger-3 {
-    animation-delay: 1.2s;
-}
-
-.stagger-4 {
-    animation-delay: 1.6s;
-}
-
-.stagger-5 {
-    animation-delay: 2.0s;
-}
-
-.stagger-6 {
-    animation-delay: 2.4s;
-}
-
-.stagger-7 {
-    animation-delay: 2.8s;
-}
-
-.stagger-8 {
-    animation-delay: 3.2s;
-}
-
-.stagger-9 {
-    animation-delay: 3.6s;
-}
-
-.stagger-10 {
-    animation-delay: 4.0s;
-}
-
-.stagger-11 {
-    animation-delay: 4.4s;
-}
-
-.stagger-12 {
-    animation-delay: 4.8s;
+    bottom: 0.45rem;
 }
