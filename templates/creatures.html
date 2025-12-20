@@ -44,15 +44,19 @@
             <span class="mini-icon">{{ creature.icon }}</span>
             <div class="header-text-group">
                 <h3 class="wood-name">{{ creature.name }}</h3>
-                <div class="card-difficulty-label">M.O.M: {{ creature.danger }}</div>
+                <div class="danger-stars-mini" title="Periculosidade: {{ creature.danger }}">
+                    {% for i in range(creature.danger_level) %}⭐{% endfor %}
+                </div>
             </div>
         </div>
 
         <div class="wood-affinity">{{ creature.desc }}</div>
 
         <div class="creature-origin-wrapper">
-            <p class="creature-label">{{ creature.category_label }}</p>
-            <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
+            <div class="card-difficulty-label">{{ creature.category_label }}</div>
+            <p class="creature-origin" style="margin-top: 5px; font-size: 0.75rem;">
+                <strong>Origem:</strong> {{ creature.origin }}
+            </p>
         </div>
         <span class="click-hint">Toque para detalhes</span>
     </div>

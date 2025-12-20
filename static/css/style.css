@@ -163,10 +163,15 @@ h1 {
 /* Header do Card: Ícone + Nome + Badge */
 .card-header {
     display: flex;
+    justify-content: center;
+    /* Centralizar tudo */
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 0.5rem;
+    position: relative;
+    /* Para o badge absoluto se necessário */
+    width: 100%;
 }
 
 .mini-icon {
@@ -188,25 +193,22 @@ h1 {
     /* Centralizar entre ícone e badge */
 }
 
-/* Badge de Raridade (Agora no fluxo do header) */
+/* Badge de Raridade (Volta para o canto superior direito) */
 .rarity-badge {
-    position: static;
-    /* Remove absolute */
-    font-size: 0.65rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.6rem;
     font-weight: bold;
     font-family: var(--font-heading);
-    width: 20px;
-    height: 20px;
-    /* Flexbox para centralização perfeita */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+    padding: 2px 8px;
+    border-radius: 4px;
     color: var(--bg-dark);
     background: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0;
-    /* Não encolher */
+    z-index: 5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Estilos Específicos de Raridade (Bordas e Cores Badge) */
@@ -401,16 +403,27 @@ h1 {
 .header-text-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    /* CENTRALIZADO */
+    text-align: center;
     gap: 2px;
 }
 
 .card-difficulty-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--gold-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.8;
+}
+
+.creature-origin-wrapper {
+    margin-top: auto;
+    width: 100%;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    /* Centralizar Origem */
 }
 
 /* Botão Voltar */
