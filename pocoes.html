@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Poções | Wiki Mágica</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="container">
+        
+        <header class="main-header">
+            <h1><a href="./index.html" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
+        </header>
+        
+
+        <main>
+            
+<div class="world-container animate-fade-in">
+    <div class="hero-section">
+        <h1 class="main-title">Laboratório de Poções</h1>
+        <p class="hero-subtitle">Misteriosas misturas, elixires poderosos e venenos letais.</p>
+    </div>
+
+    <!-- Toolbar de Filtros -->
+    <div class="filter-toolbar">
+        <div class="filter-group">
+            <label class="filter-label">Efeito:</label>
+            <select id="typeFilter" class="custom-select" onchange="filterPotions()">
+                <option value="all">Todas as Categorias</option>
+                <option value="utility">Utilidade / Transformação</option>
+                <option value="healing">Cura</option>
+                <option value="influence">Influência</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Dificuldade:</label>
+            <select id="diffFilter" class="custom-select" onchange="filterPotions()">
+                <option value="all">Qualquer Nível</option>
+                <option value="3">Intermediária</option>
+                <option value="4">Muito Difícil / Avançada</option>
+                <option value="5">Extrema</option>
+            </select>
+        </div>
+        <div class="search-box">
+            <input type="text" id="potionSearch" placeholder="Buscar poção ou ingrediente..." onkeyup="filterPotions()">
+        </div>
+    </div>
+
+    <!-- Grid de Poções -->
+    <div id="potionsGrid" class="woods-grid">
+        
+        <div class="wood-card potion-card" data-type="utility" data-difficulty="4"
+            data-search="amortentia ovos de ashwinder pétalas de rosa de inverno espinhos de porco-espinho sementes de erva-doce"
+            onclick="openPotionModal('amortentia')">
+
+            <div class="card-header">
+                <span class="mini-icon">💘</span>
+                <h3 class="wood-name">Amortentia</h3>
+                <div class="rarity-badge" title="Dificuldade: Avançada">4
+                </div>
+            </div>
+
+            <div class="wood-affinity">Poção do Amor mais poderosa</div>
+
+            <div class="card-footer-type">Utilidade / Emoção</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+        <div class="wood-card potion-card" data-type="utility" data-difficulty="5"
+            data-search="felix felicis ovos de occamy tentáculo de murtisco raiz de mandrágora cozida tintura de tomilho"
+            onclick="openPotionModal('felix-felicis')">
+
+            <div class="card-header">
+                <span class="mini-icon">🧪</span>
+                <h3 class="wood-name">Felix Felicis</h3>
+                <div class="rarity-badge" title="Dificuldade: Extrema">5
+                </div>
+            </div>
+
+            <div class="wood-affinity">Sorte Líquida</div>
+
+            <div class="card-footer-type">Utilidade / Sorte</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+        <div class="wood-card potion-card" data-type="utility" data-difficulty="4"
+            data-search="poção polissuco hemeróbios (cozidos por 21 dias) sanguessugas pó de chifre de bicórnio pele de araramboia picada um pedaço da pessoa (cabelo, unhas, etc.)"
+            onclick="openPotionModal('polissuco')">
+
+            <div class="card-header">
+                <span class="mini-icon">👥</span>
+                <h3 class="wood-name">Poção Polissuco</h3>
+                <div class="rarity-badge" title="Dificuldade: Muito Difícil">4
+                </div>
+            </div>
+
+            <div class="wood-affinity">Transforma na aparência de outra pessoa</div>
+
+            <div class="card-footer-type">Transformação</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+        <div class="wood-card potion-card" data-type="influence" data-difficulty="5"
+            data-search="veritaserum água pura de nascente penas de dedo-duro raiz de acônito essência de belladonna"
+            onclick="openPotionModal('veritaserum')">
+
+            <div class="card-header">
+                <span class="mini-icon">🩸</span>
+                <h3 class="wood-name">Veritaserum</h3>
+                <div class="rarity-badge" title="Dificuldade: Extrema">5
+                </div>
+            </div>
+
+            <div class="wood-affinity">Soro da Verdade mais poderoso</div>
+
+            <div class="card-footer-type">Influência / Verdade</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+        <div class="wood-card potion-card" data-type="healing" data-difficulty="3"
+            data-search="esquele-gás presas de dragão moídas sumo de mandrágora extrato de urtiga escaravelhos esmagados"
+            onclick="openPotionModal('esquelesgas')">
+
+            <div class="card-header">
+                <span class="mini-icon">🦴</span>
+                <h3 class="wood-name">Esquele-Gás</h3>
+                <div class="rarity-badge" title="Dificuldade: Intermediária">3
+                </div>
+            </div>
+
+            <div class="wood-affinity">Regenera ossos perdidos</div>
+
+            <div class="card-footer-type">Cura</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+        <div class="wood-card potion-card" data-type="healing" data-difficulty="4"
+            data-search="poção de acônito acônito (ou mata-cão) pó de lua moído sálvia de prata essência de cicuta"
+            onclick="openPotionModal('aconito')">
+
+            <div class="card-header">
+                <span class="mini-icon">🐺</span>
+                <h3 class="wood-name">Poção de Acônito</h3>
+                <div class="rarity-badge" title="Dificuldade: Muito Difícil">4
+                </div>
+            </div>
+
+            <div class="wood-affinity">Alivia sintomas da Licantropia</div>
+
+            <div class="card-footer-type">Cura / Controle</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Modal de Detalhes da Poção -->
+<div id="potionModal" class="modal-overlay" onclick="closePotionModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closePotionModal(event)">&times;</button>
+        <div class="modal-header">
+            <div class="header-main">
+                <span id="modalIcon" style="font-size: 2.5rem; margin-right: 1rem;">🧪</span>
+                <h2 id="modalTitle" class="modal-title">Nome da Poção</h2>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="detail-section">
+                <span class="detail-label">Descrição</span>
+                <p id="modalDescription" class="detail-value">Descrição detalhada aqui...</p>
+            </div>
+
+            <div class="detail-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div class="detail-section">
+                    <span class="detail-label">Ingredientes</span>
+                    <ul id="modalIngredients" style="list-style: disc; padding-left: 1.2rem; color: var(--text-main);">
+                        <!-- Lista de ingredientes -->
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <span class="detail-label">Modo de Preparo</span>
+                    <ol id="modalInstructions"
+                        style="list-style: decimal; padding-left: 1.2rem; color: var(--text-main);">
+                        <!-- Lista de instruções -->
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <p id="modalEffect" style="color: var(--gold-primary); font-weight: bold;"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const potionsData = [{"description": "N\u00e3o cria amor, mas uma obsess\u00e3o poderosa. Tem um brilho perolado e fuma\u00e7a em espirais.", "difficulty": "Avan\u00e7ada", "difficulty_level": 4, "effect": "Po\u00e7\u00e3o do Amor mais poderosa", "icon": "\ud83d\udc98", "id": "amortentia", "ingredients": ["Ovos de Ashwinder", "P\u00e9talas de Rosa de Inverno", "Espinhos de Porco-espinho", "Sementes de Erva-doce"], "instructions": ["Adicione os ovos de Ashwinder ao caldeir\u00e3o j\u00e1 aquecido.", "Mexa no sentido hor\u00e1rio at\u00e9 a po\u00e7\u00e3o ficar vermelha.", "Adicione as p\u00e9talas de rosa e reduza o fogo.", "Deixe cozinhar por 24 horas at\u00e9 atingir o brilho perolado."], "name": "Amortentia", "type": "utility", "type_label": "Utilidade / Emo\u00e7\u00e3o"}, {"description": "Torna quem a bebe sortudo por um tempo. \u00c9 de cor ouro derretido.", "difficulty": "Extrema", "difficulty_level": 5, "effect": "Sorte L\u00edquida", "icon": "\ud83e\uddea", "id": "felix-felicis", "ingredients": ["Ovos de Occamy", "Tent\u00e1culo de Murtisco", "Raiz de Mandr\u00e1gora cozida", "Tintura de Tomilho"], "instructions": ["Aque\u00e7a o caldeir\u00e3o at\u00e9 a \u00e1gua ferver vigorosamente.", "Adicione os ovos de Occamy um a um.", "Mexa 3 vezes no sentido anti-hor\u00e1rio ap\u00f3s cada ingrediente.", "Aguarde 6 meses para que a mistura decante e se torne dourada."], "name": "Felix Felicis", "type": "utility", "type_label": "Utilidade / Sorte"}, {"description": "Permite que o usu\u00e1rio assuma a forma f\u00edsica de outra pessoa por uma hora.", "difficulty": "Muito Dif\u00edcil", "difficulty_level": 4, "effect": "Transforma na apar\u00eancia de outra pessoa", "icon": "\ud83d\udc65", "id": "polissuco", "ingredients": ["Hemer\u00f3bios (cozidos por 21 dias)", "Sanguessugas", "P\u00f3 de chifre de Bic\u00f3rnio", "Pele de Araramboia picada", "Um peda\u00e7o da pessoa (cabelo, unhas, etc.)"], "instructions": ["Cozinhe os hemer\u00f3bios por exatamente 21 dias.", "Adicione as sanguessugas e mexa vigorosamente.", "Acrescente o p\u00f3 de chifre de bic\u00f3rnio e a pele de araramboia.", "Por \u00faltimo, adicione o \"peda\u00e7o\" da pessoa a ser assumida."], "name": "Po\u00e7\u00e3o Polissuco", "type": "utility", "type_label": "Transforma\u00e7\u00e3o"}, {"description": "Tr\u00eas gotas for\u00e7am o usu\u00e1rio a revelar seus segredos mais profundos.", "difficulty": "Extrema", "difficulty_level": 5, "effect": "Soro da Verdade mais poderoso", "icon": "\ud83e\ude78", "id": "veritaserum", "ingredients": ["\u00c1gua pura de nascente", "Penas de Dedo-duro", "Raiz de Ac\u00f4nito", "Ess\u00eancia de Belladonna"], "instructions": ["A po\u00e7\u00e3o deve ser preparada durante uma lua cheia.", "Misture os ingredientes em um caldeir\u00e3o de cristal.", "Deixe descansar por um ciclo lunar completo.", "A po\u00e7\u00e3o final deve ser clara como \u00e1gua e sem cheiro."], "name": "Veritaserum", "type": "influence", "type_label": "Influ\u00eancia / Verdade"}, {"description": "Causa uma dor terr\u00edvel durante o processo de crescimento \u00f3sseo.", "difficulty": "Intermedi\u00e1ria", "difficulty_level": 3, "effect": "Regenera ossos perdidos", "icon": "\ud83e\uddb4", "id": "esquelesgas", "ingredients": ["Presas de drag\u00e3o mo\u00eddas", "Sumo de mandr\u00e1gora", "Extrato de urtiga", "Escaravelhos esmagados"], "instructions": ["Misture as presas de drag\u00e3o com o sumo de mandr\u00e1gora.", "Ferva at\u00e9 a po\u00e7\u00e3o adquirir uma cor cinza fumegante.", "Adicione os escaravelhos e mexa 7 vezes para a esquerda.", "Sirva quente ao paciente."], "name": "Esquele-G\u00e1s", "type": "healing", "type_label": "Cura"}, {"description": "Permite que o lobisomem mantenha sua consci\u00eancia humana durante a transforma\u00e7\u00e3o.", "difficulty": "Muito Dif\u00edcil", "difficulty_level": 4, "effect": "Alivia sintomas da Licantropia", "icon": "\ud83d\udc3a", "id": "aconito", "ingredients": ["Ac\u00f4nito (ou Mata-c\u00e3o)", "P\u00f3 de Lua mo\u00eddo", "S\u00e1lvia de prata", "Ess\u00eancia de Cicuta"], "instructions": ["Deve ser tomada diariamente na semana anterior \u00e0 lua cheia.", "Misture o ac\u00f4nito delicadamente para n\u00e3o liberar toxinas excessivas.", "A fuma\u00e7a deve ter um tom azulado constante.", "O preparo \u00e9 extremamente sens\u00edvel ao calor."], "name": "Po\u00e7\u00e3o de Ac\u00f4nito", "type": "healing", "type_label": "Cura / Controle"}];
+
+    function openPotionModal(id) {
+        const potion = potionsData.find(p => p.id === id);
+        if (!potion) return;
+
+        document.getElementById('modalTitle').innerText = potion.name;
+        document.getElementById('modalIcon').innerText = potion.icon;
+        document.getElementById('modalDescription').innerText = potion.description;
+        document.getElementById('modalEffect').innerText = "Efeito: " + potion.effect;
+
+        // Limpar e preencher ingredientes
+        const ingList = document.getElementById('modalIngredients');
+        ingList.innerHTML = '';
+        potion.ingredients.forEach(ing => {
+            const li = document.createElement('li');
+            li.innerText = ing;
+            ingList.appendChild(li);
+        });
+
+        // Limpar e preencher instruções
+        const instList = document.getElementById('modalInstructions');
+        instList.innerHTML = '';
+        potion.instructions.forEach(inst => {
+            const li = document.createElement('li');
+            li.innerText = inst;
+            instList.appendChild(li);
+        });
+
+        const modal = document.getElementById('potionModal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('open'), 10);
+    }
+
+    function closePotionModal(event) {
+        const modal = document.getElementById('potionModal');
+        modal.classList.remove('open');
+        setTimeout(() => modal.style.display = 'none', 400);
+    }
+
+    function filterPotions() {
+        const type = document.getElementById('typeFilter').value;
+        const diff = document.getElementById('diffFilter').value;
+        const search = document.getElementById('potionSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.potion-card');
+
+        cards.forEach(card => {
+            const cardType = card.getAttribute('data-type');
+            const cardDiff = card.getAttribute('data-difficulty');
+            const cardSearch = card.getAttribute('data-search');
+
+            const matchType = type === 'all' || cardType === type;
+            const matchDiff = diff === 'all' || cardDiff === diff;
+            const matchSearch = cardSearch.includes(search);
+
+            if (matchType && matchDiff && matchSearch) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePotionModal();
+    });
+</script>
+
+<style>
+    .search-box input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        width: 300px;
+        font-family: var(--font-body);
+    }
+
+    .search-box input:focus {
+        outline: none;
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .potion-card {
+        cursor: pointer;
+    }
+
+    .detail-section {
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .detail-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+
+        </main>
+
+        <footer
+            style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+            <p style="margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                By
+                <a href="https://www.instagram.com/higorstattoo" target="_blank"
+                    style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16" style="vertical-align: middle;">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                    @higorstattoo
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function createMagicEffect(type = 'spark') {
+            const container = document.getElementById('particles');
+            if (!container) return;
+
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.pointerEvents = 'none';
+            particle.style.borderRadius = '50%';
+            particle.style.zIndex = '-1';
+
+            let size, x, y, duration, animation;
+
+            if (type === 'spark') {
+                size = Math.random() * 2 + 1;
+                x = Math.random() * window.innerWidth;
+                y = window.innerHeight + 10;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(212, 175, 55, 0.6)';
+                particle.style.boxShadow = '0 0 8px rgba(212, 175, 55, 0.8)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 3000 + 2000;
+                animation = particle.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: `translateY(-${window.innerHeight + 50}px) scale(0)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-out' });
+
+            } else if (type === 'firefly') {
+                size = Math.random() * 3 + 2;
+                x = Math.random() * window.innerWidth;
+                y = Math.random() * window.innerHeight;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(255, 230, 100, 0.8)';
+                particle.style.boxShadow = '0 0 15px rgba(255, 220, 0, 1)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 10000 + 5000;
+                const driftX = (Math.random() - 0.5) * 200;
+                const driftY = (Math.random() - 0.5) * 200;
+
+                animation = particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0 },
+                    { transform: `translate(${driftX / 2}px, ${driftY / 2}px) scale(1.2)`, opacity: 0.8, offset: 0.5 },
+                    { transform: `translate(${driftX}px, ${driftY}px) scale(0.5)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-in-out' });
+
+            } else if (type === 'rare') {
+                // O Pomo de Ouro (Douratudo) passa raramente
+                particle.innerHTML = '✨';
+                particle.style.fontSize = '1.2rem';
+                particle.style.borderRadius = '0';
+                particle.style.background = 'none';
+                particle.style.boxShadow = 'none';
+                particle.style.left = '-50px';
+                particle.style.top = Math.random() * 80 + '%';
+
+                duration = 2000; // Rápido!
+                animation = particle.animate([
+                    { left: '-50px', transform: 'rotate(0deg) scale(1)' },
+                    { left: '110vw', transform: 'rotate(720deg) scale(1.5)' }
+                ], { duration: duration, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' });
+            }
+
+            container.appendChild(particle);
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Loop de geração
+        setInterval(() => {
+            const rand = Math.random();
+            if (rand < 0.7) {
+                createMagicEffect('spark');
+            } else if (rand < 0.98) {
+                createMagicEffect('firefly');
+            } else if (rand > 0.9995) {
+                // Muito raro! (Aproximadamente 1 a cada 2000 ticks)
+                createMagicEffect('rare');
+            }
+        }, 100); // 10 partículas por segundo em média
+    </script>
+</body>
+
+</html>

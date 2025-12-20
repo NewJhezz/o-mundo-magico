@@ -24,6 +24,7 @@ def build_static():
             content = content.replace('href="/criaturas"', 'href="./criaturas.html"')
             content = content.replace('href="/sapos"', 'href="./sapos.html"')
             content = content.replace('href="/feiticos"', 'href="./feiticos.html"')
+            content = content.replace('href="/pocoes"', 'href="./pocoes.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
@@ -74,6 +75,13 @@ def build_static():
         with open('feiticos.html', 'w', encoding='utf-8') as f:
             f.write(fix_links(content))
         print("OK: feiticos.html gerado!")
+
+        # --- 8. Poções ---
+        from app import potions
+        content = potions()
+        with open('pocoes.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: pocoes.html gerado!")
 
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 

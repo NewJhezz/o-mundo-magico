@@ -1372,6 +1372,152 @@ SPELLS_DATA = [
     }
 ]
 
+POTIONS_DATA = [
+    {
+        'id': 'amortentia',
+        'name': 'Amortentia',
+        'effect': 'Poção do Amor mais poderosa',
+        'type': 'utility',
+        'type_label': 'Utilidade / Emoção',
+        'difficulty': 'Avançada',
+        'difficulty_level': 4,
+        'description': 'Não cria amor, mas uma obsessão poderosa. Tem um brilho perolado e fumaça em espirais.',
+        'ingredients': [
+            'Ovos de Ashwinder',
+            'Pétalas de Rosa de Inverno',
+            'Espinhos de Porco-espinho',
+            'Sementes de Erva-doce'
+        ],
+        'instructions': [
+            'Adicione os ovos de Ashwinder ao caldeirão já aquecido.',
+            'Mexa no sentido horário até a poção ficar vermelha.',
+            'Adicione as pétalas de rosa e reduza o fogo.',
+            'Deixe cozinhar por 24 horas até atingir o brilho perolado.'
+        ],
+        'icon': '💘'
+    },
+    {
+        'id': 'felix-felicis',
+        'name': 'Felix Felicis',
+        'effect': 'Sorte Líquida',
+        'type': 'utility',
+        'type_label': 'Utilidade / Sorte',
+        'difficulty': 'Extrema',
+        'difficulty_level': 5,
+        'description': 'Torna quem a bebe sortudo por um tempo. É de cor ouro derretido.',
+        'ingredients': [
+            'Ovos de Occamy',
+            'Tentáculo de Murtisco',
+            'Raiz de Mandrágora cozida',
+            'Tintura de Tomilho'
+        ],
+        'instructions': [
+            'Aqueça o caldeirão até a água ferver vigorosamente.',
+            'Adicione os ovos de Occamy um a um.',
+            'Mexa 3 vezes no sentido anti-horário após cada ingrediente.',
+            'Aguarde 6 meses para que a mistura decante e se torne dourada.'
+        ],
+        'icon': '🧪'
+    },
+    {
+        'id': 'polissuco',
+        'name': 'Poção Polissuco',
+        'effect': 'Transforma na aparência de outra pessoa',
+        'type': 'utility',
+        'type_label': 'Transformação',
+        'difficulty': 'Muito Difícil',
+        'difficulty_level': 4,
+        'description': 'Permite que o usuário assuma a forma física de outra pessoa por uma hora.',
+        'ingredients': [
+            'Hemeróbios (cozidos por 21 dias)',
+            'Sanguessugas',
+            'Pó de chifre de Bicórnio',
+            'Pele de Araramboia picada',
+            'Um pedaço da pessoa (cabelo, unhas, etc.)'
+        ],
+        'instructions': [
+            'Cozinhe os hemeróbios por exatamente 21 dias.',
+            'Adicione as sanguessugas e mexa vigorosamente.',
+            'Acrescente o pó de chifre de bicórnio e a pele de araramboia.',
+            'Por último, adicione o "pedaço" da pessoa a ser assumida.'
+        ],
+        'icon': '👥'
+    },
+    {
+        'id': 'veritaserum',
+        'name': 'Veritaserum',
+        'effect': 'Soro da Verdade mais poderoso',
+        'type': 'influence',
+        'type_label': 'Influência / Verdade',
+        'difficulty': 'Extrema',
+        'difficulty_level': 5,
+        'description': 'Três gotas forçam o usuário a revelar seus segredos mais profundos.',
+        'ingredients': [
+            'Água pura de nascente',
+            'Penas de Dedo-duro',
+            'Raiz de Acônito',
+            'Essência de Belladonna'
+        ],
+        'instructions': [
+            'A poção deve ser preparada durante uma lua cheia.',
+            'Misture os ingredientes em um caldeirão de cristal.',
+            'Deixe descansar por um ciclo lunar completo.',
+            'A poção final deve ser clara como água e sem cheiro.'
+        ],
+        'icon': '🩸'
+    },
+    {
+        'id': 'esquelesgas',
+        'name': 'Esquele-Gás',
+        'effect': 'Regenera ossos perdidos',
+        'type': 'healing',
+        'type_label': 'Cura',
+        'difficulty': 'Intermediária',
+        'difficulty_level': 3,
+        'description': 'Causa uma dor terrível durante o processo de crescimento ósseo.',
+        'ingredients': [
+            'Presas de dragão moídas',
+            'Sumo de mandrágora',
+            'Extrato de urtiga',
+            'Escaravelhos esmagados'
+        ],
+        'instructions': [
+            'Misture as presas de dragão com o sumo de mandrágora.',
+            'Ferva até a poção adquirir uma cor cinza fumegante.',
+            'Adicione os escaravelhos e mexa 7 vezes para a esquerda.',
+            'Sirva quente ao paciente.'
+        ],
+        'icon': '🦴'
+    },
+    {
+        'id': 'aconito',
+        'name': 'Poção de Acônito',
+        'effect': 'Alivia sintomas da Licantropia',
+        'type': 'healing',
+        'type_label': 'Cura / Controle',
+        'difficulty': 'Muito Difícil',
+        'difficulty_level': 4,
+        'description': 'Permite que o lobisomem mantenha sua consciência humana durante a transformação.',
+        'ingredients': [
+            'Acônito (ou Mata-cão)',
+            'Pó de Lua moído',
+            'Sálvia de prata',
+            'Essência de Cicuta'
+        ],
+        'instructions': [
+            'Deve ser tomada diariamente na semana anterior à lua cheia.',
+            'Misture o acônito delicadamente para não liberar toxinas excessivas.',
+            'A fumaça deve ter um tom azulado constante.',
+            'O preparo é extremamente sensível ao calor.'
+        ],
+        'icon': '🐺'
+    }
+]
+
+@app.route('/pocoes')
+def potions():
+    return render_template('potions.html', potions=POTIONS_DATA, active_tab='potions')
+
 @app.route('/feiticos')
 def spells():
     return render_template('spells.html', spells=SPELLS_DATA, active_tab='spells')

@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca de Poções | Wiki Mágica{% endblock %}
+
+{% block content %}
+<div class="world-container animate-fade-in">
+    <div class="hero-section">
+        <h1 class="main-title">Laboratório de Poções</h1>
+        <p class="hero-subtitle">Misteriosas misturas, elixires poderosos e venenos letais.</p>
+    </div>
+
+    <!-- Toolbar de Filtros -->
+    <div class="filter-toolbar">
+        <div class="filter-group">
+            <label class="filter-label">Efeito:</label>
+            <select id="typeFilter" class="custom-select" onchange="filterPotions()">
+                <option value="all">Todas as Categorias</option>
+                <option value="utility">Utilidade / Transformação</option>
+                <option value="healing">Cura</option>
+                <option value="influence">Influência</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Dificuldade:</label>
+            <select id="diffFilter" class="custom-select" onchange="filterPotions()">
+                <option value="all">Qualquer Nível</option>
+                <option value="3">Intermediária</option>
+                <option value="4">Muito Difícil / Avançada</option>
+                <option value="5">Extrema</option>
+            </select>
+        </div>
+        <div class="search-box">
+            <input type="text" id="potionSearch" placeholder="Buscar poção ou ingrediente..." onkeyup="filterPotions()">
+        </div>
+    </div>
+
+    <!-- Grid de Poções -->
+    <div id="potionsGrid" class="woods-grid">
+        {% for potion in potions %}
+        <div class="wood-card potion-card" data-type="{{ potion.type }}" data-difficulty="{{ potion.difficulty_level }}"
+            data-search="{{ potion.name|lower }} {{ potion.ingredients|join(' ')|lower }}"
+            onclick="openPotionModal('{{ potion.id }}')">
+
+            <div class="card-header">
+                <span class="mini-icon">{{ potion.icon }}</span>
+                <h3 class="wood-name">{{ potion.name }}</h3>
+                <div class="rarity-badge" title="Dificuldade: {{ potion.difficulty }}">{{ potion.difficulty_level }}
+                </div>
+            </div>
+
+            <div class="wood-affinity">{{ potion.effect }}</div>
+
+            <div class="card-footer-type">{{ potion.type_label }}</div>
+            <span class="click-hint">Ver Receita</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal de Detalhes da Poção -->
+<div id="potionModal" class="modal-overlay" onclick="closePotionModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closePotionModal(event)">&times;</button>
+        <div class="modal-header">
+            <div class="header-main">
+                <span id="modalIcon" style="font-size: 2.5rem; margin-right: 1rem;">🧪</span>
+                <h2 id="modalTitle" class="modal-title">Nome da Poção</h2>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="detail-section">
+                <span class="detail-label">Descrição</span>
+                <p id="modalDescription" class="detail-value">Descrição detalhada aqui...</p>
+            </div>
+
+            <div class="detail-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div class="detail-section">
+                    <span class="detail-label">Ingredientes</span>
+                    <ul id="modalIngredients" style="list-style: disc; padding-left: 1.2rem; color: var(--text-main);">
+                        <!-- Lista de ingredientes -->
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <span class="detail-label">Modo de Preparo</span>
+                    <ol id="modalInstructions"
+                        style="list-style: decimal; padding-left: 1.2rem; color: var(--text-main);">
+                        <!-- Lista de instruções -->
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <p id="modalEffect" style="color: var(--gold-primary); font-weight: bold;"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const potionsData = {{ potions| tojson }};
+
+    function openPotionModal(id) {
+        const potion = potionsData.find(p => p.id === id);
+        if (!potion) return;
+
+        document.getElementById('modalTitle').innerText = potion.name;
+        document.getElementById('modalIcon').innerText = potion.icon;
+        document.getElementById('modalDescription').innerText = potion.description;
+        document.getElementById('modalEffect').innerText = "Efeito: " + potion.effect;
+
+        // Limpar e preencher ingredientes
+        const ingList = document.getElementById('modalIngredients');
+        ingList.innerHTML = '';
+        potion.ingredients.forEach(ing => {
+            const li = document.createElement('li');
+            li.innerText = ing;
+            ingList.appendChild(li);
+        });
+
+        // Limpar e preencher instruções
+        const instList = document.getElementById('modalInstructions');
+        instList.innerHTML = '';
+        potion.instructions.forEach(inst => {
+            const li = document.createElement('li');
+            li.innerText = inst;
+            instList.appendChild(li);
+        });
+
+        const modal = document.getElementById('potionModal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('open'), 10);
+    }
+
+    function closePotionModal(event) {
+        const modal = document.getElementById('potionModal');
+        modal.classList.remove('open');
+        setTimeout(() => modal.style.display = 'none', 400);
+    }
+
+    function filterPotions() {
+        const type = document.getElementById('typeFilter').value;
+        const diff = document.getElementById('diffFilter').value;
+        const search = document.getElementById('potionSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.potion-card');
+
+        cards.forEach(card => {
+            const cardType = card.getAttribute('data-type');
+            const cardDiff = card.getAttribute('data-difficulty');
+            const cardSearch = card.getAttribute('data-search');
+
+            const matchType = type === 'all' || cardType === type;
+            const matchDiff = diff === 'all' || cardDiff === diff;
+            const matchSearch = cardSearch.includes(search);
+
+            if (matchType && matchDiff && matchSearch) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePotionModal();
+    });
+</script>
+
+<style>
+    .search-box input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        width: 300px;
+        font-family: var(--font-body);
+    }
+
+    .search-box input:focus {
+        outline: none;
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .potion-card {
+        cursor: pointer;
+    }
+
+    .detail-section {
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .detail-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+{% endblock %}
