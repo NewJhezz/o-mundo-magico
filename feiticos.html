@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Feitiços | O Mundo Mágico</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="container">
+        
+        <header class="main-header">
+            <h1><a href="./index.html" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
+        </header>
+        
+
+        <main>
+            
+<div class="spells-page animate-fade-in">
+    <div class="header-decoration"
+        style="display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2rem;">
+        <a href="./index.html" class="tab-link back-btn" title="Voltar para O Mundo Mágico"
+            style="position: absolute; left: 0; margin: 0; padding: 0.5rem 1rem;">
+            ⬅
+        </a>
+        <h2 style="text-align: center; color: var(--gold-primary); font-family: var(--font-heading); margin: 0;">
+            Biblioteca de Feitiços
+        </h2>
+    </div>
+
+    <!-- Barra de Busca e Filtros -->
+    <div class="filter-toolbar">
+        <div class="search-box">
+            <input type="text" id="spellSearch" placeholder="Pesquisar feitiço ou incantação..."
+                onkeyup="filterSpells()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="filter-group">
+            <span class="filter-label">Tipo:</span>
+            <div class="filter-options">
+                <button class="filter-chip active" onclick="setSpellFilter('all', this)">Todos</button>
+                <button class="filter-chip" onclick="setSpellFilter('charm', this)">Encantamentos</button>
+                <button class="filter-chip" onclick="setSpellFilter('curse', this)">Maldições</button>
+                <button class="filter-chip" onclick="setSpellFilter('healing', this)">Cura</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de Feitiços -->
+    <div class="spells-grid" id="spellsGrid">
+        
+        <div class="spell-card" data-name="expelliarmus" data-incantation="expelliarmus"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🪄</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento</span>
+                        <span class="spell-difficulty">Dificuldade: Média</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Expelliarmus</h3>
+                <p class="spell-incantation">"Expelliarmus"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Desarma o oponente</p>
+                    <p class="spell-description">Um dos feitiços defensivos mais importantes do arsenal de um bruxo. Força o objeto que o alvo está segurando a voar longe.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="expecto patronum" data-incantation="expecto patronum"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🦌</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento</span>
+                        <span class="spell-difficulty">Dificuldade: Muito Alta</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Expecto Patronum</h3>
+                <p class="spell-incantation">"Expecto Patronum"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Convoca um Patrono</p>
+                    <p class="spell-description">Magia altamente avançada que evoca um guardião de energia positiva para repelir Dementadores.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="avada kedavra" data-incantation="avada kedavra"
+            data-type="curse">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">💀</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge curse">Maldição Imperdoável</span>
+                        <span class="spell-difficulty">Dificuldade: Extrema</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Avada Kedavra</h3>
+                <p class="spell-incantation">"Avada Kedavra"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Morte instantânea</p>
+                    <p class="spell-description">A mais terrível das Maldições Imperdoáveis. Causa morte imediata e indolor sem deixar marcas.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="wingardium leviosa" data-incantation="wingardium leviosa"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🍃</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento</span>
+                        <span class="spell-difficulty">Dificuldade: Baixa</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Wingardium Leviosa</h3>
+                <p class="spell-incantation">"Wingardium Leviosa"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Levitação de objetos</p>
+                    <p class="spell-description">Um dos primeiros feitiços aprendidos por jovens bruxos. Permite fazer objetos flutuarem no ar.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="crucio" data-incantation="cruciatus"
+            data-type="curse">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">⚡</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge curse">Maldição Imperdoável</span>
+                        <span class="spell-difficulty">Dificuldade: Extrema</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Crucio</h3>
+                <p class="spell-incantation">"Cruciatus"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Tortura extrema</p>
+                    <p class="spell-description">Inflige uma dor insuportável no alvo. Uma das três Maldições Imperdoáveis.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="lumos" data-incantation="lumos"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">💡</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento</span>
+                        <span class="spell-difficulty">Dificuldade: Muito Baixa</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Lumos</h3>
+                <p class="spell-incantation">"Lumos"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Iluminação</p>
+                    <p class="spell-description">Cria uma luz na ponta da varinha do bruxo, funcionando como uma lanterna mágica.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="alohomora" data-incantation="alohomora"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🔑</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento</span>
+                        <span class="spell-difficulty">Dificuldade: Baixa</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Alohomora</h3>
+                <p class="spell-incantation">"Alohomora"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Destrancar fechaduras</p>
+                    <p class="spell-description">Usado para abrir portas e janelas que não foram trancadas magicamente.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="sectumsempra" data-incantation="sectumsempra"
+            data-type="curse">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">⚔️</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge curse">Maldição</span>
+                        <span class="spell-difficulty">Dificuldade: Alta</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Sectumsempra</h3>
+                <p class="spell-incantation">"Sectumsempra"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Cortes profundos</p>
+                    <p class="spell-description">Criado por Severo Snape. Cria cortes profundos e invisíveis no alvo, como se ele tivesse sido esfaqueado.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="episkey" data-incantation="episkey"
+            data-type="healing">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🩹</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge healing">Cura</span>
+                        <span class="spell-difficulty">Dificuldade: Média</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Episkey</h3>
+                <p class="spell-incantation">"Episkey"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Cura ferimentos leves</p>
+                    <p class="spell-description">Usado para curar pequenos ferimentos, como narizes quebrados ou dedos machucados.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="spell-card" data-name="accio" data-incantation="accio"
+            data-type="charm">
+            <div class="spell-card-inner">
+                <div class="spell-header">
+                    <span class="spell-icon">🧲</span>
+                    <div class="spell-meta">
+                        <span class="spell-type-badge charm">Encantamento convocatório</span>
+                        <span class="spell-difficulty">Dificuldade: Média</span>
+                    </div>
+                </div>
+
+                <h3 class="spell-name">Accio</h3>
+                <p class="spell-incantation">"Accio"</p>
+
+                <div class="spell-body">
+                    <p class="spell-effect"><strong>Efeito:</strong> Convoca objetos</p>
+                    <p class="spell-description">Traz um objeto distante até o bruxo que realiza o feitiço.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="noResults" class="no-results hidden">
+        <p>Nenhum segredo mágico encontrado para esta busca...</p>
+    </div>
+</div>
+
+<style>
+    .spells-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .spell-card {
+        background: var(--bg-card);
+        backdrop-filter: blur(12px);
+        border: var(--glass-border);
+        border-radius: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .spell-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--gold-primary);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(214, 175, 55, 0.1);
+    }
+
+    .spell-card-inner {
+        padding: 1.5rem;
+    }
+
+    .spell-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .spell-icon {
+        font-size: 2.5rem;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    }
+
+    .spell-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+    }
+
+    .spell-type-badge {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-family: var(--font-heading);
+        letter-spacing: 1px;
+    }
+
+    .spell-type-badge.charm {
+        background: rgba(0, 191, 255, 0.2);
+        color: #00bfff;
+        border: 1px solid rgba(0, 191, 255, 0.3);
+    }
+
+    .spell-type-badge.curse {
+        background: rgba(255, 69, 0, 0.2);
+        color: #ff4500;
+        border: 1px solid rgba(255, 69, 0, 0.3);
+    }
+
+    .spell-type-badge.healing {
+        background: rgba(50, 205, 50, 0.2);
+        color: #32cd32;
+        border: 1px solid rgba(50, 205, 50, 0.3);
+    }
+
+    .spell-difficulty {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    .spell-name {
+        font-family: var(--font-heading);
+        color: var(--gold-primary);
+        font-size: 1.4rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .spell-incantation {
+        font-family: var(--font-body);
+        font-style: italic;
+        color: #fff;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .spell-body {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 1rem;
+    }
+
+    .spell-effect {
+        color: var(--gold-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .spell-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: var(--text-muted);
+    }
+
+    /* Toolbar de Filtros */
+    .filter-toolbar {
+        background: rgba(8, 16, 32, 0.4);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: var(--glass-border);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .search-box {
+        position: relative;
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.8rem 1rem 0.8rem 2.8rem;
+        border-radius: 8px;
+        color: #fff;
+        font-family: var(--font-body);
+        transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+        outline: none;
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 15px rgba(214, 175, 55, 0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+    }
+
+    .filter-options {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-chip {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        padding: 0.4rem 1.2rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.85rem;
+    }
+
+    .filter-chip:hover,
+    .filter-chip.active {
+        background: rgba(214, 175, 55, 0.1);
+        color: #fff;
+        border-color: var(--gold-primary);
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 4rem;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+</style>
+
+<script>
+    let currentFilter = 'all';
+
+    function setSpellFilter(type, el) {
+        currentFilter = type;
+
+        // Update UI
+        document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+        el.classList.add('active');
+
+        filterSpells();
+    }
+
+    function filterSpells() {
+        const query = document.getElementById('spellSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.spell-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            const incantation = card.getAttribute('data-incantation');
+            const type = card.getAttribute('data-type');
+
+            const matchesQuery = name.includes(query) || incantation.includes(query);
+            const matchesFilter = currentFilter === 'all' || type === currentFilter;
+
+            if (matchesQuery && matchesFilter) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+    }
+</script>
+
+        </main>
+
+        <footer
+            style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+            <p style="margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                By
+                <a href="https://www.instagram.com/higorstattoo" target="_blank"
+                    style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16" style="vertical-align: middle;">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                    @higorstattoo
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function createParticle() {
+            const particles = document.getElementById('particles');
+            const particle = document.createElement('div');
+
+            const size = Math.random() * 3 + 1;
+            const x = Math.random() * window.innerWidth;
+            const y = window.innerHeight + 10;
+
+            particle.style.position = 'absolute';
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = 'rgba(212, 175, 55, 0.4)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.8)';
+            particle.style.pointerEvents = 'none';
+
+            particles.appendChild(particle);
+
+            const duration = Math.random() * 5000 + 3000;
+            const animation = particle.animate([
+                { transform: 'translateY(0) scale(1)', opacity: 0.8 },
+                { transform: `translateY(-${window.innerHeight + 20}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'linear'
+            });
+
+            animation.onfinish = () => particle.remove();
+        }
+
+        setInterval(createParticle, 200);
+    </script>
+</body>
+
+</html>

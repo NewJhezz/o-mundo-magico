@@ -68,6 +68,13 @@ def build_static():
             f.write(fix_links(content))
         print("OK: sapos.html gerado!")
 
+        # --- 7. Feitiços ---
+        from app import spells
+        content = spells()
+        with open('feiticos.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: feiticos.html gerado!")
+
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 
 if __name__ == "__main__":
