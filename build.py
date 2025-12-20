@@ -19,7 +19,7 @@ def build_static():
             content = content.replace('href="/varinhas/origem"', 'href="./varinhas_origem.html"')
             content = content.replace('href="/varinhas/madeiras"', 'href="./varinhas_madeiras.html"')
             content = content.replace('href="/varinhas/nucleos"', 'href="./varinhas_nucleos.html"')
-            content = content.replace('href="/varinhas"', 'href="./varinhas_origem.html"')
+            content = content.replace('href="/varinhas"', 'href="./varinhas_madeiras.html"')
             content = content.replace('href="/mundo"', 'href="./index.html"')
             content = content.replace('href="/criaturas"', 'href="./criaturas.html"')
             content = content.replace('href="/sapos"', 'href="./sapos.html"')

@@ -426,8 +426,8 @@ def home():
 
 @app.route('/varinhas')
 def wands_hub():
-    # Redireciona para o início da jornada das varinhas (Origem)
-    return wands_origin()
+    # Redireciona para o início da jornada das varinhas (Madeiras)
+    return wands_woods()
 
 @app.route('/varinhas/origem')
 def wands_origin():

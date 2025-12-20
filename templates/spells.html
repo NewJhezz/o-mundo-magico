@@ -57,7 +57,8 @@
         {% elif 'Muito Dif' in spell.difficulty %}{% set diff_score = 4 %}
         {% elif 'Extrema' in spell.difficulty %}{% set diff_score = 5 %}{% endif %}
 
-        <div class="spell-card" data-name="{{ spell.name|lower }}" data-incantation="{{ spell.incantation|lower }}"
+        <div class="spell-card magic-interactive stagger-{{ (loop.index0 % 12) + 1 }}"
+            data-name="{{ spell.name|lower }}" data-incantation="{{ spell.incantation|lower }}"
             data-type="{{ spell.type }}" data-difficulty="{{ diff_score }}">
             <div class="spell-card-inner">
                 <div class="spell-header">
@@ -76,6 +77,7 @@
                     <p class="spell-description">{{ spell.description }}</p>
                 </div>
             </div>
+            <span class="click-hint">Toque para detalhes</span>
         </div>
         {% endfor %}
     </div>

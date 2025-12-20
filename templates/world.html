@@ -13,30 +13,33 @@
 
     <div class="categories-grid">
         <!-- Card Varinhas -->
-        <a href="{{ url_for('wands_origin') }}" class="category-card">
+        <a href="{{ url_for('wands_woods') }}" class="category-card magic-interactive stagger-1">
             <div class="category-icon">🪄</div>
             <div class="category-info">
                 <h2>Varinhas</h2>
                 <p>Descubra as madeiras, núcleos e a arte da varinhologia.</p>
             </div>
+            <span class="click-hint">Toque para descobrir</span>
         </a>
 
         <!-- Card Criaturas -->
-        <a href="{{ url_for('creatures') }}" class="category-card">
+        <a href="{{ url_for('creatures') }}" class="category-card magic-interactive stagger-2">
             <div class="category-icon">🐉</div>
             <div class="category-info">
                 <h2>Criaturas</h2>
                 <p>Bestiário: Seres, Feras e Espíritos.</p>
             </div>
+            <span class="click-hint">Toque para descobrir</span>
         </a>
 
         <!-- Card Sapos de Chocolate -->
-        <a href="{{ url_for('frogs') }}" class="category-card">
+        <a href="{{ url_for('frogs') }}" class="category-card magic-interactive stagger-3">
             <div class="category-icon">🐸</div>
             <div class="category-info">
                 <h2>Sapos de Chocolate</h2>
                 <p>Colecione figurinhas de bruxos famosos.</p>
             </div>
+            <span class="click-hint">Toque para descobrir</span>
         </a>
 
         <div class="category-card locked" title="Em breve">
@@ -47,12 +50,14 @@
             </div>
         </div>
 
-        <a href="{{ url_for('spells') }}" class="category-card" title="Biblioteca de Feitiços">
+        <a href="{{ url_for('spells') }}" class="category-card magic-interactive stagger-4"
+            title="Biblioteca de Feitiços">
             <div class="category-icon">⚡</div>
             <div class="category-info">
                 <h2>Feitiços</h2>
                 <p>Biblioteca: Encantamentos, Maldições e Truques.</p>
             </div>
+            <span class="click-hint">Toque para descobrir</span>
         </a>
     </div>
 </div>

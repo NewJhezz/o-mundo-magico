@@ -654,3 +654,101 @@ h1 {
         font-size: 0.9rem;
     }
 }
+
+/* --- Interatividade Mágica --- */
+@keyframes magic-pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+        border-color: var(--gold-primary);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.2);
+    }
+}
+
+.magic-interactive {
+    position: relative;
+    animation: magic-pulse 6s infinite ease-in-out;
+}
+
+.click-hint {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--gold-secondary);
+    opacity: 0;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.category-card:hover .click-hint,
+.wood-card:hover .click-hint,
+.creature-card:hover .click-hint,
+.frog-card:hover .click-hint,
+.spell-card:hover .click-hint {
+    opacity: 0.8;
+    bottom: 1rem;
+}
+
+/* Staggered Delay para o pulso (percorrendo a grade) */
+.stagger-1 {
+    animation-delay: 0.4s;
+}
+
+.stagger-2 {
+    animation-delay: 0.8s;
+}
+
+.stagger-3 {
+    animation-delay: 1.2s;
+}
+
+.stagger-4 {
+    animation-delay: 1.6s;
+}
+
+.stagger-5 {
+    animation-delay: 2.0s;
+}
+
+.stagger-6 {
+    animation-delay: 2.4s;
+}
+
+.stagger-7 {
+    animation-delay: 2.8s;
+}
+
+.stagger-8 {
+    animation-delay: 3.2s;
+}
+
+.stagger-9 {
+    animation-delay: 3.6s;
+}
+
+.stagger-10 {
+    animation-delay: 4.0s;
+}
+
+.stagger-11 {
+    animation-delay: 4.4s;
+}
+
+.stagger-12 {
+    animation-delay: 4.8s;
+}

@@ -46,8 +46,8 @@
     <!-- Grid de Criaturas -->
     <div id="creaturesGrid" class="woods-grid">
         {% for creature in creatures %}
-        <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
-            data-danger="{{ creature.danger }}">
+        <div class="wood-card creature-card {{ creature.category }} magic-interactive stagger-{{ (loop.index0 % 12) + 1 }}"
+            data-category="{{ creature.category }}" data-danger="{{ creature.danger }}">
 
             <div class="card-header creature-header">
                 <span class="mini-icon">{{ creature.icon }}</span>
@@ -66,6 +66,7 @@
                     <p class="creature-origin"><strong>Origem:</strong> {{ creature.origin }}</p>
                 </div>
             </div>
+            <span class="click-hint">Toque para detalhes</span>
         </div>
         {% endfor %}
     </div>
