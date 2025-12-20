@@ -1010,6 +1010,83 @@ SPELLS_DATA = [
         'difficulty': 'Intermediário',
         'icon': '🤡'
     },
+    {
+        'id': 'incendio',
+        'name': 'Incendio',
+        'incantation': 'Incendio',
+        'type': 'utility',
+        'type_label': 'Utilidade / Combate',
+        'effect': 'Produz chamas',
+        'description': 'Pode ser usado para acender lareiras ou como um ataque ofensivo de fogo.',
+        'difficulty': 'Iniciante',
+        'icon': '🔥'
+    },
+    {
+        'id': 'scourgify',
+        'name': 'Scourgify',
+        'incantation': 'Scourgify',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Limpa objetos',
+        'description': 'Remove sujeira e manchas instantaneamente. Útil para tarefas domésticas mágicas.',
+        'difficulty': 'Iniciante',
+        'icon': '🧼'
+    },
+    {
+        'id': 'finite-incantatem',
+        'name': 'Finite Incantatem',
+        'incantation': 'Finite Incantatem',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Cessa efeitos mágicos',
+        'description': 'Finaliza o efeito de feitiços e encantamentos em uma área ou alvo específico.',
+        'difficulty': 'Intermediário',
+        'icon': '⏹️'
+    },
+    {
+        'id': 'muffliato',
+        'name': 'Muffliato',
+        'incantation': 'Muffliato',
+        'type': 'utility',
+        'type_label': 'Utilidade (Privacidade)',
+        'effect': 'Gera um zumbido nos ouvidos de terceiros',
+        'description': 'Impede que pessoas próximas ouçam conversas privadas, criando um ruído de fundo.',
+        'difficulty': 'Intermediário',
+        'icon': '🤫'
+    },
+    {
+        'id': 'obliviate',
+        'name': 'Obliviate',
+        'incantation': 'Obliviate',
+        'type': 'utility',
+        'type_label': 'Utilidade / Perigoso',
+        'effect': 'Apaga memórias',
+        'description': 'Usado para fazer o alvo esquecer eventos específicos ou toda a sua vida.',
+        'difficulty': 'Difícil',
+        'icon': '🧠'
+    },
+    {
+        'id': 'engorgio',
+        'name': 'Engorgio',
+        'incantation': 'Engorgio',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Aumenta o tamanho de objetos ou criaturas',
+        'description': 'Faz com que o alvo cresça rapidamente. O contra-feitiço é o Reducio.',
+        'difficulty': 'Iniciante',
+        'icon': '🔍'
+    },
+    {
+        'id': 'geminio',
+        'name': 'Geminio',
+        'incantation': 'Geminio',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Duplica objetos',
+        'description': 'Cria uma cópia exata de um objeto. Cópias criadas por este feitiço costumam ser menos valiosas.',
+        'difficulty': 'Intermediário',
+        'icon': '👯'
+    },
 
     # COMBATE E DUELO
     {
@@ -1033,6 +1110,61 @@ SPELLS_DATA = [
         'description': 'O feitiço de combate mais comum em duelos, projeta um feixe de luz vermelha.',
         'difficulty': 'Intermediário',
         'icon': '💥'
+    },
+    {
+        'id': 'bombarda',
+        'name': 'Bombarda',
+        'incantation': 'Bombarda',
+        'type': 'combat',
+        'type_label': 'Combate (Explosivo)',
+        'effect': 'Cria uma pequena explosão',
+        'description': 'Usado para destruir obstáculos como portas trancadas ou paredes finas.',
+        'difficulty': 'Intermediário',
+        'icon': '🧨'
+    },
+    {
+        'id': 'reducto',
+        'name': 'Reducto',
+        'incantation': 'Reducto',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Pulveriza objetos sólidos',
+        'description': 'Reduz objetos a pó ou pedaços minúsculos através de uma explosão focada.',
+        'difficulty': 'Intermediário',
+        'icon': '🧱'
+    },
+    {
+        'id': 'impedimenta',
+        'name': 'Impedimenta',
+        'incantation': 'Impedimenta',
+        'type': 'combat',
+        'type_label': 'Combate / Defesa',
+        'effect': 'Lentidão ou paralisia temporária',
+        'description': 'Atrasa o oponente, impedindo-o de se mover em direção ao bruxo.',
+        'difficulty': 'Intermediário',
+        'icon': '🛑'
+    },
+    {
+        'id': 'incarcerous',
+        'name': 'Incarcerous',
+        'incantation': 'Incarcerous',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Conjura cordas para prender o alvo',
+        'description': 'Cordas grossas e resistentes surgem do nada para amarrar o oponente.',
+        'difficulty': 'Intermediário',
+        'icon': '🧶'
+    },
+    {
+        'id': 'levicorpus',
+        'name': 'Levicorpus',
+        'incantation': 'Levicorpus',
+        'type': 'combat',
+        'type_label': 'Combate (Não-Verbal)',
+        'effect': 'Lança o alvo no ar pelo tornozelo',
+        'description': 'O alvo é içado de cabeça para baixo, como se estivesse pendurado por um fio invisível.',
+        'difficulty': 'Intermediário',
+        'icon': '🤸'
     },
     {
         'id': 'petrificus-totalus',
@@ -1088,6 +1220,63 @@ SPELLS_DATA = [
         'description': 'Muito usado para rasgar tecidos, abrir embalagens ou desamarrar cordas.',
         'difficulty': 'Iniciante',
         'icon': '✂️'
+    },
+    {
+        'id': 'silencio',
+        'name': 'Silencio',
+        'incantation': 'Silencio',
+        'type': 'combat',
+        'type_label': 'Combate / Utilidade',
+        'effect': 'Emudece o alvo',
+        'description': 'Impede que o alvo emita sons ou realize feitiços verbais.',
+        'difficulty': 'Intermediário',
+        'icon': '🔇'
+    },
+
+    # DEFESA
+    {
+        'id': 'expecto-patronum',
+        'name': 'Expecto Patronum',
+        'incantation': 'Expecto Patronum',
+        'type': 'defense',
+        'type_label': 'Defesa',
+        'effect': 'Conjura um Patrono protetor',
+        'description': 'A única defesa conhecida contra Dementadores. Exige a lembrança mais feliz do bruxo.',
+        'difficulty': 'Muito Difícil',
+        'icon': '🦌'
+    },
+    {
+        'id': 'protego',
+        'name': 'Protego',
+        'incantation': 'Protego',
+        'type': 'defense',
+        'type_label': 'Defesa',
+        'effect': 'Cria um escudo mágico',
+        'description': 'Reflete feitiços menores e protege contra ataques físicos leves.',
+        'difficulty': 'Intermediário',
+        'icon': '🛡️'
+    },
+    {
+        'id': 'protego-totalum',
+        'name': 'Protego Totalum',
+        'incantation': 'Protego Totalum',
+        'type': 'defense',
+        'type_label': 'Defesa de Área',
+        'effect': 'Protege uma área contra moradores',
+        'description': 'Forma uma barreira protetora ao redor de um acampamento ou morada.',
+        'difficulty': 'Difícil',
+        'icon': '🏰'
+    },
+    {
+        'id': 'salvio-hexia',
+        'name': 'Salvio Hexia',
+        'incantation': 'Salvio Hexia',
+        'type': 'defense',
+        'type_label': 'Defesa de Área',
+        'effect': 'Protege contra feitiços externos',
+        'description': 'Frequentemente usado com outros feitiços de proteção para ocultar e defender áreas.',
+        'difficulty': 'Intermediário',
+        'icon': '✨'
     },
 
     # MALDIÇÕES IMPERDOÁVEIS
@@ -1147,6 +1336,39 @@ SPELLS_DATA = [
         'description': 'Corrige ossos quebrados pequenos (como narizes) e estanca sangramentos menores.',
         'difficulty': 'Iniciante',
         'icon': '🩹'
+    },
+    {
+        'id': 'rennervate',
+        'name': 'Rennervate',
+        'incantation': 'Rennervate',
+        'type': 'healing',
+        'type_label': 'Cura',
+        'effect': 'Desperta alguém inconsciente',
+        'description': 'O contra-feitiço para o Estupore. Revive pessoas que foram atordoadas.',
+        'difficulty': 'Iniciante',
+        'icon': '👁️'
+    },
+    {
+        'id': 'ferula',
+        'name': 'Ferula',
+        'incantation': 'Ferula',
+        'type': 'healing',
+        'type_label': 'Cura',
+        'effect': 'Conjura talas e bandagens',
+        'description': 'Cria curativos físicos para imobilizar membros quebrados.',
+        'difficulty': 'Iniciante',
+        'icon': '🩹'
+    },
+    {
+        'id': 'anapneo',
+        'name': 'Anapneo',
+        'incantation': 'Anapneo',
+        'type': 'healing',
+        'type_label': 'Cura',
+        'effect': 'Limpa as vias respiratórias',
+        'description': 'Desobstrui a garganta de alguém que esteja engasgado.',
+        'difficulty': 'Intermediário',
+        'icon': '🫁'
     },
     {
         'id': 'tergeo',
