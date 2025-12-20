@@ -910,93 +910,232 @@ FROGS_DATA = [
 ]
 # --- DADOS DOS FEITIÇOS ---
 SPELLS_DATA = [
+    # UTILIDADE E DEFESA
     {
-        'id': 'expelliarmus',
-        'name': 'Expelliarmus',
-        'incantation': 'Expelliarmus',
-        'type': 'charm',
-        'type_label': 'Encantamento',
-        'effect': 'Desarma o oponente',
-        'description': 'Um dos feitiços defensivos mais importantes do arsenal de um bruxo. Força o objeto que o alvo está segurando a voar longe.',
-        'difficulty': 'Média',
-        'icon': '🪄'
-    },
-    {
-        'id': 'expecto-patronum',
-        'name': 'Expecto Patronum',
-        'incantation': 'Expecto Patronum',
-        'type': 'charm',
-        'type_label': 'Encantamento',
-        'effect': 'Convoca um Patrono',
-        'description': 'Magia altamente avançada que evoca um guardião de energia positiva para repelir Dementadores.',
-        'difficulty': 'Muito Alta',
-        'icon': '🦌'
-    },
-    {
-        'id': 'avada-kedavra',
-        'name': 'Avada Kedavra',
-        'incantation': 'Avada Kedavra',
-        'type': 'curse',
-        'type_label': 'Maldição Imperdoável',
-        'effect': 'Morte instantânea',
-        'description': 'A mais terrível das Maldições Imperdoáveis. Causa morte imediata e indolor sem deixar marcas.',
-        'difficulty': 'Extrema',
-        'icon': '💀'
-    },
-    {
-        'id': 'wingardium-leviosa',
-        'name': 'Wingardium Leviosa',
-        'incantation': 'Wingardium Leviosa',
-        'type': 'charm',
-        'type_label': 'Encantamento',
-        'effect': 'Levitação de objetos',
-        'description': 'Um dos primeiros feitiços aprendidos por jovens bruxos. Permite fazer objetos flutuarem no ar.',
-        'difficulty': 'Baixa',
-        'icon': '🍃'
-    },
-    {
-        'id': 'crucio',
-        'name': 'Crucio',
-        'incantation': 'Cruciatus',
-        'type': 'curse',
-        'type_label': 'Maldição Imperdoável',
-        'effect': 'Tortura extrema',
-        'description': 'Inflige uma dor insuportável no alvo. Uma das três Maldições Imperdoáveis.',
-        'difficulty': 'Extrema',
-        'icon': '⚡'
+        'id': 'alohomora',
+        'name': 'Alohomora',
+        'incantation': 'Alohomora',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Destranca portas e fechaduras comuns',
+        'description': 'Um feitiço essencial para exploração, capaz de abrir fechaduras que não foram seladas magicamente.',
+        'difficulty': 'Iniciante',
+        'icon': '🔑'
     },
     {
         'id': 'lumos',
         'name': 'Lumos',
         'incantation': 'Lumos',
-        'type': 'charm',
-        'type_label': 'Encantamento',
-        'effect': 'Iluminação',
-        'description': 'Cria uma luz na ponta da varinha do bruxo, funcionando como uma lanterna mágica.',
-        'difficulty': 'Muito Baixa',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Cria uma fonte de luz na ponta da varinha',
+        'description': 'Ilumina ambientes escuros. A luz pode ser movida junto com a varinha.',
+        'difficulty': 'Iniciante',
         'icon': '💡'
     },
     {
-        'id': 'alohomora',
-        'name': 'Alohomora',
-        'incantation': 'Alohomora',
-        'type': 'charm',
-        'type_label': 'Encantamento',
-        'effect': 'Destrancar fechaduras',
-        'description': 'Usado para abrir portas e janelas que não foram trancadas magicamente.',
-        'difficulty': 'Baixa',
-        'icon': '🔑'
+        'id': 'nox',
+        'name': 'Nox',
+        'incantation': 'Nox',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Extingue a luz da varinha',
+        'description': 'O contra-feitiço direto para o Lumos.',
+        'difficulty': 'Iniciante',
+        'icon': '🌑'
+    },
+    {
+        'id': 'wingardium-leviosa',
+        'name': 'Wingardium Leviosa',
+        'incantation': 'Wingardium Leviosa',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Levita objetos',
+        'description': 'Exige um movimento preciso de "girar e sacudir" com a varinha.',
+        'difficulty': 'Iniciante',
+        'icon': '🍃'
+    },
+    {
+        'id': 'accio',
+        'name': 'Accio',
+        'incantation': 'Accio',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Convoca objetos para a mão do bruxo',
+        'description': 'Funciona mesmo com objetos fora do campo de visão, desde que o bruxo se concentre neles.',
+        'difficulty': 'Intermediário',
+        'icon': '🧲'
+    },
+    {
+        'id': 'aguamenti',
+        'name': 'Aguamenti',
+        'incantation': 'Aguamenti',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Produz um jato de água pura',
+        'description': 'Pode ser usado para beber ou apagar incêndios mágicos simples.',
+        'difficulty': 'Intermediário',
+        'icon': '💧'
+    },
+    {
+        'id': 'expecto-patronum',
+        'name': 'Expecto Patronum',
+        'incantation': 'Expecto Patronum',
+        'type': 'defense',
+        'type_label': 'Defesa',
+        'effect': 'Conjura um Patrono protetor',
+        'description': 'A única defesa conhecida contra Dementadores. Exige a lembrança mais feliz do bruxo.',
+        'difficulty': 'Muito Difícil',
+        'icon': '🦌'
+    },
+    {
+        'id': 'protego',
+        'name': 'Protego',
+        'incantation': 'Protego',
+        'type': 'defense',
+        'type_label': 'Defesa',
+        'effect': 'Cria um escudo mágico',
+        'description': 'Reflete feitiços menores e protege contra ataques físicos leves.',
+        'difficulty': 'Intermediário',
+        'icon': '🛡️'
+    },
+    {
+        'id': 'riddikulus',
+        'name': 'Riddikulus',
+        'incantation': 'Riddikulus',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Vence um Bicho-Papão com humor',
+        'description': 'Obriga a criatura a assumir uma forma que o bruxo considere engraçada.',
+        'difficulty': 'Intermediário',
+        'icon': '🤡'
+    },
+
+    # COMBATE E DUELO
+    {
+        'id': 'expelliarmus',
+        'name': 'Expelliarmus',
+        'incantation': 'Expelliarmus',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Desarma o oponente',
+        'description': 'Faz com que a varinha ou arma do oponente voe para longe de suas mãos.',
+        'difficulty': 'Iniciante',
+        'icon': '🪄'
+    },
+    {
+        'id': 'stupefy',
+        'name': 'Estupore (Stupefy)',
+        'incantation': 'Stupefy',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Atordoa e desmaia o alvo',
+        'description': 'O feitiço de combate mais comum em duelos, projeta um feixe de luz vermelha.',
+        'difficulty': 'Intermediário',
+        'icon': '💥'
+    },
+    {
+        'id': 'petrificus-totalus',
+        'name': 'Petrificus Totalus',
+        'incantation': 'Petrificus Totalus',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Paralisia total do corpo',
+        'description': 'O alvo fica rígido como uma estátua, incapaz de se mover ou falar.',
+        'difficulty': 'Iniciante',
+        'icon': '🗿'
+    },
+    {
+        'id': 'confundo',
+        'name': 'Confundo',
+        'incantation': 'Confundo',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Causa confusão mental temporária',
+        'description': 'Faz o alvo ficar desorientado e suscetível a ordens simples ou erros de julgamento.',
+        'difficulty': 'Intermediário',
+        'icon': '😵‍💫'
+    },
+    {
+        'id': 'expulso',
+        'name': 'Expulso',
+        'incantation': 'Expulso',
+        'type': 'combat',
+        'type_label': 'Combate',
+        'effect': 'Empurra objetos ou pessoas com força explosiva',
+        'description': 'Cria uma pequena explosão de pressão que arremessa alvos para longe.',
+        'difficulty': 'Intermediário',
+        'icon': '💣'
     },
     {
         'id': 'sectumsempra',
         'name': 'Sectumsempra',
         'incantation': 'Sectumsempra',
-        'type': 'curse',
-        'type_label': 'Maldição',
-        'effect': 'Cortes profundos',
-        'description': 'Criado por Severo Snape. Cria cortes profundos e invisíveis no alvo, como se ele tivesse sido esfaqueado.',
-        'difficulty': 'Alta',
+        'type': 'combat',
+        'type_label': 'Combate (Trevas)',
+        'effect': 'Provoca cortes profundos',
+        'description': 'Um feitiço perigoso que corta o alvo como se fosse uma espada invisível.',
+        'difficulty': 'Difícil',
         'icon': '⚔️'
+    },
+    {
+        'id': 'diffindo',
+        'name': 'Diffindo',
+        'incantation': 'Diffindo',
+        'type': 'combat',
+        'type_label': 'Combate / Utilidade',
+        'effect': 'Rasga ou corta objetos com precisão',
+        'description': 'Muito usado para rasgar tecidos, abrir embalagens ou desamarrar cordas.',
+        'difficulty': 'Iniciante',
+        'icon': '✂️'
+    },
+
+    # MALDIÇÕES IMPERDOÁVEIS
+    {
+        'id': 'crucio',
+        'name': 'Crucio',
+        'incantation': 'Cruciatus',
+        'type': 'unforgivable',
+        'type_label': 'Maldição Imperdoável',
+        'effect': 'Tortura física insuportável',
+        'description': 'Causa uma dor agoniante. Exige que o bruxo realmente deseje causar sofrimento.',
+        'difficulty': 'Difícil (Intencional)',
+        'icon': '⚡'
+    },
+    {
+        'id': 'imperio',
+        'name': 'Imperio',
+        'incantation': 'Imperio',
+        'type': 'unforgivable',
+        'type_label': 'Maldição Imperdoável',
+        'effect': 'Controle total sobre a vítima',
+        'description': 'A vítima entra em um estado de transe e obedece a qualquer comando do mestre.',
+        'difficulty': 'Difícil (Foco)',
+        'icon': '🧠'
+    },
+    {
+        'id': 'avada-kedavra',
+        'name': 'Avada Kedavra',
+        'incantation': 'Avada Kedavra',
+        'type': 'unforgivable',
+        'type_label': 'Maldição Imperdoável',
+        'effect': 'Morte instantânea',
+        'description': 'A maldição final. Não possui contra-feitiço e mata instantaneamente sem deixar marcas.',
+        'difficulty': 'Extrema',
+        'icon': '💀'
+    },
+
+    # CURA E REPARO
+    {
+        'id': 'reparo',
+        'name': 'Reparo',
+        'incantation': 'Reparo',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Conserta objetos quebrados',
+        'description': 'Restaura a forma original de itens danificados, desde que todos os pedaços estejam presentes.',
+        'difficulty': 'Iniciante',
+        'icon': '🛠️'
     },
     {
         'id': 'episkey',
@@ -1005,20 +1144,31 @@ SPELLS_DATA = [
         'type': 'healing',
         'type_label': 'Cura',
         'effect': 'Cura ferimentos leves',
-        'description': 'Usado para curar pequenos ferimentos, como narizes quebrados ou dedos machucados.',
-        'difficulty': 'Média',
+        'description': 'Corrige ossos quebrados pequenos (como narizes) e estanca sangramentos menores.',
+        'difficulty': 'Iniciante',
         'icon': '🩹'
     },
     {
-        'id': 'accio',
-        'name': 'Accio',
-        'incantation': 'Accio',
-        'type': 'charm',
-        'type_label': 'Encantamento convocatório',
-        'effect': 'Convoca objetos',
-        'description': 'Traz um objeto distante até o bruxo que realiza o feitiço.',
-        'difficulty': 'Média',
-        'icon': '🧲'
+        'id': 'tergeo',
+        'name': 'Tergeo',
+        'incantation': 'Tergeo',
+        'type': 'utility',
+        'type_label': 'Utilidade',
+        'effect': 'Limpa superfícies e estanca sangue',
+        'description': 'Suga líquidos como sangue, poeira ou lama de roupas e superfícies.',
+        'difficulty': 'Iniciante',
+        'icon': '🧼'
+    },
+    {
+        'id': 'vulnera-sanentur',
+        'name': 'Vulnera Sanentur',
+        'incantation': 'Vulnera Sanentur',
+        'type': 'healing',
+        'type_label': 'Cura Avançada',
+        'effect': 'Cura cortes profundos de magia negra',
+        'description': 'Eficaz contra o Sectumsempra. Exige um cântico específico e movimentos rítmicos.',
+        'difficulty': 'Difícil',
+        'icon': '🩸'
     }
 ]
 
