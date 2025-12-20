@@ -164,21 +164,32 @@ h1 {
 .card-header {
     display: flex;
     justify-content: center;
-    /* Centralizar tudo */
+    /* Padrão centralizado */
     align-items: center;
     gap: 0.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 0.5rem;
     position: relative;
-    /* Para o badge absoluto se necessário */
     width: 100%;
 }
 
+/* Exceção: Criaturas alinhadas à esquerda no header */
+.creature-card .card-header {
+    justify-content: flex-start;
+}
+
 .mini-icon {
-    font-size: 1rem;
-    opacity: 0.4;
-    /* Levemente apagado */
-    filter: grayscale(100%);
+    font-size: 1.2rem;
+    opacity: 0.8;
+    filter: none;
+    font-style: normal !important;
+    /* Ícones nunca devem ser itálicos */
+}
+
+/* Ícones maiores para Varinhas e Criaturas */
+.creature-card .mini-icon,
+.wood-card:not(.potion-card) .mini-icon {
+    font-size: 1.5rem;
 }
 
 .wood-name {
@@ -380,23 +391,35 @@ h1 {
     color: var(--text-main);
 }
 
-/* Texto de Afinidade/Efeito nos Cards */
+/* Texto de Afinidade/Efeito nos Cards (Global - Maior e Reto) */
 .wood-affinity {
-    font-size: 0.75rem;
-    /* Reduzido ainda mais conforme pedido */
-    font-family: var(--font-body);
-    /* Mudado para Lato para ser mais elegante/legível */
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    font-family: var(--font-heading);
+    color: var(--gold-secondary);
+    letter-spacing: 1px;
     text-align: center;
     min-height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 0.5rem;
+    line-height: 1.2;
+}
+
+/* Estilo Exclusivo de "Elegância" para Poções */
+.potion-card .wood-affinity {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    /* Lato */
+    color: var(--text-muted);
     font-style: italic;
-    padding: 0 0.8rem;
-    line-height: 1.4;
     opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.potion-card .mini-icon {
+    font-size: 1rem;
+    opacity: 0.6;
 }
 
 /* Novo Layout de Cabeçalho dos Cards */
@@ -404,17 +427,31 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* CENTRALIZADO */
     text-align: center;
     gap: 2px;
 }
 
+/* Exceção: Texto do header à esquerda para criaturas */
+.creature-card .header-text-group {
+    align-items: flex-start;
+    text-align: left;
+}
+
 .card-difficulty-label {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    /* Voltando ao tamanho legível */
     color: var(--gold-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.8;
+}
+
+/* Estrelas de Perigo (Criaturas) - Sempre à esquerda */
+.danger-stars-mini {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2px;
+    font-size: 0.8rem;
 }
 
 .creature-origin-wrapper {

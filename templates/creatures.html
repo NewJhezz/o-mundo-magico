@@ -40,21 +40,25 @@
     <div class="wood-card creature-card {{ creature.category }}" data-category="{{ creature.category }}"
         data-danger="{{ creature.danger }}">
 
-        <div class="card-header">
-            <span class="mini-icon">{{ creature.icon }}</span>
-            <div class="header-text-group">
-                <h3 class="wood-name">{{ creature.name }}</h3>
-                <div class="danger-stars-mini" title="Periculosidade: {{ creature.danger }}">
+        <div class="card-header" style="justify-content: flex-start; gap: 1rem;">
+            <span class="mini-icon" style="opacity: 1;">{{ creature.icon }}</span>
+            <div class="header-text-group" style="align-items: flex-start; text-align: left;">
+                <h3 class="wood-name" style="text-align: left; margin: 0;">{{ creature.name }}</h3>
+                <div class="danger-stars-mini" title="Periculosidade: {{ creature.danger }}"
+                    style="justify-content: flex-start; display: flex;">
                     {% for i in range(creature.danger_level) %}⭐{% endfor %}
                 </div>
             </div>
         </div>
 
-        <div class="wood-affinity">{{ creature.desc }}</div>
+        <div class="wood-affinity" style="font-family: var(--font-heading); font-style: normal; font-size: 0.9rem;">
+            {{ creature.desc }}
+        </div>
 
-        <div class="creature-origin-wrapper">
-            <div class="card-difficulty-label">{{ creature.category_label }}</div>
-            <p class="creature-origin" style="margin-top: 5px; font-size: 0.75rem;">
+        <div class="creature-origin-wrapper" style="text-align: center;">
+            <div class="card-difficulty-label" style="color: var(--gold-primary); font-weight: bold;">{{
+                creature.category_label }}</div>
+            <p class="creature-origin" style="margin-top: 5px; font-size: 0.85rem; color: var(--text-muted);">
                 <strong>Origem:</strong> {{ creature.origin }}
             </p>
         </div>
