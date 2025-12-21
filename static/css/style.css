@@ -448,7 +448,8 @@ h1 {
 
 /* Tamanho Magnificado para Varinhas (Específico Madeiras) */
 .wood-card:not(.creature-card):not(.potion-card):not(.spell-card) .wood-affinity {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    margin: 1rem 0;
 }
 
 /* Estilo Exclusivo de "Elegância" para Poções */
