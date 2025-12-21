@@ -178,6 +178,37 @@ h1 {
     justify-content: flex-start;
 }
 
+/* Layout Específico para Varinhas (L-C-R) */
+.wand-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 0 !important;
+}
+
+.wand-header>*:first-child {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.wand-header>*:nth-child(2) {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.wand-header>*:last-child {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wand-header .rarity-badge {
+    position: static !important;
+    margin: 0 !important;
+}
+
 .mini-icon {
     font-size: 1.2rem;
     opacity: 0.8;
@@ -404,6 +435,11 @@ h1 {
     align-items: center;
     padding: 0 0.5rem;
     line-height: 1.2;
+}
+
+/* Tamanho Magnificado para Varinhas (Específico Madeiras) */
+.wood-card:not(.creature-card):not(.potion-card):not(.spell-card) .wood-affinity {
+    font-size: 2.5rem;
 }
 
 /* Estilo Exclusivo de "Elegância" para Poções */
