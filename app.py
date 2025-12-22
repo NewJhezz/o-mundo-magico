@@ -797,7 +797,8 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'O Grande Diretor',
-        'icon': '🧙‍♂️'
+        'icon': '🧙‍♂️',
+        'category': 'Mestres de Hogwarts'
     },
     {
         'id': 'merlin',
@@ -806,7 +807,8 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'Príncipe dos Magos',
-        'icon': '✨'
+        'icon': '📜',
+        'category': 'Lendas Medievais'
     },
     {
         'id': 'gryffindor',
@@ -815,7 +817,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Bravo Duelista',
-        'icon': '🦁'
+        'icon': '🦁',
+        'category': 'Fundadores de Hogwarts'
     },
     {
         'id': 'hufflepuff',
@@ -824,7 +827,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Bondade Infinita',
-        'icon': '🦡'
+        'icon': '🦡',
+        'category': 'Fundadores de Hogwarts'
     },
     {
         'id': 'ravenclaw',
@@ -833,7 +837,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Mente Brilhante',
-        'icon': '🦅'
+        'icon': '🦅',
+        'category': 'Fundadores de Hogwarts'
     },
     {
         'id': 'slytherin',
@@ -842,7 +847,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Mestre da Ofidioglossia',
-        'icon': '🐍'
+        'icon': '🐍',
+        'category': 'Fundadores de Hogwarts'
     },
     {
         'id': 'flamel',
@@ -851,7 +857,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Imortal Alquimista',
-        'icon': '💎'
+        'icon': '💎',
+        'category': 'Alquimistas e Inventores'
     },
     {
         'id': 'newt',
@@ -860,7 +867,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Magizoologista',
-        'icon': '💼'
+        'icon': '💼',
+        'category': 'Magizoologistas e Videntes'
     },
     {
         'id': 'lockhart',
@@ -869,7 +877,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Mestre do Charme',
-        'icon': '😁'
+        'icon': '✨',
+        'category': 'Mestres de Hogwarts'
     },
     {
         'id': 'morgana',
@@ -878,7 +887,8 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'Rainha das Sombras',
-        'icon': '🌘'
+        'icon': '🔮',
+        'category': 'Lendas Medievais'
     },
     {
         'id': 'harry_potter',
@@ -887,7 +897,8 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'O Eleito',
-        'icon': '⚡'
+        'icon': '⚡',
+        'category': 'O Trio de Ouro e Aliados'
     },
     {
         'id': 'hermione_granger',
@@ -896,7 +907,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Mente Brilhante',
-        'icon': '📚'
+        'icon': '📚',
+        'category': 'O Trio de Ouro e Aliados'
     },
     {
         'id': 'ron_weasley',
@@ -905,7 +917,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Leal Amigo',
-        'icon': '♟️'
+        'icon': '♟️',
+        'category': 'O Trio de Ouro e Aliados'
     },
     {
         'id': 'luna_lovegood',
@@ -914,7 +927,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'A Observadora',
-        'icon': '👓'
+        'icon': '👓',
+        'category': 'O Trio de Ouro e Aliados'
     },
     {
         'id': 'neville_longbottom',
@@ -923,7 +937,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Defensor',
-        'icon': '🌱'
+        'icon': '🌱',
+        'category': 'O Trio de Ouro e Aliados'
     },
     {
         'id': 'mcgonagall',
@@ -932,7 +947,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'Mestre da Transfiguração',
-        'icon': '🐈'
+        'icon': '🐈',
+        'category': 'Mestres de Hogwarts'
     },
     {
         'id': 'snape',
@@ -941,7 +957,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Príncipe Mestiço',
-        'icon': '🧪'
+        'icon': '🧪',
+        'category': 'Mestres de Hogwarts'
     },
     {
         'id': 'bellatrix',
@@ -950,7 +967,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'A Fanática',
-        'icon': '🗡️'
+        'icon': '🗡️',
+        'category': 'Outros Bruxos de Destaque'
     },
     {
         'id': 'wildsmith',
@@ -959,7 +977,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Inventora do Pó de Flu',
-        'icon': '🔥'
+        'icon': '🔥',
+        'category': 'Alquimistas e Inventores'
     },
     {
         'id': 'wenlock',
@@ -968,7 +987,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Mestra da Aritmancia',
-        'icon': '🔢'
+        'icon': '🔢',
+        'category': 'Alquimistas e Inventores'
     },
     {
         'id': 'vablatsky',
@@ -977,7 +997,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'A Vidente',
-        'icon': '🔮'
+        'icon': '🔮',
+        'category': 'Magizoologistas e Videntes'
     },
     {
         'id': 'woodcroft',
@@ -986,7 +1007,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Fundador de Hogsmeade',
-        'icon': '🍻'
+        'icon': '🍻',
+        'category': 'Outros Bruxos de Destaque'
     },
     {
         'id': 'agripa',
@@ -995,7 +1017,8 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Alqumista Místico',
-        'icon': '📜'
+        'icon': '📖',
+        'category': 'Alquimistas e Inventores'
     },
     {
         'id': 'ptolemy',
@@ -1004,7 +1027,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'O Astrônomo Antigo',
-        'icon': '🪐'
+        'icon': '🪐',
+        'category': 'Outros Bruxos de Destaque'
     },
     {
         'id': 'bertie_bott',
@@ -1013,7 +1037,8 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Mestre dos Doces',
-        'icon': '🍬'
+        'icon': '🍬',
+        'category': 'Outros Bruxos de Destaque'
     }
 ]
 # --- DADOS DOS FEITIÇOS ---

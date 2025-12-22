@@ -514,6 +514,20 @@
         opacity: 0.9;
     }
 
+    .category-banner {
+        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+        color: var(--gold-primary);
+        font-family: var(--font-heading);
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
     .page-number {
         position: absolute;
         bottom: 1.5rem;
@@ -784,7 +798,7 @@
 
 <script>
     // Uso do filtro safe para garantir que o JSON não seja escapado
-    const allWizards = [{"desc": "Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald e descobrir os doze usos do sangue de drag\u00e3o.", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore", "name": "Alvo Dumbledore", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Grande Diretor"}, {"desc": "Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da Ordem de Merlin.", "icon": "\u2728", "id": "merlin", "name": "Merlin", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Pr\u00edncipe dos Magos"}, {"desc": "Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome \u00e0 casa dos corajosos e ousados.", "icon": "\ud83e\udd81", "id": "gryffindor", "name": "Godric Gryffindor", "rarity": "rare", "rarity_label": "Raro", "title": "Bravo Duelista"}, {"desc": "Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus feiti\u00e7os culin\u00e1rios.", "icon": "\ud83e\udda1", "id": "hufflepuff", "name": "Helga Hufflepuff", "rarity": "rare", "rarity_label": "Raro", "title": "Bondade Infinita"}, {"desc": "Co-fundadora de Hogwarts. A bruxa mais brilhante de sua \u00e9poca. Criou o diadema que conferia sabedoria.", "icon": "\ud83e\udd85", "id": "ravenclaw", "name": "Rowena Ravenclaw", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"}, {"desc": "Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilim\u00eancia.", "icon": "\ud83d\udc0d", "id": "slytherin", "name": "Salazar Slytherin", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Ofidioglossia"}, {"desc": "O \u00fanico fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos.", "icon": "\ud83d\udc8e", "id": "flamel", "name": "Nicolau Flamel", "rarity": "rare", "rarity_label": "Raro", "title": "O Imortal Alquimista"}, {"desc": "Famoso Magizoologista e autor de \"Animais Fant\u00e1sticos e Onde Habitam\". Especialista em criaturas m\u00e1gicas.", "icon": "\ud83d\udcbc", "id": "newt", "name": "Newt Scamander", "rarity": "rare", "rarity_label": "Raro", "title": "O Magizoologista"}, {"desc": "Autor de in\u00fameros best-sellers sobre suas \"aventuras\" e cinco vezes vencedor do pr\u00eamio do Sorriso Mais Charmoso.", "icon": "\ud83d\ude01", "id": "lockhart", "name": "Gilderoy Lockhart", "rarity": "common", "rarity_label": "Comum", "title": "Mestre do Charme"}, {"desc": "Poderosa bruxa medieval, meia-irm\u00e3 do Rei Arthur. Inimiga jurada de Merlin e mestra em artes das trevas.", "icon": "\ud83c\udf18", "id": "morgana", "name": "Morgana le Fay", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Rainha das Sombras"}, {"desc": "O Menino que Sobreviveu. Famoso por derrotar Lord Voldemort e liderar a resist\u00eancia na Batalha de Hogwarts.", "icon": "\u26a1", "id": "harry_potter", "name": "Harry Potter", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Eleito"}, {"desc": "A bruxa mais brilhante de sua idade. Co-fundadora da Armada de Dumbledore e pe\u00e7a chave na destrui\u00e7\u00e3o das Horcruxes.", "icon": "\ud83d\udcda", "id": "hermione_granger", "name": "Hermione Granger", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"}, {"desc": "Melhor amigo de Harry Potter. Destruiu a Horcrux do medalh\u00e3o e foi goleiro de Quadribol da Grifin\u00f3ria.", "icon": "\u265f\ufe0f", "id": "ron_weasley", "name": "Rony Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "Leal Amigo"}, {"desc": "Membro da Armada de Dumbledore. Famosa por sua vis\u00e3o \u00fanica do mundo e por encontrar criaturas que ningu\u00e9m mais v\u00ea.", "icon": "\ud83d\udc53", "id": "luna_lovegood", "name": "Luna Lovegood", "rarity": "rare", "rarity_label": "Raro", "title": "A Observadora"}, {"desc": "L\u00edder da Armada de Dumbledore durante a ocupa\u00e7\u00e3o de Hogwarts. Destruiu Nagini com a espada de Gryffindor.", "icon": "\ud83c\udf31", "id": "neville_longbottom", "name": "Neville Longbottom", "rarity": "rare", "rarity_label": "Raro", "title": "O Defensor"}, {"desc": "Diretora de Hogwarts e mestre em Transfigura\u00e7\u00e3o. L\u00edder da defesa de Hogwarts contra os Comensais da Morte.", "icon": "\ud83d\udc08", "id": "mcgonagall", "name": "Minerva McGonagall", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Transfigura\u00e7\u00e3o"}, {"desc": "Mestre de Po\u00e7\u00f5es e Pr\u00edncipe Mesti\u00e7o. Atuou como agente duplo em uma das miss\u00f5es de espionagem mais perigosas da hist\u00f3ria.", "icon": "\ud83e\uddea", "id": "snape", "name": "Severo Snape", "rarity": "rare", "rarity_label": "Raro", "title": "O Pr\u00edncipe Mesti\u00e7o"}, {"desc": "A comensal da morte mais leal de Voldemort. Mestra em artes das trevas e duelos mortais.", "icon": "\ud83d\udde1\ufe0f", "id": "bellatrix", "name": "Bellatrix Lestrange", "rarity": "rare", "rarity_label": "Raro", "title": "A Fan\u00e1tica"}, {"desc": "Bruxa inventora do P\u00f3 de Flu, revolucionando o transporte m\u00e1gico em todo o mundo.", "icon": "\ud83d\udd25", "id": "wildsmith", "name": "Ignatia Wildsmith", "rarity": "common", "rarity_label": "Comum", "title": "Inventora do P\u00f3 de Flu"}, {"desc": "Famosa Aritmante que primeiro descobriu as propriedades m\u00e1gicas do n\u00famero sete.", "icon": "\ud83d\udd22", "id": "wenlock", "name": "Bridget Wenlock", "rarity": "common", "rarity_label": "Comum", "title": "Mestra da Aritmancia"}, {"desc": "C\u00e9lebre vidente e autora de \"Esclarecendo o Futuro\". Suas profecias ainda s\u00e3o estudadas.", "icon": "\ud83d\udd2e", "id": "vablatsky", "name": "Cassandra Vablatsky", "rarity": "common", "rarity_label": "Comum", "title": "A Vidente"}, {"desc": "Fundador da aldeia de Hogsmeade. Fugiu de persegui\u00e7\u00f5es trouxas para criar o \u00fanico ref\u00fagio bruxo da Gr\u00e3-Bretanha.", "icon": "\ud83c\udf7b", "id": "woodcroft", "name": "Hengisto de Woodcroft", "rarity": "common", "rarity_label": "Comum", "title": "Fundador de Hogsmeade"}, {"desc": "Bruxo cujas figurinhas s\u00e3o extremamente raras. Um alquimista e m\u00edstico que escreveu sobre magia natural.", "icon": "\ud83d\udcdc", "id": "agripa", "name": "Corn\u00e9lio Agripa", "rarity": "rare", "rarity_label": "Raro", "title": "O Alqumista M\u00edstico"}, {"desc": "Bruxo cuja figurinha \u00e9 celebrada por sua raridade. Astr\u00f4nomo e ge\u00f3grafo famoso do mundo bruxo antigo.", "icon": "\ud83e\ude90", "id": "ptolemy", "name": "Ptolomeu", "rarity": "common", "rarity_label": "Comum", "title": "O Astr\u00f4nomo Antigo"}, {"desc": "Criador dos Feij\u00e3ozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um feij\u00e3o normal.", "icon": "\ud83c\udf6c", "id": "bertie_bott", "name": "Bertie Bott", "rarity": "common", "rarity_label": "Comum", "title": "Mestre dos Doces"}];
+    const allWizards = [{"category": "Mestres de Hogwarts", "desc": "Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald e descobrir os doze usos do sangue de drag\u00e3o.", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore", "name": "Alvo Dumbledore", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Grande Diretor"}, {"category": "Lendas Medievais", "desc": "Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da Ordem de Merlin.", "icon": "\ud83d\udcdc", "id": "merlin", "name": "Merlin", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Pr\u00edncipe dos Magos"}, {"category": "Fundadores de Hogwarts", "desc": "Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome \u00e0 casa dos corajosos e ousados.", "icon": "\ud83e\udd81", "id": "gryffindor", "name": "Godric Gryffindor", "rarity": "rare", "rarity_label": "Raro", "title": "Bravo Duelista"}, {"category": "Fundadores de Hogwarts", "desc": "Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus feiti\u00e7os culin\u00e1rios.", "icon": "\ud83e\udda1", "id": "hufflepuff", "name": "Helga Hufflepuff", "rarity": "rare", "rarity_label": "Raro", "title": "Bondade Infinita"}, {"category": "Fundadores de Hogwarts", "desc": "Co-fundadora de Hogwarts. A bruxa mais brilhante de sua \u00e9poca. Criou o diadema que conferia sabedoria.", "icon": "\ud83e\udd85", "id": "ravenclaw", "name": "Rowena Ravenclaw", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"}, {"category": "Fundadores de Hogwarts", "desc": "Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilim\u00eancia.", "icon": "\ud83d\udc0d", "id": "slytherin", "name": "Salazar Slytherin", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Ofidioglossia"}, {"category": "Alquimistas e Inventores", "desc": "O \u00fanico fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos.", "icon": "\ud83d\udc8e", "id": "flamel", "name": "Nicolau Flamel", "rarity": "rare", "rarity_label": "Raro", "title": "O Imortal Alquimista"}, {"category": "Magizoologistas e Videntes", "desc": "Famoso Magizoologista e autor de \"Animais Fant\u00e1sticos e Onde Habitam\". Especialista em criaturas m\u00e1gicas.", "icon": "\ud83d\udcbc", "id": "newt", "name": "Newt Scamander", "rarity": "rare", "rarity_label": "Raro", "title": "O Magizoologista"}, {"category": "Mestres de Hogwarts", "desc": "Autor de in\u00fameros best-sellers sobre suas \"aventuras\" e cinco vezes vencedor do pr\u00eamio do Sorriso Mais Charmoso.", "icon": "\u2728", "id": "lockhart", "name": "Gilderoy Lockhart", "rarity": "common", "rarity_label": "Comum", "title": "Mestre do Charme"}, {"category": "Lendas Medievais", "desc": "Poderosa bruxa medieval, meia-irm\u00e3 do Rei Arthur. Inimiga jurada de Merlin e mestra em artes das trevas.", "icon": "\ud83d\udd2e", "id": "morgana", "name": "Morgana le Fay", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Rainha das Sombras"}, {"category": "O Trio de Ouro e Aliados", "desc": "O Menino que Sobreviveu. Famoso por derrotar Lord Voldemort e liderar a resist\u00eancia na Batalha de Hogwarts.", "icon": "\u26a1", "id": "harry_potter", "name": "Harry Potter", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Eleito"}, {"category": "O Trio de Ouro e Aliados", "desc": "A bruxa mais brilhante de sua idade. Co-fundadora da Armada de Dumbledore e pe\u00e7a chave na destrui\u00e7\u00e3o das Horcruxes.", "icon": "\ud83d\udcda", "id": "hermione_granger", "name": "Hermione Granger", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"}, {"category": "O Trio de Ouro e Aliados", "desc": "Melhor amigo de Harry Potter. Destruiu a Horcrux do medalh\u00e3o e foi goleiro de Quadribol da Grifin\u00f3ria.", "icon": "\u265f\ufe0f", "id": "ron_weasley", "name": "Rony Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "Leal Amigo"}, {"category": "O Trio de Ouro e Aliados", "desc": "Membro da Armada de Dumbledore. Famosa por sua vis\u00e3o \u00fanica do mundo e por encontrar criaturas que ningu\u00e9m mais v\u00ea.", "icon": "\ud83d\udc53", "id": "luna_lovegood", "name": "Luna Lovegood", "rarity": "rare", "rarity_label": "Raro", "title": "A Observadora"}, {"category": "O Trio de Ouro e Aliados", "desc": "L\u00edder da Armada de Dumbledore durante a ocupa\u00e7\u00e3o de Hogwarts. Destruiu Nagini com a espada de Gryffindor.", "icon": "\ud83c\udf31", "id": "neville_longbottom", "name": "Neville Longbottom", "rarity": "rare", "rarity_label": "Raro", "title": "O Defensor"}, {"category": "Mestres de Hogwarts", "desc": "Diretora de Hogwarts e mestre em Transfigura\u00e7\u00e3o. L\u00edder da defesa de Hogwarts contra os Comensais da Morte.", "icon": "\ud83d\udc08", "id": "mcgonagall", "name": "Minerva McGonagall", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Transfigura\u00e7\u00e3o"}, {"category": "Mestres de Hogwarts", "desc": "Mestre de Po\u00e7\u00f5es e Pr\u00edncipe Mesti\u00e7o. Atuou como agente duplo em uma das miss\u00f5es de espionagem mais perigosas da hist\u00f3ria.", "icon": "\ud83e\uddea", "id": "snape", "name": "Severo Snape", "rarity": "rare", "rarity_label": "Raro", "title": "O Pr\u00edncipe Mesti\u00e7o"}, {"category": "Outros Bruxos de Destaque", "desc": "A comensal da morte mais leal de Voldemort. Mestra em artes das trevas e duelos mortais.", "icon": "\ud83d\udde1\ufe0f", "id": "bellatrix", "name": "Bellatrix Lestrange", "rarity": "rare", "rarity_label": "Raro", "title": "A Fan\u00e1tica"}, {"category": "Alquimistas e Inventores", "desc": "Bruxa inventora do P\u00f3 de Flu, revolucionando o transporte m\u00e1gico em todo o mundo.", "icon": "\ud83d\udd25", "id": "wildsmith", "name": "Ignatia Wildsmith", "rarity": "common", "rarity_label": "Comum", "title": "Inventora do P\u00f3 de Flu"}, {"category": "Alquimistas e Inventores", "desc": "Famosa Aritmante que primeiro descobriu as propriedades m\u00e1gicas do n\u00famero sete.", "icon": "\ud83d\udd22", "id": "wenlock", "name": "Bridget Wenlock", "rarity": "common", "rarity_label": "Comum", "title": "Mestra da Aritmancia"}, {"category": "Magizoologistas e Videntes", "desc": "C\u00e9lebre vidente e autora de \"Esclarecendo o Futuro\". Suas profecias ainda s\u00e3o estudadas.", "icon": "\ud83d\udd2e", "id": "vablatsky", "name": "Cassandra Vablatsky", "rarity": "common", "rarity_label": "Comum", "title": "A Vidente"}, {"category": "Outros Bruxos de Destaque", "desc": "Fundador da aldeia de Hogsmeade. Fugiu de persegui\u00e7\u00f5es trouxas para criar o \u00fanico ref\u00fagio bruxo da Gr\u00e3-Bretanha.", "icon": "\ud83c\udf7b", "id": "woodcroft", "name": "Hengisto de Woodcroft", "rarity": "common", "rarity_label": "Comum", "title": "Fundador de Hogsmeade"}, {"category": "Alquimistas e Inventores", "desc": "Bruxo cujas figurinhas s\u00e3o extremamente raras. Um alquimista e m\u00edstico que escreveu sobre magia natural.", "icon": "\ud83d\udcd6", "id": "agripa", "name": "Corn\u00e9lio Agripa", "rarity": "rare", "rarity_label": "Raro", "title": "O Alqumista M\u00edstico"}, {"category": "Outros Bruxos de Destaque", "desc": "Bruxo cuja figurinha \u00e9 celebrada por sua raridade. Astr\u00f4nomo e ge\u00f3grafo famoso do mundo bruxo antigo.", "icon": "\ud83e\ude90", "id": "ptolemy", "name": "Ptolomeu", "rarity": "common", "rarity_label": "Comum", "title": "O Astr\u00f4nomo Antigo"}, {"category": "Outros Bruxos de Destaque", "desc": "Criador dos Feij\u00e3ozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um feij\u00e3o normal.", "icon": "\ud83c\udf6c", "id": "bertie_bott", "name": "Bertie Bott", "rarity": "common", "rarity_label": "Comum", "title": "Mestre dos Doces"}];
     let myCollection = [];
 
     try {
@@ -906,68 +920,84 @@
         if (!spreadsContainer) return;
 
         spreadsContainer.innerHTML = '';
-        const wizardsPerPage = 8; // 4 por página (8 por spread)
-        const totalSpreads = Math.ceil(allWizards.length / wizardsPerPage);
 
-        for (let s = 0; s < totalSpreads; s++) {
-            const spreadDiv = document.createElement('div');
-            spreadDiv.className = 'album-book';
+        // Agrupar por categoria
+        const grouped = {};
+        allWizards.forEach(w => {
+            const cat = w.category || 'Geral';
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(w);
+        });
 
-            // Títulos e Números das páginas
-            const pageNumLeft = s * 2 + 1;
-            const pageNumRight = s * 2 + 2;
-            const titleLeft = "ÁLBUM DE FIGURINHAS";
-            const titleRight = "O MUNDO MÁGICO";
+        let currentPageGlobal = 1;
+        const wizardsPerPage = 4; // 4 por página
 
-            spreadDiv.innerHTML = `
-                <div class="album-page left-page">
-                    <h3 class="album-page-title">${titleLeft}</h3>
-                    <div class="album-grid" id="grid-spread-${s}-left"></div>
-                    <span class="page-number">${pageNumLeft}</span>
-                </div>
-                <div class="album-divider"></div>
-                <div class="album-page right-page">
-                    <h3 class="album-page-title">${titleRight}</h3>
-                    <div class="album-grid" id="grid-spread-${s}-right"></div>
-                    <span class="page-number">${pageNumRight}</span>
-                </div>
-            `;
-            spreadsContainer.appendChild(spreadDiv);
+        Object.keys(grouped).forEach(catName => {
+            const categoryWizards = grouped[catName];
+            const pagesNeeded = Math.ceil(categoryWizards.length / wizardsPerPage);
+            const spreadsNeeded = Math.ceil(pagesNeeded / 2);
 
-            // Preencher os grids do spread
-            const spreadStart = s * wizardsPerPage;
-            for (let i = 0; i < wizardsPerPage; i++) {
-                const wizardIndex = spreadStart + i;
-                if (wizardIndex >= allWizards.length) break;
+            for (let s = 0; s < spreadsNeeded; s++) {
+                const spreadDiv = document.createElement('div');
+                spreadDiv.className = 'album-book';
 
-                const w = allWizards[wizardIndex];
-                const isCollected = myCollection.includes(w.id);
-                if (isCollected) count++;
+                const titleLeft = "ÁLBUM DE FIGURINHAS";
+                const titleRight = "O MUNDO MÁGICO";
 
-                const slot = document.createElement('div');
-                slot.className = 'album-card-slot';
-                slot.onclick = () => isCollected ? zoomCard(w) : null;
+                spreadDiv.innerHTML = `
+                    <div class="album-page left-page">
+                        <h3 class="album-page-title">${titleLeft}</h3>
+                        ${s === 0 ? `<div class="category-banner">${catName}</div>` : ''}
+                        <div class="album-grid" id="grid-cat-${catName.replace(/\s+/g, '-')}-${s}-left"></div>
+                        <span class="page-number">${currentPageGlobal++}</span>
+                    </div>
+                    <div class="album-divider"></div>
+                    <div class="album-page right-page">
+                        <h3 class="album-page-title">${titleRight}</h3>
+                        <div class="album-grid" id="grid-cat-${catName.replace(/\s+/g, '-')}-${s}-right"></div>
+                        <span class="page-number">${currentPageGlobal++}</span>
+                    </div>
+                `;
+                spreadsContainer.appendChild(spreadDiv);
 
-                if (isCollected) {
-                    slot.innerHTML = `
-                        <div class="mini-wizard-card ${w.rarity}">
-                            <div class="mini-rarity-dot"></div>
-                            <span class="mini-icon">${w.icon}</span>
-                            <span class="mini-name-tag">${w.name}</span>
-                        </div>
-                        <span class="album-name-label" style="color: var(--gold-secondary); opacity: 0.8;">${w.name}</span>
-                    `;
-                } else {
-                    slot.innerHTML = `
-                        <div class="card-placeholder">?</div>
-                        <span class="album-name-label">${w.name}</span>
-                    `;
+                // Preencher widgets
+                for (let i = 0; i < wizardsPerPage * 2; i++) {
+                    const wizardIndex = (s * wizardsPerPage * 2) + i;
+                    if (wizardIndex >= categoryWizards.length) break;
+
+                    const w = categoryWizards[wizardIndex];
+                    const isCollected = myCollection.includes(w.id);
+                    if (isCollected) count++;
+
+                    const slot = document.createElement('div');
+                    slot.className = 'album-card-slot';
+                    slot.onclick = () => isCollected ? zoomCard(w) : null;
+
+                    if (isCollected) {
+                        slot.innerHTML = `
+                            <div class="mini-wizard-card ${w.rarity}">
+                                <div class="mini-rarity-dot"></div>
+                                <span class="mini-icon">${w.icon}</span>
+                                <span class="mini-name-tag">${w.name}</span>
+                            </div>
+                            <span class="album-name-label" style="color: var(--gold-secondary); opacity: 0.8;">${w.name}</span>
+                        `;
+                    } else {
+                        slot.innerHTML = `
+                            <div class="card-placeholder">?</div>
+                            <span class="album-name-label">${w.name}</span>
+                        `;
+                    }
+
+                    const targetGridId = i < wizardsPerPage
+                        ? `grid-cat-${catName.replace(/\s+/g, '-')}-${s}-left`
+                        : `grid-cat-${catName.replace(/\s+/g, '-')}-${s}-right`;
+
+                    const grid = document.getElementById(targetGridId);
+                    if (grid) grid.appendChild(slot);
                 }
-
-                const targetGridId = i < wizardsPerPage / 2 ? `grid-spread-${s}-left` : `grid-spread-${s}-right`;
-                document.getElementById(targetGridId).appendChild(slot);
             }
-        }
+        });
 
         const counter = document.getElementById('collectedCount');
         if (counter) counter.innerText = count;

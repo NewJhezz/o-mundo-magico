@@ -489,6 +489,20 @@
         opacity: 0.9;
     }
 
+    .category-banner {
+        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+        color: var(--gold-primary);
+        font-family: var(--font-heading);
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
     .page-number {
         position: absolute;
         bottom: 1.5rem;
@@ -881,68 +895,84 @@
         if (!spreadsContainer) return;
 
         spreadsContainer.innerHTML = '';
-        const wizardsPerPage = 8; // 4 por página (8 por spread)
-        const totalSpreads = Math.ceil(allWizards.length / wizardsPerPage);
 
-        for (let s = 0; s < totalSpreads; s++) {
-            const spreadDiv = document.createElement('div');
-            spreadDiv.className = 'album-book';
+        // Agrupar por categoria
+        const grouped = {};
+        allWizards.forEach(w => {
+            const cat = w.category || 'Geral';
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(w);
+        });
 
-            // Títulos e Números das páginas
-            const pageNumLeft = s * 2 + 1;
-            const pageNumRight = s * 2 + 2;
-            const titleLeft = "ÁLBUM DE FIGURINHAS";
-            const titleRight = "O MUNDO MÁGICO";
+        let currentPageGlobal = 1;
+        const wizardsPerPage = 4; // 4 por página
 
-            spreadDiv.innerHTML = `
-                <div class="album-page left-page">
-                    <h3 class="album-page-title">${titleLeft}</h3>
-                    <div class="album-grid" id="grid-spread-${s}-left"></div>
-                    <span class="page-number">${pageNumLeft}</span>
-                </div>
-                <div class="album-divider"></div>
-                <div class="album-page right-page">
-                    <h3 class="album-page-title">${titleRight}</h3>
-                    <div class="album-grid" id="grid-spread-${s}-right"></div>
-                    <span class="page-number">${pageNumRight}</span>
-                </div>
-            `;
-            spreadsContainer.appendChild(spreadDiv);
+        Object.keys(grouped).forEach(catName => {
+            const categoryWizards = grouped[catName];
+            const pagesNeeded = Math.ceil(categoryWizards.length / wizardsPerPage);
+            const spreadsNeeded = Math.ceil(pagesNeeded / 2);
 
-            // Preencher os grids do spread
-            const spreadStart = s * wizardsPerPage;
-            for (let i = 0; i < wizardsPerPage; i++) {
-                const wizardIndex = spreadStart + i;
-                if (wizardIndex >= allWizards.length) break;
+            for (let s = 0; s < spreadsNeeded; s++) {
+                const spreadDiv = document.createElement('div');
+                spreadDiv.className = 'album-book';
 
-                const w = allWizards[wizardIndex];
-                const isCollected = myCollection.includes(w.id);
-                if (isCollected) count++;
+                const titleLeft = "ÁLBUM DE FIGURINHAS";
+                const titleRight = "O MUNDO MÁGICO";
 
-                const slot = document.createElement('div');
-                slot.className = 'album-card-slot';
-                slot.onclick = () => isCollected ? zoomCard(w) : null;
+                spreadDiv.innerHTML = `
+                    <div class="album-page left-page">
+                        <h3 class="album-page-title">${titleLeft}</h3>
+                        ${s === 0 ? `<div class="category-banner">${catName}</div>` : ''}
+                        <div class="album-grid" id="grid-cat-${catName.replace(/\s+/g, '-')}-${s}-left"></div>
+                        <span class="page-number">${currentPageGlobal++}</span>
+                    </div>
+                    <div class="album-divider"></div>
+                    <div class="album-page right-page">
+                        <h3 class="album-page-title">${titleRight}</h3>
+                        <div class="album-grid" id="grid-cat-${catName.replace(/\s+/g, '-')}-${s}-right"></div>
+                        <span class="page-number">${currentPageGlobal++}</span>
+                    </div>
+                `;
+                spreadsContainer.appendChild(spreadDiv);
 
-                if (isCollected) {
-                    slot.innerHTML = `
-                        <div class="mini-wizard-card ${w.rarity}">
-                            <div class="mini-rarity-dot"></div>
-                            <span class="mini-icon">${w.icon}</span>
-                            <span class="mini-name-tag">${w.name}</span>
-                        </div>
-                        <span class="album-name-label" style="color: var(--gold-secondary); opacity: 0.8;">${w.name}</span>
-                    `;
-                } else {
-                    slot.innerHTML = `
-                        <div class="card-placeholder">?</div>
-                        <span class="album-name-label">${w.name}</span>
-                    `;
+                // Preencher widgets
+                for (let i = 0; i < wizardsPerPage * 2; i++) {
+                    const wizardIndex = (s * wizardsPerPage * 2) + i;
+                    if (wizardIndex >= categoryWizards.length) break;
+
+                    const w = categoryWizards[wizardIndex];
+                    const isCollected = myCollection.includes(w.id);
+                    if (isCollected) count++;
+
+                    const slot = document.createElement('div');
+                    slot.className = 'album-card-slot';
+                    slot.onclick = () => isCollected ? zoomCard(w) : null;
+
+                    if (isCollected) {
+                        slot.innerHTML = `
+                            <div class="mini-wizard-card ${w.rarity}">
+                                <div class="mini-rarity-dot"></div>
+                                <span class="mini-icon">${w.icon}</span>
+                                <span class="mini-name-tag">${w.name}</span>
+                            </div>
+                            <span class="album-name-label" style="color: var(--gold-secondary); opacity: 0.8;">${w.name}</span>
+                        `;
+                    } else {
+                        slot.innerHTML = `
+                            <div class="card-placeholder">?</div>
+                            <span class="album-name-label">${w.name}</span>
+                        `;
+                    }
+
+                    const targetGridId = i < wizardsPerPage
+                        ? `grid-cat-${catName.replace(/\s+/g, '-')}-${s}-left`
+                        : `grid-cat-${catName.replace(/\s+/g, '-')}-${s}-right`;
+
+                    const grid = document.getElementById(targetGridId);
+                    if (grid) grid.appendChild(slot);
                 }
-
-                const targetGridId = i < wizardsPerPage / 2 ? `grid-spread-${s}-left` : `grid-spread-${s}-right`;
-                document.getElementById(targetGridId).appendChild(slot);
             }
-        }
+        });
 
         const counter = document.getElementById('collectedCount');
         if (counter) counter.innerText = count;
