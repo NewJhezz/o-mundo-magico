@@ -459,15 +459,17 @@
 
     .album-page {
         flex: 1;
-        background: #1e1512;
-        /* Pergaminho Escuro / Couro Interno */
+        background: #231916;
+        /* Papel de pergaminho bem escuro, mas com textura de folha */
         background-image:
-            radial-gradient(circle at 50% 50%, rgba(43, 29, 26, 0.4) 0%, rgba(20, 10, 5, 0.9) 100%),
-            url('https://www.transparenttextures.com/patterns/handmade-paper.png');
-        padding: 2rem 1.5rem;
-        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.9);
+            radial-gradient(circle at center, rgba(35, 25, 22, 0.7) 0%, rgba(15, 10, 8, 0.95) 100%),
+            url('https://www.transparenttextures.com/patterns/old-map.png');
+        /* Textura que lembra papel de álbum */
+        padding: 2.5rem 2rem;
+        box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
         position: relative;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     .album-page::before {
@@ -504,12 +506,29 @@
         color: var(--gold-secondary);
         text-align: center;
         margin-bottom: 2rem;
-        font-size: 1.2rem;
-        border-bottom: 1px double rgba(212, 175, 55, 0.2);
+        font-size: 1rem;
+        border-bottom: 1px double rgba(212, 175, 55, 0.15);
         padding-bottom: 0.8rem;
         text-transform: uppercase;
-        letter-spacing: 3px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 4px;
+        opacity: 0.9;
+    }
+
+    .page-number {
+        position: absolute;
+        bottom: 1.5rem;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: var(--gold-secondary);
+        opacity: 0.4;
+    }
+
+    .left-page .page-number {
+        left: 2rem;
+    }
+
+    .right-page .page-number {
+        right: 2rem;
     }
 
     .album-grid {
@@ -857,19 +876,23 @@
             const spreadDiv = document.createElement('div');
             spreadDiv.className = 'album-book';
 
-            // Títulos das páginas (I, II, III...)
-            const leftTitle = `Livro de Colecionador - ${s * 2 + 1}`;
-            const rightTitle = `Livro de Colecionador - ${s * 2 + 2}`;
+            // Títulos e Números das páginas
+            const pageNumLeft = s * 2 + 1;
+            const pageNumRight = s * 2 + 2;
+            const titleLeft = "ÁLBUM DE FIGURINHAS";
+            const titleRight = "O MUNDO MÁGICO";
 
             spreadDiv.innerHTML = `
                 <div class="album-page left-page">
-                    <h3 class="album-page-title">${leftTitle}</h3>
+                    <h3 class="album-page-title">${titleLeft}</h3>
                     <div class="album-grid" id="grid-spread-${s}-left"></div>
+                    <span class="page-number">${pageNumLeft}</span>
                 </div>
                 <div class="album-divider"></div>
                 <div class="album-page right-page">
-                    <h3 class="album-page-title">${rightTitle}</h3>
+                    <h3 class="album-page-title">${titleRight}</h3>
                     <div class="album-grid" id="grid-spread-${s}-right"></div>
+                    <span class="page-number">${pageNumRight}</span>
                 </div>
             `;
             spreadsContainer.appendChild(spreadDiv);
