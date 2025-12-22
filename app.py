@@ -881,6 +881,114 @@ FROGS_DATA = [
         'icon': '🌘'
     },
     {
+        'id': 'harry_potter',
+        'name': 'Harry Potter',
+        'desc': 'O Menino que Sobreviveu. Famoso por derrotar Lord Voldemort e liderar a resistência na Batalha de Hogwarts.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'O Eleito',
+        'icon': '⚡'
+    },
+    {
+        'id': 'hermione_granger',
+        'name': 'Hermione Granger',
+        'desc': 'A bruxa mais brilhante de sua idade. Co-fundadora da Armada de Dumbledore e peça chave na destruição das Horcruxes.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Mente Brilhante',
+        'icon': '📚'
+    },
+    {
+        'id': 'ron_weasley',
+        'name': 'Rony Weasley',
+        'desc': 'Melhor amigo de Harry Potter. Destruiu a Horcrux do medalhão e foi goleiro de Quadribol da Grifinória.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Leal Amigo',
+        'icon': '♟️'
+    },
+    {
+        'id': 'luna_lovegood',
+        'name': 'Luna Lovegood',
+        'desc': 'Membro da Armada de Dumbledore. Famosa por sua visão única do mundo e por encontrar criaturas que ninguém mais vê.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Observadora',
+        'icon': '👓'
+    },
+    {
+        'id': 'neville_longbottom',
+        'name': 'Neville Longbottom',
+        'desc': 'Líder da Armada de Dumbledore durante a ocupação de Hogwarts. Destruiu Nagini com a espada de Gryffindor.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Defensor',
+        'icon': '🌱'
+    },
+    {
+        'id': 'mcgonagall',
+        'name': 'Minerva McGonagall',
+        'desc': 'Diretora de Hogwarts e mestre em Transfiguração. Líder da defesa de Hogwarts contra os Comensais da Morte.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Mestre da Transfiguração',
+        'icon': '🐈'
+    },
+    {
+        'id': 'snape',
+        'name': 'Severo Snape',
+        'desc': 'Mestre de Poções e Príncipe Mestiço. Atuou como agente duplo em uma das missões de espionagem mais perigosas da história.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Príncipe Mestiço',
+        'icon': '🧪'
+    },
+    {
+        'id': 'bellatrix',
+        'name': 'Bellatrix Lestrange',
+        'desc': 'A comensal da morte mais leal de Voldemort. Mestra em artes das trevas e duelos mortais.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Fanática',
+        'icon': '🗡️'
+    },
+    {
+        'id': 'wildsmith',
+        'name': 'Ignatia Wildsmith',
+        'desc': 'Bruxa inventora do Pó de Flu, revolucionando o transporte mágico em todo o mundo.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Inventora do Pó de Flu',
+        'icon': '🔥'
+    },
+    {
+        'id': 'wenlock',
+        'name': 'Bridget Wenlock',
+        'desc': 'Famosa Aritmante que primeiro descobriu as propriedades mágicas do número sete.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Mestra da Aritmancia',
+        'icon': '🔢'
+    },
+    {
+        'id': 'vablatsky',
+        'name': 'Cassandra Vablatsky',
+        'desc': 'Célebre vidente e autora de "Esclarecendo o Futuro". Suas profecias ainda são estudadas.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'A Vidente',
+        'icon': '🔮'
+    },
+    {
+        'id': 'woodcroft',
+        'name': 'Hengisto de Woodcroft',
+        'desc': 'Fundador da aldeia de Hogsmeade. Fugiu de perseguições trouxas para criar o único refúgio bruxo da Grã-Bretanha.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Fundador de Hogsmeade',
+        'icon': '🍻'
+    },
+    {
         'id': 'agripa',
         'name': 'Cornélio Agripa',
         'desc': 'Bruxo cujas figurinhas são extremamente raras. Um alquimista e místico que escreveu sobre magia natural.',

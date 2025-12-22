@@ -49,24 +49,10 @@
 
     <div id="section-album" class="frog-section hidden">
         <div class="album-container">
-            <!-- Capa/Lombada Simulada -->
-            <div class="album-book">
-                <div class="album-page left-page">
-                    <h3 class="album-page-title">Grandes Bruxos</h3>
-                    <div id="albumGridLeft" class="album-grid">
-                        <!-- Figurinhas do lado esquerdo -->
-                    </div>
-                </div>
-                <div class="album-divider"></div>
-                <div class="album-page right-page">
-                    <h3 class="album-page-title">Mestres das Artes</h3>
-                    <div id="albumGridRight" class="album-grid">
-                        <!-- Figurinhas do lado direito -->
-                    </div>
-                </div>
-            </div>
+            <!-- Os spreads (pares de páginas) serão gerados dinamicamente via JS -->
+            <div id="albumSpreads" class="album-stacks"></div>
 
-            <div class="album-controls" style="text-align: center; margin-top: 2rem;">
+            <div class="album-controls" style="text-align: center; margin-top: 4rem;">
                 <p class="album-stats">Coleção: <span id="collectedCount">0</span>/{{ wizards|length }}</p>
                 <button class="tab-link reset-btn" onclick="resetCollection()"
                     style="font-size: 0.7rem; opacity: 0.4; margin-top: 1rem;">Zerar Progresso Bruxo</button>
@@ -421,116 +407,144 @@
         box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
     }
 
-    /* Álbum Estilo Livro */
+    /* Álbum Estilo Livro Magnífico */
     .album-container {
         padding: 2rem;
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
     }
 
-    .album-book {
-        background: #3e2723;
-        /* Cor de couro velho */
-        padding: 1rem;
-        border-radius: 10px;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 0, 0, 0.5);
+    .album-stacks {
         display: flex;
-        min-height: 700px;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .album-book {
+        background: #1a1210;
+        /* Couro negro/marrom muito escuro */
+        padding: 0.8rem;
+        border-radius: 8px;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 1), inset 0 0 40px rgba(0, 0, 0, 0.8);
+        display: flex;
+        min-height: 600px;
         position: relative;
-        border: 2px solid #5d4037;
+        border: 1px solid #2b1d1a;
     }
 
     .album-page {
         flex: 1;
-        background: #fdf5e6;
-        /* Papel envelhecido */
-        background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
-        padding: 2.5rem;
-        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1);
+        background: #1e1512;
+        /* Pergaminho Escuro / Couro Interno */
+        background-image:
+            radial-gradient(circle at 50% 50%, rgba(43, 29, 26, 0.4) 0%, rgba(20, 10, 5, 0.9) 100%),
+            url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+        padding: 2rem 1.5rem;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.9);
         position: relative;
+        overflow: hidden;
+    }
+
+    .album-page::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 20px solid transparent;
+        border-image: url('https://www.transparenttextures.com/patterns/gold-scale.png') 30 round;
+        opacity: 0.05;
+        pointer-events: none;
     }
 
     .left-page {
-        border-radius: 5px 0 0 5px;
-        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 4px 0 0 4px;
+        border-right: 1px solid rgba(0, 0, 0, 0.4);
     }
 
     .right-page {
-        border-radius: 0 5px 5px 0;
-        border-left: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 0 4px 4px 0;
+        border-left: 1px solid rgba(0, 0, 0, 0.4);
     }
 
     .album-divider {
-        width: 4px;
-        background: linear-gradient(90deg, #2b1d1a, #5d4037, #2b1d1a);
+        width: 6px;
+        background: linear-gradient(90deg, #0a0503, #2b1d1a, #0a0503);
         height: 100%;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 1);
         z-index: 10;
+        position: relative;
     }
 
     .album-page-title {
         font-family: 'Cinzel', serif;
-        color: #5d4037;
+        color: var(--gold-secondary);
         text-align: center;
-        margin-bottom: 2.5rem;
-        font-size: 1.5rem;
-        border-bottom: 1px double #8d6e63;
-        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        border-bottom: 1px double rgba(212, 175, 55, 0.2);
+        padding-bottom: 0.8rem;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .album-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 2.5rem 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 2.5rem 1rem;
         justify-items: center;
     }
 
     /* Slot de Figurinha no Álbum */
     .album-card-slot {
-        width: 110px;
+        width: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.8rem;
         cursor: pointer;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .album-card-slot:hover {
-        transform: scale(1.05) translateY(-5px);
+        transform: scale(1.1) translateY(-10px);
+        z-index: 50;
     }
 
     /* Figurinha no Álbum (Miniatura do Pentágono) */
     .mini-wizard-card {
-        width: 90px;
-        height: 115px;
-        background: rgba(15, 25, 50, 0.95);
-        border: 2px solid var(--gold-primary);
+        width: 85px;
+        height: 110px;
+        background: rgba(10, 15, 30, 0.98);
+        border: 2px solid var(--gold-secondary);
         clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 0.8rem 0.3rem;
-        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
         position: relative;
-        filter: saturate(0.8) contrast(1.1);
+        transition: all 0.3s;
+    }
+
+    .album-card-slot:hover .mini-wizard-card {
+        border-color: var(--gold-primary);
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
     }
 
     .mini-wizard-card .mini-icon {
-        font-size: 2.2rem;
+        font-size: 2rem;
         margin-bottom: 0.3rem;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
     }
 
     .mini-wizard-card .mini-name-tag {
         font-family: var(--font-heading);
-        font-size: 0.5rem;
-        color: var(--gold-primary);
+        font-size: 0.45rem;
+        color: var(--gold-secondary);
         text-align: center;
         text-transform: uppercase;
-        max-width: 100%;
+        max-width: 90%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -548,12 +562,11 @@
     /* Rarity Styles no Mini Card */
     .mini-wizard-card.legendary {
         border-color: gold;
-        box-shadow: 0 0 10px gold;
     }
 
     .mini-wizard-card.legendary .mini-rarity-dot {
         background: gold;
-        box-shadow: 0 0 5px gold;
+        box-shadow: 0 0 10px gold;
     }
 
     .mini-wizard-card.rare .mini-rarity-dot {
@@ -562,30 +575,37 @@
 
     .mini-wizard-card.common .mini-rarity-dot {
         background: #cd7f32;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Placeholder no Álbum (Contorno do Livro) */
+    /* Placeholder no Álbum */
     .card-placeholder {
-        width: 90px;
-        height: 115px;
-        background: rgba(0, 0, 0, 0.03);
-        border: 1px dashed rgba(93, 64, 55, 0.3);
+        width: 85px;
+        height: 110px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(212, 175, 55, 0.1);
         clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        color: rgba(93, 64, 55, 0.2);
+        font-size: 1.2rem;
+        color: rgba(212, 175, 55, 0.05);
         font-family: var(--font-heading);
+        transition: all 0.3s;
+    }
+
+    .album-card-slot:hover .card-placeholder {
+        background: rgba(212, 175, 55, 0.05);
+        color: rgba(212, 175, 55, 0.2);
     }
 
     .album-name-label {
-        font-family: 'Cinzel', serif;
-        font-size: 0.65rem;
-        color: #5d4037;
-        font-weight: bold;
+        font-family: var(--font-heading);
+        font-size: 0.6rem;
+        color: var(--text-muted);
         text-align: center;
-        opacity: 0.6;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
     .album-stats {
@@ -801,44 +821,68 @@
 
     function updateAlbumUI() {
         let count = 0;
-        const leftGrid = document.getElementById('albumGridLeft');
-        const rightGrid = document.getElementById('albumGridRight');
-        if (!leftGrid || !rightGrid) return;
+        const spreadsContainer = document.getElementById('albumSpreads');
+        if (!spreadsContainer) return;
 
-        leftGrid.innerHTML = '';
-        rightGrid.innerHTML = '';
+        spreadsContainer.innerHTML = '';
+        const wizardsPerPage = 8; // 4 por página (8 por spread)
+        const totalSpreads = Math.ceil(allWizards.length / wizardsPerPage);
 
-        allWizards.forEach((w, index) => {
-            const isCollected = myCollection.includes(w.id);
-            if (isCollected) count++;
+        for (let s = 0; s < totalSpreads; s++) {
+            const spreadDiv = document.createElement('div');
+            spreadDiv.className = 'album-book';
 
-            const slot = document.createElement('div');
-            slot.className = 'album-card-slot';
-            slot.onclick = () => isCollected ? zoomCard(w) : null;
+            // Títulos das páginas (I, II, III...)
+            const leftTitle = `Livro de Colecionador - ${s * 2 + 1}`;
+            const rightTitle = `Livro de Colecionador - ${s * 2 + 2}`;
 
-            if (isCollected) {
-                slot.innerHTML = `
-                    <div class="mini-wizard-card ${w.rarity}">
-                        <div class="mini-rarity-dot"></div>
-                        <span class="mini-icon">${w.icon}</span>
-                        <span class="mini-name-tag">${w.name}</span>
-                    </div>
-                    <span class="album-name-label" style="opacity: 1;">${w.name}</span>
-                `;
-            } else {
-                slot.innerHTML = `
-                    <div class="card-placeholder">?</div>
-                    <span class="album-name-label">${w.name}</span>
-                `;
+            spreadDiv.innerHTML = `
+                <div class="album-page left-page">
+                    <h3 class="album-page-title">${leftTitle}</h3>
+                    <div class="album-grid" id="grid-spread-${s}-left"></div>
+                </div>
+                <div class="album-divider"></div>
+                <div class="album-page right-page">
+                    <h3 class="album-page-title">${rightTitle}</h3>
+                    <div class="album-grid" id="grid-spread-${s}-right"></div>
+                </div>
+            `;
+            spreadsContainer.appendChild(spreadDiv);
+
+            // Preencher os grids do spread
+            const spreadStart = s * wizardsPerPage;
+            for (let i = 0; i < wizardsPerPage; i++) {
+                const wizardIndex = spreadStart + i;
+                if (wizardIndex >= allWizards.length) break;
+
+                const w = allWizards[wizardIndex];
+                const isCollected = myCollection.includes(w.id);
+                if (isCollected) count++;
+
+                const slot = document.createElement('div');
+                slot.className = 'album-card-slot';
+                slot.onclick = () => isCollected ? zoomCard(w) : null;
+
+                if (isCollected) {
+                    slot.innerHTML = `
+                        <div class="mini-wizard-card ${w.rarity}">
+                            <div class="mini-rarity-dot"></div>
+                            <span class="mini-icon">${w.icon}</span>
+                            <span class="mini-name-tag">${w.name}</span>
+                        </div>
+                        <span class="album-name-label" style="color: var(--gold-secondary); opacity: 0.8;">${w.name}</span>
+                    `;
+                } else {
+                    slot.innerHTML = `
+                        <div class="card-placeholder">?</div>
+                        <span class="album-name-label">${w.name}</span>
+                    `;
+                }
+
+                const targetGridId = i < wizardsPerPage / 2 ? `grid-spread-${s}-left` : `grid-spread-${s}-right`;
+                document.getElementById(targetGridId).appendChild(slot);
             }
-
-            // Divide as figurinhas entre as páginas
-            if (index < allWizards.length / 2) {
-                leftGrid.appendChild(slot);
-            } else {
-                rightGrid.appendChild(slot);
-            }
-        });
+        }
 
         const counter = document.getElementById('collectedCount');
         if (counter) counter.innerText = count;
