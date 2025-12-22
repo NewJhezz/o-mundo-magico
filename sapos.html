@@ -72,148 +72,38 @@
         </div>
     </div>
 
-    <!-- ÁREA 2: ÁLBUM DE FIGURINHAS -->
     <div id="section-album" class="frog-section hidden">
-        <div class="album-section">
-            <h3 class="album-title">Coleção de Bruxos Famosos (<span id="collectedCount">0</span>/13)
-            </h3>
-            <div id="albumGrid" class="album-grid">
-                
-                <div class="album-card-slot" id="slot-dumbledore" data-wizard-id="dumbledore">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner legendary">
-                            <span class="mini-icon">🧙‍♂️</span>
-                        </div>
+        <div class="album-container">
+            <!-- Capa/Lombada Simulada -->
+            <div class="album-book">
+                <div class="album-page left-page">
+                    <h3 class="album-page-title">Grandes Bruxos</h3>
+                    <div id="albumGridLeft" class="album-grid">
+                        <!-- Figurinhas do lado esquerdo -->
                     </div>
-                    <p class="mini-name">Alvo Dumbledore</p>
                 </div>
-                
-                <div class="album-card-slot" id="slot-merlin" data-wizard-id="merlin">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner legendary">
-                            <span class="mini-icon">✨</span>
-                        </div>
+                <div class="album-divider"></div>
+                <div class="album-page right-page">
+                    <h3 class="album-page-title">Mestres das Artes</h3>
+                    <div id="albumGridRight" class="album-grid">
+                        <!-- Figurinhas do lado direito -->
                     </div>
-                    <p class="mini-name">Merlin</p>
                 </div>
-                
-                <div class="album-card-slot" id="slot-gryffindor" data-wizard-id="gryffindor">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">🦁</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Godric Gryffindor</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-hufflepuff" data-wizard-id="hufflepuff">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">🦡</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Helga Hufflepuff</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-ravenclaw" data-wizard-id="ravenclaw">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">🦅</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Rowena Ravenclaw</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-slytherin" data-wizard-id="slytherin">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">🐍</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Salazar Slytherin</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-flamel" data-wizard-id="flamel">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">💎</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Nicolau Flamel</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-newt" data-wizard-id="newt">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">💼</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Newt Scamander</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-lockhart" data-wizard-id="lockhart">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner common">
-                            <span class="mini-icon">😁</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Gilderoy Lockhart</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-morgana" data-wizard-id="morgana">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner legendary">
-                            <span class="mini-icon">🌘</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Morgana le Fay</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-agripa" data-wizard-id="agripa">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner rare">
-                            <span class="mini-icon">📜</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Cornélio Agripa</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-ptolemy" data-wizard-id="ptolemy">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner common">
-                            <span class="mini-icon">🪐</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Ptolomeu</p>
-                </div>
-                
-                <div class="album-card-slot" id="slot-bertie_bott" data-wizard-id="bertie_bott">
-                    <div class="card-placeholder">?</div>
-                    <div class="mini-card hidden">
-                        <div class="mini-card-inner common">
-                            <span class="mini-icon">🍬</span>
-                        </div>
-                    </div>
-                    <p class="mini-name">Bertie Bott</p>
-                </div>
-                
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <button class="tab-link" onclick="resetCollection()" style="font-size: 0.7rem; opacity: 0.4;">Zerar
-                    Progresso Bruxo</button>
+
+            <div class="album-controls" style="text-align: center; margin-top: 2rem;">
+                <p class="album-stats">Coleção: <span id="collectedCount">0</span>/13</p>
+                <button class="tab-link reset-btn" onclick="resetCollection()"
+                    style="font-size: 0.7rem; opacity: 0.4; margin-top: 1rem;">Zerar Progresso Bruxo</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalhe da Figurinha (Zoom do Álbum) -->
+    <div id="albumDetailModal" class="modal-overlay hidden" onclick="closeAlbumDetail()">
+        <div class="modal-content card-zoom-modal" onclick="event.stopPropagation()">
+            <div id="zoomContent"></div>
+            <button class="modal-close" onclick="closeAlbumDetail()">&times;</button>
         </div>
     </div>
 </div>
@@ -556,99 +446,232 @@
         box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
     }
 
-    /* Álbum */
-    .album-section {
-        background: rgba(0, 0, 0, 0.3);
+    /* Álbum Estilo Livro */
+    .album-container {
         padding: 2rem;
-        border-radius: 20px;
-        backdrop-filter: blur(5px);
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .album-title {
-        font-family: var(--font-heading);
-        color: var(--gold-primary);
+    .album-book {
+        background: #3e2723;
+        /* Cor de couro velho */
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 0, 0, 0.5);
+        display: flex;
+        min-height: 700px;
+        position: relative;
+        border: 2px solid #5d4037;
+    }
+
+    .album-page {
+        flex: 1;
+        background: #fdf5e6;
+        /* Papel envelhecido */
+        background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+        padding: 2.5rem;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .left-page {
+        border-radius: 5px 0 0 5px;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .right-page {
+        border-radius: 0 5px 5px 0;
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .album-divider {
+        width: 4px;
+        background: linear-gradient(90deg, #2b1d1a, #5d4037, #2b1d1a);
+        height: 100%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        z-index: 10;
+    }
+
+    .album-page-title {
+        font-family: 'Cinzel', serif;
+        color: #5d4037;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        font-size: 1.5rem;
+        border-bottom: 1px double #8d6e63;
+        padding-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
     .album-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 2rem;
-        padding: 2rem;
+        gap: 2.5rem 1.5rem;
+        justify-items: center;
     }
 
+    /* Slot de Figurinha no Álbum */
     .album-card-slot {
+        width: 110px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.8rem;
+        cursor: pointer;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .card-placeholder,
-    .mini-card-inner {
+    .album-card-slot:hover {
+        transform: scale(1.05) translateY(-5px);
+    }
+
+    /* Figurinha no Álbum (Miniatura do Pentágono) */
+    .mini-wizard-card {
         width: 90px;
-        height: 110px;
-        border-radius: 10px;
+        height: 115px;
+        background: rgba(15, 25, 50, 0.95);
+        border: 2px solid var(--gold-primary);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
-        transition: all 0.3s;
-        clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
+        padding: 0.8rem 0.3rem;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+        filter: saturate(0.8) contrast(1.1);
     }
 
-    .card-placeholder {
-        background: rgba(255, 255, 255, 0.05);
-        border: 2px dashed rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.1);
+    .mini-wizard-card .mini-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.3rem;
     }
 
-    .mini-card-inner {
-        background: rgba(212, 175, 55, 0.1);
-        border: 2px solid rgba(212, 175, 55, 0.3);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    .mini-wizard-card .mini-name-tag {
+        font-family: var(--font-heading);
+        font-size: 0.5rem;
+        color: var(--gold-primary);
+        text-align: center;
+        text-transform: uppercase;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .mini-card-inner.legendary {
+    .mini-wizard-card .mini-rarity-dot {
+        position: absolute;
+        top: 25%;
+        right: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+
+    /* Rarity Styles no Mini Card */
+    .mini-wizard-card.legendary {
         border-color: gold;
         box-shadow: 0 0 10px gold;
     }
 
-    .mini-card-inner.rare {
-        border-color: #c0c0c0;
+    .mini-wizard-card.legendary .mini-rarity-dot {
+        background: gold;
+        box-shadow: 0 0 5px gold;
     }
 
-    .mini-name {
-        font-size: 0.7rem;
+    .mini-wizard-card.rare .mini-rarity-dot {
+        background: #c0c0c0;
+    }
+
+    .mini-wizard-card.common .mini-rarity-dot {
+        background: #cd7f32;
+    }
+
+    /* Placeholder no Álbum (Contorno do Livro) */
+    .card-placeholder {
+        width: 90px;
+        height: 115px;
+        background: rgba(0, 0, 0, 0.03);
+        border: 1px dashed rgba(93, 64, 55, 0.3);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: rgba(93, 64, 55, 0.2);
+        font-family: var(--font-heading);
+    }
+
+    .album-name-label {
+        font-family: 'Cinzel', serif;
+        font-size: 0.65rem;
+        color: #5d4037;
+        font-weight: bold;
         text-align: center;
         opacity: 0.6;
     }
 
-    /* Utils */
-    .hidden {
-        display: none !important;
+    .album-stats {
+        font-family: var(--font-heading);
+        color: var(--gold-primary);
+        font-size: 0.9rem;
     }
 
-    /* Estímulo visual para novas figurinhas */
-    .new-card-anim {
-        animation: pulse-gold 2s infinite;
+    /* Zoom Modal */
+    .card-zoom-modal {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     @keyframes pulse-gold {
         0% {
             transform: scale(1);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            filter: brightness(1);
         }
 
         50% {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            transform: scale(1.03);
+            filter: brightness(1.2);
         }
 
         100% {
             transform: scale(1);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            filter: brightness(1);
+        }
+    }
+
+    .newly-added {
+        animation: pulse-gold 2s infinite;
+    }
+
+    /* Responsividade Álbum */
+    @media (max-width: 950px) {
+        .album-book {
+            flex-direction: column;
+            min-height: auto;
+        }
+
+        .album-divider {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(180deg, #2b1d1a, #5d4037, #2b1d1a);
+        }
+
+        .left-page,
+        .right-page {
+            border-radius: 0;
+            border: none;
+        }
+
+        .album-page {
+            padding: 1.5rem;
         }
     }
 
@@ -803,27 +826,72 @@
 
     function updateAlbumUI() {
         let count = 0;
-        allWizards.forEach(w => {
-            const slot = document.getElementById(`slot-${w.id}`);
-            if (!slot) return;
+        const leftGrid = document.getElementById('albumGridLeft');
+        const rightGrid = document.getElementById('albumGridRight');
+        if (!leftGrid || !rightGrid) return;
 
-            const placeholder = slot.querySelector('.card-placeholder');
-            const miniCard = slot.querySelector('.mini-card');
-            const nameLabel = slot.querySelector('.mini-name');
+        leftGrid.innerHTML = '';
+        rightGrid.innerHTML = '';
 
-            if (myCollection.includes(w.id)) {
-                if (placeholder) placeholder.classList.add('hidden');
-                if (miniCard) miniCard.classList.remove('hidden');
-                if (nameLabel) nameLabel.style.opacity = "1";
-                count++;
+        allWizards.forEach((w, index) => {
+            const isCollected = myCollection.includes(w.id);
+            if (isCollected) count++;
+
+            const slot = document.createElement('div');
+            slot.className = 'album-card-slot';
+            slot.onclick = () => isCollected ? zoomCard(w) : null;
+
+            if (isCollected) {
+                slot.innerHTML = `
+                    <div class="mini-wizard-card ${w.rarity}">
+                        <div class="mini-rarity-dot"></div>
+                        <span class="mini-icon">${w.icon}</span>
+                        <span class="mini-name-tag">${w.name}</span>
+                    </div>
+                    <span class="album-name-label" style="opacity: 1;">${w.name}</span>
+                `;
             } else {
-                if (placeholder) placeholder.classList.remove('hidden');
-                if (miniCard) miniCard.classList.add('hidden');
-                if (nameLabel) nameLabel.style.opacity = "0.4";
+                slot.innerHTML = `
+                    <div class="card-placeholder">?</div>
+                    <span class="album-name-label">${w.name}</span>
+                `;
+            }
+
+            // Divide as figurinhas entre as páginas
+            if (index < allWizards.length / 2) {
+                leftGrid.appendChild(slot);
+            } else {
+                rightGrid.appendChild(slot);
             }
         });
+
         const counter = document.getElementById('collectedCount');
         if (counter) counter.innerText = count;
+    }
+
+    function zoomCard(prize) {
+        const modal = document.getElementById('albumDetailModal');
+        const content = document.getElementById('zoomContent');
+        if (!modal || !content) return;
+
+        content.innerHTML = `
+            <div class="wizard-card-pentagon ${prize.rarity}">
+                <div class="card-rarity ${prize.rarity}">${prize.rarity_label}</div>
+                <div class="card-icon">${prize.icon}</div>
+                <h3 class="card-name">${prize.name}</h3>
+                <p class="card-title">${prize.title}</p>
+                <p class="card-desc">${prize.desc}</p>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('open'), 10);
+    }
+
+    function closeAlbumDetail() {
+        const modal = document.getElementById('albumDetailModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        setTimeout(() => modal.classList.add('hidden'), 400);
     }
 
     function resetCollection() {
