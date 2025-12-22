@@ -68,7 +68,9 @@
                     </div>
 
                     <div class="wood-content">
-                        <p class="wood-affinity"><strong>Campo:</strong> {{ wizard.field }}</p>
+                        <p class="wizard-affinity-text">
+                            <span class="affinity-label">Campo:</span> {{ wizard.field }}
+                        </p>
                         <p class="wood-description">{{ wizard.bio[:100] }}...</p>
                     </div>
 
@@ -203,6 +205,22 @@
         position: absolute;
         left: 0;
         color: var(--gold-primary);
+    }
+
+    /* Correção do Texto de Campo */
+    .wizard-affinity-text {
+        font-family: var(--font-heading);
+        font-size: 0.9rem;
+        color: var(--gold-secondary);
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .affinity-label {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
     }
 
     @media (max-width: 900px) {

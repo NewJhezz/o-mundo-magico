@@ -1774,6 +1774,258 @@ ENCYCLOPEDIA_WIZARDS_DATA = [
         ],
         'bio': 'Famosa por sua inteligência e criatividade inigualáveis. Rowena acreditava que a mente é o maior tesouro de um bruxo. Ela selecionava alunos que demonstravam sagacidade e aprendizado rápido.',
         'icon': '🦅'
+    },
+    {
+        'id': 'gryffindor_full',
+        'name': 'Godric Gryffindor',
+        'full_name': 'Godric Gryffindor',
+        'birth': 'Século X',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Sangue-Puro',
+        'field': 'Duelos / Transfiguração',
+        'achievements': [
+            'Co-fundador de Hogwarts',
+            'Primeiro dono do Chapéu Seletor',
+            'Defensor dos nascidos-trouxas',
+            'O maior duelista de seu tempo'
+        ],
+        'bio': 'Godric valorizava a coragem e a determinação acima de tudo. Foi ele quem teve a ideia de usar seu próprio chapéu para selecionar os alunos de Hogwarts séculos depois de sua morte.',
+        'icon': '🦁'
+    },
+    {
+        'id': 'slytherin_full',
+        'name': 'Salazar Slytherin',
+        'full_name': 'Salazar Slytherin',
+        'birth': 'Século X',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Sangue-Puro',
+        'field': 'Legilimência / Basiliscos',
+        'achievements': [
+            'Co-fundador de Hogwarts',
+            'Criador da Câmara Secreta',
+            'Primeiro Ofidioglota registrado',
+            'Defensor da supremacia puro-sangue'
+        ],
+        'bio': 'Um bruxo brilhante, mas controverso. Salazar acreditava que apenas bruxos de sangue puro deveriam ser ensinados em Hogwarts, o que levou ao seu afastamento dos outros fundadores.',
+        'icon': '🐍'
+    },
+    {
+        'id': 'hufflepuff_full',
+        'name': 'Helga Hufflepuff',
+        'full_name': 'Helga Hufflepuff',
+        'birth': 'Século X',
+        'house': 'Hufflepuff',
+        'house_label': 'Lufa-Lufa',
+        'blood': 'Sangue-Puro',
+        'field': 'Feitiços Culinários',
+        'achievements': [
+            'Co-fundadora de Hogwarts',
+            'Criadora de banquetes lendários',
+            'Campeã dos Elfos Domésticos',
+            'Introduziu a igualdade na seleção de alunos'
+        ],
+        'bio': 'Helga era conhecida por sua natureza gentil e inclusiva. Ela aceitava todos os alunos que mostravam dedicação e lealdade, sem se importar com linhagem ou grandes talentos inatos.',
+        'icon': '🦡'
+    },
+    {
+        'id': 'grindelwald_full',
+        'name': 'Gerardo Grindelwald',
+        'full_name': 'Gerardo Grindelwald',
+        'birth': '1883 - 1998',
+        'house': 'Durmstrang',
+        'house_label': 'Durmstrang',
+        'blood': 'Sangue-Puro',
+        'field': 'Artes das Trevas',
+        'achievements': [
+            'Instigador da Guerra Bruxa Global',
+            'Portador da Varinha das Varinhas',
+            'Visionário das Trevas',
+            'Quase expôs o mundo mágico aos trouxas'
+        ],
+        'bio': 'Antes de Voldemort, Grindelwald era a maior ameaça ao mundo mágico. Ele acreditava que os bruxos deveriam governar os trouxas "para o bem maior". Foi derrotado em um duelo lendário por Dumbledore.',
+        'icon': '💀'
+    },
+    {
+        'id': 'flamel_full',
+        'name': 'Nicolau Flamel',
+        'full_name': 'Nicolau Flamel',
+        'birth': '1327 - 1992',
+        'house': 'Beauxbatons',
+        'house_label': 'Beauxbatons',
+        'blood': 'Sangue-Puro',
+        'field': 'Alquimia',
+        'achievements': [
+            'Criador da Pedra Filosofal',
+            'Alcançou a imortalidade (Elixir da Vida)',
+            'Financiador de Beauxbatons',
+            'Autoridade mundial em Alquimia'
+        ],
+        'bio': 'O único criador conhecido da Pedra Filosofal. Flamel viveu mais de 600 anos com sua esposa Perenelle, acumulando vasto conhecimento mágico antes de decidir destruir a pedra e aceitar a morte.',
+        'icon': '💎'
+    },
+    {
+        'id': 'ollivander_full',
+        'name': 'Garrick Olivaras',
+        'full_name': 'Garrick Olivaras',
+        'birth': '1919 - Presente',
+        'house': 'Ravenclaw',
+        'house_label': 'Corvinal',
+        'blood': 'Mestiço',
+        'field': 'Varinhologia',
+        'achievements': [
+            'Considerado o melhor fabricante de varinhas do mundo',
+            'Revolucionou o uso de núcleos mágicos',
+            'Possui memória edética para varinhas',
+            'Fornecedor de varinhas para a realeza bruxa'
+        ],
+        'bio': 'A família Olivaras fabrica varinhas desde 382 a.C., mas Garrick elevou a arte a um novo nível. Ele acredita que a varinha escolhe o bruxo, um princípio fundamental da magia moderna.',
+        'icon': '🪄'
+    },
+    {
+        'id': 'lovegood_full',
+        'name': 'Luna Lovegood',
+        'full_name': 'Luna Lovegood',
+        'birth': '1981 - Presente',
+        'house': 'Ravenclaw',
+        'house_label': 'Corvinal',
+        'blood': 'Sangue-Puro',
+        'field': 'Magizoologia',
+        'achievements': [
+            'Descobridora de novas espécies de criaturas',
+            'Membro chave da Armada de Dumbledore',
+            'Sobrevivente da Batalha de Hogwarts',
+            'Naturalista Chefe do Pasquim'
+        ],
+        'bio': 'Muitas vezes incompreendida por sua excentricidade, Luna possui uma percepção única da verdade. Sua lealdade aos amigos e coragem em face do perigo provaram ser inestimáveis na guerra contra Voldemort.',
+        'icon': '👓'
+    },
+    {
+        'id': 'mcgonagall_full',
+        'name': 'Minerva McGonagall',
+        'full_name': 'Minerva McGonagall',
+        'birth': '1935 - Presente',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Mestiça',
+        'field': 'Transfiguração',
+        'achievements': [
+            'Animaga registrada (Gato Tigrado)',
+            'Diretora de Hogwarts após a guerra',
+            'Vencedora do prêmio "Revelação" da Transfiguração Hoje',
+            'Líder da defesa do castelo na Batalha de Hogwarts'
+        ],
+        'bio': 'Severa, mas justa. Minerva é uma das bruxas mais poderosas de sua geração. Sua habilidade em Transfiguração é inigualável, e sua dedicação a Hogwarts e seus alunos é absoluta.',
+        'icon': '🐈'
+    },
+    {
+        'id': 'sirius_full',
+        'name': 'Sirius Black',
+        'full_name': 'Sirius Orion Black',
+        'birth': '1959 - 1996',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Sangue-Puro',
+        'field': 'Defesa / Duelos',
+        'achievements': [
+            'Um dos criadores do Mapa do Maroto',
+            'Primeiro bruxo a fugir de Azkaban sem ajuda',
+            'Membro da Ordem da Fênix original',
+            'Padrinho de Harry Potter'
+        ],
+        'bio': 'O único da família Black a ser selecionado para a Grifinória. Rebelde e leal até o fim, Sirius passou 12 anos em Azkaban por um crime que não cometeu, mantendo sua sanidade focando em sua inocência.',
+        'icon': '🐕‍🦺'
+    },
+    {
+        'id': 'remus_full',
+        'name': 'Remus Lupin',
+        'full_name': 'Remus John Lupin',
+        'birth': '1960 - 1998',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Mestiço',
+        'field': 'Defesa Contra as Artes das Trevas',
+        'achievements': [
+            'Um dos criadores do Mapa do Maroto',
+            'Membro da Ordem da Fênix',
+            'Lutou bravamente na Batalha de Hogwarts',
+            'Primeiro Lobisomem a receber Ordem de Merlin (póstuma)'
+        ],
+        'bio': 'Apesar de sofrer com a licantropia, Lupin foi um dos melhores professores de Defesa que Hogwarts já teve. Bondoso e paciente, ele ensinou Harry a conjurar o Patrono.',
+        'icon': '🌕'
+    },
+    {
+        'id': 'moody_full',
+        'name': 'Alastor Moody',
+        'full_name': 'Alastor "Olho-Tonto" Moody',
+        'birth': 'Desconhecido - 1997',
+        'house': 'Desconhecida',
+        'house_label': 'Auror',
+        'blood': 'Sangue-Puro',
+        'field': 'Combate às Trevas',
+        'achievements': [
+            'O Auror mais famoso e temido do Ministério',
+            'Preencheu metade das celas de Azkaban sozinho',
+            'Membro sênior da Ordem da Fênix',
+            'Especialista em detecção de Artes das Trevas'
+        ],
+        'bio': 'Paranoico e cheio de cicatrizes, Moody é a prova viva dos perigos de lutar contra as trevas. Seu lema "VIGILÂNCIA CONSTANTE!" salvou inúmeras vidas durante as guerras bruxas.',
+        'icon': '👁️'
+    },
+    {
+        'id': 'kingsley_full',
+        'name': 'Kingsley Shacklebolt',
+        'full_name': 'Kingsley Shacklebolt',
+        'birth': '1960 - Presente',
+        'house': 'Desconhecida',
+        'house_label': 'Auror',
+        'blood': 'Sangue-Puro',
+        'field': 'Política / Duelos',
+        'achievements': [
+            'Ministro da Magia que reformou o Ministério',
+            'Auror de elite encarregado de caçar Sirius Black (agente duplo)',
+            'Lutou contra Voldemort pessoalmente',
+            'Erradicou a corrupção pró-sangue-puro'
+        ],
+        'bio': 'Sua voz grave e calmante esconde um duelista formidável. Kingsley foi fundamental para reconstruir o mundo bruxo após a queda de Voldemort, trazendo uma era de transparência e igualdade.',
+        'icon': '🛡️'
+    },
+    {
+        'id': 'bellatrix_full',
+        'name': 'Bellatrix Lestrange',
+        'full_name': 'Bellatrix Lestrange',
+        'birth': '1951 - 1998',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Sangue-Puro',
+        'field': 'Artes das Trevas',
+        'achievements': [
+            'A Comensal da Morte mais leal e perigosa',
+            'Mestra em Oclumência (treinada por Voldemort)',
+            'Responsável pela tortura dos Longbottom',
+            'Assassina de Sirius Black'
+        ],
+        'bio': 'Fanática e sádica, Bellatrix era o braço direito de Voldemort. Sua devoção ao Lorde das Trevas beirava a obsessão, e sua habilidade em duelos só era superada por seu prazer em causar dor.',
+        'icon': '🗡️'
+    },
+    {
+        'id': 'draco_full',
+        'name': 'Draco Malfoy',
+        'full_name': 'Draco Lucius Malfoy',
+        'birth': '1980 - Presente',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Sangue-Puro',
+        'field': 'Alquimia / Poções',
+        'achievements': [
+            'Reparou o Armário Sumidouro',
+            'Desarmou Dumbledore (ganhando a Varinha das Varinhas)',
+            'Financiador de pesquisas alquímicas após a guerra',
+            'Colecionador de artefatos das trevas (reformado)'
+        ],
+        'bio': 'Criado para acreditar na supremacia do sangue, Draco teve seu mundo abalado pela realidade da guerra. Embora tenha servido aos Comensais, suas hesitações finais mostraram que ainda havia humanidade nele.',
+        'icon': '🐍'
     }
 ]
 
