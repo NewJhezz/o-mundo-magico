@@ -101,7 +101,7 @@
 </div>
 
 <script>
-    const potionsData = JSON.parse('{{ potions|tojson|safe }}');
+    const potionsData = {{ potions| tojson | safe }};
 
     function openPotionModal(id) {
         const potion = potionsData.find(p => p.id === id);
