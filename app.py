@@ -1647,6 +1647,140 @@ POTIONS_DATA = [
     }
 ]
 
+# --- DADOS DA ENCICLOPÉDIA DE BRUXOS ---
+ENCYCLOPEDIA_WIZARDS_DATA = [
+    {
+        'id': 'dumbledore_full',
+        'name': 'Alvo Dumbledore',
+        'full_name': 'Alvo Percival Wulfrico Brian Dumbledore',
+        'birth': '1881 - 1997',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Mestiço',
+        'field': 'Transfiguração / Defesa',
+        'achievements': [
+            'Derrotou o bruxo das trevas Gerardo Grindelwald em 1945',
+            'Descobriu os doze usos do sangue de dragão',
+            'Criador da Ordem da Fênix',
+            'Supremo Caceique da Confederação Internacional de Bruxos'
+        ],
+        'bio': 'Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfiguração e mais tarde Diretor de Hogwarts. Sua sabedoria e poder eram lendários, sendo o único bruxo que Lord Voldemort já temeu.',
+        'icon': '🧙‍♂️'
+    },
+    {
+        'id': 'merlin_full',
+        'name': 'Merlin',
+        'full_name': 'Merlin (Príncipe dos Magos)',
+        'birth': 'Idade Média',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Sangue-Puro',
+        'field': 'Encantamentos',
+        'achievements': [
+            'Fundador da Ordem de Merlin',
+            'Conselheiro do Rei Arthur',
+            'Eminente defensor dos direitos dos trouxas',
+            'Especialista em encantos de levitação e ocultação'
+        ],
+        'bio': 'Talvez o bruxo mais famoso da história. Merlin acreditava que os bruxos deveriam ajudar os trouxas e viver em paz com eles. Curiosamente, foi um aluno da Sonserina em Hogwarts, provando que a ambição pode ser usada para o bem maior.',
+        'icon': '📜'
+    },
+    {
+        'id': 'voldemort_full',
+        'name': 'Lord Voldemort',
+        'full_name': 'Tom Servolo Riddle',
+        'birth': '1926 - 1998',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Mestiço',
+        'field': 'Artes das Trevas',
+        'achievements': [
+            'O bruxo das trevas mais perigoso de todos os tempos',
+            'Criador de múltiplas Horcruxes',
+            'Líder dos Comensais da Morte',
+            'Herdeiro de Slytherin e mestre da Ofidioglossia'
+        ],
+        'bio': 'Aquele-Que-Não-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante décadas. Obcecado pela imortalidade e pela pureza de sangue, ele transformou-se em uma criatura quase inumana através de magia negra proibida.',
+        'icon': '🐍'
+    },
+    {
+        'id': 'hermione_full',
+        'name': 'Hermione Granger',
+        'full_name': 'Hermione Jean Granger',
+        'birth': '1979 - Presente',
+        'house': 'Gryffindor',
+        'house_label': 'Grifinória',
+        'blood': 'Nascida-Trouxa',
+        'field': 'Pesquisa Mágica / Lei',
+        'achievements': [
+            'Ministra da Magia (desde 2019)',
+            'Co-fundadora da Armada de Dumbledore',
+            'Responsável por destruir a Horcrux da Taça de Hufflepuff',
+            'Lutou ativamente contra as injustiças sofridas por Elfos Domésticos'
+        ],
+        'bio': 'Conhecida como a bruxa mais brilhante de sua geração, Hermione provou que o conhecimento e a dedicação superam qualquer linhagem de sangue. Sua inteligência foi crucial para a derrota de Lord Voldemort.',
+        'icon': '📚'
+    },
+    {
+        'id': 'snape_full',
+        'name': 'Severo Snape',
+        'full_name': 'Severo Snape (Príncipe Mestiço)',
+        'birth': '1960 - 1998',
+        'house': 'Slytherin',
+        'house_label': 'Sonserina',
+        'blood': 'Mestiço',
+        'field': 'Poções / Artes das Trevas',
+        'achievements': [
+            'Mestre de Poções e Diretor de Hogwarts',
+            'Criador de feitiços como Sectumsempra e Muffliato',
+            'Agente Duplo lendário na guerra contra Voldemort',
+            'Mestre em Oclumência e Legilimência'
+        ],
+        'bio': 'Um homem complexo cuja lealdade foi questionada até o fim. Snape dedicou sua vida a proteger Harry Potter em memória de Lilian Evans, atuando no papel mais perigoso da Segunda Guerra Bruxa.',
+        'icon': '🧪'
+    },
+    {
+        'id': 'newt_full',
+        'name': 'Newt Scamander',
+        'full_name': 'Newton Artemis Fido Scamander',
+        'birth': '1897 - Presente',
+        'house': 'Hufflepuff',
+        'house_label': 'Lufa-Lufa',
+        'blood': 'Sangue-Puro',
+        'field': 'Magizoologia',
+        'achievements': [
+            'Autor de "Animais Fantásticos e Onde Habitam"',
+            'Ordem de Merlin, Segunda Classe',
+            'Especialista mundial em cuidados com seres mágicos',
+            'Peça chave na derrota de Grindelwald em Nova York'
+        ],
+        'bio': 'Um explorador incansável que viajou pelos cinco continentes para documentar criaturas mágicas. Newt ensinou ao mundo bruxo que os animais fantásticos devem ser protegidos, não apenas temidos.',
+        'icon': '💼'
+    },
+    {
+        'id': 'ravenclaw_full',
+        'name': 'Rowena Ravenclaw',
+        'full_name': 'Rowena Ravenclaw',
+        'birth': 'Século X',
+        'house': 'Ravenclaw',
+        'house_label': 'Corvinal',
+        'blood': 'Sangue-Puro',
+        'field': 'Arquitetura Mágica',
+        'achievements': [
+            'Co-fundadora da Escola de Magia de Hogwarts',
+            'Criadora do Diadema da Sabedoria',
+            'Arquiteta das plantas mutáveis de Hogwarts',
+            'Mãe da Dama Cinzenta'
+        ],
+        'bio': 'Famosa por sua inteligência e criatividade inigualáveis. Rowena acreditava que a mente é o maior tesouro de um bruxo. Ela selecionava alunos que demonstravam sagacidade e aprendizado rápido.',
+        'icon': '🦅'
+    }
+]
+
+@app.route('/bruxos')
+def wizards():
+    return render_template('wizards.html', wizards=ENCYCLOPEDIA_WIZARDS_DATA, active_tab='wizards')
+
 @app.route('/pocoes')
 def potions():
     return render_template('potions.html', potions=POTIONS_DATA, active_tab='potions')

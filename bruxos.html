@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruxos Famosos | Enciclopédia</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="container">
+        
+        <header class="main-header">
+            <h1><a href="./index.html" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
+        </header>
+        
+
+        <main>
+            
+<div class="potions-container animate-fade-in">
+    <div class="potions-header">
+        <a href="./index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Voltar ao Mundo
+        </a>
+        <h1 class="potions-title">Bruxos Famosos</h1>
+        <p class="potions-subtitle">Arquivos históricos da Confederação Internacional de Bruxos.</p>
+    </div>
+
+    <!-- Barra de Busca -->
+    <div class="search-container">
+        <input type="text" id="wizardSearch" placeholder="Buscar por nome, bios ou feitos..." onkeyup="filterWizards()">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <div class="main-layout">
+        <!-- Sidebar de Filtros -->
+        <aside class="filters-sidebar">
+            <div class="filter-group">
+                <h3>Filtrar por Casa</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all"
+                        onclick="applyFilter('house', 'all')">Todos</button>
+                    <button class="filter-btn" data-filter="Gryffindor"
+                        onclick="applyFilter('house', 'Gryffindor')">Grifinória</button>
+                    <button class="filter-btn" data-filter="Slytherin"
+                        onclick="applyFilter('house', 'Slytherin')">Sonserina</button>
+                    <button class="filter-btn" data-filter="Ravenclaw"
+                        onclick="applyFilter('house', 'Ravenclaw')">Corvinal</button>
+                    <button class="filter-btn" data-filter="Hufflepuff"
+                        onclick="applyFilter('house', 'Hufflepuff')">Lufa-Lufa</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Especialidade</h3>
+                <select id="fieldFilter" onchange="applyFilter('field', this.value)">
+                    <option value="all">Todas as Áreas</option>
+                    <option value="Transfiguração">Transfiguração</option>
+                    <option value="Encantamentos">Encantamentos</option>
+                    <option value="Artes das Trevas">Artes das Trevas</option>
+                    <option value="Magizoologia">Magizoologia</option>
+                    <option value="Alquimia">Alquimia</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- Grid de Bruxos -->
+        <main class="wizards-grid-container">
+            <div class="woods-grid" id="wizardsGrid">
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="alvo dumbledore"
+                    data-house="Gryffindor" data-field="transfiguração / defesa"
+                    onclick="openWizardModal('dumbledore_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">🧙‍♂️</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Alvo Dumbledore</h3>
+                            <span class="difficulty-label house-gryffindor">Grifinória</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Transfiguração / Defesa</p>
+                        <p class="wood-description">Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfiguração e ma...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">1881 - 1997</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="merlin"
+                    data-house="Slytherin" data-field="encantamentos"
+                    onclick="openWizardModal('merlin_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">📜</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Merlin</h3>
+                            <span class="difficulty-label house-slytherin">Sonserina</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Encantamentos</p>
+                        <p class="wood-description">Talvez o bruxo mais famoso da história. Merlin acreditava que os bruxos deveriam ajudar os trouxas e...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">Idade Média</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="lord voldemort"
+                    data-house="Slytherin" data-field="artes das trevas"
+                    onclick="openWizardModal('voldemort_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">🐍</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Lord Voldemort</h3>
+                            <span class="difficulty-label house-slytherin">Sonserina</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Artes das Trevas</p>
+                        <p class="wood-description">Aquele-Que-Não-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante décadas. Obcecado pela imor...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">1926 - 1998</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="hermione granger"
+                    data-house="Gryffindor" data-field="pesquisa mágica / lei"
+                    onclick="openWizardModal('hermione_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">📚</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Hermione Granger</h3>
+                            <span class="difficulty-label house-gryffindor">Grifinória</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Pesquisa Mágica / Lei</p>
+                        <p class="wood-description">Conhecida como a bruxa mais brilhante de sua geração, Hermione provou que o conhecimento e a dedicaç...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">1979 - Presente</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="severo snape"
+                    data-house="Slytherin" data-field="poções / artes das trevas"
+                    onclick="openWizardModal('snape_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">🧪</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Severo Snape</h3>
+                            <span class="difficulty-label house-slytherin">Sonserina</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Poções / Artes das Trevas</p>
+                        <p class="wood-description">Um homem complexo cuja lealdade foi questionada até o fim. Snape dedicou sua vida a proteger Harry P...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">1960 - 1998</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="newt scamander"
+                    data-house="Hufflepuff" data-field="magizoologia"
+                    onclick="openWizardModal('newt_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">💼</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Newt Scamander</h3>
+                            <span class="difficulty-label house-hufflepuff">Lufa-Lufa</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Magizoologia</p>
+                        <p class="wood-description">Um explorador incansável que viajou pelos cinco continentes para documentar criaturas mágicas. Newt ...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">1897 - Presente</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+                <div class="wood-card wizard-card-encyclopedia" data-name="rowena ravenclaw"
+                    data-house="Ravenclaw" data-field="arquitetura mágica"
+                    onclick="openWizardModal('ravenclaw_full')">
+
+                    <div class="wood-header">
+                        <span class="wood-icon">🦅</span>
+                        <div class="header-text-group">
+                            <h3 class="wood-name">Rowena Ravenclaw</h3>
+                            <span class="difficulty-label house-ravenclaw">Corvinal</span>
+                        </div>
+                    </div>
+
+                    <div class="wood-content">
+                        <p class="wood-affinity"><strong>Campo:</strong> Arquitetura Mágica</p>
+                        <p class="wood-description">Famosa por sua inteligência e criatividade inigualáveis. Rowena acreditava que a mente é o maior tes...</p>
+                    </div>
+
+                    <div class="wood-footer">
+                        <span class="rarity-badge">Século X</span>
+                        <span class="click-hint">Ver Biografia</span>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal de Detalhes do Bruxo -->
+<div id="wizardModal" class="potion-modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeWizardModal()">&times;</button>
+        <div id="wizardModalContent">
+            <!-- Conteúdo dinâmico via JS -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-layout {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .filters-sidebar {
+        background: rgba(10, 15, 25, 0.4);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .filter-group h3 {
+        color: var(--gold-secondary);
+        font-family: var(--font-heading);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .filter-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        color: var(--text-muted);
+        padding: 0.6rem;
+        border-radius: 6px;
+        cursor: pointer;
+        text-align: left;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--gold-primary);
+        border-color: var(--gold-primary);
+    }
+
+    #fieldFilter {
+        width: 100%;
+        background: #0f172a;
+        color: var(--text-main);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 0.6rem;
+        border-radius: 6px;
+        font-family: inherit;
+    }
+
+    .wizard-card-encyclopedia {
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .house-gryffindor {
+        color: #ae0001;
+    }
+
+    .house-slytherin {
+        color: #2a623d;
+    }
+
+    .house-ravenclaw {
+        color: #222f5b;
+    }
+
+    .house-hufflepuff {
+        color: #f0c75e;
+    }
+
+    .bio-full {
+        line-height: 1.6;
+        color: var(--text-main);
+        margin: 1.5rem 0;
+        font-size: 1rem;
+    }
+
+    .achievements-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .achievements-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .achievements-list li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--gold-primary);
+    }
+
+    @media (max-width: 900px) {
+        .main-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    const wizardsData = [{"achievements": ["Derrotou o bruxo das trevas Gerardo Grindelwald em 1945", "Descobriu os doze usos do sangue de drag\u00e3o", "Criador da Ordem da F\u00eanix", "Supremo Caceique da Confedera\u00e7\u00e3o Internacional de Bruxos"], "bio": "Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfigura\u00e7\u00e3o e mais tarde Diretor de Hogwarts. Sua sabedoria e poder eram lend\u00e1rios, sendo o \u00fanico bruxo que Lord Voldemort j\u00e1 temeu.", "birth": "1881 - 1997", "blood": "Mesti\u00e7o", "field": "Transfigura\u00e7\u00e3o / Defesa", "full_name": "Alvo Percival Wulfrico Brian Dumbledore", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore_full", "name": "Alvo Dumbledore"}, {"achievements": ["Fundador da Ordem de Merlin", "Conselheiro do Rei Arthur", "Eminente defensor dos direitos dos trouxas", "Especialista em encantos de levita\u00e7\u00e3o e oculta\u00e7\u00e3o"], "bio": "Talvez o bruxo mais famoso da hist\u00f3ria. Merlin acreditava que os bruxos deveriam ajudar os trouxas e viver em paz com eles. Curiosamente, foi um aluno da Sonserina em Hogwarts, provando que a ambi\u00e7\u00e3o pode ser usada para o bem maior.", "birth": "Idade M\u00e9dia", "blood": "Sangue-Puro", "field": "Encantamentos", "full_name": "Merlin (Pr\u00edncipe dos Magos)", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udcdc", "id": "merlin_full", "name": "Merlin"}, {"achievements": ["O bruxo das trevas mais perigoso de todos os tempos", "Criador de m\u00faltiplas Horcruxes", "L\u00edder dos Comensais da Morte", "Herdeiro de Slytherin e mestre da Ofidioglossia"], "bio": "Aquele-Que-N\u00e3o-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante d\u00e9cadas. Obcecado pela imortalidade e pela pureza de sangue, ele transformou-se em uma criatura quase inumana atrav\u00e9s de magia negra proibida.", "birth": "1926 - 1998", "blood": "Mesti\u00e7o", "field": "Artes das Trevas", "full_name": "Tom Servolo Riddle", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udc0d", "id": "voldemort_full", "name": "Lord Voldemort"}, {"achievements": ["Ministra da Magia (desde 2019)", "Co-fundadora da Armada de Dumbledore", "Respons\u00e1vel por destruir a Horcrux da Ta\u00e7a de Hufflepuff", "Lutou ativamente contra as injusti\u00e7as sofridas por Elfos Dom\u00e9sticos"], "bio": "Conhecida como a bruxa mais brilhante de sua gera\u00e7\u00e3o, Hermione provou que o conhecimento e a dedica\u00e7\u00e3o superam qualquer linhagem de sangue. Sua intelig\u00eancia foi crucial para a derrota de Lord Voldemort.", "birth": "1979 - Presente", "blood": "Nascida-Trouxa", "field": "Pesquisa M\u00e1gica / Lei", "full_name": "Hermione Jean Granger", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83d\udcda", "id": "hermione_full", "name": "Hermione Granger"}, {"achievements": ["Mestre de Po\u00e7\u00f5es e Diretor de Hogwarts", "Criador de feiti\u00e7os como Sectumsempra e Muffliato", "Agente Duplo lend\u00e1rio na guerra contra Voldemort", "Mestre em Oclum\u00eancia e Legilim\u00eancia"], "bio": "Um homem complexo cuja lealdade foi questionada at\u00e9 o fim. Snape dedicou sua vida a proteger Harry Potter em mem\u00f3ria de Lilian Evans, atuando no papel mais perigoso da Segunda Guerra Bruxa.", "birth": "1960 - 1998", "blood": "Mesti\u00e7o", "field": "Po\u00e7\u00f5es / Artes das Trevas", "full_name": "Severo Snape (Pr\u00edncipe Mesti\u00e7o)", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83e\uddea", "id": "snape_full", "name": "Severo Snape"}, {"achievements": ["Autor de \"Animais Fant\u00e1sticos e Onde Habitam\"", "Ordem de Merlin, Segunda Classe", "Especialista mundial em cuidados com seres m\u00e1gicos", "Pe\u00e7a chave na derrota de Grindelwald em Nova York"], "bio": "Um explorador incans\u00e1vel que viajou pelos cinco continentes para documentar criaturas m\u00e1gicas. Newt ensinou ao mundo bruxo que os animais fant\u00e1sticos devem ser protegidos, n\u00e3o apenas temidos.", "birth": "1897 - Presente", "blood": "Sangue-Puro", "field": "Magizoologia", "full_name": "Newton Artemis Fido Scamander", "house": "Hufflepuff", "house_label": "Lufa-Lufa", "icon": "\ud83d\udcbc", "id": "newt_full", "name": "Newt Scamander"}, {"achievements": ["Co-fundadora da Escola de Magia de Hogwarts", "Criadora do Diadema da Sabedoria", "Arquiteta das plantas mut\u00e1veis de Hogwarts", "M\u00e3e da Dama Cinzenta"], "bio": "Famosa por sua intelig\u00eancia e criatividade inigual\u00e1veis. Rowena acreditava que a mente \u00e9 o maior tesouro de um bruxo. Ela selecionava alunos que demonstravam sagacidade e aprendizado r\u00e1pido.", "birth": "S\u00e9culo X", "blood": "Sangue-Puro", "field": "Arquitetura M\u00e1gica", "full_name": "Rowena Ravenclaw", "house": "Ravenclaw", "house_label": "Corvinal", "icon": "\ud83e\udd85", "id": "ravenclaw_full", "name": "Rowena Ravenclaw"}];
+    let currentFilters = {
+        house: 'all',
+        field: 'all',
+        search: ''
+    };
+
+    function filterWizards() {
+        currentFilters.search = document.getElementById('wizardSearch').value.toLowerCase();
+        renderWizards();
+    }
+
+    function applyFilter(type, value) {
+        currentFilters[type] = value;
+
+        if (type === 'house') {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-filter') === value);
+            });
+        }
+
+        renderWizards();
+    }
+
+    function renderWizards() {
+        const grid = document.getElementById('wizardsGrid');
+        const cards = grid.querySelectorAll('.wizard-card-encyclopedia');
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            const house = card.getAttribute('data-house');
+            const field = card.getAttribute('data-field');
+
+            const matchesSearch = name.includes(currentFilters.search);
+            const matchesHouse = currentFilters.house === 'all' || house === currentFilters.house;
+            const matchesField = currentFilters.field === 'all' || field.includes(currentFilters.field.toLowerCase());
+
+            if (matchesSearch && matchesHouse && matchesField) {
+                card.style.display = 'flex';
+                card.classList.add('animate-fade-in');
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function openWizardModal(id) {
+        const wizard = wizardsData.find(w => w.id === id);
+        if (!wizard) return;
+
+        const modal = document.getElementById('wizardModal');
+        const content = document.getElementById('wizardModalContent');
+
+        content.innerHTML = `
+            <div class="modal-header-info">
+                <span style="font-size: 3rem; margin-bottom: 1rem; display: block;">${wizard.icon}</span>
+                <h2 class="modal-title">${wizard.name}</h2>
+                <p class="difficulty-label house-${wizard.house.toLowerCase()}" style="margin-bottom: 0.5rem;">
+                    ${wizard.house_label} • ${wizard.birth}
+                </p>
+                <p style="color: var(--gold-secondary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase;">
+                    ${wizard.field}
+                </p>
+            </div>
+            
+            <div class="modal-body-content">
+                <p class="bio-full">${wizard.bio}</p>
+                
+                <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 1rem; font-size: 1.1rem;">
+                    Principais Conquistas
+                </h3>
+                <ul class="achievements-list">
+                    ${wizard.achievements.map(a => `<li>${a}</li>`).join('')}
+                </ul>
+                
+                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">
+                        <strong>Status de Sangue:</strong> ${wizard.blood}
+                    </p>
+                </div>
+            </div>
+        `;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeWizardModal() {
+        const modal = document.getElementById('wizardModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Fechar modal ao clicar fora
+    window.onclick = function (event) {
+        const modal = document.getElementById('wizardModal');
+        if (event.target == modal) closeWizardModal();
+    }
+</script>
+
+        </main>
+
+        <footer
+            style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+            <p style="margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                By
+                <a href="https://www.instagram.com/higorstattoo" target="_blank"
+                    style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16" style="vertical-align: middle;">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                    @higorstattoo
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function createMagicEffect(type = 'spark') {
+            const container = document.getElementById('particles');
+            if (!container) return;
+
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.pointerEvents = 'none';
+            particle.style.borderRadius = '50%';
+            particle.style.zIndex = '-1';
+
+            let size, x, y, duration, animation;
+
+            if (type === 'spark') {
+                size = Math.random() * 2 + 1;
+                x = Math.random() * window.innerWidth;
+                y = window.innerHeight + 10;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(212, 175, 55, 0.6)';
+                particle.style.boxShadow = '0 0 8px rgba(212, 175, 55, 0.8)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 3000 + 2000;
+                animation = particle.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: `translateY(-${window.innerHeight + 50}px) scale(0)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-out' });
+
+            } else if (type === 'firefly') {
+                size = Math.random() * 3 + 2;
+                x = Math.random() * window.innerWidth;
+                y = Math.random() * window.innerHeight;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(255, 230, 100, 0.8)';
+                particle.style.boxShadow = '0 0 15px rgba(255, 220, 0, 1)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 10000 + 5000;
+                const driftX = (Math.random() - 0.5) * 200;
+                const driftY = (Math.random() - 0.5) * 200;
+
+                animation = particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0 },
+                    { transform: `translate(${driftX / 2}px, ${driftY / 2}px) scale(1.2)`, opacity: 0.8, offset: 0.5 },
+                    { transform: `translate(${driftX}px, ${driftY}px) scale(0.5)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-in-out' });
+
+            } else if (type === 'rare') {
+                // O Pomo de Ouro (Douratudo) passa raramente
+                particle.innerHTML = '✨';
+                particle.style.fontSize = '1.2rem';
+                particle.style.borderRadius = '0';
+                particle.style.background = 'none';
+                particle.style.boxShadow = 'none';
+                particle.style.left = '-50px';
+                particle.style.top = Math.random() * 80 + '%';
+
+                duration = 2000; // Rápido!
+                animation = particle.animate([
+                    { left: '-50px', transform: 'rotate(0deg) scale(1)' },
+                    { left: '110vw', transform: 'rotate(720deg) scale(1.5)' }
+                ], { duration: duration, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' });
+            }
+
+            container.appendChild(particle);
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Loop de geração
+        setInterval(() => {
+            const rand = Math.random();
+            if (rand < 0.7) {
+                createMagicEffect('spark');
+            } else if (rand < 0.98) {
+                createMagicEffect('firefly');
+            } else if (rand > 0.9995) {
+                // Muito raro! (Aproximadamente 1 a cada 2000 ticks)
+                createMagicEffect('rare');
+            }
+        }, 100); // 10 partículas por segundo em média
+    </script>
+</body>
+
+</html>
