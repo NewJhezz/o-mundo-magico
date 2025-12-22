@@ -658,15 +658,52 @@
         font-size: 0.9rem;
     }
 
-    /* Zoom Modal */
+    /* Zoom Modal Premium */
     .card-zoom-modal {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
+        background: #0a0a0f !important;
+        border: 2px solid var(--gold-primary) !important;
+        box-shadow: 0 0 100px rgba(0, 0, 0, 1), 0 0 40px rgba(212, 175, 55, 0.15) !important;
+        padding: 5rem !important;
+        /* Espaço generoso para enquadrar a figurinha */
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 40px !important;
+        max-width: 95vw;
+        max-height: 95vh;
+        position: relative;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card-zoom-modal .modal-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid var(--gold-primary);
+        color: var(--gold-primary);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        line-height: 1;
+        padding-bottom: 4px;
+        /* Ajuste óptico para o '×' */
+        z-index: 100;
+        opacity: 0.7;
+    }
+
+    .card-zoom-modal .modal-close:hover {
+        opacity: 1;
+        background: var(--gold-primary);
+        color: black;
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 0 20px var(--gold-primary);
     }
 
     @keyframes pulse-gold {
