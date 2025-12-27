@@ -1,333 +1,273 @@
 {% extends "base.html" %}
 
-{% block title %}Bruxos Famosos | Enciclopédia{% endblock %}
+{% block title %}Enciclopédia de Bruxos | O Mundo Mágico{% endblock %}
 
 {% block content %}
-<div class="potions-container animate-fade-in">
-    <div class="potions-header">
-        <a href="{{ url_for('world') }}" class="back-link">
-            <i class="fas fa-arrow-left"></i> Voltar ao Mundo
-        </a>
-        <h1 class="potions-title">Bruxos Famosos</h1>
-        <p class="potions-subtitle">Arquivos históricos da Confederação Internacional de Bruxos.</p>
+<div class="hero-section">
+    <a href="{{ url_for('home') }}" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Enciclopédia de Bruxos</h1>
+    <p class="hero-subtitle">Biografias e lendas dos maiores feiticeiros da história mágica.</p>
+</div>
+
+<!-- Barra de Busca e Filtros (Layout Horizontal Premium) -->
+<div class="filter-toolbar">
+    <div class="toolbar-top">
+        <div class="search-box">
+            <input type="text" id="wizardSearch" placeholder="Pesquisar bruxo, título ou feito..."
+                onkeyup="filterWizards()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="sort-box">
+            <select id="wizardSort" onchange="sortWizards()" class="custom-select">
+                <option value="none">Ordenar por...</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+                <option value="rarity_desc">Raridade (Lendário → Comum)</option>
+            </select>
+        </div>
     </div>
 
-    <!-- Barra de Busca -->
-    <div class="search-container">
-        <input type="text" id="wizardSearch" placeholder="Buscar por nome, bios ou feitos..." onkeyup="filterWizards()">
-        <i class="fas fa-search search-icon"></i>
-    </div>
-
-    <div class="main-layout">
-        <!-- Sidebar de Filtros -->
-        <aside class="filters-sidebar">
-            <div class="filter-group">
-                <h3>Filtrar por Casa</h3>
-                <div class="filter-options">
-                    <button class="filter-btn active" data-filter="all"
-                        onclick="applyFilter('house', 'all')">Todos</button>
-                    <button class="filter-btn" data-filter="Gryffindor"
-                        onclick="applyFilter('house', 'Gryffindor')">Grifinória</button>
-                    <button class="filter-btn" data-filter="Slytherin"
-                        onclick="applyFilter('house', 'Slytherin')">Sonserina</button>
-                    <button class="filter-btn" data-filter="Ravenclaw"
-                        onclick="applyFilter('house', 'Ravenclaw')">Corvinal</button>
-                    <button class="filter-btn" data-filter="Hufflepuff"
-                        onclick="applyFilter('house', 'Hufflepuff')">Lufa-Lufa</button>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <h3>Especialidade</h3>
-                <select id="fieldFilter" onchange="applyFilter('field', this.value)">
-                    <option value="all">Todas as Áreas</option>
-                    <option value="Transfiguração">Transfiguração</option>
-                    <option value="Encantamentos">Encantamentos</option>
-                    <option value="Artes das Trevas">Artes das Trevas</option>
-                    <option value="Magizoologia">Magizoologia</option>
-                    <option value="Alquimia">Alquimia</option>
-                </select>
-            </div>
-        </aside>
-
-        <!-- Grid de Bruxos -->
-        <main class="wizards-grid-container">
-            <div class="woods-grid" id="wizardsGrid">
-                {% for wizard in wizards %}
-                <div class="wood-card wizard-card-encyclopedia" data-name="{{ wizard.name|lower }}"
-                    data-house="{{ wizard.house }}" data-field="{{ wizard.field|lower }}"
-                    onclick="openWizardModal('{{ wizard.id }}')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">{{ wizard.icon }}</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">{{ wizard.name }}</h3>
-                            <span class="difficulty-label house-{{ wizard.house|lower }}">{{ wizard.house_label
-                                }}</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> {{ wizard.field }}
-                        </p>
-                        <p class="wood-description">{{ wizard.bio[:100] }}...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">{{ wizard.birth }}</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </main>
+    <div class="filter-group">
+        <span class="filter-label">FILTRAR POR:</span>
+        <div class="filter-options">
+            <button class="filter-chip active" onclick="setWizardFilter('all', this)">Todos</button>
+            <button class="filter-chip" onclick="setWizardFilter('founders', this)">Fundadores</button>
+            <button class="filter-chip" onclick="setWizardFilter('masters', this)">Lendários</button>
+            <button class="filter-chip" onclick="setWizardFilter('hogwarts', this)">Hogwarts</button>
+            <button class="filter-chip" onclick="setWizardFilter('alchemists', this)">Alquimistas</button>
+            <button class="filter-chip" onclick="setWizardFilter('magizoologists', this)">Magizoologistas</button>
+            <button class="filter-chip" onclick="setWizardFilter('inventors', this)">Inventores</button>
+            <button class="filter-chip" onclick="setWizardFilter('celebrities', this)">Celebridades</button>
+        </div>
     </div>
 </div>
 
-<!-- Modal de Detalhes do Bruxo -->
-<div id="wizardModal" class="potion-modal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeWizardModal()">&times;</button>
-        <div id="wizardModalContent">
-            <!-- Conteúdo dinâmico via JS -->
+<!-- Grid de Bruxos -->
+<div class="wizards-grid" id="wizardsGrid">
+    {% for wizard in wizards %}
+    {% set rarity_score = 1 %}
+    {% if wizard.rarity == 'rare' %}{% set rarity_score = 2 %}
+    {% elif wizard.rarity == 'legendary' %}{% set rarity_score = 3 %}{% endif %}
+
+    <div class="wood-card wizard-card {{ wizard.rarity }}" data-name="{{ wizard.name|lower }}"
+        data-title="{{ wizard.title|lower }}" data-category="{{ wizard.category }}" data-rarity="{{ rarity_score }}"
+        onclick='openWizardBio({{ wizard|tojson|safe }})'>
+
+        <div class="card-header">
+            <span class="mini-icon">{{ wizard.icon }}</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">{{ wizard.name }}</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">{{ wizard.title }}</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            {{ wizard.desc[:95] }}...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">{{ wizard.category_label }}</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="noResults" class="no-results hidden">
+    <p>Nenhum bruxo encontrado nos registros históricos...</p>
+</div>
+
+<!-- Modal de Biografia -->
+<div id="wizardBioModal" class="modal-overlay hidden" onclick="closeWizardBio(event)">
+    <div class="modal-content wizard-bio-modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeWizardBio()">&times;</button>
+        <div id="bioContent">
+            <!-- Preenchido via JS -->
         </div>
     </div>
 </div>
 
 <style>
-    .main-layout {
+    .wizards-grid {
         display: grid;
-        grid-template-columns: 250px 1fr;
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
         margin-top: 2rem;
     }
 
-    .filters-sidebar {
-        background: rgba(10, 15, 25, 0.4);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(212, 175, 55, 0.1);
-        height: fit-content;
-        position: sticky;
-        top: 2rem;
+    .wizard-card {
+        cursor: pointer;
+        position: relative;
+        padding: 1.2rem !important;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .filter-group h3 {
-        color: var(--gold-secondary);
-        font-family: var(--font-heading);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
+    .wizard-card:hover {
+        transform: translateY(-5px) scale(1.02);
     }
 
-    .filter-options {
+    /* Modal de Biografia Estilizado */
+    .wizard-bio-modal {
+        max-width: 600px;
+        background: rgba(10, 15, 30, 0.95) !important;
+        border: 2px solid var(--gold-primary) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 4rem 3rem !important;
+        border-radius: 20px !important;
+    }
+
+    .bio-header {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
         margin-bottom: 2rem;
     }
 
-    .filter-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        color: var(--text-muted);
-        padding: 0.6rem;
-        border-radius: 6px;
-        cursor: pointer;
-        text-align: left;
-        font-size: 0.8rem;
-        transition: all 0.3s;
+    .bio-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-        background: rgba(212, 175, 55, 0.1);
-        color: var(--gold-primary);
-        border-color: var(--gold-primary);
-    }
-
-    #fieldFilter {
-        width: 100%;
-        background: #0f172a;
-        color: var(--text-main);
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        padding: 0.6rem;
-        border-radius: 6px;
-        font-family: inherit;
-    }
-
-    .wizard-card-encyclopedia {
-        min-height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .house-gryffindor {
-        color: #ae0001;
-    }
-
-    .house-slytherin {
-        color: #2a623d;
-    }
-
-    .house-ravenclaw {
-        color: #222f5b;
-    }
-
-    .house-hufflepuff {
-        color: #f0c75e;
-    }
-
-    .bio-full {
-        line-height: 1.6;
-        color: var(--text-main);
-        margin: 1.5rem 0;
-        font-size: 1rem;
-    }
-
-    .achievements-list {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .achievements-list li {
-        margin-bottom: 0.8rem;
-        padding-left: 1.5rem;
-        position: relative;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-    }
-
-    .achievements-list li::before {
-        content: '✦';
-        position: absolute;
-        left: 0;
-        color: var(--gold-primary);
-    }
-
-    /* Correção do Texto de Campo */
-    .wizard-affinity-text {
+    .bio-name {
         font-family: var(--font-heading);
-        font-size: 0.9rem;
+        color: var(--gold-primary);
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .bio-title {
         color: var(--gold-secondary);
-        margin-bottom: 0.8rem;
+        font-style: italic;
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    .bio-details {
+        margin-top: 2rem;
+        text-align: justify;
+        line-height: 1.8;
+        color: var(--text-main);
+    }
+
+    .bio-footer {
+        margin-top: 2.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .badge-rarity {
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
-    .affinity-label {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
+    .badge-rarity.common {
+        background: #cd7f32;
+        color: white;
     }
 
-    @media (max-width: 900px) {
-        .main-layout {
-            grid-template-columns: 1fr;
-        }
+    .badge-rarity.rare {
+        background: #c0c0c0;
+        color: black;
+    }
+
+    .badge-rarity.legendary {
+        background: gold;
+        color: black;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
 </style>
 
 <script>
-    const wizardsData = {{ wizards| tojson | safe }};
-    let currentFilters = {
-        house: 'all',
-        field: 'all',
-        search: ''
-    };
+    let currentFilter = 'all';
+
+    function setWizardFilter(cat, el) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+        el.classList.add('active');
+        filterWizards();
+    }
 
     function filterWizards() {
-        currentFilters.search = document.getElementById('wizardSearch').value.toLowerCase();
-        renderWizards();
-    }
-
-    function applyFilter(type, value) {
-        currentFilters[type] = value;
-
-        if (type === 'house') {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === value);
-            });
-        }
-
-        renderWizards();
-    }
-
-    function renderWizards() {
-        const grid = document.getElementById('wizardsGrid');
-        const cards = grid.querySelectorAll('.wizard-card-encyclopedia');
+        const query = document.getElementById('wizardSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.wizard-card');
+        let visibleCount = 0;
 
         cards.forEach(card => {
             const name = card.getAttribute('data-name');
-            const house = card.getAttribute('data-house');
-            const field = card.getAttribute('data-field');
+            const title = card.getAttribute('data-title');
+            const category = card.getAttribute('data-category');
 
-            const matchesSearch = name.includes(currentFilters.search);
-            const matchesHouse = currentFilters.house === 'all' || house === currentFilters.house;
-            const matchesField = currentFilters.field === 'all' || field.includes(currentFilters.field.toLowerCase());
+            const matchesQuery = name.includes(query) || title.includes(query);
+            const matchesFilter = currentFilter === 'all' || category === currentFilter;
 
-            if (matchesSearch && matchesHouse && matchesField) {
-                card.style.display = 'flex';
-                card.classList.add('animate-fade-in');
+            if (matchesQuery && matchesFilter) {
+                card.classList.remove('hidden');
+                visibleCount++;
             } else {
-                card.style.display = 'none';
+                card.classList.add('hidden');
             }
         });
+
+        document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
     }
 
-    function openWizardModal(id) {
-        const wizard = wizardsData.find(w => w.id === id);
-        if (!wizard) return;
+    function sortWizards() {
+        const grid = document.getElementById('wizardsGrid');
+        const cards = Array.from(grid.querySelectorAll('.wizard-card'));
+        const sortType = document.getElementById('wizardSort').value;
 
-        const modal = document.getElementById('wizardModal');
-        const content = document.getElementById('wizardModalContent');
+        if (sortType === 'none') return;
+
+        cards.sort((a, b) => {
+            if (sortType === 'az' || sortType === 'za') {
+                const nameA = a.getAttribute('data-name');
+                const nameB = b.getAttribute('data-name');
+                return sortType === 'az' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+            } else if (sortType === 'rarity_desc') {
+                const rA = parseInt(a.getAttribute('data-rarity'));
+                const rB = parseInt(b.getAttribute('data-rarity'));
+                return rB - rA;
+            }
+            return 0;
+        });
+
+        cards.forEach(card => grid.appendChild(card));
+    }
+
+    function openWizardBio(wizard) {
+        const modal = document.getElementById('wizardBioModal');
+        const content = document.getElementById('bioContent');
 
         content.innerHTML = `
-            <div class="modal-header-info">
-                <span style="font-size: 3rem; margin-bottom: 1rem; display: block;">${wizard.icon}</span>
-                <h2 class="modal-title">${wizard.name}</h2>
-                <p class="difficulty-label house-${wizard.house.toLowerCase()}" style="margin-bottom: 0.5rem;">
-                    ${wizard.house_label} • ${wizard.birth}
-                </p>
-                <p style="color: var(--gold-secondary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase;">
-                    ${wizard.field}
-                </p>
+            <div class="bio-header">
+                <span class="bio-icon">${wizard.icon}</span>
+                <h2 class="bio-name">${wizard.name}</h2>
+                <div class="bio-title">${wizard.title}</div>
             </div>
-            
-            <div class="modal-body-content">
-                <p class="bio-full">${wizard.bio}</p>
-                
-                <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 1rem; font-size: 1.1rem;">
-                    Principais Conquistas
-                </h3>
-                <ul class="achievements-list">
-                    ${wizard.achievements.map(a => `<li>${a}</li>`).join('')}
-                </ul>
-                
-                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">
-                        <strong>Status de Sangue:</strong> ${wizard.blood}
-                    </p>
-                </div>
+            <div class="bio-details">
+                ${wizard.desc}
+            </div>
+            <div class="bio-footer">
+                <span class="badge-rarity ${wizard.rarity}">${wizard.rarity_label}</span>
+                <span class="badge-rarity" style="background: rgba(255,255,255,0.1)">${wizard.category_label}</span>
             </div>
         `;
 
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('open'), 10);
     }
 
-    function closeWizardModal() {
-        const modal = document.getElementById('wizardModal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Fechar modal ao clicar fora
-    window.onclick = function (event) {
-        const modal = document.getElementById('wizardModal');
-        if (event.target == modal) closeWizardModal();
+    function closeWizardBio(e) {
+        const modal = document.getElementById('wizardBioModal');
+        modal.classList.remove('open');
+        setTimeout(() => modal.classList.add('hidden'), 400);
     }
 </script>
 {% endblock %}

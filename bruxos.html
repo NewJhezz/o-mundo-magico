@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruxos Famosos | Enciclopédia</title>
+    <title>Enciclopédia de Bruxos | O Mundo Mágico</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,830 +28,2315 @@
 
         <main>
             
-<div class="potions-container animate-fade-in">
-    <div class="potions-header">
-        <a href="./index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Voltar ao Mundo
-        </a>
-        <h1 class="potions-title">Bruxos Famosos</h1>
-        <p class="potions-subtitle">Arquivos históricos da Confederação Internacional de Bruxos.</p>
+<div class="hero-section">
+    <a href="./index.html" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Enciclopédia de Bruxos</h1>
+    <p class="hero-subtitle">Biografias e lendas dos maiores feiticeiros da história mágica.</p>
+</div>
+
+<!-- Barra de Busca e Filtros (Layout Horizontal Premium) -->
+<div class="filter-toolbar">
+    <div class="toolbar-top">
+        <div class="search-box">
+            <input type="text" id="wizardSearch" placeholder="Pesquisar bruxo, título ou feito..."
+                onkeyup="filterWizards()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="sort-box">
+            <select id="wizardSort" onchange="sortWizards()" class="custom-select">
+                <option value="none">Ordenar por...</option>
+                <option value="az">Nome (A-Z)</option>
+                <option value="za">Nome (Z-A)</option>
+                <option value="rarity_desc">Raridade (Lendário → Comum)</option>
+            </select>
+        </div>
     </div>
 
-    <!-- Barra de Busca -->
-    <div class="search-container">
-        <input type="text" id="wizardSearch" placeholder="Buscar por nome, bios ou feitos..." onkeyup="filterWizards()">
-        <i class="fas fa-search search-icon"></i>
-    </div>
-
-    <div class="main-layout">
-        <!-- Sidebar de Filtros -->
-        <aside class="filters-sidebar">
-            <div class="filter-group">
-                <h3>Filtrar por Casa</h3>
-                <div class="filter-options">
-                    <button class="filter-btn active" data-filter="all"
-                        onclick="applyFilter('house', 'all')">Todos</button>
-                    <button class="filter-btn" data-filter="Gryffindor"
-                        onclick="applyFilter('house', 'Gryffindor')">Grifinória</button>
-                    <button class="filter-btn" data-filter="Slytherin"
-                        onclick="applyFilter('house', 'Slytherin')">Sonserina</button>
-                    <button class="filter-btn" data-filter="Ravenclaw"
-                        onclick="applyFilter('house', 'Ravenclaw')">Corvinal</button>
-                    <button class="filter-btn" data-filter="Hufflepuff"
-                        onclick="applyFilter('house', 'Hufflepuff')">Lufa-Lufa</button>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <h3>Especialidade</h3>
-                <select id="fieldFilter" onchange="applyFilter('field', this.value)">
-                    <option value="all">Todas as Áreas</option>
-                    <option value="Transfiguração">Transfiguração</option>
-                    <option value="Encantamentos">Encantamentos</option>
-                    <option value="Artes das Trevas">Artes das Trevas</option>
-                    <option value="Magizoologia">Magizoologia</option>
-                    <option value="Alquimia">Alquimia</option>
-                </select>
-            </div>
-        </aside>
-
-        <!-- Grid de Bruxos -->
-        <main class="wizards-grid-container">
-            <div class="woods-grid" id="wizardsGrid">
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="alvo dumbledore"
-                    data-house="Gryffindor" data-field="transfiguração / defesa"
-                    onclick="openWizardModal('dumbledore_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🧙‍♂️</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Alvo Dumbledore</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Transfiguração / Defesa
-                        </p>
-                        <p class="wood-description">Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfiguração e ma...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1881 - 1997</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="merlin"
-                    data-house="Slytherin" data-field="encantamentos"
-                    onclick="openWizardModal('merlin_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">📜</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Merlin</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Encantamentos
-                        </p>
-                        <p class="wood-description">Talvez o bruxo mais famoso da história. Merlin acreditava que os bruxos deveriam ajudar os trouxas e...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Idade Média</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="lord voldemort"
-                    data-house="Slytherin" data-field="artes das trevas"
-                    onclick="openWizardModal('voldemort_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🐍</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Lord Voldemort</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Artes das Trevas
-                        </p>
-                        <p class="wood-description">Aquele-Que-Não-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante décadas. Obcecado pela imor...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1926 - 1998</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="hermione granger"
-                    data-house="Gryffindor" data-field="pesquisa mágica / lei"
-                    onclick="openWizardModal('hermione_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">📚</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Hermione Granger</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Pesquisa Mágica / Lei
-                        </p>
-                        <p class="wood-description">Conhecida como a bruxa mais brilhante de sua geração, Hermione provou que o conhecimento e a dedicaç...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1979 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="severo snape"
-                    data-house="Slytherin" data-field="poções / artes das trevas"
-                    onclick="openWizardModal('snape_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🧪</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Severo Snape</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Poções / Artes das Trevas
-                        </p>
-                        <p class="wood-description">Um homem complexo cuja lealdade foi questionada até o fim. Snape dedicou sua vida a proteger Harry P...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1960 - 1998</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="newt scamander"
-                    data-house="Hufflepuff" data-field="magizoologia"
-                    onclick="openWizardModal('newt_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">💼</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Newt Scamander</h3>
-                            <span class="difficulty-label house-hufflepuff">Lufa-Lufa</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Magizoologia
-                        </p>
-                        <p class="wood-description">Um explorador incansável que viajou pelos cinco continentes para documentar criaturas mágicas. Newt ...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1897 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="rowena ravenclaw"
-                    data-house="Ravenclaw" data-field="arquitetura mágica"
-                    onclick="openWizardModal('ravenclaw_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🦅</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Rowena Ravenclaw</h3>
-                            <span class="difficulty-label house-ravenclaw">Corvinal</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Arquitetura Mágica
-                        </p>
-                        <p class="wood-description">Famosa por sua inteligência e criatividade inigualáveis. Rowena acreditava que a mente é o maior tes...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Século X</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="godric gryffindor"
-                    data-house="Gryffindor" data-field="duelos / transfiguração"
-                    onclick="openWizardModal('gryffindor_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🦁</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Godric Gryffindor</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Duelos / Transfiguração
-                        </p>
-                        <p class="wood-description">Godric valorizava a coragem e a determinação acima de tudo. Foi ele quem teve a ideia de usar seu pr...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Século X</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="salazar slytherin"
-                    data-house="Slytherin" data-field="legilimência / basiliscos"
-                    onclick="openWizardModal('slytherin_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🐍</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Salazar Slytherin</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Legilimência / Basiliscos
-                        </p>
-                        <p class="wood-description">Um bruxo brilhante, mas controverso. Salazar acreditava que apenas bruxos de sangue puro deveriam se...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Século X</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="helga hufflepuff"
-                    data-house="Hufflepuff" data-field="feitiços culinários"
-                    onclick="openWizardModal('hufflepuff_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🦡</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Helga Hufflepuff</h3>
-                            <span class="difficulty-label house-hufflepuff">Lufa-Lufa</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Feitiços Culinários
-                        </p>
-                        <p class="wood-description">Helga era conhecida por sua natureza gentil e inclusiva. Ela aceitava todos os alunos que mostravam ...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Século X</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="gerardo grindelwald"
-                    data-house="Durmstrang" data-field="artes das trevas"
-                    onclick="openWizardModal('grindelwald_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">💀</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Gerardo Grindelwald</h3>
-                            <span class="difficulty-label house-durmstrang">Durmstrang</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Artes das Trevas
-                        </p>
-                        <p class="wood-description">Antes de Voldemort, Grindelwald era a maior ameaça ao mundo mágico. Ele acreditava que os bruxos dev...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1883 - 1998</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="nicolau flamel"
-                    data-house="Beauxbatons" data-field="alquimia"
-                    onclick="openWizardModal('flamel_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">💎</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Nicolau Flamel</h3>
-                            <span class="difficulty-label house-beauxbatons">Beauxbatons</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Alquimia
-                        </p>
-                        <p class="wood-description">O único criador conhecido da Pedra Filosofal. Flamel viveu mais de 600 anos com sua esposa Perenelle...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1327 - 1992</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="garrick olivaras"
-                    data-house="Ravenclaw" data-field="varinhologia"
-                    onclick="openWizardModal('ollivander_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🪄</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Garrick Olivaras</h3>
-                            <span class="difficulty-label house-ravenclaw">Corvinal</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Varinhologia
-                        </p>
-                        <p class="wood-description">A família Olivaras fabrica varinhas desde 382 a.C., mas Garrick elevou a arte a um novo nível. Ele a...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1919 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="luna lovegood"
-                    data-house="Ravenclaw" data-field="magizoologia"
-                    onclick="openWizardModal('lovegood_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">👓</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Luna Lovegood</h3>
-                            <span class="difficulty-label house-ravenclaw">Corvinal</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Magizoologia
-                        </p>
-                        <p class="wood-description">Muitas vezes incompreendida por sua excentricidade, Luna possui uma percepção única da verdade. Sua ...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1981 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="minerva mcgonagall"
-                    data-house="Gryffindor" data-field="transfiguração"
-                    onclick="openWizardModal('mcgonagall_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🐈</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Minerva McGonagall</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Transfiguração
-                        </p>
-                        <p class="wood-description">Severa, mas justa. Minerva é uma das bruxas mais poderosas de sua geração. Sua habilidade em Transfi...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1935 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="sirius black"
-                    data-house="Gryffindor" data-field="defesa / duelos"
-                    onclick="openWizardModal('sirius_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🐕‍🦺</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Sirius Black</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Defesa / Duelos
-                        </p>
-                        <p class="wood-description">O único da família Black a ser selecionado para a Grifinória. Rebelde e leal até o fim, Sirius passo...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1959 - 1996</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="remus lupin"
-                    data-house="Gryffindor" data-field="defesa contra as artes das trevas"
-                    onclick="openWizardModal('remus_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🌕</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Remus Lupin</h3>
-                            <span class="difficulty-label house-gryffindor">Grifinória</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Defesa Contra as Artes das Trevas
-                        </p>
-                        <p class="wood-description">Apesar de sofrer com a licantropia, Lupin foi um dos melhores professores de Defesa que Hogwarts já ...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1960 - 1998</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="alastor moody"
-                    data-house="Desconhecida" data-field="combate às trevas"
-                    onclick="openWizardModal('moody_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">👁️</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Alastor Moody</h3>
-                            <span class="difficulty-label house-desconhecida">Auror</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Combate às Trevas
-                        </p>
-                        <p class="wood-description">Paranoico e cheio de cicatrizes, Moody é a prova viva dos perigos de lutar contra as trevas. Seu lem...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">Desconhecido - 1997</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="kingsley shacklebolt"
-                    data-house="Desconhecida" data-field="política / duelos"
-                    onclick="openWizardModal('kingsley_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🛡️</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Kingsley Shacklebolt</h3>
-                            <span class="difficulty-label house-desconhecida">Auror</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Política / Duelos
-                        </p>
-                        <p class="wood-description">Sua voz grave e calmante esconde um duelista formidável. Kingsley foi fundamental para reconstruir o...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1960 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="bellatrix lestrange"
-                    data-house="Slytherin" data-field="artes das trevas"
-                    onclick="openWizardModal('bellatrix_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🗡️</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Bellatrix Lestrange</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Artes das Trevas
-                        </p>
-                        <p class="wood-description">Fanática e sádica, Bellatrix era o braço direito de Voldemort. Sua devoção ao Lorde das Trevas beira...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1951 - 1998</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-                <div class="wood-card wizard-card-encyclopedia" data-name="draco malfoy"
-                    data-house="Slytherin" data-field="alquimia / poções"
-                    onclick="openWizardModal('draco_full')">
-
-                    <div class="wood-header">
-                        <span class="wood-icon">🐍</span>
-                        <div class="header-text-group">
-                            <h3 class="wood-name">Draco Malfoy</h3>
-                            <span class="difficulty-label house-slytherin">Sonserina</span>
-                        </div>
-                    </div>
-
-                    <div class="wood-content">
-                        <p class="wizard-affinity-text">
-                            <span class="affinity-label">Campo:</span> Alquimia / Poções
-                        </p>
-                        <p class="wood-description">Criado para acreditar na supremacia do sangue, Draco teve seu mundo abalado pela realidade da guerra...</p>
-                    </div>
-
-                    <div class="wood-footer">
-                        <span class="rarity-badge">1980 - Presente</span>
-                        <span class="click-hint">Ver Biografia</span>
-                    </div>
-                </div>
-                
-            </div>
-        </main>
+    <div class="filter-group">
+        <span class="filter-label">FILTRAR POR:</span>
+        <div class="filter-options">
+            <button class="filter-chip active" onclick="setWizardFilter('all', this)">Todos</button>
+            <button class="filter-chip" onclick="setWizardFilter('founders', this)">Fundadores</button>
+            <button class="filter-chip" onclick="setWizardFilter('masters', this)">Lendários</button>
+            <button class="filter-chip" onclick="setWizardFilter('hogwarts', this)">Hogwarts</button>
+            <button class="filter-chip" onclick="setWizardFilter('alchemists', this)">Alquimistas</button>
+            <button class="filter-chip" onclick="setWizardFilter('magizoologists', this)">Magizoologistas</button>
+            <button class="filter-chip" onclick="setWizardFilter('inventors', this)">Inventores</button>
+            <button class="filter-chip" onclick="setWizardFilter('celebrities', this)">Celebridades</button>
+        </div>
     </div>
 </div>
 
-<!-- Modal de Detalhes do Bruxo -->
-<div id="wizardModal" class="potion-modal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeWizardModal()">&times;</button>
-        <div id="wizardModalContent">
-            <!-- Conteúdo dinâmico via JS -->
+<!-- Grid de Bruxos -->
+<div class="wizards-grid" id="wizardsGrid">
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="alvo dumbledore"
+        data-title="o grande diretor" data-category="hogwarts" data-rarity="3"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald e descobrir os doze usos do sangue de drag\u00e3o.", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore", "name": "Alvo Dumbledore", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Grande Diretor"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧙‍♂️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Alvo Dumbledore</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Grande Diretor</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Diretor de Hogwarts. Considerado o maior bruxo da era moderna. Famoso por derrotar Grindelwald ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="merlin"
+        data-title="príncipe dos magos" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da Ordem de Merlin.", "icon": "\u2728", "id": "merlin", "name": "Merlin", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Pr\u00edncipe dos Magos"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">✨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Merlin</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Príncipe dos Magos</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo medieval mais famoso de todos os tempos. Defensor dos direitos dos Trouxas e fundador da ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="godric gryffindor"
+        data-title="bravo duelista" data-category="founders" data-rarity="2"
+        onclick='openWizardBio({"category": "founders", "category_label": "Fundadores", "desc": "Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome \u00e0 casa dos corajosos e ousados.", "icon": "\ud83e\udd81", "id": "gryffindor", "name": "Godric Gryffindor", "rarity": "rare", "rarity_label": "Raro", "title": "Bravo Duelista"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦁</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Godric Gryffindor</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Bravo Duelista</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Co-fundador de Hogwarts. O maior duelista de seu tempo, deu o nome à casa dos corajosos e ousad...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Fundadores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="helga hufflepuff"
+        data-title="bondade infinita" data-category="founders" data-rarity="2"
+        onclick='openWizardBio({"category": "founders", "category_label": "Fundadores", "desc": "Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus feiti\u00e7os culin\u00e1rios.", "icon": "\ud83e\udda1", "id": "hufflepuff", "name": "Helga Hufflepuff", "rarity": "rare", "rarity_label": "Raro", "title": "Bondade Infinita"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Helga Hufflepuff</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Bondade Infinita</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Co-fundadora de Hogwarts. Valorizava a lealdade e o trabalho duro above all. Famosa por seus fe...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Fundadores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="rowena ravenclaw"
+        data-title="mente brilhante" data-category="founders" data-rarity="2"
+        onclick='openWizardBio({"category": "founders", "category_label": "Fundadores", "desc": "Co-fundadora de Hogwarts. A bruxa mais brilhante de sua \u00e9poca. Criou o diadema que conferia sabedoria.", "icon": "\ud83e\udd85", "id": "ravenclaw", "name": "Rowena Ravenclaw", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦅</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Rowena Ravenclaw</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mente Brilhante</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Co-fundadora de Hogwarts. A bruxa mais brilhante de sua época. Criou o diadema que conferia sab...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Fundadores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="salazar slytherin"
+        data-title="mestre da ofidioglossia" data-category="founders" data-rarity="2"
+        onclick='openWizardBio({"category": "founders", "category_label": "Fundadores", "desc": "Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilim\u00eancia.", "icon": "\ud83d\udc0d", "id": "slytherin", "name": "Salazar Slytherin", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Ofidioglossia"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐍</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Salazar Slytherin</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre da Ofidioglossia</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Co-fundador de Hogwarts. Um dos primeiros Ofidioglotas registrados e mestre em Legilimência....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Fundadores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="nicolau flamel"
+        data-title="o imortal alquimista" data-category="alchemists" data-rarity="2"
+        onclick='openWizardBio({"category": "alchemists", "category_label": "Alquimistas", "desc": "O \u00fanico fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos.", "icon": "\ud83d\udc8e", "id": "flamel", "name": "Nicolau Flamel", "rarity": "rare", "rarity_label": "Raro", "title": "O Imortal Alquimista"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💎</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Nicolau Flamel</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Imortal Alquimista</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O único fabricante conhecido da Pedra Filosofal. Alquimista que viveu mais de 600 anos....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Alquimistas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="newt scamander"
+        data-title="o magizoologista" data-category="magizoologists" data-rarity="2"
+        onclick='openWizardBio({"category": "magizoologists", "category_label": "Magizoologistas", "desc": "Famoso Magizoologista e autor de \"Animais Fant\u00e1sticos e Onde Habitam\". Especialista em criaturas m\u00e1gicas.", "icon": "\ud83d\udcbc", "id": "newt", "name": "Newt Scamander", "rarity": "rare", "rarity_label": "Raro", "title": "O Magizoologista"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💼</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Newt Scamander</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Magizoologista</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Famoso Magizoologista e autor de &#34;Animais Fantásticos e Onde Habitam&#34;. Especialista em criatura...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Magizoologistas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="gilderoy lockhart"
+        data-title="mestre do charme" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Autor de in\u00fameros best-sellers sobre suas \"aventuras\" e cinco vezes vencedor do pr\u00eamio do Sorriso Mais Charmoso.", "icon": "\ud83d\ude01", "id": "lockhart", "name": "Gilderoy Lockhart", "rarity": "common", "rarity_label": "Comum", "title": "Mestre do Charme"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">😁</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Gilderoy Lockhart</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre do Charme</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Autor de inúmeros best-sellers sobre suas &#34;aventuras&#34; e cinco vezes vencedor do prêmio do Sorri...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="morgana le fay"
+        data-title="rainha das sombras" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Poderosa bruxa medieval, meia-irm\u00e3 do Rei Arthur. Inimiga jurada de Merlin e mestra em artes das trevas.", "icon": "\ud83c\udf18", "id": "morgana", "name": "Morgana le Fay", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Rainha das Sombras"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🌘</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Morgana le Fay</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Rainha das Sombras</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Poderosa bruxa medieval, meia-irmã do Rei Arthur. Inimiga jurada de Merlin e mestra em artes da...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="harry potter"
+        data-title="o eleito" data-category="hogwarts" data-rarity="3"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "O Menino que Sobreviveu. Famoso por derrotar Lord Voldemort e liderar a resist\u00eancia na Batalha de Hogwarts.", "icon": "\u26a1", "id": "harry_potter", "name": "Harry Potter", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Eleito"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">⚡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Harry Potter</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Eleito</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O Menino que Sobreviveu. Famoso por derrotar Lord Voldemort e liderar a resistência na Batalha ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="hermione granger"
+        data-title="mente brilhante" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "A bruxa mais brilhante de sua idade. Co-fundadora da Armada de Dumbledore e pe\u00e7a chave na destrui\u00e7\u00e3o das Horcruxes.", "icon": "\ud83d\udcda", "id": "hermione_granger", "name": "Hermione Granger", "rarity": "rare", "rarity_label": "Raro", "title": "Mente Brilhante"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">📚</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Hermione Granger</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mente Brilhante</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            A bruxa mais brilhante de sua idade. Co-fundadora da Armada de Dumbledore e peça chave na destr...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="rony weasley"
+        data-title="leal amigo" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Melhor amigo de Harry Potter. Destruiu a Horcrux do medalh\u00e3o e foi goleiro de Quadribol da Grifin\u00f3ria.", "icon": "\u265f\ufe0f", "id": "ron_weasley", "name": "Rony Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "Leal Amigo"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">♟️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Rony Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Leal Amigo</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Melhor amigo de Harry Potter. Destruiu a Horcrux do medalhão e foi goleiro de Quadribol da Grif...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="luna lovegood"
+        data-title="a observadora" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Membro da Armada de Dumbledore. Famosa por sua vis\u00e3o \u00fanica do mundo e por encontrar criaturas que ningu\u00e9m mais v\u00ea.", "icon": "\ud83d\udc53", "id": "luna_lovegood", "name": "Luna Lovegood", "rarity": "rare", "rarity_label": "Raro", "title": "A Observadora"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">👓</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Luna Lovegood</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Observadora</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Membro da Armada de Dumbledore. Famosa por sua visão única do mundo e por encontrar criaturas q...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="neville longbottom"
+        data-title="o defensor" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "L\u00edder da Armada de Dumbledore durante a ocupa\u00e7\u00e3o de Hogwarts. Destruiu Nagini com a espada de Gryffindor.", "icon": "\ud83c\udf31", "id": "neville_longbottom", "name": "Neville Longbottom", "rarity": "rare", "rarity_label": "Raro", "title": "O Defensor"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🌱</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Neville Longbottom</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Defensor</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Líder da Armada de Dumbledore durante a ocupação de Hogwarts. Destruiu Nagini com a espada de G...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="minerva mcgonagall"
+        data-title="mestre da transfiguração" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Diretora de Hogwarts e mestre em Transfigura\u00e7\u00e3o. L\u00edder da defesa de Hogwarts contra os Comensais da Morte.", "icon": "\ud83d\udc08", "id": "mcgonagall", "name": "Minerva McGonagall", "rarity": "rare", "rarity_label": "Raro", "title": "Mestre da Transfigura\u00e7\u00e3o"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐈</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Minerva McGonagall</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre da Transfiguração</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Diretora de Hogwarts e mestre em Transfiguração. Líder da defesa de Hogwarts contra os Comensai...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="severo snape"
+        data-title="o príncipe mestiço" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Mestre de Po\u00e7\u00f5es e Pr\u00edncipe Mesti\u00e7o. Atuou como agente duplo em uma das miss\u00f5es de espionagem mais perigosas da hist\u00f3ria.", "icon": "\ud83e\uddea", "id": "snape", "name": "Severo Snape", "rarity": "rare", "rarity_label": "Raro", "title": "O Pr\u00edncipe Mesti\u00e7o"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧪</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Severo Snape</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Príncipe Mestiço</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Mestre de Poções e Príncipe Mestiço. Atuou como agente duplo em uma das missões de espionagem m...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="bellatrix lestrange"
+        data-title="a fanática" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "A comensal da morte mais leal de Voldemort. Mestra em artes das trevas e duelos mortais.", "icon": "\ud83d\udde1\ufe0f", "id": "bellatrix", "name": "Bellatrix Lestrange", "rarity": "rare", "rarity_label": "Raro", "title": "A Fan\u00e1tica"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🗡️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bellatrix Lestrange</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Fanática</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            A comensal da morte mais leal de Voldemort. Mestra em artes das trevas e duelos mortais....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="ignatia wildsmith"
+        data-title="inventora do pó de flu" data-category="inventors" data-rarity="1"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Inventores", "desc": "Bruxa inventora do P\u00f3 de Flu, revolucionando o transporte m\u00e1gico em todo o mundo.", "icon": "\ud83d\udd25", "id": "wildsmith", "name": "Ignatia Wildsmith", "rarity": "common", "rarity_label": "Comum", "title": "Inventora do P\u00f3 de Flu"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Ignatia Wildsmith</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Inventora do Pó de Flu</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxa inventora do Pó de Flu, revolucionando o transporte mágico em todo o mundo....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Inventores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="bridget wenlock"
+        data-title="mestra da aritmancia" data-category="inventors" data-rarity="1"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Investigadores", "desc": "Famosa Aritmante que primeiro descobriu as propriedades m\u00e1gicas do n\u00famero sete.", "icon": "\ud83d\udd22", "id": "wenlock", "name": "Bridget Wenlock", "rarity": "common", "rarity_label": "Comum", "title": "Mestra da Aritmancia"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔢</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bridget Wenlock</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestra da Aritmancia</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Famosa Aritmante que primeiro descobriu as propriedades mágicas do número sete....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Investigadores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="cassandra vablatsky"
+        data-title="a vidente" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "C\u00e9lebre vidente e autora de \"Esclarecendo o Futuro\". Suas profecias ainda s\u00e3o estudadas.", "icon": "\ud83d\udd2e", "id": "vablatsky", "name": "Cassandra Vablatsky", "rarity": "common", "rarity_label": "Comum", "title": "A Vidente"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔮</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Cassandra Vablatsky</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Vidente</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Célebre vidente e autora de &#34;Esclarecendo o Futuro&#34;. Suas profecias ainda são estudadas....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="hengisto de woodcroft"
+        data-title="fundador de hogsmeade" data-category="inventors" data-rarity="1"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Inventores", "desc": "Fundador da aldeia de Hogsmeade. Fugiu de persegui\u00e7\u00f5es trouxas para criar o \u00fanico ref\u00fagio bruxo da Gr\u00e3-Bretanha.", "icon": "\ud83c\udf7b", "id": "woodcroft", "name": "Hengisto de Woodcroft", "rarity": "common", "rarity_label": "Comum", "title": "Fundador de Hogsmeade"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🍻</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Hengisto de Woodcroft</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Fundador de Hogsmeade</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Fundador da aldeia de Hogsmeade. Fugiu de perseguições trouxas para criar o único refúgio bruxo...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Inventores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="cornélio agripa"
+        data-title="o alqumista místico" data-category="alchemists" data-rarity="2"
+        onclick='openWizardBio({"category": "alchemists", "category_label": "Alquimistas", "desc": "Bruxo cujas figurinhas s\u00e3o extremamente raras. Um alquimista e m\u00edstico que escreveu sobre magia natural.", "icon": "\ud83d\udcdc", "id": "agripa", "name": "Corn\u00e9lio Agripa", "rarity": "rare", "rarity_label": "Raro", "title": "O Alqumista M\u00edstico"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">📜</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Cornélio Agripa</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Alqumista Místico</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo cujas figurinhas são extremamente raras. Um alquimista e místico que escreveu sobre magia...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Alquimistas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="ptolomeu"
+        data-title="o astrônomo antigo" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Hist\u00f3ricos", "desc": "Bruxo cuja figurinha \u00e9 celebrada por sua raridade. Astr\u00f4nomo e ge\u00f3grafo famoso do mundo bruxo antigo.", "icon": "\ud83e\ude90", "id": "ptolemy", "name": "Ptolomeu", "rarity": "common", "rarity_label": "Comum", "title": "O Astr\u00f4nomo Antigo"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🪐</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Ptolomeu</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Astrônomo Antigo</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo cuja figurinha é celebrada por sua raridade. Astrônomo e geógrafo famoso do mundo bruxo a...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Históricos</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="bertie bott"
+        data-title="mestre dos doces" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Criador dos Feij\u00e3ozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um feij\u00e3o normal.", "icon": "\ud83c\udf6c", "id": "bertie_bott", "name": "Bertie Bott", "rarity": "common", "rarity_label": "Comum", "title": "Mestre dos Doces"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🍬</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bertie Bott</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre dos Doces</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Criador dos Feijãozinhos de Todos os Sabores. Inventou o doce por acidente ao tentar criar um f...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="gellert grindelwald"
+        data-title="o revolucionário" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Um dos bruxos das trevas mais perigosos de todos os tempos. Buscou as Rel\u00edquias da Morte e iniciou uma guerra global.", "icon": "\u26a1", "id": "grindelwald", "name": "Gellert Grindelwald", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Revolucion\u00e1rio"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">⚡</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Gellert Grindelwald</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Revolucionário</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Um dos bruxos das trevas mais perigosos de todos os tempos. Buscou as Relíquias da Morte e inic...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="lord voldemort"
+        data-title="o lorde das trevas" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "Aquele-Que-N\u00e3o-Deve-Ser-Nomeado. O bruxo das trevas mais temido da hist\u00f3ria moderna, que buscou a imortalidade atrav\u00e9s das Horcruxes.", "icon": "\ud83d\udc0d", "id": "voldemort", "name": "Lord Voldemort", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Lorde das Trevas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐍</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Lord Voldemort</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Lorde das Trevas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Aquele-Que-Não-Deve-Ser-Nomeado. O bruxo das trevas mais temido da história moderna, que buscou...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="sirius black"
+        data-title="almofadinhas" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "O prisioneiro de Azkaban que escapou. Membro da Ordem da F\u00eanix, Maroto e padrinho de Harry Potter.", "icon": "\ud83d\udc15", "id": "sirius_black", "name": "Sirius Black", "rarity": "rare", "rarity_label": "Raro", "title": "Almofadinhas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐕</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Sirius Black</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Almofadinhas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O prisioneiro de Azkaban que escapou. Membro da Ordem da Fênix, Maroto e padrinho de Harry Pott...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="draco malfoy"
+        data-title="o herdeiro" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Estudante da Sonserina e rival de Harry Potter. Tornou-se Comensal da Morte jovem, mas lutou com sua consci\u00eancia.", "icon": "\ud83d\udc0d", "id": "draco_malfoy", "name": "Draco Malfoy", "rarity": "common", "rarity_label": "Comum", "title": "O Herdeiro"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐍</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Draco Malfoy</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Herdeiro</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Estudante da Sonserina e rival de Harry Potter. Tornou-se Comensal da Morte jovem, mas lutou co...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="cedrico diggory"
+        data-title="o campeão" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Campe\u00e3o de Hogwarts no Torneio Tribruxo. Lembrado por sua justi\u00e7a e bondade. Morto por Pettigrew a mando de Voldemort.", "icon": "\ud83c\udfc6", "id": "cedric_diggory", "name": "Cedrico Diggory", "rarity": "rare", "rarity_label": "Raro", "title": "O Campe\u00e3o"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🏆</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Cedrico Diggory</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Campeão</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Campeão de Hogwarts no Torneio Tribruxo. Lembrado por sua justiça e bondade. Morto por Pettigre...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="alastor &#34;olho-tonto&#34; moody"
+        data-title="o auror" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "O Auror mais famoso dos tempos modernos. Capturou in\u00fameros bruxos das trevas e perdeu um olho e uma perna no processo.", "icon": "\ud83d\udc41\ufe0f", "id": "moody", "name": "Alastor \"Olho-Tonto\" Moody", "rarity": "rare", "rarity_label": "Raro", "title": "O Auror"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">👁️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Alastor &#34;Olho-Tonto&#34; Moody</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Auror</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O Auror mais famoso dos tempos modernos. Capturou inúmeros bruxos das trevas e perdeu um olho e...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="kingsley shacklebolt"
+        data-title="o ministro" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Poderoso Auror e membro da Ordem da F\u00eanix. Tornou-se Ministro da Magia ap\u00f3s a queda de Voldemort.", "icon": "\ud83d\ude94", "id": "kingsley", "name": "Kingsley Shacklebolt", "rarity": "rare", "rarity_label": "Raro", "title": "O Ministro"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🚔</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Kingsley Shacklebolt</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Ministro</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Poderoso Auror e membro da Ordem da Fênix. Tornou-se Ministro da Magia após a queda de Voldemor...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="garrick ollivander"
+        data-title="mestre das varinhas" data-category="inventors" data-rarity="3"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Mestres", "desc": "O maior fabricante de varinhas do mundo. Possui mem\u00f3ria eid\u00e9tica para cada varinha que j\u00e1 vendeu.", "icon": "\ud83e\ude84", "id": "ollivander", "name": "Garrick Ollivander", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Mestre das Varinhas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🪄</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Garrick Ollivander</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre das Varinhas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O maior fabricante de varinhas do mundo. Possui memória eidética para cada varinha que já vende...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Mestres</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="mykew gregorovitch"
+        data-title="rival de ollivander" data-category="inventors" data-rarity="2"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Mestres", "desc": "Famoso fabricante de varinhas europeu e antigo dono da Varinha das Varinhas antes de Grindelwald roub\u00e1-la.", "icon": "\ud83d\udd28", "id": "gregorovitch", "name": "Mykew Gregorovitch", "rarity": "rare", "rarity_label": "Raro", "title": "Rival de Ollivander"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Mykew Gregorovitch</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Rival de Ollivander</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Famoso fabricante de varinhas europeu e antigo dono da Varinha das Varinhas antes de Grindelwal...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Mestres</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="herpo, o sujo"
+        data-title="pai das trevas" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Bruxo das trevas da Gr\u00e9cia Antiga. Criador do primeiro Basilisco e da primeira Horcrux conhecida.", "icon": "\ud83d\udc80", "id": "herpo", "name": "Herpo, o Sujo", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Pai das Trevas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💀</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Herpo, o Sujo</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Pai das Trevas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo das trevas da Grécia Antiga. Criador do primeiro Basilisco e da primeira Horcrux conhecid...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="ekrizdis"
+        data-title="o carceireiro" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Bruxo das trevas louco que habitava a ilha que se tornaria Azkaban. Atra\u00eda e torturava marinheiros trouxas.", "icon": "\ud83c\udff0", "id": "ekrizdis", "name": "Ekrizdis", "rarity": "rare", "rarity_label": "Raro", "title": "O Carceireiro"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🏰</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Ekrizdis</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Carceireiro</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo das trevas louco que habitava a ilha que se tornaria Azkaban. Atraía e torturava marinhei...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="antioch peverell"
+        data-title="mestre da varinha" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "O irm\u00e3o mais velho Peverell e primeiro dono da Varinha das Varinhas.", "icon": "\u2502", "id": "peverell_antioch", "name": "Antioch Peverell", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Mestre da Varinha"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">│</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Antioch Peverell</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre da Varinha</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O irmão mais velho Peverell e primeiro dono da Varinha das Varinhas....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="cadmus peverell"
+        data-title="mestre da pedra" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "O irm\u00e3o do meio Peverell e primeiro dono da Pedra da Ressurrei\u00e7\u00e3o.", "icon": "\ud83d\udc8e", "id": "peverell_cadmus", "name": "Cadmus Peverell", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Mestre da Pedra"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💎</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Cadmus Peverell</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre da Pedra</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O irmão do meio Peverell e primeiro dono da Pedra da Ressurreição....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="ignotus peverell"
+        data-title="mestre da capa" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "O irm\u00e3o mais novo Peverell e primeiro dono da Capa da Invisibilidade. Ancestral de Harry Potter.", "icon": "\ud83e\udde5", "id": "peverell_ignotus", "name": "Ignotus Peverell", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Mestre da Capa"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Ignotus Peverell</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre da Capa</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O irmão mais novo Peverell e primeiro dono da Capa da Invisibilidade. Ancestral de Harry Potter...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="molly weasley"
+        data-title="a protetora" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Matriarca da fam\u00edlia Weasley e membro da Ordem da F\u00eanix. Derrotou Bellatrix Lestrange em duelo singular.", "icon": "\ud83e\uddf6", "id": "molly_weasley", "name": "Molly Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "A Protetora"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧶</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Molly Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Protetora</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Matriarca da família Weasley e membro da Ordem da Fênix. Derrotou Bellatrix Lestrange em duelo ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="fred &amp; george weasley"
+        data-title="reis da travessura" data-category="inventors" data-rarity="2"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Inventores", "desc": "G\u00eameos inventores e fundadores da Gemialidades Weasley. Trouxeram alegria em tempos sombrios.", "icon": "\ud83d\udca5", "id": "fred_george", "name": "Fred \u0026 George Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "Reis da Travessura"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Fred &amp; George Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Reis da Travessura</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Gêmeos inventores e fundadores da Gemialidades Weasley. Trouxeram alegria em tempos sombrios....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Inventores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="bowman wright"
+        data-title="pai do pomo" data-category="inventors" data-rarity="1"
+        onclick='openWizardBio({"category": "inventors", "category_label": "Inventores", "desc": "Ferreiro bruxo de Godric\u0027s Hollow que forjou o primeiro Pomo de Ouro, revolucionando o Quadribol.", "icon": "\ud83c\udfd0", "id": "bowman_wright", "name": "Bowman Wright", "rarity": "common", "rarity_label": "Comum", "title": "Pai do Pomo"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🏐</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bowman Wright</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Pai do Pomo</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Ferreiro bruxo de Godric&#39;s Hollow que forjou o primeiro Pomo de Ouro, revolucionando o Quadribo...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Inventores</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="armando dippet"
+        data-title="ex-diretor" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Antecessor de Dumbledore como Diretor de Hogwarts. Foi diretor quando a C\u00e2mara Secreta foi aberta pela primeira vez.", "icon": "\ud83d\udcdc", "id": "dippet", "name": "Armando Dippet", "rarity": "common", "rarity_label": "Comum", "title": "Ex-Diretor"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">📜</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Armando Dippet</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Ex-Diretor</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Antecessor de Dumbledore como Diretor de Hogwarts. Foi diretor quando a Câmara Secreta foi aber...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="beedle, o bardo"
+        data-title="o bardo" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Autor c\u00e9lebre de contos infantis bruxos, incluindo \"O Conto dos Tr\u00eas Irm\u00e3os\".", "icon": "\ud83d\udcd6", "id": "beedle", "name": "Beedle, o Bardo", "rarity": "common", "rarity_label": "Comum", "title": "O Bardo"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">📖</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Beedle, o Bardo</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Bardo</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Autor célebre de contos infantis bruxos, incluindo &#34;O Conto dos Três Irmãos&#34;....
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="rufus scrimgeour"
+        data-title="o ministro de ferro" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "L\u00edderes", "desc": "Ministro da Magia durante o auge da Segunda Guerra Bruxa. Morto ao se recusar a revelar o paradeiro de Harry Potter.", "icon": "\ud83e\udd81", "id": "scrimgeour", "name": "Rufus Scrimgeour", "rarity": "rare", "rarity_label": "Raro", "title": "O Ministro de Ferro"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦁</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Rufus Scrimgeour</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Ministro de Ferro</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Ministro da Magia durante o auge da Segunda Guerra Bruxa. Morto ao se recusar a revelar o parad...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Líderes</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="xenophilius lovegood"
+        data-title="o editor" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Editor exc\u00eantrico da revista \"O Pasquim\". Defensor ferrenho de Harry Potter at\u00e9 ser quebrado pelo sequestro de sua filha.", "icon": "\ud83d\udcf0", "id": "xenophilius", "name": "Xenophilius Lovegood", "rarity": "common", "rarity_label": "Comum", "title": "O Editor"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">📰</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Xenophilius Lovegood</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Editor</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Editor excêntrico da revista &#34;O Pasquim&#34;. Defensor ferrenho de Harry Potter até ser quebrado pe...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="rubeus hagrid"
+        data-title="o guardião" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Guardi\u00e3o das Chaves e Terrenos de Hogwarts. Famoso por seu amor por criaturas perigosas e sua lealdade inabal\u00e1vel a Dumbledore.", "icon": "\ud83e\uddd4", "id": "hagrid", "name": "Rubeus Hagrid", "rarity": "common", "rarity_label": "Comum", "title": "O Guardi\u00e3o"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧔</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Rubeus Hagrid</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Guardião</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Guardião das Chaves e Terrenos de Hogwarts. Famoso por seu amor por criaturas perigosas e sua l...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="remus lupin"
+        data-title="aluado" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Membro da Ordem da F\u00eanix e um dos Marotos. Um dos melhores professores de Defesa Contra as Artes das Trevas que Hogwarts j\u00e1 teve.", "icon": "\ud83d\udc3a", "id": "lupin", "name": "Remus Lupin", "rarity": "rare", "rarity_label": "Raro", "title": "Aluado"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐺</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Remus Lupin</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Aluado</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Membro da Ordem da Fênix e um dos Marotos. Um dos melhores professores de Defesa Contra as Arte...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="gina weasley"
+        data-title="a artilheira" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Poderosa bruxa e talentosa jogadora de Quadribol. Sobreviveu ao controle do Di\u00e1rio de Riddle e lutou bravamente em Hogwarts.", "icon": "\ud83e\uddf9", "id": "ginny", "name": "Gina Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "A Artilheira"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧹</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Gina Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Artilheira</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Poderosa bruxa e talentosa jogadora de Quadribol. Sobreviveu ao controle do Diário de Riddle e ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="horácio slughorn"
+        data-title="o colecionador" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Mestre de Po\u00e7\u00f5es de longa data, conhecido por seu \"Clube do Slugue\". Possu\u00eda a mem\u00f3ria crucial sobre as Horcruxes de Riddle.", "icon": "\u23f3", "id": "slughorn", "name": "Hor\u00e1cio Slughorn", "rarity": "rare", "rarity_label": "Raro", "title": "O Colecionador"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">⏳</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Horácio Slughorn</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Colecionador</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Mestre de Poções de longa data, conhecido por seu &#34;Clube do Slugue&#34;. Possuía a memória crucial ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="dolores umbridge"
+        data-title="alta inquisidora" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Alta Inquisidora de Hogwarts e funcion\u00e1ria do Minist\u00e9rio. Conhecida por seus m\u00e9todos cru\u00e9is e sua obsess\u00e3o por ordem e gatinhos.", "icon": "\ud83c\udf80", "id": "umbridge", "name": "Dolores Umbridge", "rarity": "rare", "rarity_label": "Raro", "title": "Alta Inquisidora"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🎀</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Dolores Umbridge</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Alta Inquisidora</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Alta Inquisidora de Hogwarts e funcionária do Ministério. Conhecida por seus métodos cruéis e s...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="sibila trelawney"
+        data-title="a vidente" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Professora de Adivinha\u00e7\u00e3o em Hogwarts. Fez a profecia que mudou o destino de Harry Potter e Lord Voldemort.", "icon": "\ud83c\udf75", "id": "trelawney", "name": "Sibila Trelawney", "rarity": "common", "rarity_label": "Comum", "title": "A Vidente"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🍵</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Sibila Trelawney</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Vidente</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Professora de Adivinhação em Hogwarts. Fez a profecia que mudou o destino de Harry Potter e Lor...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="régulo black"
+        data-title="o corajoso desertor" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Her\u00f3is", "desc": "Membro da Sonserina e ex-Comensal da Morte que traiu Voldemort ao descobrir suas Horcruxes, sacrificando-se para tentar destru\u00ed-las.", "icon": "\ud83d\udc9a", "id": "regulus_black", "name": "R\u00e9gulo Black", "rarity": "rare", "rarity_label": "Raro", "title": "O Corajoso Desertor"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💚</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Régulo Black</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Corajoso Desertor</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Membro da Sonserina e ex-Comensal da Morte que traiu Voldemort ao descobrir suas Horcruxes, sac...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="narcisa malfoy"
+        data-title="a mãe leal" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Matriarca dos Malfoy. Embora leal \u00e0 fam\u00edlia, sua mentira para Voldemort sobre a morte de Harry foi crucial para a vit\u00f3ria final.", "icon": "\ud83d\udd4a\ufe0f", "id": "narcissa", "name": "Narcisa Malfoy", "rarity": "rare", "rarity_label": "Raro", "title": "A M\u00e3e Leal"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🕊️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Narcisa Malfoy</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Mãe Leal</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Matriarca dos Malfoy. Embora leal à família, sua mentira para Voldemort sobre a morte de Harry ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="fleur delacour"
+        data-title="beleza e poder" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Campe\u00e3 de Beauxbatons no Torneio Tribruxo. Uma bruxa talentosa e m\u00edstica que lutou na Batalha de Hogwarts.", "icon": "\ud83c\udf38", "id": "fleur", "name": "Fleur Delacour", "rarity": "rare", "rarity_label": "Raro", "title": "Beleza e Poder"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🌸</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Fleur Delacour</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Beleza e Poder</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Campeã de Beauxbatons no Torneio Tribruxo. Uma bruxa talentosa e mística que lutou na Batalha d...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="vitor krum"
+        data-title="o apanhador estrela" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "O melhor Apanhador do mundo e Campe\u00e3o de Durmstrang no Torneio Tribruxo. Famoso por sua habilidade excepcional sobre a vassoura.", "icon": "\ud83e\uddf9", "id": "krum", "name": "Vitor Krum", "rarity": "rare", "rarity_label": "Raro", "title": "O Apanhador Estrela"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧹</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Vitor Krum</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Apanhador Estrela</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O melhor Apanhador do mundo e Campeão de Durmstrang no Torneio Tribruxo. Famoso por sua habilid...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="igor karkaroff"
+        data-title="diretor de durmstrang" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Diretor de Durmstrang e ex-Comensal da Morte. Um bruxo complexo que fugiu ap\u00f3s o retorno de Voldemort.", "icon": "\u2744\ufe0f", "id": "karkaroff", "name": "Igor Karkaroff", "rarity": "rare", "rarity_label": "Raro", "title": "Diretor de Durmstrang"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">❄️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Igor Karkaroff</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Diretor de Durmstrang</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Diretor de Durmstrang e ex-Comensal da Morte. Um bruxo complexo que fugiu após o retorno de Vol...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="olímpia maxime"
+        data-title="diretora de beauxbatons" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Diretora da Academia de Magia Beauxbatons. Uma bruxa elegante e poderosa de ascend\u00eancia meio-gigante.", "icon": "\ud83c\udff0", "id": "maxime", "name": "Ol\u00edmpia Maxime", "rarity": "rare", "rarity_label": "Raro", "title": "Diretora de Beauxbatons"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🏰</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Olímpia Maxime</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Diretora de Beauxbatons</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Diretora da Academia de Magia Beauxbatons. Uma bruxa elegante e poderosa de ascendência meio-gi...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="aberforth dumbledore"
+        data-title="o guardião discreto" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Irm\u00e3o de Alvo Dumbledore e dono do Cabe\u00e7a de Javali. Ajudou in\u00fameros estudantes durante a resist\u00eancia em Hogwarts.", "icon": "\ud83d\udc10", "id": "aberforth", "name": "Aberforth Dumbledore", "rarity": "rare", "rarity_label": "Raro", "title": "O Guardi\u00e3o Discreto"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐐</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Aberforth Dumbledore</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Guardião Discreto</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Irmão de Alvo Dumbledore e dono do Cabeça de Javali. Ajudou inúmeros estudantes durante a resis...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="tiago potter"
+        data-title="pontas" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "L\u00edder dos Marotos e pai de Harry Potter. Um talentoso Animago e membro original da Ordem da F\u00eanix.", "icon": "\ud83e\udd8c", "id": "james_potter", "name": "Tiago Potter", "rarity": "rare", "rarity_label": "Raro", "title": "Pontas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦌</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Tiago Potter</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Pontas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Líder dos Marotos e pai de Harry Potter. Um talentoso Animago e membro original da Ordem da Fên...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="lílian potter"
+        data-title="invocadora de proteção antiga" data-category="hogwarts" data-rarity="3"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Uma das bruxas mais talentosas de sua gera\u00e7\u00e3o. Seu sacrif\u00edcio final criou a prote\u00e7\u00e3o que salvou a vida de seu filho.", "icon": "\ud83e\udd8c", "id": "lily_potter", "name": "L\u00edlian Potter", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "Invocadora de Prote\u00e7\u00e3o Antiga"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦌</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Lílian Potter</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Invocadora de Proteção Antiga</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Uma das bruxas mais talentosas de sua geração. Seu sacrifício final criou a proteção que salvou...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="ninfadora tonks"
+        data-title="a metamorfomaga" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Aurora e Metamorfomaga. Membro da Ordem da F\u00eanix, conhecida por sua bravura e sua habilidade de mudar de apar\u00eancia \u00e0 vontade.", "icon": "\ud83c\udf08", "id": "tonks", "name": "Ninfadora Tonks", "rarity": "rare", "rarity_label": "Raro", "title": "A Metamorfomaga"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🌈</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Ninfadora Tonks</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Metamorfomaga</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Aurora e Metamorfomaga. Membro da Ordem da Fênix, conhecida por sua bravura e sua habilidade de...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="lúcio malfoy"
+        data-title="o patriarca malfoy" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "Aristocrata bruxo e bra\u00e7o direito de Voldemort por anos. Um Comensal da Morte de sangue-puro que valoriza poder e status acima de tudo.", "icon": "\ud83d\udc0d", "id": "lucius_malfoy", "name": "L\u00facio Malfoy", "rarity": "rare", "rarity_label": "Raro", "title": "O Patriarca Malfoy"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐍</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Lúcio Malfoy</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Patriarca Malfoy</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Aristocrata bruxo e braço direito de Voldemort por anos. Um Comensal da Morte de sangue-puro qu...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="arthur weasley"
+        data-title="entusiasta de trouxas" data-category="celebrities" data-rarity="1"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Funcion\u00e1rio do Minist\u00e9rio da Magia e entusiasta de artefatos trouxas. Pai leal e membro dedicado da Ordem da F\u00eanix.", "icon": "\ud83d\udd0c", "id": "arthur_weasley", "name": "Arthur Weasley", "rarity": "common", "rarity_label": "Comum", "title": "Entusiasta de Trouxas"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔌</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Arthur Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Entusiasta de Trouxas</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Funcionário do Ministério da Magia e entusiasta de artefatos trouxas. Pai leal e membro dedicad...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="guilherme weasley"
+        data-title="desfeitiçador" data-category="hogwarts" data-rarity="2"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Her\u00f3is", "desc": "Desfeiti\u00e7ador do Gringotes no Egito e irm\u00e3o mais velho dos Weasley. Lutou bravamente e sobreviveu ao ataque de Fenrir Greyback.", "icon": "\ud83e\uddf1", "id": "bill_weasley", "name": "Guilherme Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "Desfeiti\u00e7ador"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧱</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Guilherme Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Desfeitiçador</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Desfeitiçador do Gringotes no Egito e irmão mais velho dos Weasley. Lutou bravamente e sobreviv...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Heróis</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="carlos weasley"
+        data-title="o domador de dragões" data-category="magizoologists" data-rarity="2"
+        onclick='openWizardBio({"category": "magizoologists", "category_label": "Magizoologistas", "desc": "Trabalha com drag\u00f5es na Rom\u00eania. Um talentoso buscador de Quadribol em sua \u00e9poca e especialista em criaturas m\u00e1gicas perigosas.", "icon": "\ud83e\udd8e", "id": "charlie_weasley", "name": "Carlos Weasley", "rarity": "rare", "rarity_label": "Raro", "title": "O Domador de Drag\u00f5es"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦎</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Carlos Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Domador de Dragões</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Trabalha com dragões na Romênia. Um talentoso buscador de Quadribol em sua época e especialista...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Magizoologistas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="bartô crouch jr."
+        data-title="o infiltrado" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "Comensal da Morte fan\u00e1tico que se infiltrou em Hogwarts como Olho-Tonto Moody para garantir o retorno de Lord Voldemort.", "icon": "\ud83d\udc7a", "id": "bartemius_crouch_jr", "name": "Bart\u00f4 Crouch Jr.", "rarity": "rare", "rarity_label": "Raro", "title": "O Infiltrado"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">👺</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bartô Crouch Jr.</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Infiltrado</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Comensal da Morte fanático que se infiltrou em Hogwarts como Olho-Tonto Moody para garantir o r...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="pomona sprout"
+        data-title="mestra da herbologia" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Chefe da casa Lufa-Lufa e Professora de Herbologia. Suas plantas foram cruciais para salvar os alunos petrificados pelo Basilisco.", "icon": "\ud83c\udf3f", "id": "pomona_sprout", "name": "Pomona Sprout", "rarity": "common", "rarity_label": "Comum", "title": "Mestra da Herbologia"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🌿</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Pomona Sprout</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestra da Herbologia</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Chefe da casa Lufa-Lufa e Professora de Herbologia. Suas plantas foram cruciais para salvar os ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="fílio flitwick"
+        data-title="mestre de encantamentos" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Chefe da casa Corvinal e Professor de Feiti\u00e7os. Um antigo campe\u00e3o de duelos e mestre em magias complexas de prote\u00e7\u00e3o.", "icon": "\ud83e\ude84", "id": "filius_flitwick", "name": "F\u00edlio Flitwick", "rarity": "common", "rarity_label": "Comum", "title": "Mestre de Encantamentos"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🪄</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Fílio Flitwick</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Mestre de Encantamentos</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Chefe da casa Corvinal e Professor de Feitiços. Um antigo campeão de duelos e mestre em magias ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="madame hooch"
+        data-title="instrutora de voo" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Instrutora de voo e ju\u00edza de Quadribol em Hogwarts. Possui olhos amarelos como os de um falc\u00e3o e uma autoridade natural sobre vassouras.", "icon": "\ud83e\uddf9", "id": "rolanda_hooch", "name": "Madame Hooch", "rarity": "common", "rarity_label": "Comum", "title": "Instrutora de Voo"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🧹</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Madame Hooch</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Instrutora de Voo</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Instrutora de voo e juíza de Quadribol em Hogwarts. Possui olhos amarelos como os de um falcão ...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="pedro pettigrew"
+        data-title="rabicho" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "O Maroto que traiu os pais de Harry Potter. Passou doze anos escondido como o rato Perebas antes de retornar a Voldemort.", "icon": "\ud83d\udc00", "id": "peter_pettigrew", "name": "Pedro Pettigrew", "rarity": "rare", "rarity_label": "Raro", "title": "Rabicho"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐀</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Pedro Pettigrew</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Rabicho</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O Maroto que traiu os pais de Harry Potter. Passou doze anos escondido como o rato Perebas ante...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="cho chang"
+        data-title="buscadora da corvinal" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Apanhadora da Corvinal e membro da Armada de Dumbledore. Enfrentou grandes perdas mas permaneceu firme em sua oposi\u00e7\u00e3o \u00e0s trevas.", "icon": "\ud83e\udd85", "id": "cho_chang", "name": "Cho Chang", "rarity": "common", "rarity_label": "Comum", "title": "Buscadora da Corvinal"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🦅</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Cho Chang</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Buscadora da Corvinal</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Apanhadora da Corvinal e membro da Armada de Dumbledore. Enfrentou grandes perdas mas permanece...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="dino thomas"
+        data-title="o artista da grifinória" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Estudante da Grifin\u00f3ria e excelente artista. Lutou na Batalha de Hogwarts e sobreviveu \u00e0 persegui\u00e7\u00e3o aos nascidos-trouxas.", "icon": "\ud83c\udfa8", "id": "dean_thomas", "name": "Dino Thomas", "rarity": "common", "rarity_label": "Comum", "title": "O Artista da Grifin\u00f3ria"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🎨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Dino Thomas</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Artista da Grifinória</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Estudante da Grifinória e excelente artista. Lutou na Batalha de Hogwarts e sobreviveu à perseg...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="simas finnigan"
+        data-title="especialista em explosões" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Melhor amigo de Dino Thomas, conhecido por sua \"habilidade\" explosiva com feiti\u00e7os b\u00e1sicos e sua coragem final na batalha.", "icon": "\ud83d\udca5", "id": "seamus_finnigan", "name": "Simas Finnigan", "rarity": "common", "rarity_label": "Comum", "title": "Especialista em Explos\u00f5es"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">💥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Simas Finnigan</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Especialista em Explosões</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Melhor amigo de Dino Thomas, conhecido por sua &#34;habilidade&#34; explosiva com feitiços básicos e su...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="andrômeda tonks"
+        data-title="a renegada" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "Celebridades", "desc": "Irm\u00e3 de Narcisa e Bellatrix, mas renegada por casar com um nascido-trouxa. Prestou aux\u00edlio vital \u00e0 Ordem da F\u00eanix.", "icon": "\u2728", "id": "andromeda_tonks", "name": "Andr\u00f4meda Tonks", "rarity": "rare", "rarity_label": "Raro", "title": "A Renegada"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">✨</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Andrômeda Tonks</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">A Renegada</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Irmã de Narcisa e Bellatrix, mas renegada por casar com um nascido-trouxa. Prestou auxílio vita...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Celebridades</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="percy weasley"
+        data-title="monitor-chefe" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Ambi\u00e7\u00e3o e regras foram suas marcas, mas seu retorno \u00e0 fam\u00edlia na Batalha de Hogwarts provou que seu cora\u00e7\u00e3o estava no lugar certo.", "icon": "\ud83d\udc53", "id": "percy_weasley", "name": "Percy Weasley", "rarity": "common", "rarity_label": "Comum", "title": "Monitor-Chefe"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">👓</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Percy Weasley</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Monitor-Chefe</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Ambição e regras foram suas marcas, mas seu retorno à família na Batalha de Hogwarts provou que...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="fenrir greyback"
+        data-title="o alfa selvagem" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "O lobisomem mais selvagem conhecido. Um aliado cruel dos Comensais da Morte que buscava infectar o maior n\u00famero poss\u00edvel de pessoas.", "icon": "\ud83d\udc3a", "id": "fenrir_greyback", "name": "Fenrir Greyback", "rarity": "rare", "rarity_label": "Raro", "title": "O Alfa Selvagem"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🐺</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Fenrir Greyback</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Alfa Selvagem</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            O lobisomem mais selvagem conhecido. Um aliado cruel dos Comensais da Morte que buscava infecta...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="antonin dolohov"
+        data-title="o duelista maldito" data-category="masters" data-rarity="2"
+        onclick='openWizardBio({"category": "masters", "category_label": "Artes das Trevas", "desc": "Um dos Comensais da Morte originais e um duelista extremamente habilidoso e brutal, respons\u00e1vel por grandes baixas na Ordem.", "icon": "\ud83d\udd25", "id": "antonin_dolohov", "name": "Antonin Dolohov", "rarity": "rare", "rarity_label": "Raro", "title": "O Duelista Maldito"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔥</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Antonin Dolohov</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Duelista Maldito</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Um dos Comensais da Morte originais e um duelista extremamente habilidoso e brutal, responsável...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Artes das Trevas</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card common" data-name="lilá brown"
+        data-title="entusiasta de destinos" data-category="hogwarts" data-rarity="1"
+        onclick='openWizardBio({"category": "hogwarts", "category_label": "Hogwarts", "desc": "Estudante da Grifin\u00f3ria e entusiasta de Adivinha\u00e7\u00e3o. Membro da Armada de Dumbledore, lutou corajosamente contra Greyback.", "icon": "\ud83d\udd2e", "id": "lavender_brown", "name": "Lil\u00e1 Brown", "rarity": "common", "rarity_label": "Comum", "title": "Entusiasta de Destinos"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔮</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Lilá Brown</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">Entusiasta de Destinos</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Estudante da Grifinória e entusiasta de Adivinhação. Membro da Armada de Dumbledore, lutou cora...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Hogwarts</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+    
+
+    <div class="wood-card wizard-card rare" data-name="bartô crouch sr."
+        data-title="o chefe do departamento" data-category="celebrities" data-rarity="2"
+        onclick='openWizardBio({"category": "celebrities", "category_label": "L\u00edderes", "desc": "Chefe do Departamento de Coopera\u00e7\u00e3o Internacional em Magia. Um homem r\u00edgido que lutou contra as trevas com m\u00e9todos igualmente sombrios.", "icon": "\ud83c\udfdb\ufe0f", "id": "bartemius_crouch_sr", "name": "Bart\u00f4 Crouch Sr.", "rarity": "rare", "rarity_label": "Raro", "title": "O Chefe do Departamento"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🏛️</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Bartô Crouch Sr.</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Chefe do Departamento</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Chefe do Departamento de Cooperação Internacional em Magia. Um homem rígido que lutou contra as...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Líderes</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+    
+    
+
+    <div class="wood-card wizard-card legendary" data-name="andros, o inviável"
+        data-title="o conjurador de gigantes" data-category="masters" data-rarity="3"
+        onclick='openWizardBio({"category": "masters", "category_label": "Lend\u00e1rios", "desc": "Bruxo da Gr\u00e9cia Antiga que dizem ter sido o \u00fanico capaz de conjurar um Patrono do tamanho de um gigante.", "icon": "\ud83d\udd31", "id": "andros_the_invincible", "name": "Andros, o Invi\u00e1vel", "rarity": "legendary", "rarity_label": "Lend\u00e1rio", "title": "O Conjurador de Gigantes"})'>
+
+        <div class="card-header">
+            <span class="mini-icon">🔱</span>
+            <div class="header-text-group">
+                <h3 class="wood-name" style="font-size: 1.1rem; margin-bottom: 2px;">Andros, o Inviável</h3>
+                <div class="card-difficulty-label" style="font-size: 0.6rem;">O Conjurador de Gigantes</div>
+            </div>
+            <!-- Raridade removida do card conforme solicitado para maior limpeza visual -->
+        </div>
+
+        <div class="wood-affinity"
+            style="font-size: 0.8rem; min-height: 3.5rem; display: block; text-align: left; font-family: var(--font-body); color: var(--text-muted); padding: 0.5rem 0; line-height: 1.5;">
+            Bruxo da Grécia Antiga que dizem ter sido o único capaz de conjurar um Patrono do tamanho de um...
+        </div>
+
+        <div class="card-footer-type" style="font-size: 0.65rem; opacity: 0.7;">Lendários</div>
+        <span class="click-hint">Ver Biografia</span>
+    </div>
+    
+</div>
+
+<div id="noResults" class="no-results hidden">
+    <p>Nenhum bruxo encontrado nos registros históricos...</p>
+</div>
+
+<!-- Modal de Biografia -->
+<div id="wizardBioModal" class="modal-overlay hidden" onclick="closeWizardBio(event)">
+    <div class="modal-content wizard-bio-modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeWizardBio()">&times;</button>
+        <div id="bioContent">
+            <!-- Preenchido via JS -->
         </div>
     </div>
 </div>
 
 <style>
-    .main-layout {
+    .wizards-grid {
         display: grid;
-        grid-template-columns: 250px 1fr;
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
         margin-top: 2rem;
     }
 
-    .filters-sidebar {
-        background: rgba(10, 15, 25, 0.4);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(212, 175, 55, 0.1);
-        height: fit-content;
-        position: sticky;
-        top: 2rem;
+    .wizard-card {
+        cursor: pointer;
+        position: relative;
+        padding: 1.2rem !important;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .filter-group h3 {
-        color: var(--gold-secondary);
-        font-family: var(--font-heading);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
+    .wizard-card:hover {
+        transform: translateY(-5px) scale(1.02);
     }
 
-    .filter-options {
+    /* Modal de Biografia Estilizado */
+    .wizard-bio-modal {
+        max-width: 600px;
+        background: rgba(10, 15, 30, 0.95) !important;
+        border: 2px solid var(--gold-primary) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 4rem 3rem !important;
+        border-radius: 20px !important;
+    }
+
+    .bio-header {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
         margin-bottom: 2rem;
     }
 
-    .filter-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        color: var(--text-muted);
-        padding: 0.6rem;
-        border-radius: 6px;
-        cursor: pointer;
-        text-align: left;
-        font-size: 0.8rem;
-        transition: all 0.3s;
+    .bio-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-        background: rgba(212, 175, 55, 0.1);
-        color: var(--gold-primary);
-        border-color: var(--gold-primary);
-    }
-
-    #fieldFilter {
-        width: 100%;
-        background: #0f172a;
-        color: var(--text-main);
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        padding: 0.6rem;
-        border-radius: 6px;
-        font-family: inherit;
-    }
-
-    .wizard-card-encyclopedia {
-        min-height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .house-gryffindor {
-        color: #ae0001;
-    }
-
-    .house-slytherin {
-        color: #2a623d;
-    }
-
-    .house-ravenclaw {
-        color: #222f5b;
-    }
-
-    .house-hufflepuff {
-        color: #f0c75e;
-    }
-
-    .bio-full {
-        line-height: 1.6;
-        color: var(--text-main);
-        margin: 1.5rem 0;
-        font-size: 1rem;
-    }
-
-    .achievements-list {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .achievements-list li {
-        margin-bottom: 0.8rem;
-        padding-left: 1.5rem;
-        position: relative;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-    }
-
-    .achievements-list li::before {
-        content: '✦';
-        position: absolute;
-        left: 0;
-        color: var(--gold-primary);
-    }
-
-    /* Correção do Texto de Campo */
-    .wizard-affinity-text {
+    .bio-name {
         font-family: var(--font-heading);
-        font-size: 0.9rem;
+        color: var(--gold-primary);
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .bio-title {
         color: var(--gold-secondary);
-        margin-bottom: 0.8rem;
+        font-style: italic;
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    .bio-details {
+        margin-top: 2rem;
+        text-align: justify;
+        line-height: 1.8;
+        color: var(--text-main);
+    }
+
+    .bio-footer {
+        margin-top: 2.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .badge-rarity {
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
-    .affinity-label {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
+    .badge-rarity.common {
+        background: #cd7f32;
+        color: white;
     }
 
-    @media (max-width: 900px) {
-        .main-layout {
-            grid-template-columns: 1fr;
-        }
+    .badge-rarity.rare {
+        background: #c0c0c0;
+        color: black;
+    }
+
+    .badge-rarity.legendary {
+        background: gold;
+        color: black;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
 </style>
 
 <script>
-    const wizardsData = [{"achievements": ["Derrotou o bruxo das trevas Gerardo Grindelwald em 1945", "Descobriu os doze usos do sangue de drag\u00e3o", "Criador da Ordem da F\u00eanix", "Supremo Caceique da Confedera\u00e7\u00e3o Internacional de Bruxos"], "bio": "Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfigura\u00e7\u00e3o e mais tarde Diretor de Hogwarts. Sua sabedoria e poder eram lend\u00e1rios, sendo o \u00fanico bruxo que Lord Voldemort j\u00e1 temeu.", "birth": "1881 - 1997", "blood": "Mesti\u00e7o", "field": "Transfigura\u00e7\u00e3o / Defesa", "full_name": "Alvo Percival Wulfrico Brian Dumbledore", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83e\uddd9\u200d\u2642\ufe0f", "id": "dumbledore_full", "name": "Alvo Dumbledore"}, {"achievements": ["Fundador da Ordem de Merlin", "Conselheiro do Rei Arthur", "Eminente defensor dos direitos dos trouxas", "Especialista em encantos de levita\u00e7\u00e3o e oculta\u00e7\u00e3o"], "bio": "Talvez o bruxo mais famoso da hist\u00f3ria. Merlin acreditava que os bruxos deveriam ajudar os trouxas e viver em paz com eles. Curiosamente, foi um aluno da Sonserina em Hogwarts, provando que a ambi\u00e7\u00e3o pode ser usada para o bem maior.", "birth": "Idade M\u00e9dia", "blood": "Sangue-Puro", "field": "Encantamentos", "full_name": "Merlin (Pr\u00edncipe dos Magos)", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udcdc", "id": "merlin_full", "name": "Merlin"}, {"achievements": ["O bruxo das trevas mais perigoso de todos os tempos", "Criador de m\u00faltiplas Horcruxes", "L\u00edder dos Comensais da Morte", "Herdeiro de Slytherin e mestre da Ofidioglossia"], "bio": "Aquele-Que-N\u00e3o-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante d\u00e9cadas. Obcecado pela imortalidade e pela pureza de sangue, ele transformou-se em uma criatura quase inumana atrav\u00e9s de magia negra proibida.", "birth": "1926 - 1998", "blood": "Mesti\u00e7o", "field": "Artes das Trevas", "full_name": "Tom Servolo Riddle", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udc0d", "id": "voldemort_full", "name": "Lord Voldemort"}, {"achievements": ["Ministra da Magia (desde 2019)", "Co-fundadora da Armada de Dumbledore", "Respons\u00e1vel por destruir a Horcrux da Ta\u00e7a de Hufflepuff", "Lutou ativamente contra as injusti\u00e7as sofridas por Elfos Dom\u00e9sticos"], "bio": "Conhecida como a bruxa mais brilhante de sua gera\u00e7\u00e3o, Hermione provou que o conhecimento e a dedica\u00e7\u00e3o superam qualquer linhagem de sangue. Sua intelig\u00eancia foi crucial para a derrota de Lord Voldemort.", "birth": "1979 - Presente", "blood": "Nascida-Trouxa", "field": "Pesquisa M\u00e1gica / Lei", "full_name": "Hermione Jean Granger", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83d\udcda", "id": "hermione_full", "name": "Hermione Granger"}, {"achievements": ["Mestre de Po\u00e7\u00f5es e Diretor de Hogwarts", "Criador de feiti\u00e7os como Sectumsempra e Muffliato", "Agente Duplo lend\u00e1rio na guerra contra Voldemort", "Mestre em Oclum\u00eancia e Legilim\u00eancia"], "bio": "Um homem complexo cuja lealdade foi questionada at\u00e9 o fim. Snape dedicou sua vida a proteger Harry Potter em mem\u00f3ria de Lilian Evans, atuando no papel mais perigoso da Segunda Guerra Bruxa.", "birth": "1960 - 1998", "blood": "Mesti\u00e7o", "field": "Po\u00e7\u00f5es / Artes das Trevas", "full_name": "Severo Snape (Pr\u00edncipe Mesti\u00e7o)", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83e\uddea", "id": "snape_full", "name": "Severo Snape"}, {"achievements": ["Autor de \"Animais Fant\u00e1sticos e Onde Habitam\"", "Ordem de Merlin, Segunda Classe", "Especialista mundial em cuidados com seres m\u00e1gicos", "Pe\u00e7a chave na derrota de Grindelwald em Nova York"], "bio": "Um explorador incans\u00e1vel que viajou pelos cinco continentes para documentar criaturas m\u00e1gicas. Newt ensinou ao mundo bruxo que os animais fant\u00e1sticos devem ser protegidos, n\u00e3o apenas temidos.", "birth": "1897 - Presente", "blood": "Sangue-Puro", "field": "Magizoologia", "full_name": "Newton Artemis Fido Scamander", "house": "Hufflepuff", "house_label": "Lufa-Lufa", "icon": "\ud83d\udcbc", "id": "newt_full", "name": "Newt Scamander"}, {"achievements": ["Co-fundadora da Escola de Magia de Hogwarts", "Criadora do Diadema da Sabedoria", "Arquiteta das plantas mut\u00e1veis de Hogwarts", "M\u00e3e da Dama Cinzenta"], "bio": "Famosa por sua intelig\u00eancia e criatividade inigual\u00e1veis. Rowena acreditava que a mente \u00e9 o maior tesouro de um bruxo. Ela selecionava alunos que demonstravam sagacidade e aprendizado r\u00e1pido.", "birth": "S\u00e9culo X", "blood": "Sangue-Puro", "field": "Arquitetura M\u00e1gica", "full_name": "Rowena Ravenclaw", "house": "Ravenclaw", "house_label": "Corvinal", "icon": "\ud83e\udd85", "id": "ravenclaw_full", "name": "Rowena Ravenclaw"}, {"achievements": ["Co-fundador de Hogwarts", "Primeiro dono do Chap\u00e9u Seletor", "Defensor dos nascidos-trouxas", "O maior duelista de seu tempo"], "bio": "Godric valorizava a coragem e a determina\u00e7\u00e3o acima de tudo. Foi ele quem teve a ideia de usar seu pr\u00f3prio chap\u00e9u para selecionar os alunos de Hogwarts s\u00e9culos depois de sua morte.", "birth": "S\u00e9culo X", "blood": "Sangue-Puro", "field": "Duelos / Transfigura\u00e7\u00e3o", "full_name": "Godric Gryffindor", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83e\udd81", "id": "gryffindor_full", "name": "Godric Gryffindor"}, {"achievements": ["Co-fundador de Hogwarts", "Criador da C\u00e2mara Secreta", "Primeiro Ofidioglota registrado", "Defensor da supremacia puro-sangue"], "bio": "Um bruxo brilhante, mas controverso. Salazar acreditava que apenas bruxos de sangue puro deveriam ser ensinados em Hogwarts, o que levou ao seu afastamento dos outros fundadores.", "birth": "S\u00e9culo X", "blood": "Sangue-Puro", "field": "Legilim\u00eancia / Basiliscos", "full_name": "Salazar Slytherin", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udc0d", "id": "slytherin_full", "name": "Salazar Slytherin"}, {"achievements": ["Co-fundadora de Hogwarts", "Criadora de banquetes lend\u00e1rios", "Campe\u00e3 dos Elfos Dom\u00e9sticos", "Introduziu a igualdade na sele\u00e7\u00e3o de alunos"], "bio": "Helga era conhecida por sua natureza gentil e inclusiva. Ela aceitava todos os alunos que mostravam dedica\u00e7\u00e3o e lealdade, sem se importar com linhagem ou grandes talentos inatos.", "birth": "S\u00e9culo X", "blood": "Sangue-Puro", "field": "Feiti\u00e7os Culin\u00e1rios", "full_name": "Helga Hufflepuff", "house": "Hufflepuff", "house_label": "Lufa-Lufa", "icon": "\ud83e\udda1", "id": "hufflepuff_full", "name": "Helga Hufflepuff"}, {"achievements": ["Instigador da Guerra Bruxa Global", "Portador da Varinha das Varinhas", "Vision\u00e1rio das Trevas", "Quase exp\u00f4s o mundo m\u00e1gico aos trouxas"], "bio": "Antes de Voldemort, Grindelwald era a maior amea\u00e7a ao mundo m\u00e1gico. Ele acreditava que os bruxos deveriam governar os trouxas \"para o bem maior\". Foi derrotado em um duelo lend\u00e1rio por Dumbledore.", "birth": "1883 - 1998", "blood": "Sangue-Puro", "field": "Artes das Trevas", "full_name": "Gerardo Grindelwald", "house": "Durmstrang", "house_label": "Durmstrang", "icon": "\ud83d\udc80", "id": "grindelwald_full", "name": "Gerardo Grindelwald"}, {"achievements": ["Criador da Pedra Filosofal", "Alcan\u00e7ou a imortalidade (Elixir da Vida)", "Financiador de Beauxbatons", "Autoridade mundial em Alquimia"], "bio": "O \u00fanico criador conhecido da Pedra Filosofal. Flamel viveu mais de 600 anos com sua esposa Perenelle, acumulando vasto conhecimento m\u00e1gico antes de decidir destruir a pedra e aceitar a morte.", "birth": "1327 - 1992", "blood": "Sangue-Puro", "field": "Alquimia", "full_name": "Nicolau Flamel", "house": "Beauxbatons", "house_label": "Beauxbatons", "icon": "\ud83d\udc8e", "id": "flamel_full", "name": "Nicolau Flamel"}, {"achievements": ["Considerado o melhor fabricante de varinhas do mundo", "Revolucionou o uso de n\u00facleos m\u00e1gicos", "Possui mem\u00f3ria ed\u00e9tica para varinhas", "Fornecedor de varinhas para a realeza bruxa"], "bio": "A fam\u00edlia Olivaras fabrica varinhas desde 382 a.C., mas Garrick elevou a arte a um novo n\u00edvel. Ele acredita que a varinha escolhe o bruxo, um princ\u00edpio fundamental da magia moderna.", "birth": "1919 - Presente", "blood": "Mesti\u00e7o", "field": "Varinhologia", "full_name": "Garrick Olivaras", "house": "Ravenclaw", "house_label": "Corvinal", "icon": "\ud83e\ude84", "id": "ollivander_full", "name": "Garrick Olivaras"}, {"achievements": ["Descobridora de novas esp\u00e9cies de criaturas", "Membro chave da Armada de Dumbledore", "Sobrevivente da Batalha de Hogwarts", "Naturalista Chefe do Pasquim"], "bio": "Muitas vezes incompreendida por sua excentricidade, Luna possui uma percep\u00e7\u00e3o \u00fanica da verdade. Sua lealdade aos amigos e coragem em face do perigo provaram ser inestim\u00e1veis na guerra contra Voldemort.", "birth": "1981 - Presente", "blood": "Sangue-Puro", "field": "Magizoologia", "full_name": "Luna Lovegood", "house": "Ravenclaw", "house_label": "Corvinal", "icon": "\ud83d\udc53", "id": "lovegood_full", "name": "Luna Lovegood"}, {"achievements": ["Animaga registrada (Gato Tigrado)", "Diretora de Hogwarts ap\u00f3s a guerra", "Vencedora do pr\u00eamio \"Revela\u00e7\u00e3o\" da Transfigura\u00e7\u00e3o Hoje", "L\u00edder da defesa do castelo na Batalha de Hogwarts"], "bio": "Severa, mas justa. Minerva \u00e9 uma das bruxas mais poderosas de sua gera\u00e7\u00e3o. Sua habilidade em Transfigura\u00e7\u00e3o \u00e9 inigual\u00e1vel, e sua dedica\u00e7\u00e3o a Hogwarts e seus alunos \u00e9 absoluta.", "birth": "1935 - Presente", "blood": "Mesti\u00e7a", "field": "Transfigura\u00e7\u00e3o", "full_name": "Minerva McGonagall", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83d\udc08", "id": "mcgonagall_full", "name": "Minerva McGonagall"}, {"achievements": ["Um dos criadores do Mapa do Maroto", "Primeiro bruxo a fugir de Azkaban sem ajuda", "Membro da Ordem da F\u00eanix original", "Padrinho de Harry Potter"], "bio": "O \u00fanico da fam\u00edlia Black a ser selecionado para a Grifin\u00f3ria. Rebelde e leal at\u00e9 o fim, Sirius passou 12 anos em Azkaban por um crime que n\u00e3o cometeu, mantendo sua sanidade focando em sua inoc\u00eancia.", "birth": "1959 - 1996", "blood": "Sangue-Puro", "field": "Defesa / Duelos", "full_name": "Sirius Orion Black", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83d\udc15\u200d\ud83e\uddba", "id": "sirius_full", "name": "Sirius Black"}, {"achievements": ["Um dos criadores do Mapa do Maroto", "Membro da Ordem da F\u00eanix", "Lutou bravamente na Batalha de Hogwarts", "Primeiro Lobisomem a receber Ordem de Merlin (p\u00f3stuma)"], "bio": "Apesar de sofrer com a licantropia, Lupin foi um dos melhores professores de Defesa que Hogwarts j\u00e1 teve. Bondoso e paciente, ele ensinou Harry a conjurar o Patrono.", "birth": "1960 - 1998", "blood": "Mesti\u00e7o", "field": "Defesa Contra as Artes das Trevas", "full_name": "Remus John Lupin", "house": "Gryffindor", "house_label": "Grifin\u00f3ria", "icon": "\ud83c\udf15", "id": "remus_full", "name": "Remus Lupin"}, {"achievements": ["O Auror mais famoso e temido do Minist\u00e9rio", "Preencheu metade das celas de Azkaban sozinho", "Membro s\u00eanior da Ordem da F\u00eanix", "Especialista em detec\u00e7\u00e3o de Artes das Trevas"], "bio": "Paranoico e cheio de cicatrizes, Moody \u00e9 a prova viva dos perigos de lutar contra as trevas. Seu lema \"VIGIL\u00c2NCIA CONSTANTE!\" salvou in\u00fameras vidas durante as guerras bruxas.", "birth": "Desconhecido - 1997", "blood": "Sangue-Puro", "field": "Combate \u00e0s Trevas", "full_name": "Alastor \"Olho-Tonto\" Moody", "house": "Desconhecida", "house_label": "Auror", "icon": "\ud83d\udc41\ufe0f", "id": "moody_full", "name": "Alastor Moody"}, {"achievements": ["Ministro da Magia que reformou o Minist\u00e9rio", "Auror de elite encarregado de ca\u00e7ar Sirius Black (agente duplo)", "Lutou contra Voldemort pessoalmente", "Erradicou a corrup\u00e7\u00e3o pr\u00f3-sangue-puro"], "bio": "Sua voz grave e calmante esconde um duelista formid\u00e1vel. Kingsley foi fundamental para reconstruir o mundo bruxo ap\u00f3s a queda de Voldemort, trazendo uma era de transpar\u00eancia e igualdade.", "birth": "1960 - Presente", "blood": "Sangue-Puro", "field": "Pol\u00edtica / Duelos", "full_name": "Kingsley Shacklebolt", "house": "Desconhecida", "house_label": "Auror", "icon": "\ud83d\udee1\ufe0f", "id": "kingsley_full", "name": "Kingsley Shacklebolt"}, {"achievements": ["A Comensal da Morte mais leal e perigosa", "Mestra em Oclum\u00eancia (treinada por Voldemort)", "Respons\u00e1vel pela tortura dos Longbottom", "Assassina de Sirius Black"], "bio": "Fan\u00e1tica e s\u00e1dica, Bellatrix era o bra\u00e7o direito de Voldemort. Sua devo\u00e7\u00e3o ao Lorde das Trevas beirava a obsess\u00e3o, e sua habilidade em duelos s\u00f3 era superada por seu prazer em causar dor.", "birth": "1951 - 1998", "blood": "Sangue-Puro", "field": "Artes das Trevas", "full_name": "Bellatrix Lestrange", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udde1\ufe0f", "id": "bellatrix_full", "name": "Bellatrix Lestrange"}, {"achievements": ["Reparou o Arm\u00e1rio Sumidouro", "Desarmou Dumbledore (ganhando a Varinha das Varinhas)", "Financiador de pesquisas alqu\u00edmicas ap\u00f3s a guerra", "Colecionador de artefatos das trevas (reformado)"], "bio": "Criado para acreditar na supremacia do sangue, Draco teve seu mundo abalado pela realidade da guerra. Embora tenha servido aos Comensais, suas hesita\u00e7\u00f5es finais mostraram que ainda havia humanidade nele.", "birth": "1980 - Presente", "blood": "Sangue-Puro", "field": "Alquimia / Po\u00e7\u00f5es", "full_name": "Draco Lucius Malfoy", "house": "Slytherin", "house_label": "Sonserina", "icon": "\ud83d\udc0d", "id": "draco_full", "name": "Draco Malfoy"}];
-    let currentFilters = {
-        house: 'all',
-        field: 'all',
-        search: ''
-    };
+    let currentFilter = 'all';
+
+    function setWizardFilter(cat, el) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+        el.classList.add('active');
+        filterWizards();
+    }
 
     function filterWizards() {
-        currentFilters.search = document.getElementById('wizardSearch').value.toLowerCase();
-        renderWizards();
-    }
-
-    function applyFilter(type, value) {
-        currentFilters[type] = value;
-
-        if (type === 'house') {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === value);
-            });
-        }
-
-        renderWizards();
-    }
-
-    function renderWizards() {
-        const grid = document.getElementById('wizardsGrid');
-        const cards = grid.querySelectorAll('.wizard-card-encyclopedia');
+        const query = document.getElementById('wizardSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.wizard-card');
+        let visibleCount = 0;
 
         cards.forEach(card => {
             const name = card.getAttribute('data-name');
-            const house = card.getAttribute('data-house');
-            const field = card.getAttribute('data-field');
+            const title = card.getAttribute('data-title');
+            const category = card.getAttribute('data-category');
 
-            const matchesSearch = name.includes(currentFilters.search);
-            const matchesHouse = currentFilters.house === 'all' || house === currentFilters.house;
-            const matchesField = currentFilters.field === 'all' || field.includes(currentFilters.field.toLowerCase());
+            const matchesQuery = name.includes(query) || title.includes(query);
+            const matchesFilter = currentFilter === 'all' || category === currentFilter;
 
-            if (matchesSearch && matchesHouse && matchesField) {
-                card.style.display = 'flex';
-                card.classList.add('animate-fade-in');
+            if (matchesQuery && matchesFilter) {
+                card.classList.remove('hidden');
+                visibleCount++;
             } else {
-                card.style.display = 'none';
+                card.classList.add('hidden');
             }
         });
+
+        document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
     }
 
-    function openWizardModal(id) {
-        const wizard = wizardsData.find(w => w.id === id);
-        if (!wizard) return;
+    function sortWizards() {
+        const grid = document.getElementById('wizardsGrid');
+        const cards = Array.from(grid.querySelectorAll('.wizard-card'));
+        const sortType = document.getElementById('wizardSort').value;
 
-        const modal = document.getElementById('wizardModal');
-        const content = document.getElementById('wizardModalContent');
+        if (sortType === 'none') return;
+
+        cards.sort((a, b) => {
+            if (sortType === 'az' || sortType === 'za') {
+                const nameA = a.getAttribute('data-name');
+                const nameB = b.getAttribute('data-name');
+                return sortType === 'az' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+            } else if (sortType === 'rarity_desc') {
+                const rA = parseInt(a.getAttribute('data-rarity'));
+                const rB = parseInt(b.getAttribute('data-rarity'));
+                return rB - rA;
+            }
+            return 0;
+        });
+
+        cards.forEach(card => grid.appendChild(card));
+    }
+
+    function openWizardBio(wizard) {
+        const modal = document.getElementById('wizardBioModal');
+        const content = document.getElementById('bioContent');
 
         content.innerHTML = `
-            <div class="modal-header-info">
-                <span style="font-size: 3rem; margin-bottom: 1rem; display: block;">${wizard.icon}</span>
-                <h2 class="modal-title">${wizard.name}</h2>
-                <p class="difficulty-label house-${wizard.house.toLowerCase()}" style="margin-bottom: 0.5rem;">
-                    ${wizard.house_label} • ${wizard.birth}
-                </p>
-                <p style="color: var(--gold-secondary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase;">
-                    ${wizard.field}
-                </p>
+            <div class="bio-header">
+                <span class="bio-icon">${wizard.icon}</span>
+                <h2 class="bio-name">${wizard.name}</h2>
+                <div class="bio-title">${wizard.title}</div>
             </div>
-            
-            <div class="modal-body-content">
-                <p class="bio-full">${wizard.bio}</p>
-                
-                <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 1rem; font-size: 1.1rem;">
-                    Principais Conquistas
-                </h3>
-                <ul class="achievements-list">
-                    ${wizard.achievements.map(a => `<li>${a}</li>`).join('')}
-                </ul>
-                
-                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">
-                        <strong>Status de Sangue:</strong> ${wizard.blood}
-                    </p>
-                </div>
+            <div class="bio-details">
+                ${wizard.desc}
+            </div>
+            <div class="bio-footer">
+                <span class="badge-rarity ${wizard.rarity}">${wizard.rarity_label}</span>
+                <span class="badge-rarity" style="background: rgba(255,255,255,0.1)">${wizard.category_label}</span>
             </div>
         `;
 
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('open'), 10);
     }
 
-    function closeWizardModal() {
-        const modal = document.getElementById('wizardModal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Fechar modal ao clicar fora
-    window.onclick = function (event) {
-        const modal = document.getElementById('wizardModal');
-        if (event.target == modal) closeWizardModal();
+    function closeWizardBio(e) {
+        const modal = document.getElementById('wizardBioModal');
+        modal.classList.remove('open');
+        setTimeout(() => modal.classList.add('hidden'), 400);
     }
 </script>
 

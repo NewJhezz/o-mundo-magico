@@ -15,6 +15,7 @@ def build_static():
         # --- Helpers de correção de link ---
         def fix_links(content):
             content = content.replace('href="/static/', 'href="./static/')
+            content = content.replace('src="/static/', 'src="./static/')
             content = content.replace('href="/"', 'href="./index.html"')
             content = content.replace('href="/varinhas/origem"', 'href="./varinhas_origem.html"')
             content = content.replace('href="/varinhas/madeiras"', 'href="./varinhas_madeiras.html"')
@@ -26,6 +27,7 @@ def build_static():
             content = content.replace('href="/feiticos"', 'href="./feiticos.html"')
             content = content.replace('href="/pocoes"', 'href="./pocoes.html"')
             content = content.replace('href="/bruxos"', 'href="./bruxos.html"')
+            content = content.replace('href="/aventuras"', 'href="./aventuras.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
@@ -84,12 +86,19 @@ def build_static():
             f.write(fix_links(content))
         print("OK: pocoes.html gerado!")
 
-        # --- 9. Bruxos ---
+        # --- 9. Bruxos Famosos ---
         from app import wizards
         content = wizards()
         with open('bruxos.html', 'w', encoding='utf-8') as f:
             f.write(fix_links(content))
         print("OK: bruxos.html gerado!")
+
+        # --- 10. Aventuras (Livro-Jogo) ---
+        from app import adventures
+        content = adventures()
+        with open('aventuras.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: aventuras.html gerado!")
 
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 

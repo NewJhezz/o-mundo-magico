@@ -1,0 +1,942 @@
+{% extends "base.html" %}
+
+{% block title %}Aventuras Mágicas | O Mundo Mágico{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <a href="{{ url_for('home') }}" class="back-link">← Voltar para o Mundo</a>
+    <h1 class="main-title">Livro-Jogo: Aventuras</h1>
+    <p class="hero-subtitle">Suas escolhas definem seu destino no universo bruxo.</p>
+</div>
+
+<div id="game-container" class="adventure-wrapper">
+    <!-- Tela de Biblioteca (Estante) -->
+    <div id="library-screen" class="scroll-container library-view">
+        <h2 class="library-title">Sua Coleção de Relíquias</h2>
+        <div class="bookshelf">
+            <div class="shelf-row">
+                <!-- Livro 1 -->
+                <!-- Livro 1 -->
+                <div class="book-card" onclick="showIntro('lago_negro')">
+                    <div class="book-inner">
+                        <div class="book-front">
+                            <img src="{{ url_for('static', filename='img/adventure/lago_negro_cover.png') }}"
+                                alt="O Mistério do Lago Negro">
+                            <div class="book-frame"></div>
+                        </div>
+                        <div class="book-spine"></div>
+                    </div>
+                    <div class="book-labels">
+                        <h3>O Mistério do Lago Negro</h3>
+                        <span class="book-status">Pronto para Ler</span>
+                    </div>
+                </div>
+
+                <!-- Livro 2 -->
+                <!-- Livro 2 -->
+                <div class="book-card" onclick="showIntro('biblioteca_proibida')">
+                    <div class="book-inner">
+                        <div class="book-front">
+                            <img src="{{ url_for('static', filename='img/adventure/biblioteca_proibida_cover.png') }}"
+                                alt="Enigmas da Biblioteca Proibida">
+                            <div class="book-frame"></div>
+                        </div>
+                        <div class="book-spine"></div>
+                    </div>
+                    <div class="book-labels">
+                        <h3>Enigmas da Biblioteca Proibida</h3>
+                        <span class="book-status">Pronto para Ler</span>
+                    </div>
+                </div>
+
+                <!-- Livro 3 (Herpo 1) -->
+                <div class="book-card locked">
+                    <div class="book-inner">
+                        <div class="book-front">
+                            <img src="{{ url_for('static', filename='img/adventure/herpo_1_cover.jpg') }}"
+                                alt="O Eco de Herpo, o Sujo - Parte 1">
+                            <div class="book-frame"></div>
+                            <div class="lock-icon">🔒</div>
+                        </div>
+                        <div class="book-spine"></div>
+                    </div>
+                    <div class="book-labels">
+                        <h3>Herpo, o Sujo – Parte 1</h3>
+                        <span class="book-status">Em breve...</span>
+                    </div>
+                </div>
+
+                <!-- Livro 4 (Herpo 2) -->
+                <div class="book-card locked">
+                    <div class="book-inner">
+                        <div class="book-front">
+                            <img src="{{ url_for('static', filename='img/adventure/herpo_2_cover.jpg') }}"
+                                alt="O Eco de Herpo, o Sujo - Parte 2">
+                            <div class="book-frame"></div>
+                            <div class="lock-icon">🔒</div>
+                        </div>
+                        <div class="book-spine"></div>
+                    </div>
+                    <div class="book-labels">
+                        <h3>Herpo, o Sujo – Parte 2</h3>
+                        <span class="book-status">Em breve...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="shelf-plank"></div>
+        </div>
+    </div>
+
+    <!-- Tela de Introdução Geral (Dinâmica) -->
+    <div id="intro-screen" class="scroll-container setup-view hidden">
+        <h2 id="intro-title" class="section-title">A Jornada Começa</h2>
+        <div class="adventure-intro-text">
+            <p id="intro-description"
+                style="font-size: 1.2rem; line-height: 1.8; color: var(--text-main); margin-bottom: 2rem;"></p>
+        </div>
+        <button class="choice-btn" style="margin: 2rem auto; justify-content: center; width: auto;"
+            onclick="showSelection()">INICIAR AVENTURA</button>
+    </div>
+
+    <!-- Tela de Seleção Inicial (Dinâmica) -->
+    <div id="setup-screen" class="scroll-container setup-view hidden">
+        <h2 class="section-title">Escolha seu Personagem</h2>
+        <div id="character-selection" class="character-selection">
+            <!-- Gerado via JS -->
+        </div>
+    </div>
+
+    <!-- Interface Principal do Jogo -->
+    <div id="game-screen" class="game-view hidden">
+        <div class="adventure-main-layout">
+            <aside class="game-sidebar">
+                <div class="inventory-card">
+                    <h3>📜 Inventário</h3>
+                    <ul id="inventory-list"></ul>
+                    <div class="galleons-display">
+                        💰 Galeões: <span id="galleon-count">0</span>
+                    </div>
+                </div>
+            </aside>
+            <main class="story-area">
+                <div class="scroll-content parchment">
+                    <div id="section-content" class="story-text"></div>
+                    <div id="choices-container" class="choices-list"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ... Estilos permanecem os mesmos ... */
+    .adventure-wrapper {
+        max-width: 1000px;
+        margin: 2rem auto;
+        min-height: 600px;
+    }
+
+    .setup-view {
+        background: rgba(8, 16, 30, 0.4);
+        padding: 3rem;
+        border-radius: 20px;
+        border: var(--glass-border);
+        backdrop-filter: blur(10px);
+        text-align: center;
+    }
+
+    .character-selection {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+    }
+
+    .char-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 2rem;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+        width: 220px;
+    }
+
+    .char-box:hover {
+        background: rgba(212, 175, 55, 0.1);
+        border-color: var(--gold-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .char-icon {
+        font-size: 3.5rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .char-box h3 {
+        color: var(--gold-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .adventure-main-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2rem;
+    }
+
+    .inventory-card {
+        background: rgba(10, 20, 35, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+    }
+
+    .inventory-card h3 {
+        font-family: var(--font-heading);
+        color: var(--gold-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.5rem;
+    }
+
+    #inventory-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    #inventory-list li {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .galleons-display {
+        font-family: var(--font-heading);
+        color: var(--gold-primary);
+        font-weight: bold;
+    }
+
+    /* Estilos da Estante Mágica */
+    .library-view {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: radial-gradient(circle at center, rgba(16, 28, 50, 0.4) 0%, transparent 70%);
+    }
+
+    .library-title {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        color: var(--gold-primary);
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        margin-bottom: 4rem;
+        letter-spacing: 3px;
+    }
+
+    .bookshelf {
+        position: relative;
+        perspective: 1500px;
+        margin-bottom: 5rem;
+    }
+
+    .shelf-row {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        padding-bottom: 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .shelf-plank {
+        height: 25px;
+        background: linear-gradient(to bottom, #3d2b1f, #1e130c);
+        border-bottom: 3px solid #1a0f08;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        width: 110%;
+        margin-left: -5%;
+        margin-top: -10px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .book-card {
+        width: 200px;
+        cursor: pointer;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        text-align: center;
+        position: relative;
+    }
+
+    .book-inner {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1.5;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .book-card:hover .book-inner {
+        transform: rotateY(-25deg) translateZ(50px);
+    }
+
+    .book-front {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 2;
+    }
+
+    .book-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .book-frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 10px solid transparent;
+        border-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') 30 stretch;
+        outline: 2px solid var(--gold-primary);
+        outline-offset: -8px;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+    }
+
+    .book-spine {
+        position: absolute;
+        top: 0;
+        left: -15px;
+        width: 30px;
+        height: 100%;
+        background: #2a1b12;
+        transform: rotateY(90deg);
+        transform-origin: right;
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        z-index: 1;
+    }
+
+    .book-labels {
+        margin-top: 2rem;
+        transition: all 0.3s;
+    }
+
+    .book-labels h3 {
+        font-size: 1rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-family: var(--font-heading);
+        min-height: 2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .book-status {
+        font-size: 0.75rem;
+        color: var(--gold-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        opacity: 0.8;
+    }
+
+    /* Cadeado e Locked State */
+    .book-card.locked {
+        cursor: not-allowed;
+        filter: sepia(0.5) contrast(0.8) brightness(0.7);
+    }
+
+    .book-card.locked:hover .book-inner {
+        transform: none;
+    }
+
+    .lock-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 20px black;
+        z-index: 5;
+    }
+
+    .book-card:not(.locked):hover .book-labels h3 {
+        color: var(--gold-primary);
+    }
+
+    .parchment {
+        background: rgba(10, 15, 25, 0.7);
+        border: 2px solid var(--gold-primary);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(214, 186, 139, 0.05);
+        padding: 3rem;
+        border-radius: 10px;
+        min-height: 400px;
+        position: relative;
+    }
+
+    .story-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-main);
+        margin-bottom: 3rem;
+        text-align: justify;
+    }
+
+    .choices-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .choice-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        color: #fff;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .choice-btn:hover:not(.disabled) {
+        background: rgba(212, 175, 55, 0.15);
+        border-color: var(--gold-primary);
+        transform: translateX(10px);
+    }
+
+    .choice-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        border-color: rgba(255, 0, 0, 0.2);
+    }
+
+    .req-hint {
+        font-size: 0.8rem;
+        color: #ff4444;
+        margin-left: auto;
+    }
+
+    .end-btn {
+        background: var(--gold-primary);
+        color: #000;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 2rem;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+</style>
+
+<script>
+    const allAdventures = {
+        'lago_negro': {
+            title: "O Mistério do Lago Negro",
+            description: "Você é um(a) bruxo(a) comum que trabalha como herbologista em Hogsmeade, vivendo no universo de Harry Potter. O objetivo é investigar o mistério das luzes estranhas no Lago Negro, que estão atraindo criaturas aquáticas para o perigo, e impedir um antigo feitiço amaldiçoado de se espalhar para Hogwarts.",
+            characters: [
+                { id: 'amelia', name: 'Amelia Blackwood', title: 'Bruxa Herbologista', icon: '🧙‍♀️', initialGalleons: 15, initialInventory: ['Varinha (Salgueiro)', 'Capa impermeável', 'Poção de respiração aquática', 'Rede de pesca mágica', 'Ervas calmantes', 'Lanterna subaquática'] },
+                { id: 'bruce', name: 'Bruce Blackwood', title: 'Bruxo Herbologista', icon: '🧙‍♂️', initialGalleons: 15, initialInventory: ['Varinha (Salgueiro)', 'Capa impermeável', 'Poção de respiração aquática', 'Rede de pesca mágica', 'Ervas calmantes', 'Lanterna subaquática'] }
+            ],
+            sections: {
+                1: {
+                    text: "Você chega à margem do Lago Negro ao crepúsculo, o ar frio de outono carregado de neblina. Madame Maxime te contatou por coruja, preocupada com relatos de sereianos desaparecidos.\n\n'As luzes... elas brilham como estrelas caídas no fundo do lago', escreveu ela. 'Algo antigo desperta, e pode ameaçar os alunos de Hogwarts.'\n\nEla te entrega uma lanterna subaquática e avisa: 'Vá com cuidado. Se precisar de ajuda, mande bolhas encantadas para a superfície – eu estarei vigiando do barco.'\n\nVocê mergulha na água gelada. Após descer alguns metros, vê luzes pulsantes no fundo e ouve um canto distante. Algo roça sua perna...",
+                    choices: [
+                        { text: "Beber a poção de respiração aquática e nadar fundo", next: 2, item_loss: ['Poção de respiração aquática'] },
+                        { text: "Lançar 'Lumos' para investigar", next: 3 },
+                        { text: "Mandar bolhas encantadas para Madame Maxime", next: 5 }
+                    ]
+                },
+                2: {
+                    text: "Você engole a poção – bolhas saem de suas guelras novas. Nadando mais fundo, chega a um recife de algas onde sereianos feridos se escondem. Um deles se aproxima:\n\n'Humana... as luzes nos chamam, mas devoram nossa essência. É uma maldição antiga.'\n\nEle te dá uma concha encantada. Mas avisa que grindylows guardam o caminho.",
+                    items: ['Concha encantada'],
+                    choices: [
+                        { text: "Lançar 'Aguamenti' para distrair grindylows", next: 6 },
+                        { text: "Usar ervas calmantes para ganhar passagem", next: 7, requires: 'Ervas calmantes', item_loss: ['Ervas calmantes'] },
+                        { text: "Lançar 'Bubble-Head Charm' para proteção", next: 4 }
+                    ]
+                },
+                3: {
+                    text: "Você lança 'Lumos' – a luz revela um grindylow solitário atacando. Você o repele, mas ele rouba 5 galeões! Mais adiante, encontra ruínas subaquáticas com runas brilhantes.",
+                    galleon_loss: 5,
+                    items: ['Fragmento de runa'],
+                    choices: [
+                        { text: "Tocar as runas para ativá-las", next: 8 },
+                        { text: "Lançar 'Accio' para atrair um objeto", next: 18 },
+                        { text: "Usar a rede de pesca para capturar o grindylow", next: 9 }
+                    ]
+                },
+                4: {
+                    text: "Com a bolha de ar, você flutua devagar. Encontra peixes luminosos que revelam visões: um antigo artefato amaldiçoado, o colar de Salazar Slytherin, despertado por acidente.",
+                    vision: true,
+                    choices: [
+                        { text: "Seguir os peixes para o artefato", next: 10 },
+                        { text: "Lançar 'Protego' e investigar ruínas", next: 8 },
+                        { text: "Usar a lanterna subaquática para mapear", next: 19 }
+                    ]
+                },
+                5: {
+                    text: "Madame Maxime mergulha com sua varinha gigante. 'O que encontrou, petite?'\n\nEla decide ajudar, mas sua presença assusta criaturas, tornando o mergulho mais caótico.",
+                    items: ['Ajuda de Maxime'],
+                    choices: [
+                        { text: "Prosseguir juntos para a fonte", next: 6 },
+                        { text: "Pedir distração e lançar 'Invisibilus'", next: 23 },
+                        { text: "Lançar 'Sonorus' para convocar sereianos", next: 2 }
+                    ]
+                },
+                6: {
+                    text: "Você chega a uma caverna subaquática. Dentro, o colar de Slytherin pulsa, sugando energia. Um sereiano possuído ataca! Ele revela que o colar foi despertado por um mergulhador ilegal.",
+                    choices: [
+                        { text: "Convocar sereianos com a concha", next: 24, requires: 'Concha encantada' },
+                        { text: "Lançar 'Relashio' para repelir", next: 25 },
+                        { text: "Usar fragmento de runa para selar o colar", next: 13, requires: 'Fragmento de runa' }
+                    ]
+                },
+                7: {
+                    text: "As ervas acalmam os grindylows – eles te guiam para um tesouro escondido: uma poção de invisibilidade aquática! Mas o canto das luzes fica mais forte, te hipnotizando.",
+                    items: ['Poção de invisibilidade'],
+                    choices: [
+                        { text: "Resistir e ir para a caverna", next: 6 },
+                        { text: "Lançar 'Finite Incantatem' contra a hipnose", next: 20 },
+                        { text: "Usar a poção para se aproximar invisível", next: 10, requires: 'Poção de invisibilidade' }
+                    ]
+                },
+                8: {
+                    text: "As runas mostram o passado: Slytherin amaldiçoou o colar para proteger segredos. Mas drena sua energia – perca 5 galeões. Você agora sabe como destruir o colar!",
+                    galleon_loss: 5,
+                    choices: [
+                        { text: "Ir ao colar com seu novo conhecimento", next: 12 },
+                        { text: "Procurar aliados sereianos", next: 2 },
+                        { text: "Lançar 'Reparo' nas runas", next: 26 }
+                    ]
+                },
+                9: {
+                    text: "A rede captura um grindylow – ele revela que o mergulhador é um contrabandista! Você ouve o colar pulsando perto.",
+                    items: ['Dente de grindylow'],
+                    choices: [
+                        { text: "Enfrentar o mergulhador usando o dente", next: 12 },
+                        { text: "Lançar 'Muffliato' e observar", next: 13 },
+                        { text: "Voltar à superfície para relatar", next: 11 }
+                    ]
+                },
+                10: {
+                    text: "Os peixes te levam ao colar. É brilhante e hipnótico.",
+                    choices: [
+                        { text: "Lançar 'Bombarda' para destruir (Arriscado)", next: 21 },
+                        { text: "Pegar o colar com cuidado", next: 15 },
+                        { text: "Usar a rede de pesca para envolver de longe", next: 27 }
+                    ]
+                },
+                11: {
+                    text: "Você emerge e relata ao Ministério. Eles resolvem o mistério, mas sua recompensa é pequena. Fim da aventura.",
+                    choices: [{ text: "RECOMEÇAR AVENTURA", next: 'RESET', class: 'end-btn' }],
+                    status: "SUCESSO MODERADO"
+                },
+                12: {
+                    text: "Você localiza o mergulhador ilegal! Ele se vira com varinha em punho. O ambiente está instável.",
+                    choices: [
+                        { text: "Usar o dente de grindylow", next: 28, requires: 'Dente de grindylow' },
+                        { text: "Lançar 'Stupefy' diretamente", next: 29 },
+                        { text: "Usar ajuda de Maxime para investida", next: 30, requires: 'Ajuda de Maxime' }
+                    ]
+                },
+                13: {
+                    text: "Você arma um feitiço de selamento. O colar fica inativo temporariamente.",
+                    choices: [
+                        { text: "Destruir com 'Incendio'", next: 15 },
+                        { text: "Entregar ao Ministério intacto", next: 14 },
+                        { text: "Lançar 'Geminio' para copiar e estudar", next: 31 }
+                    ]
+                },
+                14: {
+                    text: "Você captura o culpado e sela o colar! Madame Maxime te elogia e você ganha uma posição em Hogwarts. Vitória!",
+                    choices: [{ text: "JOGAR NOVAMENTE", next: 'RESET', class: 'end-btn' }],
+                    status: "SUCESSO ÉPICO!!!"
+                },
+                15: {
+                    text: "Você é pego pela maldição! Ferida, mal escapa das profundezas. Madame Maxime te resgata, mas o perigo persiste.",
+                    choices: [{ text: "TENTAR NOVAMENTE", next: 'RESET', class: 'end-btn' }],
+                    status: "FRACASSO!"
+                },
+                16: {
+                    text: "O mergulhador foi capturado. As criaturas começam a se recuperar.",
+                    choices: [
+                        { text: "Interrogar o mergulhador", next: 22 },
+                        { text: "Lançar 'Obliviate' e entregá-lo", next: 14 },
+                        { text: "Usar ervas calmantes para extrair confissão", next: 32, requires: 'Ervas calmantes' }
+                    ]
+                },
+                18: {
+                    text: "O 'Accio' traz um amuleto que revela um mapa subaquático! Mas atrai mais grindylows.",
+                    items: ['Mapa subaquático'],
+                    choices: [
+                        { text: "Usar o mapa para ir à fonte", next: 6 },
+                        { text: "Lançar 'Repello Inimicum'", next: 10 },
+                        { text: "Chamar reforços de Madame Maxime", next: 5 }
+                    ]
+                },
+                19: {
+                    text: "A lanterna revela caminhos ocultos, mas a energia acaba. Você encontra o rastro do mergulhador.",
+                    item_loss: ['Lanterna subaquática'],
+                    choices: [
+                        { text: "Seguir o rastro agora", next: 12 },
+                        { text: "Compartilhar pista com sereianos", next: 2, requires: 'Concha encantada' },
+                        { text: "Lançar 'Alohomora' na barreira", next: 8 }
+                    ]
+                },
+                20: {
+                    text: "O 'Finite Incantatem' quebra o encanto, mas o mergulhador foge, deixando um diário!",
+                    items: ['Diário flutuante'],
+                    choices: [
+                        { text: "Ler o diário para pistas", next: 12 },
+                        { text: "Ignorar e ir à caverna", next: 6 },
+                        { text: "Usar o diário como isca", next: 9 }
+                    ]
+                },
+                21: {
+                    text: "O 'Bombarda' explode o colar, mas causa um turbilhão violento corporêo.",
+                    item_loss_random: true,
+                    choices: [
+                        { text: "Nadar de volta para resíduos", next: 16 },
+                        { text: "Chamar Maxime", next: 14 },
+                        { text: "Explorar turbilhão por tesouros", next: 15 }
+                    ]
+                },
+                22: {
+                    text: "Ele confessa: o colar era para o mercado negro. Você ganha 10 galeões! Mas sereianos irritados chegam exigindo justiça.",
+                    galleon_gain: 10,
+                    choices: [
+                        { text: "Lançar 'Petrificus Totalus'", next: 14 },
+                        { text: "Entregá-lo aos sereianos", next: 15 },
+                        { text: "Negociar usando a concha", next: 33, requires: 'Concha encantada' }
+                    ]
+                },
+                23: {
+                    text: "Maxime distrai, você se esconde. O esforço mágico drena seus recursos.",
+                    item_loss: ['Ervas calmantes'],
+                    choices: [
+                        { text: "Entrar na passagem secreta", next: 8 },
+                        { text: "Convocar sereianos", next: 2 },
+                        { text: "Observar de longe", next: 13 }
+                    ]
+                },
+                24: {
+                    text: "Os sereianos aliados chegam! Eles distraem o possuído, permitindo a captura.",
+                    item_loss: ['Concha encantada'],
+                    choices: [{ text: "PROSSEGUIR", next: 16, class: 'end-btn' }]
+                },
+                25: {
+                    text: "O 'Relashio' repele, mas o contra-ataque é forte. Você perde fôlego!",
+                    item_loss: ['Poção de respiração aquática'],
+                    choices: [{ text: "CONTINUAR", next: 15, class: 'end-btn' }]
+                },
+                26: {
+                    text: "O 'Reparo' revela um feitiço para enfraquecer maldições! Mas grindylows se aproximam.",
+                    choices: [
+                        { text: "Fugir para a fonte", next: 6 },
+                        { text: "Usar rede de pesca", next: 9 }
+                    ]
+                },
+                27: {
+                    text: "A rede envolve o colar, mas a maldição rebate ferindo você e sua bolsa.",
+                    galleon_loss: 5,
+                    choices: [{ text: "PROSSEGUIR", next: 15, class: 'end-btn' }]
+                },
+                28: {
+                    text: "O dente improvisado acerta o mergulhador! Ele cai atordoado.",
+                    item_loss: ['Dente de grindylow'],
+                    choices: [{ text: "CAPTURAR", next: 16, class: 'end-btn' }]
+                },
+                29: {
+                    text: "O 'Stupefy' falha na água instável. O mergulhador te atinge!",
+                    choices: [{ text: "CONTINUAR", next: 15, class: 'end-btn' }]
+                },
+                30: {
+                    text: "Com Maxime, a vitória é esmagadora. O mergulhador não teve chance.",
+                    choices: [{ text: "VITÓRIA", next: 16, class: 'end-btn' }]
+                },
+                31: {
+                    text: "O 'Geminio' cria caos conforme a maldição se espalha para a cópia!",
+                    choices: [{ text: "FUGIR", next: 15, class: 'end-btn' }]
+                },
+                32: {
+                    text: "As ervas acalmam o criminoso, que confessa tudo voluntariamente.",
+                    item_loss: ['Ervas calmantes'],
+                    choices: [{ text: "CONCLUIR", next: 14, class: 'end-btn' }]
+                },
+                33: {
+                    text: "A concha negocia paz. Eles te presenteiam com ouro do lago!",
+                    galleon_gain: 20,
+                    choices: [{ text: "CONCLUIR", next: 16, class: 'end-btn' }]
+                }
+            }
+        },
+        'biblioteca_proibida': {
+            title: "Enigmas da Biblioteca Proibida",
+            description: "Você é Rowan Whitlock, um bruxo comum que trabalha na Biblioteca de Hogsmeade. Madame Pince foi petrificada e você foi chamado para conter o poderoso Codex Umbrae antes que criaturas mágicas escapem da Seção Restrita e invadam Hogwarts.",
+            characters: [
+                { id: 'rowan', name: 'Rowan Whitlock', title: 'Assistente de Biblioteca', icon: '📖', initialGalleons: 10, initialInventory: ['Varinha (Bétula)', 'Chave da Biblioteca', 'Poção de Acuidade Mental', 'Pena de coruja encantada', 'Luvas de pele de dragão', 'Lanterna de bolso'] }
+            ],
+            sections: {
+                1: {
+                    text: "Você chega ao Salão Principal de Hogwarts às duas da madrugada. A chave gira na porta da biblioteca com um clique suave. Ao entrar, o silêncio é absoluto — até demais. As luzes estão apagadas, mas você vê um brilho fraco vindo da Seção Restrita no fundo.\n\nDe repente, ouve páginas virando sozinhas e um sussurro de asas. Algo pequeno e rápido passa voando perto da sua cabeça.",
+                    choices: [
+                        { text: "Beber a Poção de Acuidade Mental imediatamente", next: 2, item_loss: ['Poção de Acuidade Mental'] },
+                        { text: "Lançar 'Lumos' para iluminar o caminho", next: 3 },
+                        { text: "Andar às escuras, guiando-se pelo brilho", next: 4 }
+                    ]
+                },
+                2: {
+                    text: "A poção faz efeito: seus sentidos se aguçam. Você percebe cheiros de tinta antiga e rastros luminosos de pixies espalhando pó de fada. Ganhou vantagem: Você percebe armadilhas mágicas com antecedência!",
+                    items: ['Conhecimento: Armadilhas'],
+                    choices: [
+                        { text: "Seguir diretamente para a Seção Restrita", next: 5 },
+                        { text: "Procurar um livro de catalogação", next: 6 }
+                    ]
+                },
+                3: {
+                    text: "'Lumos!' A luz ilumina o salão, mas o brilho atrai um enxame de pixies! Elas começam a bombardear você com livros pesados.",
+                    choices: [
+                        { text: "Usar as luvas de pele de dragão para se proteger", next: 7, requires: 'Luvas de pele de dragão' },
+                        { text: "Fugir para as sombras", next: 8, galleon_loss: 5 }
+                    ]
+                },
+                4: {
+                    text: "Você se move em silêncio absoluto. Chega à grade da Seção Restrita e vê um basilisco bebê — uma ilustração viva que escapou das páginas — rastejando pelo chão.",
+                    choices: [
+                        { text: "Tentar capturá-lo com as luvas de pele de dragão", next: 9, requires: 'Luvas de pele de dragão' },
+                        { text: "Lançar 'Serpensortia' para criar uma distração", next: 10 }
+                    ]
+                },
+                5: {
+                    text: "Você entra na Seção Restrita. Livros voam como pássaros de papel cortantes. No centro, o Codex Umbrae está aberto, suas páginas pulsando com uma energia sombria.",
+                    choices: [
+                        { text: "Lançar 'Finite Incantatem' diretamente no livro", next: 11 },
+                        { text: "Procurar um manual de contenção nas prateleiras", next: 12 }
+                    ]
+                },
+                6: {
+                    text: "O catálogo revela o segredo: o Codex só fecha com a sequência: 'Clausura', 'Sigillum' e 'Finite'.",
+                    items: ['Conhecimento: Sequência de Selamento'],
+                    choices: [
+                        { text: "Ir imediatamente ao Codex", next: 13 },
+                        { text: "Capturar criaturas menores primeiro", next: 9 }
+                    ]
+                },
+                7: {
+                    text: "As luvas de pele de dragão bloqueiam os ataques. Você lança 'Immobulus' e as pixies congelam. Você as coloca em um frasco mágico.",
+                    items: ['Frasco com Pixies'],
+                    choices: [{ text: "Prosseguir para a Seção Restrita", next: 5 }]
+                },
+                8: {
+                    text: "Você corre, mas 5 galeões caem da sua bolsa no caos. Você chega ofegante à Seção Restrita.",
+                    choices: [{ text: "Entrar na Seção", next: 5 }]
+                },
+                9: {
+                    text: "Sucesso! O basilisco bebê está contido em um pergaminho. Ele pode ser útil.",
+                    items: ['Basilisco Bebê Contido'],
+                    choices: [{ text: "Ir ao Codex", next: 5 }]
+                },
+                10: {
+                    text: "A cobra distraiu o basilisco, mas o barulho atraiu um Dementador em miniatura!",
+                    choices: [
+                        { text: "Tentar lançar 'Expecto Patronum'", next: 17 },
+                        { text: "Fugir para o Codex", next: 18 }
+                    ]
+                },
+                11: {
+                    text: "O feitiço rebate! O Codex lança uma onda de choque que apaga sua lanterna e te joga contra a prateleira.",
+                    status: "FRACASSO PARCIAL",
+                    choices: [{ text: "RECOMEÇAR", next: 'RESET', class: 'end-btn' }]
+                },
+                12: {
+                    text: "Você encontra o Manual de Contenção! Aprende o feitiço 'Clausura'.",
+                    items: ['Feitiço: Clausura'],
+                    choices: [{ text: "Usar Clausura no Codex", next: 20 }]
+                },
+                13: {
+                    text: "Você inicia a sequência. Os símbolos brilham. O Codex tenta resistir, mas você é firme.",
+                    choices: [{ text: "Finalizar o Selamento", next: 21 }]
+                },
+                17: {
+                    text: "Um brilho prateado fraco afasta a criatura. Você escapa!",
+                    choices: [{ text: "Correr para o Codex", next: 5 }]
+                },
+                18: {
+                    text: "Você corre desesperadamente enquanto o frio aumenta. Chega ao Codex exausto.",
+                    choices: [{ text: "Tentar selar agora", next: 11 }]
+                },
+                20: {
+                    text: "O feitiço Clausura começa a fechar o livro, mas ele exige mais energia.",
+                    choices: [
+                        { text: "Usar a sequência completa", next: 21, requires: 'Conhecimento: Sequência de Selamento' },
+                        { text: "Forçar o fechamento manual", next: 15 }
+                    ]
+                },
+                21: {
+                    text: "O Codex se fecha com um estalo metálico. O silêncio volta à biblioteca. As criaturas são sugadas de volta para as páginas.",
+                    status: "SUCESSO ÉPICO!!!",
+                    choices: [{ text: "FINALIZAR JORNADA", next: 30 }]
+                },
+                15: {
+                    text: "A magia negra te consome. Você falha em fechar o livro a tempo.",
+                    status: "FRACASSO!",
+                    choices: [{ text: "TENTAR NOVAMENTE", next: 'RESET', class: 'end-btn' }]
+                },
+                30: {
+                    text: "Madame Pince foi salva e a biblioteca está segura. Você provou ser um mestre dos livros. Hogwarts te deve uma dívida eterna.",
+                    status: "FINAL HEROICO",
+                    choices: [{ text: "VOLTAR À BIBLIOTECA", next: 'RESET', class: 'end-btn' }]
+                }
+            }
+        }
+    };
+
+    // As seções do Lago Negro já estão incluídas no objeto principal 'allAdventures.lago_negro.sections'.
+    // Não é necessário populá-las novamente aqui.
+
+    let currentAdventureId = null;
+    let gameState = {
+        character: null,
+        galleons: 0,
+        inventory: [],
+        vision: false
+    };
+
+    function showIntro(bookId) {
+        currentAdventureId = bookId;
+        const adv = allAdventures[bookId];
+
+        document.getElementById('library-screen').classList.add('hidden');
+        document.getElementById('intro-screen').classList.remove('hidden');
+
+        document.getElementById('intro-title').innerText = adv.title;
+        document.getElementById('intro-description').innerText = adv.description;
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showSelection() {
+        const adv = allAdventures[currentAdventureId];
+        const selectionDiv = document.getElementById('character-selection');
+        selectionDiv.innerHTML = '';
+
+        adv.characters.forEach(char => {
+            const box = document.createElement('div');
+            box.className = 'char-box';
+            box.onclick = () => startGame(char);
+            box.innerHTML = `
+                <span class="char-icon">${char.icon}</span>
+                <h3>${char.name}</h3>
+                <p>${char.title}</p>
+            `;
+            selectionDiv.appendChild(box);
+        });
+
+        document.getElementById('intro-screen').classList.add('hidden');
+        document.getElementById('setup-screen').classList.remove('hidden');
+    }
+
+    function startGame(char) {
+        gameState.character = char;
+        gameState.galleons = char.initialGalleons;
+        gameState.inventory = [...char.initialInventory];
+
+        document.getElementById('setup-screen').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        renderSection(1);
+    }
+
+    function renderSection(id) {
+        if (id === 'RESET') { location.reload(); return; }
+
+        const adv = allAdventures[currentAdventureId];
+        const section = adv.sections[id];
+
+        if (!section) {
+            console.error("Seção não encontrada:", id);
+            return;
+        }
+
+        const contentDiv = document.getElementById('section-content');
+        const choicesDiv = document.getElementById('choices-container');
+
+        // Ganhos automáticos
+        if (section.items) {
+            section.items.forEach(item => {
+                if (!gameState.inventory.includes(item)) gameState.inventory.push(item);
+            });
+        }
+        if (section.galleon_loss) gameState.galleons = Math.max(0, gameState.galleons - section.galleon_loss);
+        if (section.galleon_gain) gameState.galleons += section.galleon_gain;
+
+        updateUI();
+
+        contentDiv.innerHTML = section.text.replace(/\n/g, '<br>');
+        if (section.status) {
+            contentDiv.innerHTML += `<div style="color: var(--gold-primary); margin-top: 2rem; font-weight: bold; font-size: 1.8rem; letter-spacing: 2px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5)">${section.status}</div>`;
+        }
+
+        choicesDiv.innerHTML = '';
+        section.choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.className = `choice-btn ${choice.class || ''}`;
+
+            let canChoose = true;
+            if (choice.requires && !gameState.inventory.includes(choice.requires)) canChoose = false;
+
+            btn.innerHTML = choice.text;
+            if (!canChoose) {
+                btn.classList.add('disabled');
+                btn.innerHTML += ` <span class="req-hint">(Requer: ${choice.requires})</span>`;
+            } else {
+                btn.onclick = () => {
+                    if (choice.item_loss) {
+                        choice.item_loss.forEach(i => {
+                            const idx = gameState.inventory.indexOf(i);
+                            if (idx > -1) gameState.inventory.splice(idx, 1);
+                        });
+                    }
+                    renderSection(choice.next);
+                };
+            }
+            choicesDiv.appendChild(btn);
+        });
+    }
+
+    function updateUI() {
+        document.getElementById('galleon-count').innerText = gameState.galleons;
+        const invList = document.getElementById('inventory-list');
+        invList.innerHTML = '';
+        gameState.inventory.forEach(item => {
+            const li = document.createElement('li');
+            li.innerText = item;
+            invList.appendChild(li);
+        });
+    }
+</script>
+{% endblock %}

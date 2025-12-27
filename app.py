@@ -798,7 +798,8 @@ FROGS_DATA = [
         'rarity_label': 'Lendário',
         'title': 'O Grande Diretor',
         'icon': '🧙‍♂️',
-        'category': 'Mestres de Hogwarts'
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
     },
     {
         'id': 'merlin',
@@ -807,8 +808,9 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'Príncipe dos Magos',
-        'icon': '📜',
-        'category': 'Lendas Medievais'
+        'icon': '✨',
+        'category': 'masters',
+        'category_label': 'Lendários'
     },
     {
         'id': 'gryffindor',
@@ -818,7 +820,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Bravo Duelista',
         'icon': '🦁',
-        'category': 'Fundadores de Hogwarts'
+        'category': 'founders',
+        'category_label': 'Fundadores'
     },
     {
         'id': 'hufflepuff',
@@ -828,7 +831,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Bondade Infinita',
         'icon': '🦡',
-        'category': 'Fundadores de Hogwarts'
+        'category': 'founders',
+        'category_label': 'Fundadores'
     },
     {
         'id': 'ravenclaw',
@@ -838,7 +842,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Mente Brilhante',
         'icon': '🦅',
-        'category': 'Fundadores de Hogwarts'
+        'category': 'founders',
+        'category_label': 'Fundadores'
     },
     {
         'id': 'slytherin',
@@ -848,7 +853,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Mestre da Ofidioglossia',
         'icon': '🐍',
-        'category': 'Fundadores de Hogwarts'
+        'category': 'founders',
+        'category_label': 'Fundadores'
     },
     {
         'id': 'flamel',
@@ -858,7 +864,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'O Imortal Alquimista',
         'icon': '💎',
-        'category': 'Alquimistas e Inventores'
+        'category': 'alchemists',
+        'category_label': 'Alquimistas'
     },
     {
         'id': 'newt',
@@ -868,7 +875,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'O Magizoologista',
         'icon': '💼',
-        'category': 'Magizoologistas e Videntes'
+        'category': 'magizoologists',
+        'category_label': 'Magizoologistas'
     },
     {
         'id': 'lockhart',
@@ -877,8 +885,9 @@ FROGS_DATA = [
         'rarity': 'common',
         'rarity_label': 'Comum',
         'title': 'Mestre do Charme',
-        'icon': '✨',
-        'category': 'Mestres de Hogwarts'
+        'icon': '😁',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
     },
     {
         'id': 'morgana',
@@ -887,8 +896,9 @@ FROGS_DATA = [
         'rarity': 'legendary',
         'rarity_label': 'Lendário',
         'title': 'Rainha das Sombras',
-        'icon': '🔮',
-        'category': 'Lendas Medievais'
+        'icon': '🌘',
+        'category': 'masters',
+        'category_label': 'Lendários'
     },
     {
         'id': 'harry_potter',
@@ -898,7 +908,8 @@ FROGS_DATA = [
         'rarity_label': 'Lendário',
         'title': 'O Eleito',
         'icon': '⚡',
-        'category': 'O Trio de Ouro e Aliados'
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
     },
     {
         'id': 'hermione_granger',
@@ -908,7 +919,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Mente Brilhante',
         'icon': '📚',
-        'category': 'O Trio de Ouro e Aliados'
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
     },
     {
         'id': 'ron_weasley',
@@ -918,7 +930,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Leal Amigo',
         'icon': '♟️',
-        'category': 'O Trio de Ouro e Aliados'
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
     },
     {
         'id': 'luna_lovegood',
@@ -928,7 +941,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'A Observadora',
         'icon': '👓',
-        'category': 'O Trio de Ouro e Aliados'
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
     },
     {
         'id': 'neville_longbottom',
@@ -938,7 +952,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'O Defensor',
         'icon': '🌱',
-        'category': 'O Trio de Ouro e Aliados'
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
     },
     {
         'id': 'mcgonagall',
@@ -948,7 +963,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'Mestre da Transfiguração',
         'icon': '🐈',
-        'category': 'Mestres de Hogwarts'
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
     },
     {
         'id': 'snape',
@@ -958,7 +974,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'O Príncipe Mestiço',
         'icon': '🧪',
-        'category': 'Mestres de Hogwarts'
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
     },
     {
         'id': 'bellatrix',
@@ -968,7 +985,8 @@ FROGS_DATA = [
         'rarity_label': 'Raro',
         'title': 'A Fanática',
         'icon': '🗡️',
-        'category': 'Outros Bruxos de Destaque'
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
     },
     {
         'id': 'wildsmith',
@@ -978,7 +996,8 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'Inventora do Pó de Flu',
         'icon': '🔥',
-        'category': 'Alquimistas e Inventores'
+        'category': 'inventors',
+        'category_label': 'Inventores'
     },
     {
         'id': 'wenlock',
@@ -988,7 +1007,8 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'Mestra da Aritmancia',
         'icon': '🔢',
-        'category': 'Alquimistas e Inventores'
+        'category': 'inventors',
+        'category_label': 'Investigadores'
     },
     {
         'id': 'vablatsky',
@@ -998,7 +1018,8 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'A Vidente',
         'icon': '🔮',
-        'category': 'Magizoologistas e Videntes'
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
     },
     {
         'id': 'woodcroft',
@@ -1008,7 +1029,8 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'Fundador de Hogsmeade',
         'icon': '🍻',
-        'category': 'Outros Bruxos de Destaque'
+        'category': 'inventors',
+        'category_label': 'Inventores'
     },
     {
         'id': 'agripa',
@@ -1017,8 +1039,9 @@ FROGS_DATA = [
         'rarity': 'rare',
         'rarity_label': 'Raro',
         'title': 'O Alqumista Místico',
-        'icon': '📖',
-        'category': 'Alquimistas e Inventores'
+        'icon': '📜',
+        'category': 'alchemists',
+        'category_label': 'Alquimistas'
     },
     {
         'id': 'ptolemy',
@@ -1028,7 +1051,8 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'O Astrônomo Antigo',
         'icon': '🪐',
-        'category': 'Outros Bruxos de Destaque'
+        'category': 'celebrities',
+        'category_label': 'Históricos'
     },
     {
         'id': 'bertie_bott',
@@ -1038,8 +1062,627 @@ FROGS_DATA = [
         'rarity_label': 'Comum',
         'title': 'Mestre dos Doces',
         'icon': '🍬',
-        'category': 'Outros Bruxos de Destaque'
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'grindelwald',
+        'name': 'Gellert Grindelwald',
+        'desc': 'Um dos bruxos das trevas mais perigosos de todos os tempos. Buscou as Relíquias da Morte e iniciou uma guerra global.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'O Revolucionário',
+        'icon': '⚡',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'voldemort',
+        'name': 'Lord Voldemort',
+        'desc': 'Aquele-Que-Não-Deve-Ser-Nomeado. O bruxo das trevas mais temido da história moderna, que buscou a imortalidade através das Horcruxes.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'O Lorde das Trevas',
+        'icon': '🐍',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'sirius_black',
+        'name': 'Sirius Black',
+        'desc': 'O prisioneiro de Azkaban que escapou. Membro da Ordem da Fênix, Maroto e padrinho de Harry Potter.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Almofadinhas',
+        'icon': '🐕',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'draco_malfoy',
+        'name': 'Draco Malfoy',
+        'desc': 'Estudante da Sonserina e rival de Harry Potter. Tornou-se Comensal da Morte jovem, mas lutou com sua consciência.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Herdeiro',
+        'icon': '🐍',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'cedric_diggory',
+        'name': 'Cedrico Diggory',
+        'desc': 'Campeão de Hogwarts no Torneio Tribruxo. Lembrado por sua justiça e bondade. Morto por Pettigrew a mando de Voldemort.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Campeão',
+        'icon': '🏆',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'moody',
+        'name': 'Alastor "Olho-Tonto" Moody',
+        'desc': 'O Auror mais famoso dos tempos modernos. Capturou inúmeros bruxos das trevas e perdeu um olho e uma perna no processo.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Auror',
+        'icon': '👁️',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'kingsley',
+        'name': 'Kingsley Shacklebolt',
+        'desc': 'Poderoso Auror e membro da Ordem da Fênix. Tornou-se Ministro da Magia após a queda de Voldemort.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Ministro',
+        'icon': '🚔',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'ollivander',
+        'name': 'Garrick Ollivander',
+        'desc': 'O maior fabricante de varinhas do mundo. Possui memória eidética para cada varinha que já vendeu.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Mestre das Varinhas',
+        'icon': '🪄',
+        'category': 'inventors',
+        'category_label': 'Mestres'
+    },
+    {
+        'id': 'gregorovitch',
+        'name': 'Mykew Gregorovitch',
+        'desc': 'Famoso fabricante de varinhas europeu e antigo dono da Varinha das Varinhas antes de Grindelwald roubá-la.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Rival de Ollivander',
+        'icon': '🔨',
+        'category': 'inventors',
+        'category_label': 'Mestres'
+    },
+    {
+        'id': 'herpo',
+        'name': 'Herpo, o Sujo',
+        'desc': 'Bruxo das trevas da Grécia Antiga. Criador do primeiro Basilisco e da primeira Horcrux conhecida.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Pai das Trevas',
+        'icon': '💀',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'ekrizdis',
+        'name': 'Ekrizdis',
+        'desc': 'Bruxo das trevas louco que habitava a ilha que se tornaria Azkaban. Atraía e torturava marinheiros trouxas.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Carceireiro',
+        'icon': '🏰',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'peverell_antioch',
+        'name': 'Antioch Peverell',
+        'desc': 'O irmão mais velho Peverell e primeiro dono da Varinha das Varinhas.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Mestre da Varinha',
+        'icon': '│',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'peverell_cadmus',
+        'name': 'Cadmus Peverell',
+        'desc': 'O irmão do meio Peverell e primeiro dono da Pedra da Ressurreição.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Mestre da Pedra',
+        'icon': '💎',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'peverell_ignotus',
+        'name': 'Ignotus Peverell',
+        'desc': 'O irmão mais novo Peverell e primeiro dono da Capa da Invisibilidade. Ancestral de Harry Potter.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Mestre da Capa',
+        'icon': '🧥',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'molly_weasley',
+        'name': 'Molly Weasley',
+        'desc': 'Matriarca da família Weasley e membro da Ordem da Fênix. Derrotou Bellatrix Lestrange em duelo singular.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Protetora',
+        'icon': '🧶',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'fred_george',
+        'name': 'Fred & George Weasley',
+        'desc': 'Gêmeos inventores e fundadores da Gemialidades Weasley. Trouxeram alegria em tempos sombrios.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Reis da Travessura',
+        'icon': '💥',
+        'category': 'inventors',
+        'category_label': 'Inventores'
+    },
+    {
+        'id': 'bowman_wright',
+        'name': 'Bowman Wright',
+        'desc': 'Ferreiro bruxo de Godric\'s Hollow que forjou o primeiro Pomo de Ouro, revolucionando o Quadribol.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Pai do Pomo',
+        'icon': '🏐',
+        'category': 'inventors',
+        'category_label': 'Inventores'
+    },
+    {
+        'id': 'dippet',
+        'name': 'Armando Dippet',
+        'desc': 'Antecessor de Dumbledore como Diretor de Hogwarts. Foi diretor quando a Câmara Secreta foi aberta pela primeira vez.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Ex-Diretor',
+        'icon': '📜',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'beedle',
+        'name': 'Beedle, o Bardo',
+        'desc': 'Autor célebre de contos infantis bruxos, incluindo "O Conto dos Três Irmãos".',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Bardo',
+        'icon': '📖',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'scrimgeour',
+        'name': 'Rufus Scrimgeour',
+        'desc': 'Ministro da Magia durante o auge da Segunda Guerra Bruxa. Morto ao se recusar a revelar o paradeiro de Harry Potter.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Ministro de Ferro',
+        'icon': '🦁',
+        'category': 'celebrities',
+        'category_label': 'Líderes'
+    },
+    {
+        'id': 'xenophilius',
+        'name': 'Xenophilius Lovegood',
+        'desc': 'Editor excêntrico da revista "O Pasquim". Defensor ferrenho de Harry Potter até ser quebrado pelo sequestro de sua filha.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Editor',
+        'icon': '📰',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'hagrid',
+        'name': 'Rubeus Hagrid',
+        'desc': 'Guardião das Chaves e Terrenos de Hogwarts. Famoso por seu amor por criaturas perigosas e sua lealdade inabalável a Dumbledore.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Guardião',
+        'icon': '🧔',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'lupin',
+        'name': 'Remus Lupin',
+        'desc': 'Membro da Ordem da Fênix e um dos Marotos. Um dos melhores professores de Defesa Contra as Artes das Trevas que Hogwarts já teve.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Aluado',
+        'icon': '🐺',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'ginny',
+        'name': 'Gina Weasley',
+        'desc': 'Poderosa bruxa e talentosa jogadora de Quadribol. Sobreviveu ao controle do Diário de Riddle e lutou bravamente em Hogwarts.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Artilheira',
+        'icon': '🧹',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'slughorn',
+        'name': 'Horácio Slughorn',
+        'desc': 'Mestre de Poções de longa data, conhecido por seu "Clube do Slugue". Possuía a memória crucial sobre as Horcruxes de Riddle.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Colecionador',
+        'icon': '⏳',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'umbridge',
+        'name': 'Dolores Umbridge',
+        'desc': 'Alta Inquisidora de Hogwarts e funcionária do Ministério. Conhecida por seus métodos cruéis e sua obsessão por ordem e gatinhos.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Alta Inquisidora',
+        'icon': '🎀',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'trelawney',
+        'name': 'Sibila Trelawney',
+        'desc': 'Professora de Adivinhação em Hogwarts. Fez a profecia que mudou o destino de Harry Potter e Lord Voldemort.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'A Vidente',
+        'icon': '🍵',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'regulus_black',
+        'name': 'Régulo Black',
+        'desc': 'Membro da Sonserina e ex-Comensal da Morte que traiu Voldemort ao descobrir suas Horcruxes, sacrificando-se para tentar destruí-las.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Corajoso Desertor',
+        'icon': '💚',
+        'category': 'masters',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'narcissa',
+        'name': 'Narcisa Malfoy',
+        'desc': 'Matriarca dos Malfoy. Embora leal à família, sua mentira para Voldemort sobre a morte de Harry foi crucial para a vitória final.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Mãe Leal',
+        'icon': '🕊️',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'fleur',
+        'name': 'Fleur Delacour',
+        'desc': 'Campeã de Beauxbatons no Torneio Tribruxo. Uma bruxa talentosa e mística que lutou na Batalha de Hogwarts.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Beleza e Poder',
+        'icon': '🌸',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'krum',
+        'name': 'Vitor Krum',
+        'desc': 'O melhor Apanhador do mundo e Campeão de Durmstrang no Torneio Tribruxo. Famoso por sua habilidade excepcional sobre a vassoura.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Apanhador Estrela',
+        'icon': '🧹',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'karkaroff',
+        'name': 'Igor Karkaroff',
+        'desc': 'Diretor de Durmstrang e ex-Comensal da Morte. Um bruxo complexo que fugiu após o retorno de Voldemort.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Diretor de Durmstrang',
+        'icon': '❄️',
+        'category': 'masters',
+        'category_label': 'Lendários'
+    },
+    {
+        'id': 'maxime',
+        'name': 'Olímpia Maxime',
+        'desc': 'Diretora da Academia de Magia Beauxbatons. Uma bruxa elegante e poderosa de ascendência meio-gigante.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Diretora de Beauxbatons',
+        'icon': '🏰',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'aberforth',
+        'name': 'Aberforth Dumbledore',
+        'desc': 'Irmão de Alvo Dumbledore e dono do Cabeça de Javali. Ajudou inúmeros estudantes durante a resistência em Hogwarts.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Guardião Discreto',
+        'icon': '🐐',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'james_potter',
+        'name': 'Tiago Potter',
+        'desc': 'Líder dos Marotos e pai de Harry Potter. Um talentoso Animago e membro original da Ordem da Fênix.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Pontas',
+        'icon': '🦌',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'lily_potter',
+        'name': 'Lílian Potter',
+        'desc': 'Uma das bruxas mais talentosas de sua geração. Seu sacrifício final criou a proteção que salvou a vida de seu filho.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'Invocadora de Proteção Antiga',
+        'icon': '🦌',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'tonks',
+        'name': 'Ninfadora Tonks',
+        'desc': 'Aurora e Metamorfomaga. Membro da Ordem da Fênix, conhecida por sua bravura e sua habilidade de mudar de aparência à vontade.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Metamorfomaga',
+        'icon': '🌈',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'lucius_malfoy',
+        'name': 'Lúcio Malfoy',
+        'desc': 'Aristocrata bruxo e braço direito de Voldemort por anos. Um Comensal da Morte de sangue-puro que valoriza poder e status acima de tudo.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Patriarca Malfoy',
+        'icon': '🐍',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'arthur_weasley',
+        'name': 'Arthur Weasley',
+        'desc': 'Funcionário do Ministério da Magia e entusiasta de artefatos trouxas. Pai leal e membro dedicado da Ordem da Fênix.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Entusiasta de Trouxas',
+        'icon': '🔌',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'bill_weasley',
+        'name': 'Guilherme Weasley',
+        'desc': 'Desfeitiçador do Gringotes no Egito e irmão mais velho dos Weasley. Lutou bravamente e sobreviveu ao ataque de Fenrir Greyback.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Desfeitiçador',
+        'icon': '🧱',
+        'category': 'hogwarts',
+        'category_label': 'Heróis'
+    },
+    {
+        'id': 'charlie_weasley',
+        'name': 'Carlos Weasley',
+        'desc': 'Trabalha com dragões na Romênia. Um talentoso buscador de Quadribol em sua época e especialista em criaturas mágicas perigosas.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Domador de Dragões',
+        'icon': '🦎',
+        'category': 'magizoologists',
+        'category_label': 'Magizoologistas'
+    },
+    {
+        'id': 'bartemius_crouch_jr',
+        'name': 'Bartô Crouch Jr.',
+        'desc': 'Comensal da Morte fanático que se infiltrou em Hogwarts como Olho-Tonto Moody para garantir o retorno de Lord Voldemort.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Infiltrado',
+        'icon': '👺',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'pomona_sprout',
+        'name': 'Pomona Sprout',
+        'desc': 'Chefe da casa Lufa-Lufa e Professora de Herbologia. Suas plantas foram cruciais para salvar os alunos petrificados pelo Basilisco.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Mestra da Herbologia',
+        'icon': '🌿',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'filius_flitwick',
+        'name': 'Fílio Flitwick',
+        'desc': 'Chefe da casa Corvinal e Professor de Feitiços. Um antigo campeão de duelos e mestre em magias complexas de proteção.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Mestre de Encantamentos',
+        'icon': '🪄',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'rolanda_hooch',
+        'name': 'Madame Hooch',
+        'desc': 'Instrutora de voo e juíza de Quadribol em Hogwarts. Possui olhos amarelos como os de um falcão e uma autoridade natural sobre vassouras.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Instrutora de Voo',
+        'icon': '🧹',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'peter_pettigrew',
+        'name': 'Pedro Pettigrew',
+        'desc': 'O Maroto que traiu os pais de Harry Potter. Passou doze anos escondido como o rato Perebas antes de retornar a Voldemort.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'Rabicho',
+        'icon': '🐀',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'cho_chang',
+        'name': 'Cho Chang',
+        'desc': 'Apanhadora da Corvinal e membro da Armada de Dumbledore. Enfrentou grandes perdas mas permaneceu firme em sua oposição às trevas.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Buscadora da Corvinal',
+        'icon': '🦅',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'dean_thomas',
+        'name': 'Dino Thomas',
+        'desc': 'Estudante da Grifinória e excelente artista. Lutou na Batalha de Hogwarts e sobreviveu à perseguição aos nascidos-trouxas.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'O Artista da Grifinória',
+        'icon': '🎨',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'seamus_finnigan',
+        'name': 'Simas Finnigan',
+        'desc': 'Melhor amigo de Dino Thomas, conhecido por sua "habilidade" explosiva com feitiços básicos e sua coragem final na batalha.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Especialista em Explosões',
+        'icon': '💥',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'andromeda_tonks',
+        'name': 'Andrômeda Tonks',
+        'desc': 'Irmã de Narcisa e Bellatrix, mas renegada por casar com um nascido-trouxa. Prestou auxílio vital à Ordem da Fênix.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'A Renegada',
+        'icon': '✨',
+        'category': 'celebrities',
+        'category_label': 'Celebridades'
+    },
+    {
+        'id': 'percy_weasley',
+        'name': 'Percy Weasley',
+        'desc': 'Ambição e regras foram suas marcas, mas seu retorno à família na Batalha de Hogwarts provou que seu coração estava no lugar certo.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Monitor-Chefe',
+        'icon': '👓',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'fenrir_greyback',
+        'name': 'Fenrir Greyback',
+        'desc': 'O lobisomem mais selvagem conhecido. Um aliado cruel dos Comensais da Morte que buscava infectar o maior número possível de pessoas.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Alfa Selvagem',
+        'icon': '🐺',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'antonin_dolohov',
+        'name': 'Antonin Dolohov',
+        'desc': 'Um dos Comensais da Morte originais e um duelista extremamente habilidoso e brutal, responsável por grandes baixas na Ordem.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Duelista Maldito',
+        'icon': '🔥',
+        'category': 'masters',
+        'category_label': 'Artes das Trevas'
+    },
+    {
+        'id': 'lavender_brown',
+        'name': 'Lilá Brown',
+        'desc': 'Estudante da Grifinória e entusiasta de Adivinhação. Membro da Armada de Dumbledore, lutou corajosamente contra Greyback.',
+        'rarity': 'common',
+        'rarity_label': 'Comum',
+        'title': 'Entusiasta de Destinos',
+        'icon': '🔮',
+        'category': 'hogwarts',
+        'category_label': 'Hogwarts'
+    },
+    {
+        'id': 'bartemius_crouch_sr',
+        'name': 'Bartô Crouch Sr.',
+        'desc': 'Chefe do Departamento de Cooperação Internacional em Magia. Um homem rígido que lutou contra as trevas com métodos igualmente sombrios.',
+        'rarity': 'rare',
+        'rarity_label': 'Raro',
+        'title': 'O Chefe do Departamento',
+        'icon': '🏛️',
+        'category': 'celebrities',
+        'category_label': 'Líderes'
+    },
+    {
+        'id': 'andros_the_invincible',
+        'name': 'Andros, o Inviável',
+        'desc': 'Bruxo da Grécia Antiga que dizem ter sido o único capaz de conjurar um Patrono do tamanho de um gigante.',
+        'rarity': 'legendary',
+        'rarity_label': 'Lendário',
+        'title': 'O Conjurador de Gigantes',
+        'icon': '🔱',
+        'category': 'masters',
+        'category_label': 'Lendários'
     }
+
+
 ]
 # --- DADOS DOS FEITIÇOS ---
 SPELLS_DATA = [
@@ -1647,392 +2290,6 @@ POTIONS_DATA = [
     }
 ]
 
-# --- DADOS DA ENCICLOPÉDIA DE BRUXOS ---
-ENCYCLOPEDIA_WIZARDS_DATA = [
-    {
-        'id': 'dumbledore_full',
-        'name': 'Alvo Dumbledore',
-        'full_name': 'Alvo Percival Wulfrico Brian Dumbledore',
-        'birth': '1881 - 1997',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Mestiço',
-        'field': 'Transfiguração / Defesa',
-        'achievements': [
-            'Derrotou o bruxo das trevas Gerardo Grindelwald em 1945',
-            'Descobriu os doze usos do sangue de dragão',
-            'Criador da Ordem da Fênix',
-            'Supremo Caceique da Confederação Internacional de Bruxos'
-        ],
-        'bio': 'Considerado por muitos o maior bruxo da era moderna, Dumbledore foi professor de Transfiguração e mais tarde Diretor de Hogwarts. Sua sabedoria e poder eram lendários, sendo o único bruxo que Lord Voldemort já temeu.',
-        'icon': '🧙‍♂️'
-    },
-    {
-        'id': 'merlin_full',
-        'name': 'Merlin',
-        'full_name': 'Merlin (Príncipe dos Magos)',
-        'birth': 'Idade Média',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Sangue-Puro',
-        'field': 'Encantamentos',
-        'achievements': [
-            'Fundador da Ordem de Merlin',
-            'Conselheiro do Rei Arthur',
-            'Eminente defensor dos direitos dos trouxas',
-            'Especialista em encantos de levitação e ocultação'
-        ],
-        'bio': 'Talvez o bruxo mais famoso da história. Merlin acreditava que os bruxos deveriam ajudar os trouxas e viver em paz com eles. Curiosamente, foi um aluno da Sonserina em Hogwarts, provando que a ambição pode ser usada para o bem maior.',
-        'icon': '📜'
-    },
-    {
-        'id': 'voldemort_full',
-        'name': 'Lord Voldemort',
-        'full_name': 'Tom Servolo Riddle',
-        'birth': '1926 - 1998',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Mestiço',
-        'field': 'Artes das Trevas',
-        'achievements': [
-            'O bruxo das trevas mais perigoso de todos os tempos',
-            'Criador de múltiplas Horcruxes',
-            'Líder dos Comensais da Morte',
-            'Herdeiro de Slytherin e mestre da Ofidioglossia'
-        ],
-        'bio': 'Aquele-Que-Não-Deve-Ser-Nomeado espalhou terror pelo mundo bruxo durante décadas. Obcecado pela imortalidade e pela pureza de sangue, ele transformou-se em uma criatura quase inumana através de magia negra proibida.',
-        'icon': '🐍'
-    },
-    {
-        'id': 'hermione_full',
-        'name': 'Hermione Granger',
-        'full_name': 'Hermione Jean Granger',
-        'birth': '1979 - Presente',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Nascida-Trouxa',
-        'field': 'Pesquisa Mágica / Lei',
-        'achievements': [
-            'Ministra da Magia (desde 2019)',
-            'Co-fundadora da Armada de Dumbledore',
-            'Responsável por destruir a Horcrux da Taça de Hufflepuff',
-            'Lutou ativamente contra as injustiças sofridas por Elfos Domésticos'
-        ],
-        'bio': 'Conhecida como a bruxa mais brilhante de sua geração, Hermione provou que o conhecimento e a dedicação superam qualquer linhagem de sangue. Sua inteligência foi crucial para a derrota de Lord Voldemort.',
-        'icon': '📚'
-    },
-    {
-        'id': 'snape_full',
-        'name': 'Severo Snape',
-        'full_name': 'Severo Snape (Príncipe Mestiço)',
-        'birth': '1960 - 1998',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Mestiço',
-        'field': 'Poções / Artes das Trevas',
-        'achievements': [
-            'Mestre de Poções e Diretor de Hogwarts',
-            'Criador de feitiços como Sectumsempra e Muffliato',
-            'Agente Duplo lendário na guerra contra Voldemort',
-            'Mestre em Oclumência e Legilimência'
-        ],
-        'bio': 'Um homem complexo cuja lealdade foi questionada até o fim. Snape dedicou sua vida a proteger Harry Potter em memória de Lilian Evans, atuando no papel mais perigoso da Segunda Guerra Bruxa.',
-        'icon': '🧪'
-    },
-    {
-        'id': 'newt_full',
-        'name': 'Newt Scamander',
-        'full_name': 'Newton Artemis Fido Scamander',
-        'birth': '1897 - Presente',
-        'house': 'Hufflepuff',
-        'house_label': 'Lufa-Lufa',
-        'blood': 'Sangue-Puro',
-        'field': 'Magizoologia',
-        'achievements': [
-            'Autor de "Animais Fantásticos e Onde Habitam"',
-            'Ordem de Merlin, Segunda Classe',
-            'Especialista mundial em cuidados com seres mágicos',
-            'Peça chave na derrota de Grindelwald em Nova York'
-        ],
-        'bio': 'Um explorador incansável que viajou pelos cinco continentes para documentar criaturas mágicas. Newt ensinou ao mundo bruxo que os animais fantásticos devem ser protegidos, não apenas temidos.',
-        'icon': '💼'
-    },
-    {
-        'id': 'ravenclaw_full',
-        'name': 'Rowena Ravenclaw',
-        'full_name': 'Rowena Ravenclaw',
-        'birth': 'Século X',
-        'house': 'Ravenclaw',
-        'house_label': 'Corvinal',
-        'blood': 'Sangue-Puro',
-        'field': 'Arquitetura Mágica',
-        'achievements': [
-            'Co-fundadora da Escola de Magia de Hogwarts',
-            'Criadora do Diadema da Sabedoria',
-            'Arquiteta das plantas mutáveis de Hogwarts',
-            'Mãe da Dama Cinzenta'
-        ],
-        'bio': 'Famosa por sua inteligência e criatividade inigualáveis. Rowena acreditava que a mente é o maior tesouro de um bruxo. Ela selecionava alunos que demonstravam sagacidade e aprendizado rápido.',
-        'icon': '🦅'
-    },
-    {
-        'id': 'gryffindor_full',
-        'name': 'Godric Gryffindor',
-        'full_name': 'Godric Gryffindor',
-        'birth': 'Século X',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Sangue-Puro',
-        'field': 'Duelos / Transfiguração',
-        'achievements': [
-            'Co-fundador de Hogwarts',
-            'Primeiro dono do Chapéu Seletor',
-            'Defensor dos nascidos-trouxas',
-            'O maior duelista de seu tempo'
-        ],
-        'bio': 'Godric valorizava a coragem e a determinação acima de tudo. Foi ele quem teve a ideia de usar seu próprio chapéu para selecionar os alunos de Hogwarts séculos depois de sua morte.',
-        'icon': '🦁'
-    },
-    {
-        'id': 'slytherin_full',
-        'name': 'Salazar Slytherin',
-        'full_name': 'Salazar Slytherin',
-        'birth': 'Século X',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Sangue-Puro',
-        'field': 'Legilimência / Basiliscos',
-        'achievements': [
-            'Co-fundador de Hogwarts',
-            'Criador da Câmara Secreta',
-            'Primeiro Ofidioglota registrado',
-            'Defensor da supremacia puro-sangue'
-        ],
-        'bio': 'Um bruxo brilhante, mas controverso. Salazar acreditava que apenas bruxos de sangue puro deveriam ser ensinados em Hogwarts, o que levou ao seu afastamento dos outros fundadores.',
-        'icon': '🐍'
-    },
-    {
-        'id': 'hufflepuff_full',
-        'name': 'Helga Hufflepuff',
-        'full_name': 'Helga Hufflepuff',
-        'birth': 'Século X',
-        'house': 'Hufflepuff',
-        'house_label': 'Lufa-Lufa',
-        'blood': 'Sangue-Puro',
-        'field': 'Feitiços Culinários',
-        'achievements': [
-            'Co-fundadora de Hogwarts',
-            'Criadora de banquetes lendários',
-            'Campeã dos Elfos Domésticos',
-            'Introduziu a igualdade na seleção de alunos'
-        ],
-        'bio': 'Helga era conhecida por sua natureza gentil e inclusiva. Ela aceitava todos os alunos que mostravam dedicação e lealdade, sem se importar com linhagem ou grandes talentos inatos.',
-        'icon': '🦡'
-    },
-    {
-        'id': 'grindelwald_full',
-        'name': 'Gerardo Grindelwald',
-        'full_name': 'Gerardo Grindelwald',
-        'birth': '1883 - 1998',
-        'house': 'Durmstrang',
-        'house_label': 'Durmstrang',
-        'blood': 'Sangue-Puro',
-        'field': 'Artes das Trevas',
-        'achievements': [
-            'Instigador da Guerra Bruxa Global',
-            'Portador da Varinha das Varinhas',
-            'Visionário das Trevas',
-            'Quase expôs o mundo mágico aos trouxas'
-        ],
-        'bio': 'Antes de Voldemort, Grindelwald era a maior ameaça ao mundo mágico. Ele acreditava que os bruxos deveriam governar os trouxas "para o bem maior". Foi derrotado em um duelo lendário por Dumbledore.',
-        'icon': '💀'
-    },
-    {
-        'id': 'flamel_full',
-        'name': 'Nicolau Flamel',
-        'full_name': 'Nicolau Flamel',
-        'birth': '1327 - 1992',
-        'house': 'Beauxbatons',
-        'house_label': 'Beauxbatons',
-        'blood': 'Sangue-Puro',
-        'field': 'Alquimia',
-        'achievements': [
-            'Criador da Pedra Filosofal',
-            'Alcançou a imortalidade (Elixir da Vida)',
-            'Financiador de Beauxbatons',
-            'Autoridade mundial em Alquimia'
-        ],
-        'bio': 'O único criador conhecido da Pedra Filosofal. Flamel viveu mais de 600 anos com sua esposa Perenelle, acumulando vasto conhecimento mágico antes de decidir destruir a pedra e aceitar a morte.',
-        'icon': '💎'
-    },
-    {
-        'id': 'ollivander_full',
-        'name': 'Garrick Olivaras',
-        'full_name': 'Garrick Olivaras',
-        'birth': '1919 - Presente',
-        'house': 'Ravenclaw',
-        'house_label': 'Corvinal',
-        'blood': 'Mestiço',
-        'field': 'Varinhologia',
-        'achievements': [
-            'Considerado o melhor fabricante de varinhas do mundo',
-            'Revolucionou o uso de núcleos mágicos',
-            'Possui memória edética para varinhas',
-            'Fornecedor de varinhas para a realeza bruxa'
-        ],
-        'bio': 'A família Olivaras fabrica varinhas desde 382 a.C., mas Garrick elevou a arte a um novo nível. Ele acredita que a varinha escolhe o bruxo, um princípio fundamental da magia moderna.',
-        'icon': '🪄'
-    },
-    {
-        'id': 'lovegood_full',
-        'name': 'Luna Lovegood',
-        'full_name': 'Luna Lovegood',
-        'birth': '1981 - Presente',
-        'house': 'Ravenclaw',
-        'house_label': 'Corvinal',
-        'blood': 'Sangue-Puro',
-        'field': 'Magizoologia',
-        'achievements': [
-            'Descobridora de novas espécies de criaturas',
-            'Membro chave da Armada de Dumbledore',
-            'Sobrevivente da Batalha de Hogwarts',
-            'Naturalista Chefe do Pasquim'
-        ],
-        'bio': 'Muitas vezes incompreendida por sua excentricidade, Luna possui uma percepção única da verdade. Sua lealdade aos amigos e coragem em face do perigo provaram ser inestimáveis na guerra contra Voldemort.',
-        'icon': '👓'
-    },
-    {
-        'id': 'mcgonagall_full',
-        'name': 'Minerva McGonagall',
-        'full_name': 'Minerva McGonagall',
-        'birth': '1935 - Presente',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Mestiça',
-        'field': 'Transfiguração',
-        'achievements': [
-            'Animaga registrada (Gato Tigrado)',
-            'Diretora de Hogwarts após a guerra',
-            'Vencedora do prêmio "Revelação" da Transfiguração Hoje',
-            'Líder da defesa do castelo na Batalha de Hogwarts'
-        ],
-        'bio': 'Severa, mas justa. Minerva é uma das bruxas mais poderosas de sua geração. Sua habilidade em Transfiguração é inigualável, e sua dedicação a Hogwarts e seus alunos é absoluta.',
-        'icon': '🐈'
-    },
-    {
-        'id': 'sirius_full',
-        'name': 'Sirius Black',
-        'full_name': 'Sirius Orion Black',
-        'birth': '1959 - 1996',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Sangue-Puro',
-        'field': 'Defesa / Duelos',
-        'achievements': [
-            'Um dos criadores do Mapa do Maroto',
-            'Primeiro bruxo a fugir de Azkaban sem ajuda',
-            'Membro da Ordem da Fênix original',
-            'Padrinho de Harry Potter'
-        ],
-        'bio': 'O único da família Black a ser selecionado para a Grifinória. Rebelde e leal até o fim, Sirius passou 12 anos em Azkaban por um crime que não cometeu, mantendo sua sanidade focando em sua inocência.',
-        'icon': '🐕‍🦺'
-    },
-    {
-        'id': 'remus_full',
-        'name': 'Remus Lupin',
-        'full_name': 'Remus John Lupin',
-        'birth': '1960 - 1998',
-        'house': 'Gryffindor',
-        'house_label': 'Grifinória',
-        'blood': 'Mestiço',
-        'field': 'Defesa Contra as Artes das Trevas',
-        'achievements': [
-            'Um dos criadores do Mapa do Maroto',
-            'Membro da Ordem da Fênix',
-            'Lutou bravamente na Batalha de Hogwarts',
-            'Primeiro Lobisomem a receber Ordem de Merlin (póstuma)'
-        ],
-        'bio': 'Apesar de sofrer com a licantropia, Lupin foi um dos melhores professores de Defesa que Hogwarts já teve. Bondoso e paciente, ele ensinou Harry a conjurar o Patrono.',
-        'icon': '🌕'
-    },
-    {
-        'id': 'moody_full',
-        'name': 'Alastor Moody',
-        'full_name': 'Alastor "Olho-Tonto" Moody',
-        'birth': 'Desconhecido - 1997',
-        'house': 'Desconhecida',
-        'house_label': 'Auror',
-        'blood': 'Sangue-Puro',
-        'field': 'Combate às Trevas',
-        'achievements': [
-            'O Auror mais famoso e temido do Ministério',
-            'Preencheu metade das celas de Azkaban sozinho',
-            'Membro sênior da Ordem da Fênix',
-            'Especialista em detecção de Artes das Trevas'
-        ],
-        'bio': 'Paranoico e cheio de cicatrizes, Moody é a prova viva dos perigos de lutar contra as trevas. Seu lema "VIGILÂNCIA CONSTANTE!" salvou inúmeras vidas durante as guerras bruxas.',
-        'icon': '👁️'
-    },
-    {
-        'id': 'kingsley_full',
-        'name': 'Kingsley Shacklebolt',
-        'full_name': 'Kingsley Shacklebolt',
-        'birth': '1960 - Presente',
-        'house': 'Desconhecida',
-        'house_label': 'Auror',
-        'blood': 'Sangue-Puro',
-        'field': 'Política / Duelos',
-        'achievements': [
-            'Ministro da Magia que reformou o Ministério',
-            'Auror de elite encarregado de caçar Sirius Black (agente duplo)',
-            'Lutou contra Voldemort pessoalmente',
-            'Erradicou a corrupção pró-sangue-puro'
-        ],
-        'bio': 'Sua voz grave e calmante esconde um duelista formidável. Kingsley foi fundamental para reconstruir o mundo bruxo após a queda de Voldemort, trazendo uma era de transparência e igualdade.',
-        'icon': '🛡️'
-    },
-    {
-        'id': 'bellatrix_full',
-        'name': 'Bellatrix Lestrange',
-        'full_name': 'Bellatrix Lestrange',
-        'birth': '1951 - 1998',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Sangue-Puro',
-        'field': 'Artes das Trevas',
-        'achievements': [
-            'A Comensal da Morte mais leal e perigosa',
-            'Mestra em Oclumência (treinada por Voldemort)',
-            'Responsável pela tortura dos Longbottom',
-            'Assassina de Sirius Black'
-        ],
-        'bio': 'Fanática e sádica, Bellatrix era o braço direito de Voldemort. Sua devoção ao Lorde das Trevas beirava a obsessão, e sua habilidade em duelos só era superada por seu prazer em causar dor.',
-        'icon': '🗡️'
-    },
-    {
-        'id': 'draco_full',
-        'name': 'Draco Malfoy',
-        'full_name': 'Draco Lucius Malfoy',
-        'birth': '1980 - Presente',
-        'house': 'Slytherin',
-        'house_label': 'Sonserina',
-        'blood': 'Sangue-Puro',
-        'field': 'Alquimia / Poções',
-        'achievements': [
-            'Reparou o Armário Sumidouro',
-            'Desarmou Dumbledore (ganhando a Varinha das Varinhas)',
-            'Financiador de pesquisas alquímicas após a guerra',
-            'Colecionador de artefatos das trevas (reformado)'
-        ],
-        'bio': 'Criado para acreditar na supremacia do sangue, Draco teve seu mundo abalado pela realidade da guerra. Embora tenha servido aos Comensais, suas hesitações finais mostraram que ainda havia humanidade nele.',
-        'icon': '🐍'
-    }
-]
-
-@app.route('/bruxos')
-def wizards():
-    return render_template('wizards.html', wizards=ENCYCLOPEDIA_WIZARDS_DATA, active_tab='wizards')
-
 @app.route('/pocoes')
 def potions():
     return render_template('potions.html', potions=POTIONS_DATA, active_tab='potions')
@@ -2040,6 +2297,10 @@ def potions():
 @app.route('/feiticos')
 def spells():
     return render_template('spells.html', spells=SPELLS_DATA, active_tab='spells')
+
+@app.route('/bruxos')
+def wizards():
+    return render_template('wizards.html', wizards=FROGS_DATA, active_tab='wizards')
 
 @app.route('/sapos')
 def frogs():
@@ -2052,6 +2313,10 @@ def creatures():
 @app.route('/mundo')
 def world():
     return render_template('world.html', houses=WORLD_DATA, active_tab='world')
+
+@app.route('/aventuras')
+def adventures():
+    return render_template('adventures.html', active_tab='adventures')
 
 if __name__ == '__main__':
     app.run(debug=True)
