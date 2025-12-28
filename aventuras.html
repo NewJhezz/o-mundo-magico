@@ -476,6 +476,60 @@
     .hidden {
         display: none !important;
     }
+
+    /* --- RESPONSIVIDADE MOBILE --- */
+    @media (max-width: 768px) {
+        .adventure-wrapper {
+            margin: 1rem auto;
+            padding: 0 10px;
+        }
+
+        .setup-view {
+            padding: 1.5rem;
+        }
+
+        .adventure-main-layout {
+            grid-template-columns: 1fr;
+            /* Muda para coluna única */
+            gap: 1.5rem;
+        }
+
+        .game-sidebar {
+            order: 2;
+            /* Coloca o inventário abaixo da história no mobile */
+        }
+
+        .story-area {
+            order: 1;
+        }
+
+        .parchment {
+            padding: 1.5rem;
+            min-height: auto;
+        }
+
+        .story-text {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .library-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .char-box {
+            width: 100%;
+            /* Personagens ocupam largura total */
+            padding: 1.5rem;
+        }
+
+        .choice-btn {
+            padding: 1.2rem;
+            /* Botões maiores para toque */
+            font-size: 1rem;
+        }
+    }
 </style>
 
 <script>
