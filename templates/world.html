@@ -71,13 +71,15 @@
             <span class="click-hint">Toque para descobrir</span>
         </a>
 
-        <div class="category-card locked" title="Em breve">
-            <div class="category-icon">🏰</div>
+        <!-- Card Magizoologia -->
+        <a href="{{ url_for('magizoology') }}" class="category-card" style="border-color: var(--gold-primary);">
+            <div class="category-icon">💼</div>
             <div class="category-info">
-                <h2>Escolas</h2>
-                <p>Breve: Hogwarts, Durmstrang e outras.</p>
+                <h2>Magizoologia</h2>
+                <p>Santuário: Resgate, cuide e crie criaturas mágicas.</p>
             </div>
-        </div>
+            <span class="click-hint">Entrar no Santuário</span>
+        </a>
 
         <!-- Card Aventuras (Livro-Jogo) -->
         <a href="{{ url_for('adventures') }}" class="category-card">
