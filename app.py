@@ -424,6 +424,10 @@ def home():
     # Landing Page Mágica
     return render_template('world.html')
 
+@app.route('/magizoologia')
+def magizoology():
+    return render_template('magizoology.html')
+
 @app.route('/varinhas')
 def wands_hub():
     # Redireciona para o início da jornada das varinhas (Madeiras)

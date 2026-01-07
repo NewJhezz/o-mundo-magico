@@ -28,6 +28,7 @@ def build_static():
             content = content.replace('href="/pocoes"', 'href="./pocoes.html"')
             content = content.replace('href="/bruxos"', 'href="./bruxos.html"')
             content = content.replace('href="/aventuras"', 'href="./aventuras.html"')
+            content = content.replace('href="/magizoologia"', 'href="./magizoologia.html"')
             return content
 
         # --- 1. Abertura (Mundo) ---
@@ -99,6 +100,13 @@ def build_static():
         with open('aventuras.html', 'w', encoding='utf-8') as f:
             f.write(fix_links(content))
         print("OK: aventuras.html gerado!")
+
+        # --- 11. Magizoologia ---
+        from app import magizoology
+        content = magizoology()
+        with open('magizoologia.html', 'w', encoding='utf-8') as f:
+            f.write(fix_links(content))
+        print("OK: magizoologia.html gerado!")
 
     print("CONCLUIDO: Abra 'index.html' para entrar no Mundo Magico.")
 

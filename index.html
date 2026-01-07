@@ -30,25 +30,6 @@
         <p class="hero-subtitle">Explore os segredos, artefatos e histórias do universo bruxo.</p>
     </div>
 
-    <!-- Seção de Curiosidades (Trivia) -->
-    <div class="trivia-container">
-        <div class="trivia-card" id="triviaCard">
-            <div class="trivia-header">
-                <span class="trivia-badge">Curiosidade Mágica</span>
-                <span class="trivia-type" id="triviaType">Múltipla Escolha</span>
-            </div>
-            <div class="trivia-content">
-                <h3 id="triviaQuestion">Carregando mistérios...</h3>
-                <div class="trivia-options" id="triviaOptions">
-                    <!-- Opções injetadas via JS -->
-                </div>
-                <div class="trivia-explanation" id="triviaExplanation">
-                    <!-- Explicação injetada via JS -->
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="categories-grid">
         <!-- Card Varinhas -->
         <a href="./varinhas_madeiras.html" class="category-card">
@@ -109,17 +90,18 @@
             <span class="click-hint">Toque para descobrir</span>
         </a>
 
-        <div class="category-card locked" title="Em breve">
-            <div class="category-icon">🏰</div>
+        <!-- Card Magizoologia -->
+        <a href="./magizoologia.html" class="category-card" style="border-color: var(--gold-primary);">
+            <div class="category-icon">💼</div>
             <div class="category-info">
-                <h2>Escolas</h2>
-                <p>Breve: Hogwarts, Durmstrang e outras.</p>
+                <h2>Magizoologia</h2>
+                <p>Santuário: Resgate, cuide e crie criaturas mágicas.</p>
             </div>
-        </div>
+            <span class="click-hint">Entrar no Santuário</span>
+        </a>
 
         <!-- Card Aventuras (Livro-Jogo) -->
-        <a href="./aventuras.html" class="category-card featured-card">
-            <div class="new-badge">NOVO</div>
+        <a href="./aventuras.html" class="category-card">
             <div class="category-icon">📖</div>
             <div class="category-info">
                 <h2>Aventuras</h2>
@@ -130,258 +112,6 @@
 
     </div>
 </div>
-
-<script>
-    const triviaData = [
-        {
-            question: "Qual é o núcleo da Varinha das Varinhas?",
-            type: "Múltipla Escolha",
-            options: ["Pena de Fênix", "Pelo de Cauda de Testrálio", "Coração de Dragão"],
-            correct: 1,
-            explanation: "É um núcleo raro e instável, e diz-se que apenas quem consegue encarar a morte pode mestrar essa varinha."
-        },
-        {
-            question: "Onde Alvo Dumbledore diz ter uma cicatriz que é um mapa perfeito?",
-            type: "Múltipla Escolha",
-            options: ["Do metrô de Londres", "De Hogwarts", "Do Ministério da Magia"],
-            correct: 0,
-            explanation: "Ele menciona isso no primeiro livro/filme, dizendo que é uma cicatriz acima do joelho esquerdo."
-        },
-        {
-            question: "Merlin, o mago mais famoso da história, foi de qual casa em Hogwarts?",
-            type: "Múltipla Escolha",
-            options: ["Grifinória", "Corvinal", "Sonserina"],
-            correct: 2,
-            explanation: "Merlin acreditava que bruxos deveriam ajudar trouxas e foi um Sonserino orgulhoso."
-        },
-        {
-            question: "Qual é a senha para entrar no escritório de Dumbledore em 'A Câmara Secreta'?",
-            type: "Múltipla Escolha",
-            options: ["Varinhas de Alcaçuz", "Gota de Limão (Sherbet Lemon)", "Feijõezinhos de Todos os Sabores"],
-            correct: 1,
-            explanation: "Dumbledore adora doces trouxas. 'Gota de Limão' é a senha no segundo ano."
-        },
-        {
-            question: "'Harry Potter foi a última Horcrux criada por Voldemort.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Nagini foi transformada em Horcrux em 1994, anos depois do acidente que transformou Harry em uma 'quase-Horcrux'."
-        },
-        {
-            question: "'Argus Filch, o zelador, é um trouxa.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Ele não é trouxa, ele é um Aborto (Squib). Ele nasceu de pais bruxos, mas não tem magia."
-        },
-        {
-            question: "'No primeiro livro, Hermione conserta os óculos de Harry no trem com Oculus Reparo.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Isso só acontece no filme. No livro, ela não usa magia nos óculos dele lá."
-        },
-        {
-            question: "'O Patrono de Rony Weasley é um cachorro.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "O Patrono dele é um Jack Russell Terrier. Estes cães são conhecidos por caçar lontras (o Patrono da Hermione)."
-        },
-        {
-            question: "'A professora McGonagall já foi uma jogadora de Quadribol talentosa.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 0,
-            explanation: "Ela jogou pela Grifinória em sua juventude e só parou devido a uma lesão feia."
-        },
-        {
-            question: "Quantas escadas existem no castelo de Hogwarts?",
-            type: "Múltipla Escolha",
-            options: ["142", "99", "365"],
-            correct: 0,
-            explanation: "Segundo o livro 'A Pedra Filosofal', existem exatamente 142 escadarias no castelo."
-        },
-        {
-            question: "Qual é a forma do Patronus de Hermione Granger?",
-            type: "Múltipla Escolha",
-            options: ["Um Gato", "Uma Lontra", "Uma Coruja"],
-            correct: 1,
-            explanation: "É uma lontra, que curiosamente é o animal favorito de J.K. Rowling."
-        },
-        {
-            question: "O que Dumbledore deixou a Ron Weasley no seu testamento?",
-            type: "Múltipla Escolha",
-            options: ["A Espada de Gryffindor", "O Livro 'Os Contos de Beedle'", "O Desiluminador"],
-            correct: 2,
-            explanation: "O Desiluminador ajudou Ron a encontrar o caminho de volta para Harry e Hermione."
-        },
-        {
-            question: "Quem é o fantasma residente da casa Slytherin?",
-            type: "Múltipla Escolha",
-            options: ["O Barão Sangrento", "Nick Quase Sem Cabeça", "O Frade Gordo"],
-            correct: 0,
-            explanation: "É o único fantasma que o Peeves (o poltergeist) respeita e teme verdadeiramente."
-        },
-        {
-            question: "Qual é o nome completo de Ginny Weasley?",
-            type: "Múltipla Escolha",
-            options: ["Virginia Molly Weasley", "Ginevra Molly Weasley", "Ginger Arthur Weasley"],
-            correct: 1,
-            explanation: "Muitos acham que 'Ginny' vem de Virgínia, mas é diminutivo de Ginevra."
-        },
-        {
-            question: "No Quidditch, quantos pontos vale apanhar a Snitch?",
-            type: "Múltipla Escolha",
-            options: ["100 pontos", "150 pontos", "50 pontos"],
-            correct: 1,
-            explanation: "Apanhar a Snitch encerra o jogo e concede 150 pontos à equipa."
-        },
-        {
-            question: "Qual destes ingredientes NÃO faz parte da Poção Polissuco?",
-            type: "Múltipla Escolha",
-            options: ["Descurainia (Flixweed)", "Sangue de Re'em", "Sanguessugas"],
-            correct: 1,
-            explanation: "Sangue de Re'em dá força, não muda a aparência. A poção não utiliza este ingrediente."
-        },
-        {
-            question: "Onde fica localizada a cozinha de Hogwarts?",
-            type: "Múltipla Escolha",
-            options: ["Atrás de um quadro de uma fruteira", "Nas masmorras", "Na Torre Norte"],
-            correct: 0,
-            explanation: "Para entrar, é preciso fazer cócegas na pera do quadro, que se transforma numa maçaneta."
-        },
-        {
-            question: "Quem foi a primeira pessoa a escapar de Azkaban sozinha?",
-            type: "Múltipla Escolha",
-            options: ["Sirius Black", "Bellatrix Lestrange", "Barty Crouch Jr."],
-            correct: 2,
-            explanation: "Barty Crouch Jr. trocou de lugar com a mãe moribunda usando Poção Polissuco."
-        },
-        {
-            question: "Qual a cor dos olhos de Harry Potter nos livros?",
-            type: "Múltipla Escolha",
-            options: ["Azul", "Verde", "Castanho"],
-            correct: 1,
-            explanation: "Nos livros, os olhos são 'verdes brilhantes' como os da mãe."
-        },
-        {
-            question: "'James Potter jogava como Seeker (Apanhador) na equipa de Quidditch.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Nos filmes ele é Seeker, mas nos livros J.K. Rowling escreveu que ele era um Chaser (Artilheiro)."
-        },
-        {
-            question: "'A escola de Durmstrang é exclusiva para rapazes.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "No livro a escola é mista. O filme deu a impressão errada com a entrada dramática."
-        },
-        {
-            question: "'Harry Potter e Voldemort são parentes distantes.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 0,
-            explanation: "Ambos descendem dos Irmãos Peverell, os criadores dos Talismãs da Morte."
-        },
-        {
-            question: "'A primeira vassoura que Harry teve foi a Nimbus 2000.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Quando ele era bebé, Sirius Black deu-lhe uma vassoura de brincar que voava de verdade."
-        },
-        {
-            question: "'Luna Lovegood acabou por casar com Neville Longbottom.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Canonicamente, Luna casa com Rolf Scamander e Neville casa com Hannah Abbott."
-        },
-        {
-            question: "'O professor Snape é o único Comensal da Morte capaz de conjurar um Patronus.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 0,
-            explanation: "Verdade. Snape é a exceção devido ao seu amor por Lily."
-        },
-        {
-            question: "'No livro, Bellatrix Lestrange mata Sirius Black com Avada Kedavra.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "No livro, ela o atinge com um feitiço de impacto que o empurra para dentro do Véu da Morte."
-        },
-        {
-            question: "'A Dama Gorda é o único quadro que guardou a entrada dos Gryffindor.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "Ela foi substituída temporariamente pelo Sir Cadogan após o ataque de Sirius Black."
-        },
-        {
-            question: "'Voldemort morreu com 71 anos.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 0,
-            explanation: "Tom Riddle nasceu em 1926 e morreu em 1998, totalizando 71 anos."
-        },
-        {
-            question: "'A cobra que Harry soltou no zoológico era Nagini.'",
-            type: "Verdadeiro ou Falso",
-            options: ["Verdadeiro", "Falso"],
-            correct: 1,
-            explanation: "A cobra do zoológico era uma Jiboia nascida em cativeiro. Nagini foi encontrada na Albânia."
-        }
-    ];
-
-    function initTrivia() {
-        const card = document.getElementById('triviaCard');
-        const questionEl = document.getElementById('triviaQuestion');
-        const optionsEl = document.getElementById('triviaOptions');
-        const explanationEl = document.getElementById('triviaExplanation');
-        const typeEl = document.getElementById('triviaType');
-
-        const randomTrivia = triviaData[Math.floor(Math.random() * triviaData.length)];
-
-        typeEl.textContent = randomTrivia.type;
-        questionEl.textContent = randomTrivia.question;
-        explanationEl.textContent = randomTrivia.explanation;
-        explanationEl.style.display = 'none';
-
-        optionsEl.innerHTML = '';
-        randomTrivia.options.forEach((option, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'trivia-option';
-            btn.textContent = (randomTrivia.type === 'Múltipla Escolha')
-                ? `${String.fromCharCode(65 + index)}) ${option}`
-                : option;
-
-            btn.onclick = () => {
-                if (card.classList.contains('answered')) return;
-
-                card.classList.add('answered');
-                const allBtns = optionsEl.querySelectorAll('.trivia-option');
-
-                if (index === randomTrivia.correct) {
-                    btn.classList.add('correct');
-                } else {
-                    btn.classList.add('wrong');
-                    allBtns[randomTrivia.correct].classList.add('correct');
-                }
-
-                explanationEl.style.display = 'block';
-                explanationEl.classList.add('animate-fade-in');
-            };
-            optionsEl.appendChild(btn);
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', initTrivia);
-</script>
 
         </main>
 
