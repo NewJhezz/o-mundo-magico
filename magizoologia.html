@@ -1,0 +1,2820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Harry Potter</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="container">
+        
+        <header class="main-header">
+            <h1><a href="./index.html" style="text-decoration: none; color: inherit;">O Mundo Mágico</a></h1>
+        </header>
+        
+
+        <main>
+            
+<div class="magizoology-container animate-fade-in">
+    <div class="hero-section">
+        <h1 class="main-title">Magizoologia: Santuário de Biomas</h1>
+        <p class="hero-subtitle">Resgate feras, restaure habitats e documente sua jornada.</p>
+    </div>
+
+    <!-- Dashboard de Biomas -->
+    <div class="biomes-grid">
+        
+        <div class="biome-card-wrapper">
+            <div class="biome-card-inner" id="inner-forbidden_forest">
+                <!-- FRONT FACE -->
+                <div class="biome-card-front " id="region-forbidden_forest">
+                    <div class="biome-icon-large">
+                        
+                        <img src="./static/images/magizoology/biomes/Iconeflorestaproibida.png" class="biome-icon-img">
+                        
+                    </div>
+                    <div class="biome-info">
+                        <div class="devastation-mini">
+                            <div class="dev-bar" title="Integridade do Bioma">
+                                <div class="integrity-fill" id="fill-forbidden_forest"
+                                    style="width: 85%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="biome-actions">
+                        <button class="magi-btn-primary" onclick="openAssistantSelector('forbidden_forest')">
+                            Iniciar Resgate
+                        </button>
+                    </div>
+                    <!-- Resultado da Última Exploração -->
+                    <div class="last-result-box" id="last-forbidden_forest">
+                        <span class="result-label">Última Exploração:</span>
+                        <span class="result-content">Aguardando...</span>
+                    </div>
+                    
+                </div>
+
+                <!-- RESCUE FACE -->
+                <div class="biome-card-rescue" id="rescue-ui-forbidden_forest">
+                    <div id="rescue-content-forbidden_forest" class="rescue-phase-container">
+                        <!-- Conteúdo dinâmico via JS -->
+                        <div class="searching-anim">🕵️‍♂️</div>
+                        <div class="rescue-status-text">Procurando...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="biome-card-wrapper">
+            <div class="biome-card-inner" id="inner-black_lake">
+                <!-- FRONT FACE -->
+                <div class="biome-card-front locked" id="region-black_lake">
+                    <div class="biome-icon-large">
+                        
+                        <img src="./static/images/magizoology/biomes/Iconelagonegro.png" class="biome-icon-img">
+                        
+                    </div>
+                    <div class="biome-info">
+                        <div class="devastation-mini">
+                            <div class="dev-bar" title="Integridade do Bioma">
+                                <div class="integrity-fill" id="fill-black_lake"
+                                    style="width: 92%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="lock-overlay-modern">🔒 Nível de Alerta Alto</div>
+                    
+                </div>
+
+                <!-- RESCUE FACE -->
+                <div class="biome-card-rescue" id="rescue-ui-black_lake">
+                    <div id="rescue-content-black_lake" class="rescue-phase-container">
+                        <!-- Conteúdo dinâmico via JS -->
+                        <div class="searching-anim">🕵️‍♂️</div>
+                        <div class="rescue-status-text">Procurando...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Seletor de Ajudante -->
+    <div id="assistant-modal" class="magi-modal hidden">
+        <div class="magi-modal-content">
+            <div class="assistant-modal-header">
+                <h2 class="gold-text">Selecione seu Companheiro</h2>
+            </div>
+
+            <!-- Filtros Simples do Modal -->
+            <div class="modal-assistant-filters">
+                <input type="text" id="ast-search" class="magi-input" placeholder="Buscar por nome..." style="flex: 2;"
+                    oninput="updateAssistantFilters()">
+
+                <select id="ast-sort" class="magi-select" style="flex: 1;" onchange="updateAssistantFilters()">
+                    <option value="recent">Recente</option>
+                    <option value="stars">Estrelas Total</option>
+                    <option value="name">Nome (A-Z)</option>
+                </select>
+            </div>
+
+            <div class="assistant-grid" id="assistant-list"></div>
+
+            <div class="modal-footer"
+                style="flex-shrink: 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                <button class="magi-btn-secondary" onclick="closeAssistantSelector()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes da Criatura (Multiestágio) -->
+    <div id="creature-detail-modal" class="magi-modal hidden">
+        <div id="modal-content-wrapper" style="width: 100%; display: flex; justify-content: center;">
+            <!-- Stage 1: Stats List -->
+            <div id="modal-stage-stats" class="detail-stage" onclick="switchModalStage(2)">
+                <div class="stats-view-container">
+                    <h2 id="stats-title" class="gold-text" style="text-transform: uppercase;">Nome</h2>
+                    <div id="stats-rows-container" class="stats-list-modal"></div>
+                    <div class="modal-hint">Clique para ver o Gráfico IV ➔</div>
+                </div>
+            </div>
+
+            <!-- Stage 2: Radar Chart -->
+            <div id="modal-stage-radar" class="detail-stage hidden">
+                <div class="magi-card-verso-container">
+                    <div class="verso-left">
+                        <div class="verso-header">
+                            <h2 id="detail-name" class="gold-text">Nome</h2>
+                            <span id="detail-category" class="verso-category-label">CATEGORIA: BRONZE</span>
+                            <div id="detail-icon" class="verso-large-icon">?</div>
+                            <div id="detail-genetics" class="verso-genetics-banner">GENÉTICA: ?</div>
+                        </div>
+                    </div>
+                    <div class="verso-right">
+                        <div class="pentagon-wrapper">
+                            <svg viewBox="0 0 200 200" id="iv-pentagon"></svg>
+                            <div class="pentagon-labels">
+                                <div class="p-label p-poder">PODER<br><span id="txt-pod">?</span></div>
+                                <div class="p-label p-exp">EXPLORAÇÃO<br><span id="txt-exp">?</span></div>
+                                <div class="p-label p-vel">VELOCIDADE<br><span id="txt-vel">?</span></div>
+                                <div class="p-label p-cap">CAPTURA<br><span id="txt-cap">?</span></div>
+                                <div class="p-label p-rep">REPRODUÇÃO<br><span id="txt-rep">?</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="verso-close-btn" onclick="closeCreatureDetail()">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação por Abas -->
+    <div class="magi-tabs-container">
+        <button class="magi-tab active" onclick="switchTab('sanctuary')" id="tab-sanctuary">📜 MEU SANTUÁRIO</button>
+        <button class="magi-tab" onclick="switchTab('breeding')" id="tab-breeding">💑 ACASALAMENTO</button>
+        <button class="magi-tab" onclick="switchTab('history')" id="tab-history">🧭 DIÁRIO DE CAMPO</button>
+    </div>
+
+    <!-- Conteúdo das Abas -->
+    <div id="sanctuary-tab" class="tab-pane active">
+        <!-- Barra de Filtros -->
+        <div class="magi-filter-toolbar">
+            <div class="filter-group">
+                <span class="filter-label">🔍 Nome:</span>
+                <input type="text" id="magi-search" class="magi-input" placeholder="Buscar criatura..."
+                    oninput="updateCreatureFilters()">
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">📊 Ordenar por:</span>
+                <select id="magi-sort-key" class="magi-select" onchange="updateCreatureFilters()">
+                    <option value="id">Recentes</option>
+                    <option value="name">Nome</option>
+                    <option value="stars">Estrelas Atuais</option>
+                    <option value="potential">Potencial Total</option>
+                    <option value="genetics">Genética (IV)</option>
+                    <option value="PODER">Rank: Poder</option>
+                    <option value="EXPLORAÇÃO">Rank: Exploração</option>
+                    <option value="VELOCIDADE">Rank: Velocidade</option>
+                    <option value="CAPTURA">Rank: Captura</option>
+                    <option value="REPRODUÇÃO">Rank: Reprodução</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <button id="magi-sort-order" class="sort-order-btn" onclick="toggleSortOrder()" title="Inverter Ordem">
+                    ↓
+                </button>
+            </div>
+        </div>
+
+        <div class="creature-cards-grid" id="my-creatures"></div>
+    </div>
+
+    <div id="breeding-tab" class="tab-pane hidden">
+        <div class="breeding-area">
+            <div class="breeding-slots">
+                <div class="breeding-slot" id="parent-1-slot" onclick="openBreedingSelector(1)">
+                    <div class="slot-placeholder">Escolher Pai/Mãe 1</div>
+                </div>
+                <div class="breeding-heart-zone">💖</div>
+                <div class="breeding-slot" id="parent-2-slot" onclick="openBreedingSelector(2)">
+                    <div class="slot-placeholder">Escolher Pai/Mãe 2</div>
+                </div>
+            </div>
+
+            <div id="breeding-preview" class="breeding-preview-container hidden">
+                <div id="breeding-status-label" class="gold-text"
+                    style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Melhoria Genética
+                    Esperada</div>
+                <div id="breeding-success-rate" class="success-percentage">--%</div>
+                <div id="breeding-timer-display" class="gold-text hidden"
+                    style="margin-top: 1rem; font-family: var(--font-body); opacity: 0.8;">Nascendo em: 00:00</div>
+                <button id="start-breeding-btn" class="magi-btn-primary" onclick="executeBreeding()"
+                    style="margin-top: 2rem; padding: 1.5rem 4rem; font-size: 1.2rem;">Iniciar Acasalamento</button>
+            </div>
+
+            <div id="breeding-result-display" class="breeding-preview-container hidden">
+                <div class="gold-text"
+                    style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--rarity-gold);">
+                    ✨ Novo Nascimento! ✨</div>
+                <div id="child-slot" class="parent-slot filled"
+                    style="cursor: default; width: 180px; height: 180px; margin: 0 auto; border-color: var(--rarity-gold);">
+                </div>
+                <button class="magi-btn-primary" onclick="collectBreedingResult()"
+                    style="margin-top: 2rem; padding: 1rem 3rem;">Receber Criatura</button>
+            </div>
+        </div>
+    </div>
+    <div class="exploration-log" id="exp-log"></div>
+</div>
+</div>
+
+<style>
+    :root {
+        --rarity-bronze: #cd7f32;
+        --rarity-silver: #c0c0c0;
+        --rarity-gold: #ffd700;
+        --rarity-platinum: #b9f2ff;
+        /* Diamante */
+        --magi-accent: #d4af37;
+        --glass-dark: rgba(2, 4, 8, 0.9);
+        --glass-border: rgba(212, 175, 55, 0.4);
+    }
+
+    body {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+            url('./static/images/magizoology/backgrounds/fundoflorestaproibida.png') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: fixed !important;
+    }
+
+    .magizoology-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 5rem;
+    }
+
+    /* Biomes Grid */
+    .biomes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    /* Biome Card Flip Logic */
+    .biome-card-wrapper {
+        perspective: 1000px;
+        width: 100%;
+        min-height: 600px;
+        /* Increased further to ensure no cutting */
+    }
+
+    .biome-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+    }
+
+    .biome-card-inner.is-flipped {
+        transform: rotateY(180deg);
+    }
+
+    .biome-card-front,
+    .biome-card-rescue {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        background: var(--glass-dark);
+        border: 2px solid var(--glass-border);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .biome-card-rescue {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, rgba(8, 15, 25, 0.98), rgba(2, 5, 10, 1));
+        border-color: var(--magi-accent);
+        text-align: center;
+    }
+
+    .biome-card-front:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        border-color: var(--magi-accent);
+    }
+
+    .biome-icon-large {
+        width: 100%;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .biome-icon-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+    }
+
+    .biome-info h3 {
+        font-size: 1.4rem;
+        color: var(--magi-accent);
+        font-family: var(--font-heading);
+        margin-bottom: 1rem;
+    }
+
+    .dev-bar {
+        background: rgba(255, 255, 255, 0.05);
+        height: 12px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 1.5rem;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+    .integrity-fill {
+        background: linear-gradient(90deg, #d4af37, #f6e05e, #d4af37);
+        background-size: 200% 100%;
+        height: 100%;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        position: relative;
+    }
+
+    .integrity-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    .last-result-box {
+        margin-top: 1.5rem;
+        /* More space */
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1rem;
+        /* More padding */
+        text-align: center;
+        width: 100%;
+    }
+
+    .result-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        display: block;
+        letter-spacing: 1px;
+    }
+
+    .result-content {
+        font-size: 0.85rem;
+        font-weight: 900;
+        color: #fff;
+    }
+
+    .magi-btn-primary,
+    .magi-btn-secondary,
+    .magi-btn-danger {
+        padding: 0.9rem 1.5rem;
+        border-radius: 30px;
+        font-family: var(--font-heading);
+        font-weight: 900;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .magi-btn-primary {
+        background: var(--magi-accent);
+        color: #000;
+    }
+
+    .magi-btn-primary:hover {
+        transform: scale(1.05);
+        background: #fff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .magi-btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .magi-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+
+    .magi-btn-danger {
+        background: rgba(163, 51, 51, 0.6);
+        color: #fff;
+        border: 1px solid rgba(163, 51, 51, 0.8);
+    }
+
+    .magi-btn-danger:hover {
+        background: #a33;
+        box-shadow: 0 0 20px rgba(163, 51, 51, 0.4);
+        transform: scale(1.05);
+    }
+
+    .magi-card-wrapper {
+        perspective: 1000px;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        min-height: 400px;
+    }
+
+    .magi-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .magi-card-inner.is-flipped {
+        transform: rotateY(180deg);
+    }
+
+    .magi-card-front,
+    .magi-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(135deg, rgba(15, 25, 45, 0.95), rgba(5, 10, 20, 1));
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .magi-card-back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .creature-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2.5rem;
+        padding: 1rem;
+    }
+
+    .rarity-reinforced-edge {
+        height: 6px;
+        width: 100%;
+    }
+
+    .edge-bronze {
+        background: var(--rarity-bronze);
+        box-shadow: 0 0 10px rgba(205, 127, 50, 0.5);
+    }
+
+    .edge-silver {
+        background: var(--rarity-silver);
+        box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    }
+
+    .edge-gold {
+        background: var(--rarity-gold);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+
+    .edge-platinum {
+        background: var(--rarity-platinum);
+        box-shadow: 0 0 20px rgba(229, 228, 226, 0.8);
+    }
+
+    /* Rescue UI Elements */
+    .rescue-phase-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .rescue-status-text {
+        font-family: var(--font-heading);
+        color: var(--magi-accent);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .searching-anim {
+        font-size: 4rem;
+        animation: pulse-gold 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse-gold {
+        0% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+    }
+
+    .bag-zone {
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .bag-img {
+        max-height: 160px;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    .bag-struggle {
+        animation: shake-bag 0.2s infinite ease-in-out;
+    }
+
+    /* Magical Effects */
+    .bag-glow-success {
+        filter: drop-shadow(0 0 25px rgba(0, 255, 100, 0.8)) !important;
+        animation: glow-pulse-green 1s infinite alternate;
+    }
+
+    @keyframes glow-pulse-green {
+        from {
+            filter: drop-shadow(0 0 15px rgba(0, 255, 100, 0.5));
+        }
+
+        to {
+            filter: drop-shadow(0 0 35px rgba(0, 255, 100, 1));
+        }
+    }
+
+    .fire-particles-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .fire-particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: orange;
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: fire-rise 1s infinite ease-out;
+        opacity: 0;
+    }
+
+    @keyframes fire-rise {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-50px) scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    .battle-feedback-text {
+        font-style: italic;
+        color: #ddd;
+        font-size: 0.9rem;
+        margin: 1rem 0;
+        max-width: 80%;
+        line-height: 1.4;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem;
+        border-radius: 10px;
+        border-left: 3px solid var(--magi-accent);
+    }
+
+    .creature-found-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        animation: scale-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes scale-up {
+        from {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .magi-icon-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+    }
+
+    .card-front-content {
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .card-front-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-front-name {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        min-height: 2.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.2;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .card-front-name.long-name {
+        font-size: 0.85rem;
+    }
+
+    .gender-icon {
+        font-weight: bold;
+        margin-right: 6px;
+        font-size: 1.2em;
+    }
+
+    .gender-m {
+        color: #82ccdd;
+    }
+
+    .gender-f {
+        color: #fad390;
+    }
+
+    /* Usando um tom mais pálido/mágico que rosa choque */
+
+    .card-front-genetics {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--magi-accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+    }
+
+    .card-front-icon-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 220px;
+        margin: 0.1rem 0;
+    }
+
+    .magi-icon-img {
+        max-height: 200px;
+        max-width: 98%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        transition: transform 0.3s;
+    }
+
+    .magi-card-front:hover .magi-icon-img {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-front-avg-stars {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        color: var(--magi-accent);
+        font-size: 1rem;
+        font-weight: 900;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 6px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        margin-top: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label-front {
+        font-size: 0.65rem;
+        color: #aaa;
+        font-weight: 700;
+        text-transform: uppercase;
+        width: 80px;
+    }
+
+    .stat-stars-front {
+        display: flex;
+        gap: 2px;
+    }
+
+    .star-img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+    }
+
+    .shinny-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(45deg, #ffd700, #fff, #ffd700);
+        background-size: 200% 200%;
+        color: #000;
+        font-size: 0.65rem;
+        font-weight: 900;
+        padding: 4px 10px;
+        border-radius: 20px;
+        animation: shine-sweep 3s infinite linear;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        z-index: 5;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    @keyframes shine-sweep {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+    /* Card Back (Verso Modal) */
+    .magi-card-verso-container {
+        background: #080c14;
+        border: 3px solid var(--magi-accent);
+        border-radius: 25px;
+        padding: 3rem;
+        max-width: 900px;
+        width: 95%;
+        display: flex;
+        gap: 3rem;
+        position: relative;
+        box-shadow: 0 0 60px rgba(0, 0, 0, 1), 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .verso-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Left align content but center icon if needed */
+        justify-content: center;
+    }
+
+    .verso-header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .verso-header h2 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .verso-category-label {
+        font-size: 1rem;
+        color: var(--magi-accent);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 5px;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .verso-large-icon {
+        font-size: 10rem;
+        margin: 1rem 0 2rem 0;
+        width: 100%;
+        text-align: center;
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+    }
+
+    .verso-genetics-banner {
+        font-size: 1.4rem;
+        font-weight: 900;
+        background: rgba(212, 175, 55, 0.15);
+        color: var(--magi-accent);
+        border: 2px solid var(--magi-accent);
+        padding: 1rem;
+        border-radius: 12px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 1px;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+    }
+
+    .verso-right {
+        flex: 1.2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pentagon-wrapper {
+        position: relative;
+        width: 450px;
+        height: 450px;
+    }
+
+    #iv-pentagon {
+        width: 100%;
+        height: 100%;
+    }
+
+    .pentagon-labels {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .p-label {
+        position: absolute;
+        color: #ccc;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.3;
+        transform: translate(-50%, -50%);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+        width: 140px;
+    }
+
+    .p-label span {
+        color: var(--magi-accent);
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 900;
+        margin-top: 2px;
+        text-transform: uppercase;
+    }
+
+    .p-poder {
+        top: 0%;
+        left: 50%;
+    }
+
+    .p-exp {
+        top: 38%;
+        left: 95%;
+    }
+
+    .p-vel {
+        top: 100%;
+        left: 80%;
+    }
+
+    .p-cap {
+        top: 100%;
+        left: 20%;
+    }
+
+    .p-rep {
+        top: 38%;
+        left: 5%;
+    }
+
+    .verso-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .verso-close-btn:hover {
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    /* Tags & Modals */
+    .magi-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    }
+
+    .magi-modal-content {
+        background: #0a0e14;
+        border: 2px solid var(--magi-accent);
+        border-radius: 20px;
+        padding: 2.5rem;
+        max-width: 800px;
+        width: 90%;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .assistant-modal-header {
+        margin-bottom: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .modal-assistant-filters {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .assistant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1.2rem;
+        overflow-y: auto;
+        flex: 1;
+        padding-right: 10px;
+        margin: 0.5rem 0;
+    }
+
+    /* Custom Scrollbar */
+    .assistant-grid::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .assistant-grid::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    .assistant-grid::-webkit-scrollbar-thumb {
+        background: var(--magi-accent);
+        border-radius: 10px;
+    }
+
+    .assistant-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 1rem;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .assistant-item:hover {
+        background: rgba(212, 175, 55, 0.1);
+        border-color: var(--magi-accent);
+        transform: scale(1.08);
+    }
+
+    .magi-tabs-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .magi-tab {
+        background: none;
+        border: none;
+        color: #666;
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 10px 25px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .magi-tab.active {
+        color: var(--magi-accent);
+        border-bottom: 3px solid var(--magi-accent);
+    }
+
+    /* Filter Toolbar Styles */
+    .magi-filter-toolbar {
+        background: rgba(8, 12, 20, 0.6);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 20px;
+        padding: 1.2rem 2rem;
+        margin: 0 1rem 2.5rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .filter-label {
+        font-size: 0.75rem;
+        font-family: var(--font-heading);
+        color: var(--magi-accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 900;
+        white-space: nowrap;
+    }
+
+    .magi-input,
+    .magi-select {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 25px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .magi-input:focus,
+    .magi-select:focus {
+        border-color: var(--magi-accent);
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    }
+
+    .magi-select option {
+        background: #0a0e14;
+        color: #fff;
+    }
+
+    .sort-order-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--magi-accent);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 1.2rem;
+    }
+
+    .sort-order-btn:hover {
+        background: rgba(212, 175, 55, 0.15);
+        border-color: var(--magi-accent);
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* Modal Styles */
+    .detail-stage {
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    .stats-view-container {
+        background: var(--glass-dark);
+        border: 2px solid var(--magi-accent);
+        border-radius: 24px;
+        padding: 3rem;
+        max-width: 450px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        position: relative;
+    }
+
+    .stats-list-modal {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .modal-stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-stat-label {
+        font-size: 0.8rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .modal-hint {
+        color: var(--magi-accent);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-top: 1rem;
+        cursor: pointer;
+        animation: pulse 2s infinite;
+    }
+
+    /* Card Back Stats Styles */
+    .card-back-stats-list {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .back-stat-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .card-back-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: auto;
+    }
+
+    .magi-btn-mini {
+        padding: 10px;
+        font-size: 0.75rem;
+        border-radius: 20px;
+        min-height: 40px;
+    }
+
+    .magi-card-verso-container {
+        display: flex;
+        gap: 2rem;
+        background: var(--glass-dark);
+        padding: 2.5rem;
+        border-radius: 24px;
+        border: 2px solid var(--magi-accent);
+        max-width: 900px;
+        width: 95%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .verso-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding-right: 2rem;
+    }
+
+    .verso-header {
+        text-align: center;
+    }
+
+    .verso-category-label {
+        font-size: 0.9rem;
+        color: var(--magi-accent);
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+
+    .verso-large-icon {
+        font-size: 8rem;
+        margin: 2rem 0;
+        filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+    }
+
+    .verso-large-icon img {
+        max-width: 250px;
+    }
+
+    .verso-genetics-banner {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--magi-accent);
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        border: 1px solid var(--magi-accent);
+        font-weight: 900;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .verso-right {
+        flex: 1.5;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .pentagon-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .pentagon-labels {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .p-label {
+        position: absolute;
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: #fff;
+        text-align: center;
+        width: 80px;
+        text-shadow: 0 0 5px #000;
+    }
+
+    .p-poder {
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .p-exp {
+        top: 30%;
+        right: -40px;
+    }
+
+    .p-vel {
+        bottom: 0;
+        right: 0;
+    }
+
+    .p-cap {
+        bottom: 0;
+        left: 0;
+    }
+
+    .p-rep {
+        top: 30%;
+        left: -40px;
+    }
+
+    .p-label span {
+        color: var(--magi-accent);
+        font-size: 0.55rem;
+    }
+
+    .verso-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .verso-close-btn:hover {
+        opacity: 1;
+    }
+
+    /* Breeding Tab Styles */
+    .breeding-area {
+        max-width: 900px;
+        margin: 2rem auto;
+        background: var(--glass-dark);
+        border: 2px solid var(--magi-accent);
+        border-radius: 24px;
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .breeding-slots {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .breeding-slot {
+        width: 180px;
+        height: 240px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 2px dashed rgba(212, 175, 55, 0.3);
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .breeding-slot:hover {
+        background: rgba(212, 175, 55, 0.05);
+        border-color: var(--magi-accent);
+    }
+
+    .breeding-slot.filled {
+        border-style: solid;
+        border-color: var(--magi-accent);
+        background: rgba(15, 25, 45, 0.6);
+    }
+
+    .slot-placeholder {
+        color: #555;
+        font-family: var(--font-heading);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .breeding-heart-zone {
+        font-size: 4rem;
+        filter: drop-shadow(0 0 15px rgba(255, 100, 100, 0.4));
+        animation: heart-beat 1.5s infinite;
+    }
+
+    @keyframes heart-beat {
+        0% {
+            transform: scale(1);
+        }
+
+        15% {
+            transform: scale(1.2);
+        }
+
+        30% {
+            transform: scale(1);
+        }
+
+        45% {
+            transform: scale(1.1);
+        }
+
+        60% {
+            transform: scale(1);
+        }
+    }
+
+    .breeding-preview-container {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .success-percentage {
+        font-size: 3rem;
+        font-family: var(--font-heading);
+        color: var(--magi-accent);
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .breeding-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4757;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 0.65rem;
+        font-weight: 900;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* History / Exploration Log */
+    .exploration-log {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .log-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        transition: 0.3s;
+    }
+
+    .log-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .log-icon {
+        font-size: 2.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .log-details {
+        flex: 1;
+    }
+
+    .log-title {
+        color: var(--magi-accent);
+        font-weight: 800;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+    }
+
+    .log-subtitle {
+        color: #aaa;
+        font-size: 0.85rem;
+    }
+
+    .log-time {
+        color: #555;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+</style>
+
+<script>
+    const STATUS_KEYS = ['PODER', 'EXPLORAÇÃO', 'VELOCIDADE', 'CAPTURA', 'REPRODUÇÃO'];
+    const QUALITY_LABELS = {
+        1: 'ABAIXO',
+        2: 'MÉDIA',
+        3: 'BOM',
+        4: 'EXCELENTE!',
+        5: 'PERFEITO!!!'
+    };
+    const RARITY_LABELS = {
+        'bronze': 'BRONZE',
+        'silver': 'PRATA',
+        'gold': 'OURO',
+        'platinum': 'DIAMANTE'
+    };
+
+    const STORAGE_KEY = 'magizoology_state_v9';
+    let creatureFilters = {
+        search: '',
+        sortKey: 'id',
+        sortOrder: 'desc'
+    };
+
+    function updateCreatureFilters() {
+        const searchInput = document.getElementById('magi-search');
+        const sortSelect = document.getElementById('magi-sort-key');
+        if (searchInput) creatureFilters.search = searchInput.value.toLowerCase();
+        if (sortSelect) creatureFilters.sortKey = sortSelect.value;
+        renderMyCreatures();
+    }
+
+    function toggleSortOrder() {
+        creatureFilters.sortOrder = creatureFilters.sortOrder === 'asc' ? 'desc' : 'asc';
+        const orderBtn = document.getElementById('magi-sort-order');
+        if (orderBtn) orderBtn.innerText = creatureFilters.sortOrder === 'asc' ? '↑' : '↓';
+        renderMyCreatures();
+    }
+
+    const baseCreaturesData = [{"base_stats": {"CAPTURA": 5, "EXPLORA\u00c7\u00c3O": 5, "PODER": 5, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 5}, "category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "A mais perigosa das criaturas. Dividida em v\u00e1rias ra\u00e7as, todas s\u00e3o mort\u00edferas e imposs\u00edveis de domesticar.", "icon": "./static/images/magizoology/creatures/Drag%C3%A3o.png", "name": "Drag\u00e3o", "origin": "Global", "rarity": "platinum"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 3, "PODER": 5, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 4}, "category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "Aranha monstruosa de oito olhos capaz de fala humana. Venenosa e altamente agressiva.", "icon": "./static/images/magizoology/creatures/Acrom%C3%A2ntula.png", "name": "Acrom\u00e2ntula", "origin": "Born\u00e9u / Floresta Proibida", "rarity": "gold"}, {"category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "O Rei das Serpentes. Seu olhar mata instantaneamente e seu veneno corr\u00f3i quase qualquer subst\u00e2ncia.", "icon": "\ud83d\udc0d", "name": "Basilisco", "origin": "Europa (Gr\u00e9cia)"}, {"category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "Cabe\u00e7a humana, corpo de le\u00e3o e cauda de escorpi\u00e3o. Sua pele repele quase todos os feiti\u00e7os.", "icon": "\ud83e\udd81", "name": "Mant\u00edcora", "origin": "Gr\u00e9cia / \u00c1sia"}, {"category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "Incrivelmente rara e feroz. Possui cabe\u00e7a de le\u00e3o, corpo de bode e cauda de drag\u00e3o.", "icon": "\ud83d\udc10", "name": "Quimera", "origin": "Gr\u00e9cia"}, {"category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "Talvez a mais perigosa do mundo. Seu h\u00e1lito t\u00f3xico \u00e9 capaz de dizimar vilas inteiras.", "icon": "\ud83d\udc06", "name": "Nundu", "origin": "\u00c1frica Oriental"}, {"category": "beast", "category_label": "Fera", "danger": "XXXX", "danger_level": 4, "desc": "Humanoides imensos de for\u00e7a colossal e intelig\u00eancia m\u00ednima. Comem carne humana.", "icon": "\ud83d\udc79", "name": "Troll", "origin": "Escandin\u00e1via"}, {"category": "beast", "category_label": "Fera", "danger": "XXXX", "danger_level": 4, "desc": "Metade le\u00e3o, metade \u00e1guia. S\u00e3o guardi\u00f5es ferozes de tesouros e locais secretos.", "icon": "\ud83e\udd85", "name": "Grifo", "origin": "Gr\u00e9cia"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 5, "PODER": 2, "REPRODU\u00c7\u00c3O": 1, "VELOCIDADE": 5}, "category": "beast", "category_label": "Fera", "danger": "XXXX", "danger_level": 4, "desc": "Cavalos alados esquel\u00e9ticos vis\u00edveis apenas por quem j\u00e1 testemunhou a morte de perto.", "icon": "\ud83d\udc80", "name": "Thestral", "origin": "Ilhas Brit\u00e2nicas", "rarity": "gold"}, {"category": "beast", "category_label": "Fera", "danger": "XXXX", "danger_level": 4, "desc": "Grande animal com um chifre explosivo. Sua pele dura resiste \u00e0 maioria dos feiti\u00e7os.", "icon": "\ud83e\udd8f", "name": "Erumpent", "origin": "\u00c1frica"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 4, "PODER": 3, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 4}, "category": "beast", "category_label": "Fera", "danger": "XXX", "danger_level": 3, "desc": "Criatura orgulhosa que exige rever\u00eancia. Metade \u00e1guia gigante, metade cavalo.", "icon": "./static/images/magizoology/creatures/Hipogrifo.png", "name": "Hipogrifo", "origin": "Europa", "rarity": "silver"}, {"category": "beast", "category_label": "Fera", "danger": "XXX", "danger_level": 3, "desc": "P\u00e1ssaro magn\u00edfico que renasce das cinzas. Suas l\u00e1grimas t\u00eam imenso poder curativo.", "icon": "\ud83d\udd25", "name": "F\u00eanix", "origin": "Global"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 4, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 5}, "category": "beast", "category_label": "Fera", "danger": "XXX", "danger_level": 3, "desc": "S\u00edmbolo de pureza. Criaturas brancas e velozes cujo chifre e pelos s\u00e3o itens de alto valor.", "icon": "./static/images/magizoology/creatures/Unic%C3%B3rnio.png", "name": "Unic\u00f3rnio", "origin": "Europa Setentrional", "rarity": "gold"}, {"category": "beast", "category_label": "Fera", "danger": "XXX", "danger_level": 3, "desc": "Dem\u00f4nios aqu\u00e1ticos nip\u00f4nicos que estrangulam humanos. Perdem a for\u00e7a se a \u00e1gua em sua cabe\u00e7a cair.", "icon": "\ud83d\udc22", "name": "Kappa", "origin": "Jap\u00e3o"}, {"category": "beast", "category_label": "Fera", "danger": "XXX", "danger_level": 3, "desc": "Dem\u00f4nio aqu\u00e1tico metamorfo. Atrai pessoas para cavalgarem sobre ele e as afoga.", "icon": "\ud83d\udc0e", "name": "Kelpie", "origin": "Reino Unido / Irlanda"}, {"category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "P\u00e1ssaro melanc\u00f3lico que prev\u00ea chuva. Suas penas repelem tinta de qualquer esp\u00e9cie.", "icon": "\ud83e\udd85", "name": "Augurey", "origin": "Irlanda"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 1, "PODER": 1, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 1}, "category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "Bola de pelos d\u00f3cil e fofa. Popular animal de estima\u00e7\u00e3o que gosta de comer catotas.", "icon": "./static/images/magizoology/creatures/Pufoso.png", "name": "Pufoso", "origin": "Mundo todo", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 2, "PODER": 2, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 2}, "category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "Felino inteligente capaz de detectar pessoas suspeitas e guiar seus donos para casa.", "icon": "./static/images/magizoology/creatures/Amasso.png", "name": "Amasso", "origin": "Global", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 1, "EXPLORA\u00c7\u00c3O": 3, "PODER": 1, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 3}, "category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "P\u00e1ssaro africano de cores berrantes. Seu canto constante pode levar o ouvinte \u00e0 loucura.", "icon": "./static/images/magizoology/creatures/Fiuum.png", "name": "Fiuum", "origin": "\u00c1frica", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 1, "EXPLORA\u00c7\u00c3O": 1, "PODER": 1, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 3}, "category": "beast", "category_label": "Fera", "danger": "X", "danger_level": 1, "desc": "Pequenos parasitas m\u00e1gicos de apar\u00eancia lupina que se alimentam de resqu\u00edcios m\u00e1gicos.", "icon": "./static/images/magizoology/creatures/Chiz%C3%A1caro.png", "name": "Chiz\u00e1caro", "origin": "Global", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 2, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 2}, "category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "Pequena criatura que habita \u00e1rvores produtoras de madeira para varinhas. Guardi\u00e3o nato.", "icon": "./static/images/magizoology/creatures/Tronquilho.png", "name": "Tronquilho", "origin": "Europa (Oeste)", "rarity": "silver"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 3, "PODER": 2, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 2}, "category": "beast", "category_label": "Fera", "danger": "XX", "danger_level": 2, "desc": "Criatura t\u00edmida com olhos imensos que dan\u00e7a em campos sob a luz da lua cheia.", "icon": "./static/images/magizoology/creatures/Bezerro%20Apaixonado.png", "name": "Bezerro Apaixonado", "origin": "Global", "rarity": "silver"}, {"base_stats": {"CAPTURA": 4, "EXPLORA\u00c7\u00c3O": 5, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 5}, "category": "beast", "category_label": "Fera", "danger": "XXXXX", "danger_level": 5, "desc": "P\u00e1ssaro esf\u00e9rico dourado, extremamente r\u00e1pido, que foi usado nas primeiras vers\u00f5es do Quadribol.", "icon": "./static/images/magizoology/creatures/Pomorim%20Dourado.png", "name": "Pomorim Dourado", "origin": "Global", "rarity": "gold"}, {"category": "being", "category_label": "Ser", "danger": "XXXX", "danger_level": 4, "desc": "Humanoides imensos de pele grossa e resist\u00eancia a feiti\u00e7os. Vivem em tribos montanhosas.", "icon": "\ud83c\udf0b", "name": "Gigantes", "origin": "Montanhas Remotas"}, {"category": "being", "category_label": "Ser", "danger": "XXXX", "danger_level": 4, "desc": "Humanos undead que dependem de sangue. Possuem grande agilidade e for\u00e7a noturna.", "icon": "\ud83e\udddb", "name": "Vampiros", "origin": "Europa Central / Transilv\u00e2nia"}, {"category": "being", "category_label": "Ser", "danger": "XXXX", "danger_level": 4, "desc": "V\u00edtimas de licantropia. Enquanto humanos, s\u00e3o cidad\u00e3os de pleno direito na sociedade bruxa.", "icon": "\ud83d\udc68\u200d\ud83d\udcbc", "name": "H. Lobo (Humano)", "origin": "Global"}, {"category": "being", "category_label": "Fera-Autodeclarado", "danger": "XXX", "danger_level": 3, "desc": "Criaturas inteligentes que estudam as estrelas. Recusaram a categoria de \"Ser\" na hist\u00f3ria.", "icon": "\ud83c\udff9", "name": "Centauros", "origin": "Florestas Europeias"}, {"category": "being", "category_label": "Fera-Autodeclarado", "danger": "XXX", "danger_level": 3, "desc": "Povos da \u00e1gua com cultura e linguagens complexas. Habitam lagos e oceanos profundos.", "icon": "\ud83e\udddc\u200d\u2640\ufe0f", "name": "Sereianos / Trit\u00f5es", "origin": "Lagos e Antilhas"}, {"category": "being", "category_label": "Ser", "danger": "XXX", "danger_level": 3, "desc": "Mestres de finan\u00e7as e ferreiros habilidosos. Criaram as defesas m\u00e1gicas de Gringotes.", "icon": "\ud83d\udcb0", "name": "Goblins", "origin": "Reino Unido / Global"}, {"category": "being", "category_label": "Ser", "danger": "XXX", "danger_level": 3, "desc": "Belas mulheres que hipnotizam com sua dan\u00e7a. Transformam-se em feras se enfurecidas.", "icon": "\ud83d\udc71\u200d\u2640\ufe0f", "name": "Veelas", "origin": "Europa Oriental"}, {"category": "being", "category_label": "Ser", "danger": "XX", "danger_level": 2, "desc": "Pequenos seres servos ligados a fam\u00edlias bruxas. Possuem magia instintiva muito poderosa.", "icon": "\ud83e\uddf9", "name": "Elfos dom\u00e9sticos", "origin": "Reino Unido"}, {"category": "being", "category_label": "Ser", "danger": "XX", "danger_level": 2, "desc": "Pequenos seres travessos que distribuem moedas de ouro que desaparecem depois.", "icon": "\ud83c\udf40", "name": "Leprechauns", "origin": "Irlanda"}, {"category": "spirit", "category_label": "N\u00e3o-Ser", "danger": "XXXXX", "danger_level": 5, "desc": "Sugam a esperan\u00e7a e alegria. Seu beijo pode extrair a alma de uma pessoa viva.", "icon": "\ud83c\udf11", "name": "Dementadores", "origin": "Azkaban"}, {"category": "spirit", "category_label": "N\u00e3o-Ser", "danger": "XXXXX", "danger_level": 5, "desc": "Cad\u00e1veres reanimados por feiti\u00e7os das trevas para servirem como soldados ou guardi\u00f5es.", "icon": "\ud83e\udddf", "name": "Inferi", "origin": "Geral"}, {"category": "spirit", "category_label": "Esp\u00edrito", "danger": "XXXX", "danger_level": 4, "desc": "Fantasma feminino melanc\u00f3lico cujo grito sinistro prediz desgra\u00e7a ou morte iminente.", "icon": "\ud83d\udde3\ufe0f", "name": "Banshee", "origin": "Irlanda / Esc\u00f3cia"}, {"category": "spirit", "category_label": "Esp\u00edrito", "danger": "XXX", "danger_level": 3, "desc": "Entidade do caos pura. Pirra\u00e7a \u00e9 o exemplo mais famoso residente em Hogwarts.", "icon": "\ud83d\udc7b", "name": "Poltergeist", "origin": "Hogwarts"}, {"category": "spirit", "category_label": "Esp\u00edrito", "danger": "XX", "danger_level": 2, "desc": "A marca transparente deixada por uma alma que n\u00e3o conseguiu seguir em frente.", "icon": "\ud83d\udc80", "name": "Fantasmas", "origin": "Global"}];
+    const regionsData = [{"description": "Uma \u00e1rea devastada por res\u00edduos de Magia das Trevas. As criaturas fugiram ou foram corrompidas.", "devastation": 85, "difficulty": 1, "icon": "./static/images/magizoology/biomes/Iconeflorestaproibida.png", "id": "forbidden_forest", "name": "Floresta Proibida", "possible_creatures": ["Drag\u00e3o", "Pomorim Dourado", "Acrom\u00e2ntula", "Unic\u00f3rnio", "Hipogrifo", "Tronquilho", "Bezerro Apaixonado", "Pufoso", "Amasso", "Chiz\u00e1caro", "Fiuum"], "unlocked": true}, {"description": "A polui\u00e7\u00e3o m\u00e1gica est\u00e1 sufocando a vida aqu\u00e1tica. O ecossistema est\u00e1 em colapso.", "devastation": 92, "difficulty": 2, "icon": "./static/images/magizoology/biomes/Iconelagonegro.png", "id": "black_lake", "name": "Profundezas do Lago Negro", "possible_creatures": ["Kelpie", "Kappa"], "unlocked": false}];
+
+    const ASSETS = {
+        base: './static/images/magizoology/ESTRELA%20AMARELA%20-%20STATS%20BASE.png',
+        green: './static/images/magizoology/ESTRELA%20VERDE%20COMPLETA-%20STATS%20VARIAVEL.png',
+        gray: './static/images/magizoology/ESTRELA%20VERDE%200%20de%204%20(CINZA)%20-%20STATS%20VARIAVEL.png',
+        f1: './static/images/magizoology/ESTRELA%20VERDE%201%20de%204%20-%20STATS%20VARIAVEL.png',
+        f2: './static/images/magizoology/ESTRELA%20VERDE%202%20de%204%20-%20STATS%20VARIAVEL.png',
+        f3: './static/images/magizoology/ESTRELA%20VERDE%203%20de%204%20-%20STATS%20VARIAVEL.png'
+    };
+
+    function renderMagiIcon(icon, className = "magi-icon-img") {
+        if (icon && typeof icon === 'string' && icon.includes('static/')) {
+            let src = icon;
+            if (src.startsWith('/static') && (window.location.protocol === 'file:' || !window.location.port)) {
+                src = '.' + src;
+            }
+            return `<img src="${src}" class="${className}">`;
+        }
+        return icon || '?';
+    }
+
+    function getBagAsset(key) {
+        let src = {
+            static: './static/images/magizoology/ui/bag/bolsaestatica.png',
+            shrunken: './static/images/magizoology/ui/bag/bolsagifpt1-encolhida.png',
+            puffed: './static/images/magizoology/ui/bag/bolsagifpt2-estufada.png',
+            capture: './static/images/magizoology/ui/bag/bolsacaptura.png',
+            flee: './static/images/magizoology/ui/bag/bolsafuga.png'
+        }[key];
+        if (src && src.startsWith('/static') && (window.location.protocol === 'file:' || !window.location.port)) {
+            src = '.' + src;
+        }
+        return src;
+    }
+
+    let gameState = {
+        myCreatures: [],
+        biomeStatus: {},
+        activeExpeditions: {},
+        activeBreedings: [], // Track list of breedings {p1, p2, endTime}
+        breedingResult: null, // Stores the child after breeding concludes
+        lastExploration: {},
+        history: []
+    };
+
+    function initGame() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            gameState = JSON.parse(saved);
+            // Ensure activeBreedings exists for older saves
+            if (!gameState.activeBreedings) gameState.activeBreedings = [];
+            if (gameState.breedingResult === undefined) gameState.breedingResult = null;
+        } else {
+            regionsData.forEach(r => {
+                gameState.biomeStatus[r.id] = {
+                    integrity: r.devastation,
+                    lastRegen: Date.now()
+                };
+            });
+            if (gameState.myCreatures.length === 0) {
+                gameState.myCreatures.push(generateCreatureInstance('Pufoso'));
+            }
+            saveGame();
+        }
+        renderMyCreatures();
+        renderHistory();
+        renderLastExplorationSummary();
+        renderBiomes();
+
+        // Restaurar estado de resgates ativos (virar cards)
+        Object.keys(gameState.activeExpeditions).forEach(rid => {
+            const inner = document.getElementById(`inner-${rid}`);
+            if (inner) {
+                inner.classList.add('is-flipped');
+                renderRescueUI(rid);
+            }
+        });
+
+        checkActiveRaids();
+        checkBreedings();
+        setInterval(biomeTick, 5000); // Check for regen every 5 seconds
+        setInterval(checkBreedings, 1000); // Check breeding every 1 second (Faster for smooth timer)
+    }
+
+    function saveGame() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+    }
+
+    function renderBiomes() {
+        Object.keys(gameState.biomeStatus).forEach(rid => {
+            const status = gameState.biomeStatus[rid];
+            const fill = document.getElementById(`fill-${rid}`);
+            if (fill) fill.style.width = `${status.integrity}%`;
+
+            // Se não houver expedição ativa, garante que o UI de "Pronto" esteja lá
+            if (!gameState.activeExpeditions[rid]) {
+                renderRescueUI(rid);
+            }
+        });
+    }
+
+    function biomeTick() {
+        let changed = false;
+        const now = Date.now();
+        Object.keys(gameState.biomeStatus).forEach(rid => {
+            const status = gameState.biomeStatus[rid];
+            if (status.integrity < 100) {
+                const elapsed = now - (status.lastRegen || now);
+                const cycles = Math.floor(elapsed / 120000); // 2 minutes = 120000ms
+                if (cycles > 0) {
+                    status.integrity = Math.min(100, status.integrity + (cycles * 5));
+                    status.lastRegen = now - (elapsed % 120000);
+                    changed = true;
+                }
+            } else {
+                status.lastRegen = now;
+            }
+        });
+        if (changed) {
+            saveGame();
+            renderBiomes();
+        }
+    }
+
+    function getCreatureSkin(creatureName, ivs) {
+        const nameMap = {
+            'Acromântula': { base: 'Acromântula', skins: 3 },
+            'Amasso': { base: 'Amasso', skins: 3 },
+            'Bezerro Apaixonado': { base: 'BezerroApaixonado', skins: 4 },
+            'Chizácaro': { base: 'Chizácaro', skins: 3 },
+            'Dragão': { base: 'Dragão', skins: 3 },
+            'Fiuum': { base: 'Fiuum', skins: 3 },
+            'Hipogrifo': { base: 'Hipogrifo', skins: 5 },
+            'Pomorim Dourado': { base: 'PomorimDourado', skins: 3 },
+            'Pufoso': { base: 'Pufoso', skins: 3 },
+            'Tronquilho': { base: 'Tronquilho', skins: 4 },
+            'Unicórnio': { base: 'Unicórnio', skins: 3 }
+        };
+
+        const config = nameMap[creatureName];
+        if (!config) return null;
+
+        const isShinny = Object.values(ivs).every(val => val === 5);
+        if (isShinny) {
+            return `/static/images/magizoology/creatures/skins/${config.base}Shinny.png`;
+        }
+
+        const rand = Math.floor(Math.random() * config.skins) + 1;
+        const suffix = rand === 1 ? '' : rand;
+        return `/static/images/magizoology/creatures/skins/${config.base}${suffix}.png`;
+    }
+
+    function generateCreatureInstance(baseName) {
+        const base = baseCreaturesData.find(c => c.name === baseName) || baseCreaturesData[0];
+        const ivs = {};
+
+        // Debug/Cheat para testar Shinny: Descomente para forçar todos 5
+        // STATUS_KEYS.forEach(key => { ivs[key] = 5; });
+
+        STATUS_KEYS.forEach(key => { ivs[key] = Math.floor(Math.random() * 5) + 1; });
+
+        const skinIcon = getCreatureSkin(base.name, ivs);
+        const gender = Math.random() < 0.5 ? 'M' : 'F';
+
+        return {
+            id: 'id_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            name: base.name,
+            icon: skinIcon || base.icon,
+            base_stats: base.base_stats,
+            rarity: base.rarity || 'bronze',
+            ivs: ivs,
+            gender: gender,
+            timestamp: Date.now()
+        };
+    }
+
+    function getCreatureAverageIV(ivs) {
+        let sum = 0;
+        STATUS_KEYS.forEach(k => sum += ivs[k]);
+        return Math.round(sum / 5);
+    }
+
+    const GENDERS = {
+        MALE: { symbol: '♂', class: 'gender-m', val: 'M' },
+        FEMALE: { symbol: '♀', class: 'gender-f', val: 'F' }
+    };
+
+    function getGenderIcon(gender) {
+        const g = gender === 'M' ? GENDERS.MALE : GENDERS.FEMALE;
+        return `<span class="gender-icon ${g.class}">${g.symbol}</span>`;
+    }
+
+    function getCreatureAverageStars(c) {
+        let totalStars = 0;
+        STATUS_KEYS.forEach(k => {
+            const base = c.base_stats[k];
+            const bonus = base * (c.ivs[k] - 1) * 0.25;
+            totalStars += (base + bonus);
+        });
+        return (totalStars / 5).toFixed(1);
+    }
+
+    function getCreatureMaxStars(c) {
+        let totalMax = 0;
+        STATUS_KEYS.forEach(k => {
+            totalMax += (c.base_stats[k] * 2);
+        });
+        return (totalMax / 5).toFixed(1);
+    }
+
+    function renderMagiStars(base, iv) {
+        const bonusStars = base * (iv - 1) * 0.25;
+        let html = '<div class="stat-stars-front">';
+        for (let i = 0; i < base; i++) {
+            html += `<img src="${ASSETS.base}" class="star-img">`;
+        }
+        let currentBonus = bonusStars;
+        for (let i = 0; i < base; i++) {
+            let src = ASSETS.gray;
+            if (currentBonus >= 1) {
+                src = ASSETS.green;
+                currentBonus -= 1;
+            } else if (currentBonus > 0) {
+                if (currentBonus === 0.25) src = ASSETS.f1;
+                else if (currentBonus === 0.5) src = ASSETS.f2;
+                else if (currentBonus === 0.75) src = ASSETS.f3;
+                currentBonus = 0;
+            }
+            html += `<img src="${src}" class="star-img">`;
+        }
+        html += '</div>';
+        return html;
+    }
+
+    function renderMyCreatures() {
+        const container = document.getElementById('my-creatures');
+        if (!container) return;
+
+        // 1. Filtrar por nome
+        let filtered = gameState.myCreatures.filter(c =>
+            c.name.toLowerCase().includes(creatureFilters.search)
+        );
+
+        // 2. Ordenar
+        filtered.sort((a, b) => {
+            let valA, valB;
+            const key = creatureFilters.sortKey;
+
+            if (key === 'name') {
+                valA = a.name; valB = b.name;
+            } else if (key === 'stars') {
+                valA = getCreatureAverageStars(a); valB = getCreatureAverageStars(b);
+            } else if (key === 'potential') {
+                valA = getCreatureMaxStars(a); valB = getCreatureMaxStars(b);
+            } else if (key === 'genetics') {
+                valA = getCreatureAverageIV(a.ivs); valB = getCreatureAverageIV(b.ivs);
+            } else if (STATUS_KEYS.includes(key)) {
+                valA = a.base_stats[key] + (a.ivs[key] || 0);
+                valB = b.base_stats[key] + (b.ivs[key] || 0);
+            } else {
+                valA = a.id; valB = b.id; // Recentes (pelo timestamp no ID)
+            }
+
+            if (creatureFilters.sortOrder === 'asc') {
+                return valA > valB ? 1 : -1;
+            } else {
+                return valA < valB ? 1 : -1;
+            }
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 3rem; color: #666; font-family:var(--font-heading);">Nenhuma criatura encontrada para esses critérios.</div>`;
+            return;
+        }
+
+        container.innerHTML = '';
+        filtered.forEach(c => {
+            const avg = getCreatureAverageStars(c);
+            const wrapper = document.createElement('div');
+            wrapper.className = 'magi-card-wrapper';
+
+            const isShinny = Object.values(c.ivs).every(v => v === 5);
+            const shinnyBadge = isShinny ? `<div class="shinny-badge">✨ SHINNY</div>` : '';
+            const isLongName = c.name.length > 12;
+            const genderHtml = getGenderIcon(c.gender || 'M');
+
+            const isBreeding = gameState.activeBreedings.some(b => b.p1 === c.id || b.p2 === c.id);
+            const breedingBadge = isBreeding ? `<div class="breeding-badge">💑 ACASALANDO</div>` : '';
+
+            wrapper.innerHTML = `
+                <div class="magi-card-inner" id="card-inner-${c.id}">
+                    <!-- FRONT FACE -->
+                    <div class="magi-card-front rarity-card-${c.rarity}" onclick="flipCard('${c.id}')">
+                        <div class="rarity-reinforced-edge edge-${c.rarity}"></div>
+                        ${shinnyBadge}
+                        ${breedingBadge}
+                        <div class="card-front-content">
+                            <div class="card-front-header">
+                                <div class="card-front-name ${isLongName ? 'long-name' : ''}">
+                                    ${genderHtml} ${c.name}
+                                </div>
+                                <div class="card-front-genetics">GENÉTICA: ${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
+                            </div>
+                            <div class="card-front-icon-container">
+                                ${renderMagiIcon(c.icon)}
+                            </div>
+                            <div class="card-front-avg-stars">
+                                <span>⭐</span> ${avg}<span style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-left:4px;">/ ${getCreatureMaxStars(c)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BACK FACE -->
+                    <div class="magi-card-back rarity-card-${c.rarity}">
+                        <div class="rarity-reinforced-edge edge-${c.rarity}"></div>
+                        <div class="card-back-content" style="padding: 1.5rem; display: flex; flex-direction: column; align-items: center; width: 100%; flex: 1;">
+                            <h4 style="color:var(--magi-accent); margin-bottom:1.2rem; font-size:${c.name.length > 18 ? '0.75rem' : (isLongName ? '0.85rem' : '1.2rem')}; font-family:var(--font-heading); text-transform:uppercase; text-align:center;">
+                                ${genderHtml} ${c.name}
+                            </h4>
+                            <div class="card-back-stats-list">
+                                ${STATUS_KEYS.map(k => `
+                                    <div class="back-stat-row">
+                                        <span>${k}</span>
+                                        <div>${renderMagiStars(c.base_stats[k], c.ivs[k])}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="card-back-actions">
+                                <div style="font-size: 1rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin-bottom: 12px; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
+                                <button class="magi-btn-primary magi-btn-mini" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')">Mais Informações</button>
+                                <button class="magi-btn-secondary magi-btn-mini" onclick="event.stopPropagation(); flipCard('${c.id}')">Desvirar</button>
+                                <button class="magi-btn-danger magi-btn-mini" onclick="event.stopPropagation(); releaseCreature('${c.id}')">Soltar Criatura</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(wrapper);
+        });
+    }
+
+    function flipCard(id) {
+        const inner = document.getElementById(`card-inner-${id}`);
+        if (inner) inner.classList.toggle('is-flipped');
+    }
+
+    function releaseCreature(creatureId) {
+        const confirmMsg = "A criatura já está recuperada e já pode ser solta com segurança, tem certeza que deseja soltar?";
+        if (confirm(confirmMsg)) {
+            gameState.myCreatures = gameState.myCreatures.filter(c => c.id !== creatureId);
+            saveGame();
+            renderMyCreatures();
+        }
+    }
+
+    function switchModalStage(stage) {
+        if (stage === 1) {
+            document.getElementById('modal-stage-stats').classList.remove('hidden');
+            document.getElementById('modal-stage-radar').classList.add('hidden');
+        } else {
+            document.getElementById('modal-stage-stats').classList.add('hidden');
+            document.getElementById('modal-stage-radar').classList.remove('hidden');
+        }
+    }
+
+    function openCreatureDetail(creatureId) {
+        const c = typeof creatureId === 'string' ? gameState.myCreatures.find(x => x.id === creatureId) : creatureId;
+        if (!c) return;
+
+        const modal = document.getElementById('creature-detail-modal');
+
+        // Stage 1
+        document.getElementById('stats-title').innerText = c.name;
+        const container = document.getElementById('stats-rows-container');
+        container.innerHTML = STATUS_KEYS.map(k => `
+            <div class="modal-stat-row">
+                <span class="modal-stat-label">${k}</span>
+                <div class="stat-stars">${renderMagiStars(c.base_stats[k], c.ivs[k])}</div>
+            </div>
+        `).join('');
+
+        // Stage 2
+        document.getElementById('detail-name').innerText = c.name;
+        document.getElementById('detail-category').innerText = `CATEGORIA: ${RARITY_LABELS[c.rarity] || c.rarity.toUpperCase()}`;
+        document.getElementById('detail-icon').innerHTML = renderMagiIcon(c.icon);
+
+        const avgIv = getCreatureAverageIV(c.ivs);
+        const geneticsBanner = document.getElementById('detail-genetics');
+        geneticsBanner.innerText = `GENÉTICA: ${QUALITY_LABELS[avgIv]}`;
+
+        drawPentagon(c.ivs);
+        STATUS_KEYS.forEach(k => {
+            const labelEl = document.getElementById('txt-' + k.toLowerCase().replace('ã', 'a').substring(0, 3));
+            if (labelEl) labelEl.innerText = `${QUALITY_LABELS[c.ivs[k]]} (${c.ivs[k]})`;
+        });
+
+        // Jump to stage 2 (Radar) for "Mais Informações"
+        switchModalStage(2);
+        modal.classList.remove('hidden');
+    }
+
+    function closeCreatureDetail() { document.getElementById('creature-detail-modal').classList.add('hidden'); }
+
+    function drawPentagon(ivs) {
+        const svg = document.getElementById('iv-pentagon');
+        if (!svg) return;
+        svg.innerHTML = '';
+        const size = 200;
+        const center = size / 2;
+        const radius = 80;
+
+        for (let j = 1; j <= 5; j++) {
+            const r = (radius / 5) * j;
+            let points = [];
+            for (let i = 0; i < 5; i++) {
+                const angle = (i * 72) * (Math.PI / 180);
+                const x = center + r * Math.sin(angle);
+                const y = center - r * Math.cos(angle);
+                points.push(`${x},${y}`);
+            }
+            const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            poly.setAttribute("points", points.join(" "));
+            poly.setAttribute("stroke", "rgba(255,255,255,0.08)");
+            poly.setAttribute("fill", j % 2 === 0 ? "rgba(255,255,255,0.02)" : "none");
+            svg.appendChild(poly);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            const angle = (i * 72) * (Math.PI / 180);
+            const x = center + radius * Math.sin(angle);
+            const y = center - radius * Math.cos(angle);
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", center); line.setAttribute("y1", center);
+            line.setAttribute("x2", x); line.setAttribute("y2", y);
+            line.setAttribute("stroke", "rgba(255,255,255,0.08)");
+            svg.appendChild(line);
+        }
+
+        let dataPoints = [];
+        STATUS_KEYS.forEach((k, idx) => {
+            const level = ivs[k];
+            const r = (level / 5) * radius;
+            const angle = (idx * 72) * (Math.PI / 180);
+            const x = center + r * Math.sin(angle);
+            const y = center - r * Math.cos(angle);
+            dataPoints.push(`${x},${y}`);
+        });
+
+        const dataPoly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        dataPoly.setAttribute("points", dataPoints.join(" "));
+        dataPoly.setAttribute("fill", "rgba(212, 175, 55, 0.5)");
+        dataPoly.setAttribute("stroke", "var(--magi-accent)");
+        dataPoly.setAttribute("stroke-width", "3");
+        dataPoly.setAttribute("filter", "drop-shadow(0 0 5px rgba(212,175,55,0.4))");
+        svg.appendChild(dataPoly);
+    }
+
+    let assistantSelectorMode = 'assistant'; // 'assistant' or 'breeding'
+    let currentRegionForAssistant = null;
+    let assistantFilters = { search: '', sort: 'recent' };
+
+    function updateAssistantFilters() {
+        const s = document.getElementById('ast-search');
+        const o = document.getElementById('ast-sort');
+        if (s) assistantFilters.search = s.value.toLowerCase();
+        if (o) assistantFilters.sort = o.value;
+        renderAssistantGrid();
+    }
+
+    function openAssistantSelector(regionId) {
+        const status = gameState.biomeStatus[regionId];
+        if (status && status.integrity <= 0) {
+            alert("Este bioma está sem criaturas disponíveis para resgate. Aguarde a recuperação da fauna.");
+            return;
+        }
+
+        assistantSelectorMode = 'assistant';
+        currentRegionForAssistant = regionId;
+        // Reset filters when opening
+        assistantFilters = { search: '', sort: 'recent' };
+        const s = document.getElementById('ast-search');
+        if (s) s.value = '';
+        const o = document.getElementById('ast-sort');
+        if (o) o.value = 'recent';
+
+        renderAssistantGrid();
+        document.getElementById('assistant-modal').classList.remove('hidden');
+    }
+
+    function renderAssistantGrid() {
+        const list = document.getElementById('assistant-list');
+        if (!list) return;
+
+        let items = [];
+
+        if (assistantSelectorMode === 'assistant') {
+            // Mode: Selecting for biome expansion
+            if (!currentRegionForAssistant) return;
+            items = gameState.myCreatures.filter(c => {
+                const isExpedition = Object.values(gameState.activeExpeditions).some(e => e.assistantId === c.id);
+                const isBreeding = gameState.activeBreedings.some(b => b.p1 === c.id || b.p2 === c.id);
+                return !isExpedition && !isBreeding;
+            });
+        } else {
+            // Mode: Selecting for breeding
+            const slot = selectedBreedingSlot;
+            items = gameState.myCreatures.filter(c => {
+                const isExpedition = Object.values(gameState.activeExpeditions).some(e => e.assistantId === c.id);
+                const isBreeding = gameState.activeBreedings.some(b => b.p1 === c.id || b.p2 === c.id);
+                const isSelectedOther = (slot === 1 ? bParent2?.id : bParent1?.id) === c.id;
+                return !isExpedition && !isBreeding && !isSelectedOther;
+            });
+
+            if (slot === 2 && bParent1) {
+                items = items.filter(c => c.name === bParent1.name && c.gender !== bParent1.gender);
+            }
+        }
+
+        // Filter by Search
+        if (assistantFilters.search) {
+            items = items.filter(c => c.name.toLowerCase().includes(assistantFilters.search));
+        }
+
+        // Sort
+        items.sort((a, b) => {
+            if (assistantFilters.sort === 'name') return a.name > b.name ? 1 : -1;
+            if (assistantFilters.sort === 'stars') {
+                return parseFloat(getCreatureAverageStars(b)) - parseFloat(getCreatureAverageStars(a));
+            }
+            return b.timestamp - a.timestamp;
+        });
+
+        list.innerHTML = '';
+        items.forEach(c => {
+            const item = document.createElement('div');
+            item.className = 'assistant-item';
+
+            if (assistantSelectorMode === 'assistant') {
+                item.onclick = () => startExpedition(currentRegionForAssistant, c.id);
+            } else {
+                item.onclick = () => selectBreedingMember(c.id);
+            }
+
+            item.innerHTML = `
+                <div style="width: 50px; height: 50px; margin: 0 auto;">${renderMagiIcon(c.icon)}</div>
+                <div style="font-size: 0.75rem; font-weight: bold; margin-top:5px;">${getGenderIcon(c.gender)} ${c.name}</div>
+                <div style="font-size: 0.6rem; color:var(--magi-accent)">⭐ ${getCreatureAverageStars(c)}</div>
+            `;
+            list.appendChild(item);
+        });
+    }
+
+    function selectBreedingMember(creatureId) {
+        const creature = gameState.myCreatures.find(c => c.id === creatureId);
+        const slot = selectedBreedingSlot;
+
+        if (slot === 1) {
+            bParent1 = creature;
+            if (bParent2 && (bParent2.name !== bParent1.name || bParent2.gender === bParent1.gender)) {
+                bParent2 = null;
+            }
+        } else {
+            bParent2 = creature;
+        }
+
+        updateBreedingUI();
+        closeAssistantSelector();
+    }
+
+    function closeAssistantSelector() {
+        currentRegionForAssistant = null;
+        document.getElementById('assistant-modal').classList.add('hidden');
+    }
+
+    const BATTLE_MESSAGES = {
+        success: [
+            "{name} resistiu muito no início, mas agora está um pouco mais calma.",
+            "{name} ainda está furioso, mas está imobilizado para o resgate.",
+            "Seu ajudante conseguiu distrair o {name} enquanto você preparava o feitiço de imobilização. Sucesso!",
+            "Após uma breve perseguição, o {name} parece ter aceitado sua presença. Hora de agir!",
+            "Vencemos o cansaço do {name}. Ele está pronto para ser transportado."
+        ],
+        failure: [
+            "O {name} se mostrou agressivo demais e escapou antes de ser acalmado.",
+            "O {name} nos machucou um pouco... dói, mas entendemos que é difícil para ele confiar em humanos. Ele fugiu por enquanto.",
+            "O combate foi intenso, mas o {name} conseguiu desaparecer na mata fechada.",
+            "Minha varinha falhou no momento crucial e o {name} se assustou e fugiu.",
+            "O {name} era mais rápido do que esperávamos. A batalha terminou com ele sumindo no horizonte."
+        ]
+    };
+
+    function startExpedition(regionId, assistantId) {
+        closeAssistantSelector();
+
+        // Flip the card
+        const inner = document.getElementById(`inner-${regionId}`);
+        if (inner) inner.classList.add('is-flipped');
+
+        const assistant = gameState.myCreatures.find(c => c.id === assistantId);
+        const baseTime = 6000; // Reduzi um pouco para o fluxo não ficar cansativo
+        const velStars = assistant.base_stats.VELOCIDADE + (assistant.ivs.VELOCIDADE - 1) * 0.25;
+        const duration = baseTime * (1 - Math.min(0.8, velStars * 0.08));
+
+        gameState.activeExpeditions[regionId] = {
+            assistantId,
+            startTime: Date.now(),
+            duration,
+            phase: 'SEARCHING'
+        };
+
+        saveGame();
+        renderRescueUI(regionId);
+        checkActiveRaids();
+    }
+
+    function renderRescueUI(regionId) {
+        const container = document.getElementById(`rescue-content-${regionId}`);
+        if (!container) return;
+
+        const raid = gameState.activeExpeditions[regionId];
+        if (!raid) {
+            container.innerHTML = `
+                <div class="searching-anim">🕵️‍♂️</div>
+                <div class="rescue-status-text">Pronto para nova expedição</div>
+                <button class="magi-btn-primary" onclick="flipCardBack('${regionId}')" style="margin-top:1rem;">Voltar</button>
+            `;
+            return;
+        }
+
+        if (raid.phase === 'SEARCHING') {
+            container.innerHTML = `
+                <div class="searching-anim">🔍</div>
+                <div class="rescue-status-text">Procurando...</div>
+                <div style="color:#aaa; font-size:0.9rem; margin-top:0.5rem;" id="timer-val-${regionId}">Calculando...</div>
+            `;
+        } else if (raid.phase === 'FOUND') {
+            const c = raid.foundCreature;
+            container.innerHTML = `
+                <div class="creature-found-preview">
+                    <div class="rescue-status-text" style="color:#fff;">Criatura Encontrada!</div>
+                    <div style="width:120px; height:120px;">${renderMagiIcon(c.icon)}</div>
+                    <div class="card-front-name">${c.name}</div>
+                    <div class="card-front-avg-stars">⭐ ${getCreatureAverageStars(c)}</div>
+                </div>
+                <button class="magi-btn-primary" onclick="calmCreature('${regionId}')">Acalmar Fera</button>
+            `;
+        } else if (raid.phase === 'CALMED') {
+            const msg = raid.battleMessage || "";
+            container.innerHTML = `
+                <div class="bag-zone">
+                    <img src="${getBagAsset('static')}" class="bag-img">
+                </div>
+                <div class="battle-feedback-text">${msg}</div>
+                <div class="rescue-status-text">Fera Acalmada!</div>
+                <button class="magi-btn-primary" onclick="captureCreature('${regionId}')">Resgatar na Bolsa</button>
+            `;
+        } else if (raid.phase === 'CAPTURING') {
+            container.innerHTML = `
+                <div class="bag-zone" style="position:relative;">
+                    <div id="particles-${regionId}" class="fire-particles-container"></div>
+                    <img src="${getBagAsset('shrunken')}" class="bag-img bag-struggle" id="capturing-bag-${regionId}">
+                </div>
+                <div class="rescue-status-text">Resgatando...</div>
+            `;
+            spawnFireParticles(regionId);
+        } else if (raid.phase === 'RESULT') {
+            const success = raid.captureSuccess;
+            const msg = raid.battleMessage || (success ? "Sucesso no Resgate!" : "A criatura escapou!");
+            container.innerHTML = `
+                <div class="bag-zone">
+                    <img src="${success ? getBagAsset('capture') : getBagAsset('flee')}" 
+                         class="bag-img ${success ? 'bag-glow-success' : ''}">
+                </div>
+                <div class="battle-feedback-text">${msg}</div>
+                <div class="rescue-status-text" style="color:${success ? 'var(--rarity-gold)' : '#ff4444'}">
+                    ${success ? 'Resgate Concluído!' : 'Falha no Resgate'}
+                </div>
+                <button class="magi-btn-secondary" onclick="finalizeExpedition('${regionId}')" style="margin-top:1rem;">Concluir</button>
+            `;
+        }
+    }
+
+    function spawnFireParticles(regionId) {
+        const container = document.getElementById(`particles-${regionId}`);
+        if (!container) return;
+
+        const interval = setInterval(() => {
+            if (gameState.activeExpeditions[regionId]?.phase !== 'CAPTURING') {
+                clearInterval(interval);
+                return;
+            }
+            const p = document.createElement('div');
+            p.className = 'fire-particle';
+            p.style.left = (Math.random() * 60 + 20) + '%';
+            p.style.bottom = '20%';
+            p.style.backgroundColor = ['#ff4500', '#ff8c00', '#ffd700'][Math.floor(Math.random() * 3)];
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 1000);
+        }, 100);
+    }
+
+    function flipCardBack(regionId) {
+        const inner = document.getElementById(`inner-${regionId}`);
+        if (inner) inner.classList.remove('is-flipped');
+    }
+
+    function checkActiveRaids() {
+        let hasActive = false;
+        Object.keys(gameState.activeExpeditions).forEach(regionId => {
+            const raid = gameState.activeExpeditions[regionId];
+            if (!raid || raid.phase !== 'SEARCHING') return;
+
+            hasActive = true;
+            const elapsed = Date.now() - raid.startTime;
+            const remaining = raid.duration - elapsed;
+
+            const timerText = document.getElementById(`timer-val-${regionId}`);
+            if (remaining > 0) {
+                if (timerText) timerText.innerText = (remaining / 1000).toFixed(1) + 's';
+            } else {
+                completeExpeditionStep(regionId);
+            }
+        });
+        if (hasActive) setTimeout(checkActiveRaids, 100);
+    }
+
+    function completeExpeditionStep(regionId) {
+        const raid = gameState.activeExpeditions[regionId];
+        const region = regionsData.find(r => r.id === regionId);
+
+        let found = null;
+        if (Math.random() < 0.7) { // 70% chance to find something
+            const roll = Math.random();
+            let tier = 'bronze';
+            if (roll < 0.15) tier = 'gold';
+            else if (roll < 0.45) tier = 'silver';
+
+            const potentials = baseCreaturesData.filter(c => region.possible_creatures.includes(c.name));
+            const tierMatches = potentials.filter(c => c.rarity === tier);
+            const pool = tierMatches.length ? tierMatches : potentials;
+            const base = pool[Math.floor(Math.random() * pool.length)];
+            found = generateCreatureInstance(base.name);
+        }
+
+        if (found) {
+            raid.phase = 'FOUND';
+            raid.foundCreature = found;
+        } else {
+            raid.phase = 'RESULT';
+            raid.captureSuccess = false; // "None found" treated as result flee visually
+        }
+        saveGame();
+        renderRescueUI(regionId);
+    }
+
+    function calmCreature(regionId) {
+        const raid = gameState.activeExpeditions[regionId];
+        if (!raid) return;
+
+        const success = Math.random() < 0.85; // 85% chance de acalmar com sucesso
+        const creatureName = raid.foundCreature.name;
+
+        if (success) {
+            raid.phase = 'CALMED';
+            const pool = BATTLE_MESSAGES.success;
+            raid.battleMessage = pool[Math.floor(Math.random() * pool.length)].replace('{name}', creatureName);
+        } else {
+            raid.phase = 'RESULT';
+            raid.captureSuccess = false;
+            const pool = BATTLE_MESSAGES.failure;
+            raid.battleMessage = pool[Math.floor(Math.random() * pool.length)].replace('{name}', creatureName);
+        }
+
+        saveGame();
+        renderRescueUI(regionId);
+    }
+
+    function captureCreature(regionId) {
+        const raid = gameState.activeExpeditions[regionId];
+        if (!raid) return;
+
+        raid.phase = 'CAPTURING';
+        renderRescueUI(regionId);
+
+        let iterations = 0;
+        const bagImg = document.getElementById(`capturing-bag-${regionId}`);
+
+        const struggle = setInterval(() => {
+            iterations++;
+            if (bagImg) {
+                bagImg.src = (iterations % 2 === 0) ? getBagAsset('shrunken') : getBagAsset('puffed');
+            }
+            if (iterations >= 8) {
+                clearInterval(struggle);
+                const success = Math.random() < 0.8; // 80% default capture chance
+                raid.phase = 'RESULT';
+                raid.captureSuccess = success;
+
+                if (success && raid.foundCreature) {
+                    gameState.myCreatures.push(raid.foundCreature);
+                    raid.battleMessage = `Excelente! O ${raid.foundCreature.name} agora está seguro na sua bolsa e pronto para o santuário.`;
+
+                    if (gameState.biomeStatus[regionId]) {
+                        gameState.biomeStatus[regionId].integrity = Math.max(0, (gameState.biomeStatus[regionId].integrity || 0) - 5);
+                    }
+
+                    if (!gameState.history) gameState.history = [];
+                    gameState.history.push({
+                        title: `Resgate: ${raid.foundCreature.name}`,
+                        subtitle: `Capturado em ${regionId}`,
+                        icon: raid.foundCreature.icon,
+                        timestamp: Date.now()
+                    });
+                } else {
+                    raid.battleMessage = `Infelizmente, o ${raid.foundCreature.name} se assustou no último segundo e escapou da bolsa de resgate.`;
+                }
+                saveGame();
+                renderRescueUI(regionId);
+            }
+        }, 300);
+    }
+
+    function finalizeExpedition(regionId) {
+        delete gameState.activeExpeditions[regionId];
+        saveGame();
+        flipCardBack(regionId);
+        setTimeout(() => {
+            renderBiomes();
+            renderMyCreatures();
+            renderHistory();
+        }, 500);
+    }
+
+    /* 💑 Breeding Logic Engine */
+    let selectedBreedingSlot = null;
+    let bParent1 = null;
+    let bParent2 = null;
+
+    function openBreedingSelector(slot) {
+        assistantSelectorMode = 'breeding';
+        selectedBreedingSlot = slot;
+        const modal = document.getElementById('assistant-modal');
+        const header = modal.querySelector('h2');
+        header.innerText = `Escolher Progenitor ${slot}`;
+
+        // Reset filters when opening
+        assistantFilters = { search: '', sort: 'recent' };
+        const s = document.getElementById('ast-search');
+        if (s) s.value = '';
+        const o = document.getElementById('ast-sort');
+        if (o) o.value = 'recent';
+
+        renderAssistantGrid();
+        modal.classList.remove('hidden');
+    }
+
+    function updateBreedingUI() {
+        // High priority: Show breeding result if exists
+        const resultDisplay = document.getElementById('breeding-result-display');
+        const normalPreview = document.getElementById('breeding-preview');
+        const slotsContainer = document.querySelector('.breeding-slots-container');
+
+        if (gameState.breedingResult) {
+            slotsContainer.classList.add('hidden');
+            normalPreview.classList.add('hidden');
+            resultDisplay.classList.remove('hidden');
+
+            const child = gameState.breedingResult;
+            document.getElementById('child-slot').innerHTML = `
+                <div style="width:120px; height:120px;">${renderMagiIcon(child.icon)}</div>
+                <div class="gold-text" style="font-size:0.9rem; margin-top:10px;">${getGenderIcon(child.gender)} ${child.name}</div>
+                <div style="font-size:0.75rem; color:var(--magi-accent);">GENÉTICA: ${QUALITY_LABELS[getCreatureAverageIV(child.ivs)]}</div>
+            `;
+            return;
+        } else {
+            slotsContainer.classList.remove('hidden');
+            resultDisplay.classList.add('hidden');
+        }
+
+        // First check if there is an active breeding to display
+        const active = gameState.activeBreedings && gameState.activeBreedings.length > 0 ? gameState.activeBreedings[0] : null;
+
+        let p1, p2;
+        if (active) {
+            p1 = gameState.myCreatures.find(c => c.id === active.p1);
+            p2 = gameState.myCreatures.find(c => c.id === active.p2);
+        } else {
+            p1 = bParent1;
+            p2 = bParent2;
+        }
+
+        const slots = [p1, p2];
+        slots.forEach((p, i) => {
+            const el = document.getElementById(`parent-${i + 1}-slot`);
+            if (p) {
+                el.classList.add('filled');
+                el.innerHTML = `
+                    <div style="width:100px; height:100px;">${renderMagiIcon(p.icon)}</div>
+                    <div class="gold-text" style="font-size:0.8rem; margin-top:10px;">${getGenderIcon(p.gender)} ${p.name}</div>
+                    <div style="font-size:0.7rem; color:#aaa;">${active ? 'Em Acasalamento' : 'Clique para trocar'}</div>
+                `;
+                el.onclick = active ? null : () => openBreedingSelector(i + 1);
+                el.style.cursor = active ? 'default' : 'pointer';
+            } else {
+                el.classList.remove('filled');
+                el.innerHTML = `<div class="slot-placeholder">Escolher Pai/Mãe ${i + 1}</div>`;
+                el.onclick = () => openBreedingSelector(i + 1);
+                el.style.cursor = 'pointer';
+            }
+        });
+
+        const preview = document.getElementById('breeding-preview');
+        const startBtn = document.getElementById('start-breeding-btn');
+        const statusLabel = document.getElementById('breeding-status-label');
+        const timerDisplay = document.getElementById('breeding-timer-display');
+
+        if (active && p1 && p2) {
+            preview.classList.remove('hidden');
+            statusLabel.innerText = "Melhoria Genética Esperada";
+            statusLabel.style.color = "var(--magi-accent)";
+
+            const starsP1 = p1.base_stats.REPRODUÇÃO + (p1.ivs.REPRODUÇÃO - 1) * 0.25;
+            const starsP2 = p2.base_stats.REPRODUÇÃO + (p2.ivs.REPRODUÇÃO - 1) * 0.25;
+            const meanStars = (starsP1 + starsP2) / 2;
+            const chance = 40 + (meanStars * 4);
+            document.getElementById('breeding-success-rate').innerText = chance.toFixed(1) + '%';
+
+            startBtn.classList.add('hidden');
+            timerDisplay.classList.remove('hidden');
+
+            const remaining = Math.max(0, active.endTime - Date.now());
+            const mins = Math.floor(remaining / 60000);
+            const secs = Math.floor((remaining % 60000) / 1000);
+            timerDisplay.innerText = `Nascendo em: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+        } else if (p1 && p2) {
+            preview.classList.remove('hidden');
+            statusLabel.innerText = "Melhoria Genética Esperada";
+            statusLabel.style.color = "#fff";
+
+            const starsP1 = p1.base_stats.REPRODUÇÃO + (p1.ivs.REPRODUÇÃO - 1) * 0.25;
+            const starsP2 = p2.base_stats.REPRODUÇÃO + (p2.ivs.REPRODUÇÃO - 1) * 0.25;
+            const meanStars = (starsP1 + starsP2) / 2;
+            const chance = 40 + (meanStars * 4);
+            document.getElementById('breeding-success-rate').innerText = chance.toFixed(1) + '%';
+
+            startBtn.classList.remove('hidden');
+            timerDisplay.classList.add('hidden');
+        } else {
+            preview.classList.add('hidden');
+        }
+    }
+
+    function executeBreeding() {
+        if (!bParent1 || !bParent2) return;
+
+        // Locked duration: 1 minute (60000ms) for testing
+        const duration = 60000;
+        gameState.activeBreedings.push({
+            p1: bParent1.id,
+            p2: bParent2.id,
+            species: bParent1.name,
+            endTime: Date.now() + duration
+        });
+
+        bParent1 = null; bParent2 = null;
+        updateBreedingUI();
+        saveGame();
+        renderMyCreatures();
+        alert("O casal foi para o ninho! Em breve teremos um filhote.");
+    }
+
+    function checkBreedings() {
+        const now = Date.now();
+        let changed = false;
+
+        gameState.activeBreedings = gameState.activeBreedings.filter(b => {
+            if (now >= b.endTime) {
+                concludeBreeding(b);
+                changed = true;
+                return false;
+            }
+            return true;
+        });
+
+        // Always update UI to refresh timer if tab is open
+        const breedingTab = document.getElementById('breeding-tab');
+        if (breedingTab && !breedingTab.classList.contains('hidden')) {
+            updateBreedingUI();
+        }
+
+        if (changed) {
+            saveGame();
+            renderMyCreatures();
+        }
+    }
+
+    function concludeBreeding(b) {
+        const p1 = gameState.myCreatures.find(c => c.id === b.p1);
+        const p2 = gameState.myCreatures.find(c => c.id === b.p2);
+        if (!p1 || !p2) return;
+
+        const starsP1 = p1.base_stats.REPRODUÇÃO + (p1.ivs.REPRODUÇÃO - 1) * 0.25;
+        const starsP2 = p2.base_stats.REPRODUÇÃO + (p2.ivs.REPRODUÇÃO - 1) * 0.25;
+        const bonusChance = ((starsP1 + starsP2) / 2) * 0.04;
+        const inheritBetterChance = 0.4 + bonusChance;
+
+        const childIVs = {};
+        STATUS_KEYS.forEach(k => {
+            const better = Math.max(p1.ivs[k], p2.ivs[k]);
+            const worse = Math.min(p1.ivs[k], p2.ivs[k]);
+            childIVs[k] = (Math.random() < inheritBetterChance) ? better : worse;
+        });
+
+        const child = generateCreatureInstance(b.species);
+        child.ivs = childIVs;
+        // Apply skin based on inherited IVs
+        const base = baseCreaturesData.find(c => c.name === b.species);
+        child.icon = getCreatureSkin(b.species, childIVs) || base.icon;
+
+        gameState.breedingResult = child;
+        gameState.myCreatures.push(child);
+
+        if (!gameState.history) gameState.history = [];
+        gameState.history.push({
+            title: `Novo Filhote: ${child.name}`,
+            subtitle: `Nascimento bem-sucedido de ${p1.name} & ${p2.name}`,
+            icon: child.icon,
+            timestamp: Date.now()
+        });
+    }
+
+    function collectBreedingResult() {
+        gameState.breedingResult = null;
+        saveGame();
+        updateBreedingUI();
+    }
+
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+        document.querySelectorAll('.magi-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(`tab-${tab}`).classList.add('active');
+        document.getElementById(`${tab}-tab`).classList.remove('hidden');
+        if (tab === 'history') renderHistory();
+    }
+
+    function renderLastExplorationSummary() {
+        Object.keys(gameState.lastExploration).forEach(regionId => {
+            const found = gameState.lastExploration[regionId];
+            const lastBox = document.getElementById(`last-${regionId}`);
+            if (lastBox) {
+                const region = regionsData.find(r => r.id === regionId);
+                lastBox.querySelector('.result-content').innerHTML = found ?
+                    `<span style="color:var(--magi-accent)">Encontrou ${found.name}!</span>` :
+                    `<span style="color:#777">Nada encontrado.</span>`;
+            }
+        });
+    }
+
+    function renderHistory() {
+        const container = document.getElementById('exp-log');
+        if (!container) return;
+        if (!gameState.history || gameState.history.length === 0) {
+            container.innerHTML = '<div style="text-align:center; color:#555; padding: 4rem;">O diário de campo está vazio.</div>';
+            return;
+        }
+        container.innerHTML = gameState.history.slice().reverse().slice(0, 20).map(entry => `
+            <div class="log-item">
+                <div class="log-icon">${renderMagiIcon(entry.icon)}</div>
+                <div class="log-details">
+                    <div class="log-title">${entry.title}</div>
+                    <div class="log-subtitle">${entry.subtitle}</div>
+                </div>
+                <div class="log-time">${new Date(entry.timestamp).toLocaleTimeString()}</div>
+            </div>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', initGame);
+</script>
+
+        </main>
+
+        <footer
+            style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem;">
+            <p>&copy; 2025 Wiki Mágica. Feito com Feitiçaria e Python.</p>
+            <p style="margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                By
+                <a href="https://www.instagram.com/higorstattoo" target="_blank"
+                    style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16" style="vertical-align: middle;">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                    @higorstattoo
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function createMagicEffect(type = 'spark') {
+            const container = document.getElementById('particles');
+            if (!container) return;
+
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.pointerEvents = 'none';
+            particle.style.borderRadius = '50%';
+            particle.style.zIndex = '-1';
+
+            let size, x, y, duration, animation;
+
+            if (type === 'spark') {
+                size = Math.random() * 2 + 1;
+                x = Math.random() * window.innerWidth;
+                y = window.innerHeight + 10;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(212, 175, 55, 0.6)';
+                particle.style.boxShadow = '0 0 8px rgba(212, 175, 55, 0.8)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 3000 + 2000;
+                animation = particle.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: `translateY(-${window.innerHeight + 50}px) scale(0)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-out' });
+
+            } else if (type === 'firefly') {
+                size = Math.random() * 3 + 2;
+                x = Math.random() * window.innerWidth;
+                y = Math.random() * window.innerHeight;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = 'rgba(255, 230, 100, 0.8)';
+                particle.style.boxShadow = '0 0 15px rgba(255, 220, 0, 1)';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                duration = Math.random() * 10000 + 5000;
+                const driftX = (Math.random() - 0.5) * 200;
+                const driftY = (Math.random() - 0.5) * 200;
+
+                animation = particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0 },
+                    { transform: `translate(${driftX / 2}px, ${driftY / 2}px) scale(1.2)`, opacity: 0.8, offset: 0.5 },
+                    { transform: `translate(${driftX}px, ${driftY}px) scale(0.5)`, opacity: 0 }
+                ], { duration: duration, easing: 'ease-in-out' });
+
+            } else if (type === 'rare') {
+                // O Pomo de Ouro (Douratudo) passa raramente
+                particle.innerHTML = '✨';
+                particle.style.fontSize = '1.2rem';
+                particle.style.borderRadius = '0';
+                particle.style.background = 'none';
+                particle.style.boxShadow = 'none';
+                particle.style.left = '-50px';
+                particle.style.top = Math.random() * 80 + '%';
+
+                duration = 2000; // Rápido!
+                animation = particle.animate([
+                    { left: '-50px', transform: 'rotate(0deg) scale(1)' },
+                    { left: '110vw', transform: 'rotate(720deg) scale(1.5)' }
+                ], { duration: duration, easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)' });
+            }
+
+            container.appendChild(particle);
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Loop de geração
+        setInterval(() => {
+            const rand = Math.random();
+            if (rand < 0.7) {
+                createMagicEffect('spark');
+            } else if (rand < 0.98) {
+                createMagicEffect('firefly');
+            } else if (rand > 0.9995) {
+                // Muito raro! (Aproximadamente 1 a cada 2000 ticks)
+                createMagicEffect('rare');
+            }
+        }, 100); // 10 partículas por segundo em média
+    </script>
+</body>
+
+</html>
