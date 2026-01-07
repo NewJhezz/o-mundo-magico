@@ -424,9 +424,45 @@ def home():
     # Landing Page Mágica
     return render_template('world.html')
 
+# --- DADOS DE MAGIZOOLOGIA ---
+MAGIZOOLOGY_REGIONS = [
+    {
+        'id': 'forbidden_forest',
+        'name': 'Floresta Proibida',
+        'icon': '🌲',
+        'image': '/static/images/magizoology/biomes/Iconeflorestaproibida.png',
+        'difficulty': 'Fácil',
+        'devastation': 15,
+        'creatures': ['Amasso', 'Pufoso', 'Tronquilho', 'Acromântula', 'Unicórnio']
+    },
+    {
+        'id': 'black_lake',
+        'name': 'Lago Negro',
+        'icon': '💧',
+        'image': '/static/images/magizoology/biomes/Iconelagonegro.png',
+        'difficulty': 'Médio',
+        'devastation': 30,
+        'creatures': ['Bezerro Apaixonado', 'Hipogrifo', 'Pomorim Dourado', 'Fiuum', 'Dragão']
+    }
+]
+
+MAGIZOOLOGY_BASE_CREATURES = [
+    {'name': 'Dragão', 'rarity': 'platinum', 'icon': '/static/images/magizoology/creatures/Dragão.png', 'base_stats': {'PODER': 5, 'EXPLORAÇÃO': 3, 'VELOCIDADE': 4, 'CAPTURA': 2, 'REPRODUÇÃO': 1}},
+    {'name': 'Acromântula', 'rarity': 'gold', 'icon': '/static/images/magizoology/creatures/Acromântula.png', 'base_stats': {'PODER': 4, 'EXPLORAÇÃO': 4, 'VELOCIDADE': 3, 'CAPTURA': 3, 'REPRODUÇÃO': 2}},
+    {'name': 'Amasso', 'rarity': 'silver', 'icon': '/static/images/magizoology/creatures/Amasso.png', 'base_stats': {'PODER': 2, 'EXPLORAÇÃO': 4, 'VELOCIDADE': 3, 'CAPTURA': 4, 'REPRODUÇÃO': 3}},
+    {'name': 'Bezerro Apaixonado', 'rarity': 'gold', 'icon': '/static/images/magizoology/creatures/Bezerro Apaixonado.png', 'base_stats': {'PODER': 1, 'EXPLORAÇÃO': 5, 'VELOCIDADE': 2, 'CAPTURA': 3, 'REPRODUÇÃO': 4}},
+    {'name': 'Chizácaro', 'rarity': 'bronze', 'icon': '/static/images/magizoology/creatures/Chizácaro.png', 'base_stats': {'PODER': 1, 'EXPLORAÇÃO': 2, 'VELOCIDADE': 1, 'CAPTURA': 5, 'REPRODUÇÃO': 5}},
+    {'name': 'Fiuum', 'rarity': 'silver', 'icon': '/static/images/magizoology/creatures/Fiuum.png', 'base_stats': {'PODER': 2, 'EXPLORAÇÃO': 3, 'VELOCIDADE': 5, 'CAPTURA': 2, 'REPRODUÇÃO': 3}},
+    {'name': 'Hipogrifo', 'rarity': 'gold', 'icon': '/static/images/magizoology/creatures/Hipogrifo.png', 'base_stats': {'PODER': 4, 'EXPLORAÇÃO': 3, 'VELOCIDADE': 5, 'CAPTURA': 2, 'REPRODUÇÃO': 2}},
+    {'name': 'Pomorim Dourado', 'rarity': 'platinum', 'icon': '/static/images/magizoology/creatures/Pomorim Dourado.png', 'base_stats': {'PODER': 1, 'EXPLORAÇÃO': 2, 'VELOCIDADE': 5, 'CAPTURA': 1, 'REPRODUÇÃO': 5}},
+    {'name': 'Pufoso', 'rarity': 'bronze', 'icon': '/static/images/magizoology/creatures/Pufoso.png', 'base_stats': {'PODER': 1, 'EXPLORAÇÃO': 2, 'VELOCIDADE': 2, 'CAPTURA': 4, 'REPRODUÇÃO': 5}},
+    {'name': 'Tronquilho', 'rarity': 'bronze', 'icon': '/static/images/magizoology/creatures/Tronquilho.png', 'base_stats': {'PODER': 1, 'EXPLORAÇÃO': 4, 'VELOCIDADE': 2, 'CAPTURA': 5, 'REPRODUÇÃO': 3}},
+    {'name': 'Unicórnio', 'rarity': 'gold', 'icon': '/static/images/magizoology/creatures/Unicórnio.png', 'base_stats': {'PODER': 3, 'EXPLORAÇÃO': 4, 'VELOCIDADE': 5, 'CAPTURA': 3, 'REPRODUÇÃO': 2}}
+]
+
 @app.route('/magizoologia')
 def magizoology():
-    return render_template('magizoology.html')
+    return render_template('magizoology.html', regions=MAGIZOOLOGY_REGIONS, base_creatures=MAGIZOOLOGY_BASE_CREATURES)
 
 @app.route('/varinhas')
 def wands_hub():
