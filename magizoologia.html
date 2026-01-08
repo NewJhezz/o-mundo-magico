@@ -40,7 +40,8 @@
         <div class="biome-card-wrapper">
             <div class="biome-card-inner" id="inner-forbidden_forest">
                 <!-- FRONT FACE -->
-                <div class="biome-card-front locked" id="region-forbidden_forest">
+                <div class="biome-card-front " id="region-forbidden_forest"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('./static/images/magizoology/biomes/Iconeflorestaproibida.png'); background-size: cover; background-position: center;">
                     <div class="biome-icon-large">
                         
                         🌲
@@ -57,7 +58,16 @@
                     </div>
 
                     
-                    <div class="lock-overlay-modern">🔒 Nível de Alerta Alto</div>
+                    <div class="biome-actions">
+                        <button class="magi-btn-primary" onclick="openAssistantSelector('forbidden_forest')">
+                            Iniciar Resgate
+                        </button>
+                    </div>
+                    <!-- Resultado da Última Exploração -->
+                    <div class="last-result-box" id="last-forbidden_forest">
+                        <span class="result-label">Última Exploração:</span>
+                        <span class="result-content">Aguardando...</span>
+                    </div>
                     
                 </div>
 
@@ -75,7 +85,8 @@
         <div class="biome-card-wrapper">
             <div class="biome-card-inner" id="inner-black_lake">
                 <!-- FRONT FACE -->
-                <div class="biome-card-front locked" id="region-black_lake">
+                <div class="biome-card-front " id="region-black_lake"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('./static/images/magizoology/biomes/Iconelagonegro.png'); background-size: cover; background-position: center;">
                     <div class="biome-icon-large">
                         
                         💧
@@ -92,7 +103,16 @@
                     </div>
 
                     
-                    <div class="lock-overlay-modern">🔒 Nível de Alerta Alto</div>
+                    <div class="biome-actions">
+                        <button class="magi-btn-primary" onclick="openAssistantSelector('black_lake')">
+                            Iniciar Resgate
+                        </button>
+                    </div>
+                    <!-- Resultado da Última Exploração -->
+                    <div class="last-result-box" id="last-black_lake">
+                        <span class="result-label">Última Exploração:</span>
+                        <span class="result-content">Aguardando...</span>
+                    </div>
                     
                 </div>
 
@@ -299,8 +319,8 @@
     .biome-card-wrapper {
         perspective: 1000px;
         width: 100%;
-        min-height: 600px;
-        /* Increased further to ensure no cutting */
+        min-height: 480px;
+        /* Adjusted height for better fit */
     }
 
     .biome-card-inner {
@@ -1620,7 +1640,7 @@
     }
 
     const baseCreaturesData = [{"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 5, "REPRODU\u00c7\u00c3O": 1, "VELOCIDADE": 4}, "icon": "/static/images/magizoology/creatures/Drag\u00e3o.png", "name": "Drag\u00e3o", "rarity": "platinum"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 4, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 3}, "icon": "/static/images/magizoology/creatures/Acrom\u00e2ntula.png", "name": "Acrom\u00e2ntula", "rarity": "gold"}, {"base_stats": {"CAPTURA": 4, "EXPLORA\u00c7\u00c3O": 4, "PODER": 2, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 3}, "icon": "/static/images/magizoology/creatures/Amasso.png", "name": "Amasso", "rarity": "silver"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 5, "PODER": 1, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Bezerro Apaixonado.png", "name": "Bezerro Apaixonado", "rarity": "gold"}, {"base_stats": {"CAPTURA": 5, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 1}, "icon": "/static/images/magizoology/creatures/Chiz\u00e1caro.png", "name": "Chiz\u00e1caro", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 2, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Fiuum.png", "name": "Fiuum", "rarity": "silver"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 4, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Hipogrifo.png", "name": "Hipogrifo", "rarity": "gold"}, {"base_stats": {"CAPTURA": 1, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Pomorim Dourado.png", "name": "Pomorim Dourado", "rarity": "platinum"}, {"base_stats": {"CAPTURA": 4, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Pufoso.png", "name": "Pufoso", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 5, "EXPLORA\u00c7\u00c3O": 4, "PODER": 1, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Tronquilho.png", "name": "Tronquilho", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 3, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Unic\u00f3rnio.png", "name": "Unic\u00f3rnio", "rarity": "gold"}];
-    const regionsData = [{"creatures": ["Amasso", "Pufoso", "Tronquilho", "Acrom\u00e2ntula", "Unic\u00f3rnio"], "devastation": 15, "difficulty": "F\u00e1cil", "icon": "\ud83c\udf32", "id": "forbidden_forest", "image": "/static/images/magizoology/biomes/Iconeflorestaproibida.png", "name": "Floresta Proibida"}, {"creatures": ["Bezerro Apaixonado", "Hipogrifo", "Pomorim Dourado", "Fiuum", "Drag\u00e3o"], "devastation": 30, "difficulty": "M\u00e9dio", "icon": "\ud83d\udca7", "id": "black_lake", "image": "/static/images/magizoology/biomes/Iconelagonegro.png", "name": "Lago Negro"}];
+    const regionsData = [{"creatures": ["Amasso", "Pufoso", "Tronquilho", "Acrom\u00e2ntula", "Unic\u00f3rnio"], "devastation": 15, "difficulty": "F\u00e1cil", "icon": "\ud83c\udf32", "id": "forbidden_forest", "image": "/static/images/magizoology/biomes/Iconeflorestaproibida.png", "name": "Floresta Proibida", "unlocked": true}, {"creatures": ["Bezerro Apaixonado", "Hipogrifo", "Pomorim Dourado", "Fiuum", "Drag\u00e3o"], "devastation": 30, "difficulty": "M\u00e9dio", "icon": "\ud83d\udca7", "id": "black_lake", "image": "/static/images/magizoology/biomes/Iconelagonegro.png", "name": "Lago Negro", "unlocked": true}];
 
     const ASSETS = {
         base: '/static/images/magizoology/ESTRELA%20AMARELA%20-%20STATS%20BASE.png',

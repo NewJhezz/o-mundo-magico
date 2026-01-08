@@ -13,7 +13,8 @@
         <div class="biome-card-wrapper">
             <div class="biome-card-inner" id="inner-{{ region.id }}">
                 <!-- FRONT FACE -->
-                <div class="biome-card-front {{ 'locked' if not region.unlocked }}" id="region-{{ region.id }}">
+                <div class="biome-card-front {{ 'locked' if not region.unlocked }}" id="region-{{ region.id }}"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('.{{ region.image }}'); background-size: cover; background-position: center;">
                     <div class="biome-icon-large">
                         {% if region.icon.startswith('/static') %}
                         <img src="{{ region.icon }}" class="biome-icon-img">
@@ -250,8 +251,8 @@
     .biome-card-wrapper {
         perspective: 1000px;
         width: 100%;
-        min-height: 600px;
-        /* Increased further to ensure no cutting */
+        min-height: 480px;
+        /* Adjusted height for better fit */
     }
 
     .biome-card-inner {

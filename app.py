@@ -433,6 +433,7 @@ MAGIZOOLOGY_REGIONS = [
         'image': '/static/images/magizoology/biomes/Iconeflorestaproibida.png',
         'difficulty': 'Fácil',
         'devastation': 15,
+        'unlocked': True,
         'creatures': ['Amasso', 'Pufoso', 'Tronquilho', 'Acromântula', 'Unicórnio']
     },
     {
@@ -442,6 +443,7 @@ MAGIZOOLOGY_REGIONS = [
         'image': '/static/images/magizoology/biomes/Iconelagonegro.png',
         'difficulty': 'Médio',
         'devastation': 30,
+        'unlocked': True,
         'creatures': ['Bezerro Apaixonado', 'Hipogrifo', 'Pomorim Dourado', 'Fiuum', 'Dragão']
     }
 ]
