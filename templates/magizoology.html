@@ -15,15 +15,9 @@
                 <!-- FRONT FACE -->
                 <div class="biome-card-front {{ 'locked' if not region.unlocked }}" id="region-{{ region.id }}"
                     style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('.{{ region.image }}'); background-size: cover; background-position: center;">
-                    <div class="biome-icon-large">
-                        {% if region.icon.startswith('/static') %}
-                        <img src="{{ region.icon }}" class="biome-icon-img">
-                        {% else %}
-                        {{ region.icon }}
-                        {% endif %}
-                    </div>
                     <div class="biome-info"
                         style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 2rem;">
+                        {% if region.id != 'black_lake' %}
                         <h3 style="color: #fff; text-shadow: 0 2px 10px #000; margin-bottom: 0.5rem;">{{ region.name }}
                         </h3>
                         <div class="devastation-mini">
@@ -33,6 +27,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
 
                     {% if region.unlocked %}
@@ -227,7 +222,7 @@
     body {
         background-image:
             linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-            url('/static/images/magizoology/backgrounds/fundoflorestaproibida.png') !important;
+            url('./static/images/magizoology/backgrounds/fundoflorestaproibida.png') !important;
         background-size: cover !important;
         background-position: center !important;
         background-attachment: fixed !important;
@@ -1752,6 +1747,7 @@
     };
 
     const STORAGE_KEY = 'magizoology_state_v9';
+    const MAX_CREATURES = 10;
     let creatureFilters = {
         search: '',
         sortKey: 'id',
@@ -2254,6 +2250,11 @@
     }
 
     function openAssistantSelector(regionId) {
+        if (gameState.myCreatures.length >= MAX_CREATURES) {
+            alert("Santuário Lotado! Você atingiu o limite de 10 criaturas. Liberte alguns animais já recuperados para abrir espaço para novos resgates.");
+            return;
+        }
+
         const status = gameState.biomeStatus[regionId];
         if (status && status.integrity <= 0) {
             alert("Este bioma está sem criaturas disponíveis para resgate. Aguarde a recuperação da fauna.");
@@ -2736,6 +2737,11 @@
 
     function executeBreeding() {
         if (!bParent1 || !bParent2) return;
+
+        if (gameState.myCreatures.length >= MAX_CREATURES) {
+            alert("Espaço Insuficiente! O santuário está cheio (10/10). Liberte alguma criatura para que o filhote tenha onde morar.");
+            return;
+        }
 
         // Locked duration: 1 minute (60000ms) for testing
         const duration = 60000;

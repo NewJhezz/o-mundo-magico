@@ -42,13 +42,9 @@
                 <!-- FRONT FACE -->
                 <div class="biome-card-front " id="region-forbidden_forest"
                     style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('./static/images/magizoology/biomes/Iconeflorestaproibida.png'); background-size: cover; background-position: center;">
-                    <div class="biome-icon-large">
-                        
-                        🌲
-                        
-                    </div>
                     <div class="biome-info"
                         style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 2rem;">
+                        
                         <h3 style="color: #fff; text-shadow: 0 2px 10px #000; margin-bottom: 0.5rem;">Floresta Proibida
                         </h3>
                         <div class="devastation-mini">
@@ -58,6 +54,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
 
                     
@@ -85,22 +82,9 @@
                 <!-- FRONT FACE -->
                 <div class="biome-card-front locked" id="region-black_lake"
                     style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('./static/images/magizoology/biomes/Iconelagonegro.png'); background-size: cover; background-position: center;">
-                    <div class="biome-icon-large">
-                        
-                        💧
-                        
-                    </div>
                     <div class="biome-info"
                         style="flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 2rem;">
-                        <h3 style="color: #fff; text-shadow: 0 2px 10px #000; margin-bottom: 0.5rem;">Lago Negro
-                        </h3>
-                        <div class="devastation-mini">
-                            <div class="dev-bar" title="Integridade do Bioma" style="margin-top: 0;">
-                                <div class="integrity-fill" id="fill-black_lake"
-                                    style="width: 30%">
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     
@@ -289,7 +273,7 @@
     body {
         background-image:
             linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-            url('/static/images/magizoology/backgrounds/fundoflorestaproibida.png') !important;
+            url('./static/images/magizoology/backgrounds/fundoflorestaproibida.png') !important;
         background-size: cover !important;
         background-position: center !important;
         background-attachment: fixed !important;
@@ -1814,6 +1798,7 @@
     };
 
     const STORAGE_KEY = 'magizoology_state_v9';
+    const MAX_CREATURES = 10;
     let creatureFilters = {
         search: '',
         sortKey: 'id',
@@ -2316,6 +2301,11 @@
     }
 
     function openAssistantSelector(regionId) {
+        if (gameState.myCreatures.length >= MAX_CREATURES) {
+            alert("Santuário Lotado! Você atingiu o limite de 10 criaturas. Liberte alguns animais já recuperados para abrir espaço para novos resgates.");
+            return;
+        }
+
         const status = gameState.biomeStatus[regionId];
         if (status && status.integrity <= 0) {
             alert("Este bioma está sem criaturas disponíveis para resgate. Aguarde a recuperação da fauna.");
@@ -2798,6 +2788,11 @@
 
     function executeBreeding() {
         if (!bParent1 || !bParent2) return;
+
+        if (gameState.myCreatures.length >= MAX_CREATURES) {
+            alert("Espaço Insuficiente! O santuário está cheio (10/10). Liberte alguma criatura para que o filhote tenha onde morar.");
+            return;
+        }
 
         // Locked duration: 1 minute (60000ms) for testing
         const duration = 60000;
