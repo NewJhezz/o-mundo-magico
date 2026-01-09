@@ -2514,9 +2514,24 @@
 
     function closeAssistantSelector() {
         currentRegionForAssistant = null;
-        document.getElementById('assistant-modal').classList.add('hidden');
+        const modal = document.getElementById('assistant-modal');
+        if (modal) modal.classList.add('hidden');
     }
 
+    const BATTLE_MESSAGES = {
+        success: [
+            "{name} resistiu muito no início, mas agora está um pouco mais calma.",
+            "{name} ainda está furioso, mas está imobilizado para o resgate.",
+            "Seu ajudante conseguiu distrair o {name} enquanto você preparava o feitiço de imobilização. Sucesso!",
+            "Após uma breve perseguição, o {name} parece ter aceitado sua presença. Hora de agir!",
+            "Vencemos o cansaço do {name}. Ele está pronto para ser transportado."
+        ],
+        failure: [
+            "O {name} se mostrou agressivo demais e escapou antes de ser acalmado.",
+            "O {name} nos machucou um pouco... dói, mas entendemos que é difícil para ele confiar em humanos. Ele fugiu por enquanto.",
+            "O combate foi intenso, mas o {name} conseguiu desaparecer na mata fechada.",
+            "Minha varinha falhou no momento crucial e o {name} se assustou e fugiu.",
+            "O {name} era mais rápido do que esperávamos. A batalha terminou com ele sumindo no horizonte."
         ]
     };
 
