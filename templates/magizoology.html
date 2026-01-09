@@ -6,12 +6,13 @@
     <div class="magi-splash-content">
         <h1 class="main-title" style="margin-bottom: 1.5rem;">MAGIZOOLOGIA:<br>SANTUÁRIO DE BIOMAS</h1>
         <p class="splash-description">
-            Uma grande magia ou poder negro se espalha pelo mundo deixando criaturas doentes e incapacitadas.
-            Estamos resgatando todo tipo de criaturas para recuperação.
-            Nosso objetivo é fazer um grande estudo genético para trazer criaturas com a genética perfeita,
-            e imunes ao grande mal.
+            Uma antiga maldição espalha doença e escuridão pelo mundo mágico.
+            Criaturas sofrem... o equilíbrio está se rompendo.
+            Você foi chamado para resgatá-las, curá-las e restaurar a genética perfeita — criando seres imunes ao grande
+            mal.
+            Bem-vindo ao Santuário de Biomas.
         </p>
-        <button class="magi-btn-primary splash-play-btn" onclick="startGame()">JOGAR</button>
+        <button class="magi-btn-primary splash-play-btn" onclick="startGame()">Entrar no Santuário</button>
     </div>
 </div>
 
@@ -1709,10 +1710,30 @@
 
     .splash-play-btn {
         font-size: 1.4rem !important;
-        padding: 1.2rem 5rem !important;
-        max-width: 300px;
+        padding: 1.2rem 3rem !important;
+        width: auto;
+        min-width: 320px;
         margin: 0 auto;
         box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        animation: pulse-glow-gold 2s infinite ease-in-out;
+        white-space: nowrap;
+    }
+
+    @keyframes pulse-glow-gold {
+        0% {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1);
+        }
+
+        50% {
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+
+        100% {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1);
+        }
     }
 
     .creature-capacity-badge-fixed {
@@ -1820,6 +1841,20 @@
 </style>
 
 <script>
+    let gameState = {
+        myCreatures: [],
+        biomeStatus: {},
+        activeExpeditions: {},
+        activeBreedings: [], // Track list of breedings {p1, p2, endTime}
+        breedingResult: null, // Stores the child after breeding concludes
+        lastExploration: {},
+        history: [],
+        missions: {
+            captures: { silver: false, gold: false, platinum: false },
+            breeding: { bronze: false, silver: false, gold: false, platinum: false }
+        }
+    };
+
     const STATUS_KEYS = ['PODER', 'EXPLORAÇÃO', 'VELOCIDADE', 'CAPTURA', 'REPRODUÇÃO'];
     const QUALITY_LABELS = {
         1: 'ABAIXO',
@@ -1838,9 +1873,11 @@
     const STORAGE_KEY = 'magizoology_state_v9';
     let baseMaxCreatures = 10;
 
+    // O gameState será definido mais abaixo.
+
     function calculateMaxCreatures() {
         let max = baseMaxCreatures;
-        if (!gameState.missions) return max;
+        if (!gameState || !gameState.missions) return max;
         if (gameState.missions.captures.silver) max += 3;
         if (gameState.missions.captures.gold) max += 5;
         if (gameState.missions.captures.platinum) max += 5;
@@ -1917,19 +1954,7 @@
         return src;
     }
 
-    let gameState = {
-        myCreatures: [],
-        biomeStatus: {},
-        activeExpeditions: {},
-        activeBreedings: [], // Track list of breedings {p1, p2, endTime}
-        breedingResult: null, // Stores the child after breeding concludes
-        lastExploration: {},
-        history: [],
-        missions: {
-            captures: { silver: false, gold: false, platinum: false },
-            breeding: { bronze: false, silver: false, gold: false, platinum: false }
-        }
-    };
+    // gameState original definition removed from here
 
     function initGame() {
         const saved = localStorage.getItem(STORAGE_KEY);
