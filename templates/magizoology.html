@@ -1836,7 +1836,27 @@
     };
 
     const STORAGE_KEY = 'magizoology_state_v9';
-    const MAX_CREATURES = 10;
+    let baseMaxCreatures = 10;
+
+    // Novas Variáveis de Missão no State se não existirem
+    if (!gameState.missions) {
+        gameState.missions = {
+            captures: { silver: false, gold: false, platinum: false },
+            breeding: { bronze: false, silver: false, gold: false, platinum: false }
+        };
+    }
+
+    function calculateMaxCreatures() {
+        let max = baseMaxCreatures;
+        if (gameState.missions.captures.silver) max += 3;
+        if (gameState.missions.captures.gold) max += 5;
+        if (gameState.missions.captures.platinum) max += 5;
+        if (gameState.missions.breeding.bronze) max += 2;
+        if (gameState.missions.breeding.silver) max += 3;
+        if (gameState.missions.breeding.gold) max += 5;
+        if (gameState.missions.breeding.platinum) max += 10;
+        return max;
+    }
 
     function startGame() {
         const splash = document.getElementById('magi-splash');
@@ -1920,6 +1940,12 @@
             gameState = JSON.parse(saved);
             if (!gameState.activeBreedings) gameState.activeBreedings = [];
             if (gameState.breedingResult === undefined) gameState.breedingResult = null;
+            if (!gameState.missions) {
+                gameState.missions = {
+                    captures: { silver: false, gold: false, platinum: false },
+                    breeding: { bronze: false, silver: false, gold: false, platinum: false }
+                };
+            }
         } else {
             regionsData.forEach(r => {
                 gameState.biomeStatus[r.id] = {
@@ -2148,8 +2174,9 @@
 
         const currentCountEl = document.getElementById('current-count');
         const maxCountEl = document.getElementById('max-count');
+        const maxLimit = calculateMaxCreatures();
         if (currentCountEl) currentCountEl.innerText = gameState.myCreatures.length;
-        if (maxCountEl) maxCountEl.innerText = MAX_CREATURES;
+        if (maxCountEl) maxCountEl.innerText = maxLimit;
 
         container.innerHTML = '';
         filtered.forEach(c => {
@@ -2352,8 +2379,9 @@
     }
 
     function openAssistantSelector(regionId) {
-        if (gameState.myCreatures.length >= MAX_CREATURES) {
-            alert("Santuário Lotado! Você atingiu o limite de 10 criaturas. Liberte alguns animais já recuperados para abrir espaço para novos resgates.");
+        const maxLimit = calculateMaxCreatures();
+        if (gameState.myCreatures.length >= maxLimit) {
+            alert(`Santuário Lotado! Você atingiu o limite de ${maxLimit} criaturas. Liberte alguns animais já recuperados para abrir espaço para novos resgates.`);
             return;
         }
 
@@ -2461,22 +2489,22 @@
         document.getElementById('assistant-modal').classList.add('hidden');
     }
 
-    const BATTLE_MESSAGES = {
-        success: [
-            "{name} resistiu muito no início, mas agora está um pouco mais calma.",
-            "{name} ainda está furioso, mas está imobilizado para o resgate.",
-            "Seu ajudante conseguiu distrair o {name} enquanto você preparava o feitiço de imobilização. Sucesso!",
-            "Após uma breve perseguição, o {name} parece ter aceitado sua presença. Hora de agir!",
-            "Vencemos o cansaço do {name}. Ele está pronto para ser transportado."
-        ],
-        failure: [
-            "O {name} se mostrou agressivo demais e escapou antes de ser acalmado.",
-            "O {name} nos machucou um pouco... dói, mas entendemos que é difícil para ele confiar em humanos. Ele fugiu por enquanto.",
-            "O combate foi intenso, mas o {name} conseguiu desaparecer na mata fechada.",
-            "Minha varinha falhou no momento crucial e o {name} se assustou e fugiu.",
-            "O {name} era mais rápido do que esperávamos. A batalha terminou com ele sumindo no horizonte."
         ]
     };
+
+    const SEARCH_ENV_MESSAGES = [
+        "Ouço sombras sussurrando ao redor... {assistant} para e alerta! Algo se aproxima!",
+        "Sinto {assistant} farejando o ar úmido... um cheiro mágico estranho paira na bruma.",
+        "{assistant} segue vaga-lumes piscando no breu... nos guiando para um ninho oculto!",
+        "Uivos ecoam pela névoa densa... {assistant} rosna baixo, farejando intrusos noturnos.",
+        "Magia selvagem crepita no ar gelado... ergo a varinha, {assistant} cobre meu flanco.",
+        "Rastros luminescentes brilham fracos à frente... {assistant} os fareja com curiosidade.",
+        "Olhos amarelos piscam na folhagem escura... {assistant} me avisa: parece que estamos sendo observados!",
+        "Névoa ancestral nos envolve por completo... {assistant} guia meus passos com lealdade.",
+        "Um galho estala ao longe na escuridão... {assistant} sinaliza para eu parar imediatamente!",
+        "Sinto um arrepio de magia proibida no ar... {assistant} me guia para contornar o perigo.",
+        "Luzes fracas dançam entre as árvores retorcidas... {assistant} indica que devemos segui-las com cuidado."
+    ];
 
     function startExpedition(regionId, assistantId) {
         closeAssistantSelector();
@@ -2486,15 +2514,22 @@
         if (inner) inner.classList.add('is-flipped');
 
         const assistant = gameState.myCreatures.find(c => c.id === assistantId);
-        const baseTime = 6000; // Reduzi um pouco para o fluxo não ficar cansativo
+        const baseTime = 12000; // Dobrado o tempo para caça (era 6000)
         const velStars = assistant.base_stats.VELOCIDADE + (assistant.ivs.VELOCIDADE - 1) * 0.25;
         const duration = baseTime * (1 - Math.min(0.8, velStars * 0.08));
 
+        // Escolher duas mensagens de ambiente
+        const m1 = SEARCH_ENV_MESSAGES[Math.floor(Math.random() * SEARCH_ENV_MESSAGES.length)].replace('{assistant}', assistant.name);
+        let m2 = SEARCH_ENV_MESSAGES[Math.floor(Math.random() * SEARCH_ENV_MESSAGES.length)].replace('{assistant}', assistant.name);
+        while (m1 === m2) m2 = SEARCH_ENV_MESSAGES[Math.floor(Math.random() * SEARCH_ENV_MESSAGES.length)].replace('{assistant}', assistant.name);
+
         gameState.activeExpeditions[regionId] = {
             assistantId,
+            assistantName: assistant.name,
             startTime: Date.now(),
             duration,
-            phase: 'SEARCHING'
+            phase: 'SEARCHING',
+            envMessages: [m1, m2]
         };
 
         saveGame();
@@ -2517,8 +2552,13 @@
         }
 
         if (raid.phase === 'SEARCHING') {
+            const elapsed = Date.now() - raid.startTime;
+            const progress = elapsed / raid.duration;
+            const currentMsg = progress < 0.5 ? raid.envMessages[0] : raid.envMessages[1];
+
             container.innerHTML = `
                 <div class="searching-anim">🔍</div>
+                <div id="env-msg-${regionId}" style="font-size: 0.75rem; color: #fff; font-style: italic; padding: 0 1rem; margin-bottom: 0.8rem; height: 3em; display: flex; align-items: center; justify-content: center;">"${currentMsg}"</div>
                 <div class="rescue-status-text">Procurando...</div>
                 <div style="color:#aaa; font-size:0.9rem; margin-top:0.5rem;" id="timer-val-${regionId}">Calculando...</div>
             `;
@@ -2602,8 +2642,14 @@
             const remaining = raid.duration - elapsed;
 
             const timerText = document.getElementById(`timer-val-${regionId}`);
+            const envText = document.getElementById(`env-msg-${regionId}`);
+
             if (remaining > 0) {
                 if (timerText) timerText.innerText = (remaining / 1000).toFixed(1) + 's';
+                if (envText) {
+                    const progress = elapsed / raid.duration;
+                    envText.innerText = `"${progress < 0.5 ? raid.envMessages[0] : raid.envMessages[1]}"`;
+                }
             } else {
                 completeExpeditionStep(regionId);
             }
@@ -2685,6 +2731,11 @@
                 if (success && raid.foundCreature) {
                     gameState.myCreatures.push(raid.foundCreature);
                     raid.battleMessage = `Excelente! O ${raid.foundCreature.name} agora está seguro na sua bolsa e pronto para o santuário.`;
+
+                    // Check Capture Missions
+                    if (raid.foundCreature.rarity === 'silver') gameState.missions.captures.silver = true;
+                    if (raid.foundCreature.rarity === 'gold') gameState.missions.captures.gold = true;
+                    if (raid.foundCreature.rarity === 'platinum') gameState.missions.captures.platinum = true;
 
                     if (gameState.biomeStatus[regionId]) {
                         gameState.biomeStatus[regionId].integrity = Math.max(0, (gameState.biomeStatus[regionId].integrity || 0) - 5);
@@ -2840,8 +2891,9 @@
     function executeBreeding() {
         if (!bParent1 || !bParent2) return;
 
-        if (gameState.myCreatures.length >= MAX_CREATURES) {
-            alert("Espaço Insuficiente! O santuário está cheio (10/10). Liberte alguma criatura para que o filhote tenha onde morar.");
+        const maxLimit = calculateMaxCreatures();
+        if (gameState.myCreatures.length >= maxLimit) {
+            alert(`Espaço Insuficiente! O santuário está cheio (${gameState.myCreatures.length}/${maxLimit}). Liberte alguma criatura para que o filhote tenha onde morar.`);
             return;
         }
 
@@ -2911,6 +2963,14 @@
 
         gameState.breedingResult = child;
         gameState.myCreatures.push(child);
+
+        // Check Breeding Missions
+        const r1 = p1.rarity;
+        const r2 = p2.rarity;
+        if (r1 === 'bronze' && r2 === 'bronze') gameState.missions.breeding.bronze = true;
+        if (r1 === 'silver' && r2 === 'silver') gameState.missions.breeding.silver = true;
+        if (r1 === 'gold' && r2 === 'gold') gameState.missions.breeding.gold = true;
+        if (r1 === 'platinum' && r2 === 'platinum') gameState.missions.breeding.platinum = true;
 
         if (!gameState.history) gameState.history = [];
         gameState.history.push({
