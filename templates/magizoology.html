@@ -1838,16 +1838,9 @@
     const STORAGE_KEY = 'magizoology_state_v9';
     let baseMaxCreatures = 10;
 
-    // Novas Variáveis de Missão no State se não existirem
-    if (!gameState.missions) {
-        gameState.missions = {
-            captures: { silver: false, gold: false, platinum: false },
-            breeding: { bronze: false, silver: false, gold: false, platinum: false }
-        };
-    }
-
     function calculateMaxCreatures() {
         let max = baseMaxCreatures;
+        if (!gameState.missions) return max;
         if (gameState.missions.captures.silver) max += 3;
         if (gameState.missions.captures.gold) max += 5;
         if (gameState.missions.captures.platinum) max += 5;
@@ -1931,7 +1924,11 @@
         activeBreedings: [], // Track list of breedings {p1, p2, endTime}
         breedingResult: null, // Stores the child after breeding concludes
         lastExploration: {},
-        history: []
+        history: [],
+        missions: {
+            captures: { silver: false, gold: false, platinum: false },
+            breeding: { bronze: false, silver: false, gold: false, platinum: false }
+        }
     };
 
     function initGame() {
@@ -1955,6 +1952,12 @@
             });
             if (gameState.myCreatures.length === 0) {
                 gameState.myCreatures.push(generateCreatureInstance('Pufoso'));
+            }
+            if (!gameState.missions) {
+                gameState.missions = {
+                    captures: { silver: false, gold: false, platinum: false },
+                    breeding: { bronze: false, silver: false, gold: false, platinum: false }
+                };
             }
             saveGame();
         }
