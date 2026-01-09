@@ -443,7 +443,7 @@ MAGIZOOLOGY_REGIONS = [
         'image': '/static/images/magizoology/biomes/Iconelagonegro.png',
         'difficulty': 'Médio',
         'devastation': 30,
-        'unlocked': True,
+        'unlocked': False,
         'creatures': ['Bezerro Apaixonado', 'Hipogrifo', 'Pomorim Dourado', 'Fiuum', 'Dragão']
     }
 ]

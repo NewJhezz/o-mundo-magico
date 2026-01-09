@@ -85,7 +85,7 @@
         <div class="biome-card-wrapper">
             <div class="biome-card-inner" id="inner-black_lake">
                 <!-- FRONT FACE -->
-                <div class="biome-card-front " id="region-black_lake"
+                <div class="biome-card-front locked" id="region-black_lake"
                     style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('./static/images/magizoology/biomes/Iconelagonegro.png'); background-size: cover; background-position: center;">
                     <div class="biome-icon-large">
                         
@@ -103,16 +103,7 @@
                     </div>
 
                     
-                    <div class="biome-actions">
-                        <button class="magi-btn-primary" onclick="openAssistantSelector('black_lake')">
-                            Iniciar Resgate
-                        </button>
-                    </div>
-                    <!-- Resultado da Última Exploração -->
-                    <div class="last-result-box" id="last-black_lake">
-                        <span class="result-label">Última Exploração:</span>
-                        <span class="result-content">Aguardando...</span>
-                    </div>
+                    <div class="lock-overlay-modern">🔒 Nível de Alerta Alto</div>
                     
                 </div>
 
@@ -363,6 +354,38 @@
         transform: translateY(-8px);
         box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
         border-color: var(--magi-accent);
+    }
+
+    .biome-card-front.locked {
+        filter: grayscale(1);
+        cursor: not-allowed;
+    }
+
+    .lock-overlay-modern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-heading);
+        color: #fff;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        z-index: 100;
+        border-radius: 20px;
+    }
+
+    .lock-overlay-modern::before {
+        content: '🔒';
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        filter: grayscale(0);
     }
 
     .biome-icon-large {
@@ -1599,6 +1622,94 @@
         font-size: 0.75rem;
         font-weight: 700;
     }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+        .magizoology-container {
+            padding: 1rem;
+        }
+
+        .biomes-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .biome-card-wrapper {
+            min-height: 420px;
+        }
+
+        .magi-tabs-container {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .magi-tab {
+            font-size: 0.7rem;
+            padding: 0.8rem;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .magi-filter-toolbar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+
+        .filter-group {
+            width: 100%;
+        }
+
+        .creature-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .breeding-area {
+            padding: 1.5rem;
+        }
+
+        .breeding-slots {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .breeding-heart-zone {
+            transform: rotate(90deg);
+            margin: 1rem 0;
+        }
+
+        .magi-modal-content {
+            padding: 1.5rem;
+            width: 95%;
+        }
+
+        .magi-card-verso-container {
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1.5rem;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .pentagon-wrapper {
+            width: 280px;
+            height: 280px;
+        }
+
+        .p-label {
+            font-size: 0.6rem;
+            width: 100px;
+        }
+
+        .verso-large-icon {
+            font-size: 6rem;
+        }
+
+        .verso-header h2 {
+            font-size: 1.8rem;
+        }
+    }
 </style>
 
 <script>
@@ -1640,7 +1751,7 @@
     }
 
     const baseCreaturesData = [{"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 5, "REPRODU\u00c7\u00c3O": 1, "VELOCIDADE": 4}, "icon": "/static/images/magizoology/creatures/Drag\u00e3o.png", "name": "Drag\u00e3o", "rarity": "platinum"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 4, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 3}, "icon": "/static/images/magizoology/creatures/Acrom\u00e2ntula.png", "name": "Acrom\u00e2ntula", "rarity": "gold"}, {"base_stats": {"CAPTURA": 4, "EXPLORA\u00c7\u00c3O": 4, "PODER": 2, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 3}, "icon": "/static/images/magizoology/creatures/Amasso.png", "name": "Amasso", "rarity": "silver"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 5, "PODER": 1, "REPRODU\u00c7\u00c3O": 4, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Bezerro Apaixonado.png", "name": "Bezerro Apaixonado", "rarity": "gold"}, {"base_stats": {"CAPTURA": 5, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 1}, "icon": "/static/images/magizoology/creatures/Chiz\u00e1caro.png", "name": "Chiz\u00e1caro", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 2, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Fiuum.png", "name": "Fiuum", "rarity": "silver"}, {"base_stats": {"CAPTURA": 2, "EXPLORA\u00c7\u00c3O": 3, "PODER": 4, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Hipogrifo.png", "name": "Hipogrifo", "rarity": "gold"}, {"base_stats": {"CAPTURA": 1, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Pomorim Dourado.png", "name": "Pomorim Dourado", "rarity": "platinum"}, {"base_stats": {"CAPTURA": 4, "EXPLORA\u00c7\u00c3O": 2, "PODER": 1, "REPRODU\u00c7\u00c3O": 5, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Pufoso.png", "name": "Pufoso", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 5, "EXPLORA\u00c7\u00c3O": 4, "PODER": 1, "REPRODU\u00c7\u00c3O": 3, "VELOCIDADE": 2}, "icon": "/static/images/magizoology/creatures/Tronquilho.png", "name": "Tronquilho", "rarity": "bronze"}, {"base_stats": {"CAPTURA": 3, "EXPLORA\u00c7\u00c3O": 4, "PODER": 3, "REPRODU\u00c7\u00c3O": 2, "VELOCIDADE": 5}, "icon": "/static/images/magizoology/creatures/Unic\u00f3rnio.png", "name": "Unic\u00f3rnio", "rarity": "gold"}];
-    const regionsData = [{"creatures": ["Amasso", "Pufoso", "Tronquilho", "Acrom\u00e2ntula", "Unic\u00f3rnio"], "devastation": 15, "difficulty": "F\u00e1cil", "icon": "\ud83c\udf32", "id": "forbidden_forest", "image": "/static/images/magizoology/biomes/Iconeflorestaproibida.png", "name": "Floresta Proibida", "unlocked": true}, {"creatures": ["Bezerro Apaixonado", "Hipogrifo", "Pomorim Dourado", "Fiuum", "Drag\u00e3o"], "devastation": 30, "difficulty": "M\u00e9dio", "icon": "\ud83d\udca7", "id": "black_lake", "image": "/static/images/magizoology/biomes/Iconelagonegro.png", "name": "Lago Negro", "unlocked": true}];
+    const regionsData = [{"creatures": ["Amasso", "Pufoso", "Tronquilho", "Acrom\u00e2ntula", "Unic\u00f3rnio"], "devastation": 15, "difficulty": "F\u00e1cil", "icon": "\ud83c\udf32", "id": "forbidden_forest", "image": "/static/images/magizoology/biomes/Iconeflorestaproibida.png", "name": "Floresta Proibida", "unlocked": true}, {"creatures": ["Bezerro Apaixonado", "Hipogrifo", "Pomorim Dourado", "Fiuum", "Drag\u00e3o"], "devastation": 30, "difficulty": "M\u00e9dio", "icon": "\ud83d\udca7", "id": "black_lake", "image": "/static/images/magizoology/biomes/Iconelagonegro.png", "name": "Lago Negro", "unlocked": false}];
 
     const ASSETS = {
         base: '/static/images/magizoology/ESTRELA%20AMARELA%20-%20STATS%20BASE.png',
@@ -1690,7 +1801,6 @@
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
             gameState = JSON.parse(saved);
-            // Ensure activeBreedings exists for older saves
             if (!gameState.activeBreedings) gameState.activeBreedings = [];
             if (gameState.breedingResult === undefined) gameState.breedingResult = null;
         } else {
@@ -1719,10 +1829,13 @@
             }
         });
 
-        checkActiveRaids();
-        checkBreedings();
+        // Global Loop
+        setInterval(() => {
+            checkActiveRaids();
+            checkBreedings();
+        }, 1000);
+
         setInterval(biomeTick, 5000); // Check for regen every 5 seconds
-        setInterval(checkBreedings, 1000); // Check breeding every 1 second (Faster for smooth timer)
     }
 
     function saveGame() {
@@ -2347,12 +2460,10 @@
     }
 
     function checkActiveRaids() {
-        let hasActive = false;
         Object.keys(gameState.activeExpeditions).forEach(regionId => {
             const raid = gameState.activeExpeditions[regionId];
             if (!raid || raid.phase !== 'SEARCHING') return;
 
-            hasActive = true;
             const elapsed = Date.now() - raid.startTime;
             const remaining = raid.duration - elapsed;
 
@@ -2363,7 +2474,6 @@
                 completeExpeditionStep(regionId);
             }
         });
-        if (hasActive) setTimeout(checkActiveRaids, 100);
     }
 
     function completeExpeditionStep(regionId) {
@@ -2377,7 +2487,7 @@
             if (roll < 0.15) tier = 'gold';
             else if (roll < 0.45) tier = 'silver';
 
-            const potentials = baseCreaturesData.filter(c => region.possible_creatures.includes(c.name));
+            const potentials = baseCreaturesData.filter(c => region.creatures.includes(c.name));
             const tierMatches = potentials.filter(c => c.rarity === tier);
             const pool = tierMatches.length ? tierMatches : potentials;
             const base = pool[Math.floor(Math.random() * pool.length)];
