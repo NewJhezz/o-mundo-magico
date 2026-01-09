@@ -242,17 +242,21 @@
     /* Biomes Grid */
     .biomes-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+        gap: 2.5rem;
+        margin-bottom: 5rem;
+        justify-content: center;
+        /* Center biomes */
     }
 
     /* Biome Card Flip Logic */
     .biome-card-wrapper {
         perspective: 1000px;
         width: 100%;
+        max-width: 320px;
+        /* Constrain width for better encaixe */
         min-height: 480px;
-        /* Adjusted height for better fit */
+        margin: 0 auto;
     }
 
     .biome-card-inner {
@@ -502,9 +506,11 @@
 
     .creature-cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2.5rem;
-        padding: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+        gap: 3rem;
+        padding: 2rem;
+        justify-content: center;
+        /* Center creatures */
     }
 
     .rarity-reinforced-edge {
