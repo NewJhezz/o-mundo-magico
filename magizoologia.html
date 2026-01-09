@@ -32,6 +32,9 @@
     <div class="hero-section">
         <h1 class="main-title">Magizoologia: Santuário de Biomas</h1>
         <p class="hero-subtitle">Resgate feras, restaure habitats e documente sua jornada.</p>
+        <div class="creature-capacity-badge">
+            🐾 Criaturas: <span id="current-count">0</span> / <span id="max-count">10</span>
+        </div>
     </div>
 
     <!-- Dashboard de Biomas -->
@@ -1707,6 +1710,21 @@
         }
     }
 
+    .creature-capacity-badge {
+        background: rgba(212, 175, 55, 0.15);
+        border: 1px solid var(--magi-accent);
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        color: var(--magi-accent);
+        font-family: var(--font-heading);
+        font-weight: 900;
+        font-size: 0.9rem;
+        margin-top: 1.5rem;
+        display: inline-block;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        letter-spacing: 1px;
+    }
+
     /* Verso Refined Elements */
     .card-back-stats-list {
         display: flex;
@@ -1849,7 +1867,8 @@
             shrunken: '/static/images/magizoology/ui/bag/bolsagifpt1-encolhida.png',
             puffed: '/static/images/magizoology/ui/bag/bolsagifpt2-estufada.png',
             capture: '/static/images/magizoology/ui/bag/bolsacaptura.png',
-            flee: '/static/images/magizoology/ui/bag/bolsafuga.png'
+            flee: '/static/images/magizoology/ui/bag/bolsafuga.png',
+            info: '/static/images/magizoology/ui/icons/info.png'
         }[key];
         if (src && src.startsWith('/static') && (window.location.protocol === 'file:' || !window.location.port)) {
             src = '.' + src;
@@ -2099,6 +2118,11 @@
             return;
         }
 
+        const currentCountEl = document.getElementById('current-count');
+        const maxCountEl = document.getElementById('max-count');
+        if (currentCountEl) currentCountEl.innerText = gameState.myCreatures.length;
+        if (maxCountEl) maxCountEl.innerText = MAX_CREATURES;
+
         container.innerHTML = '';
         filtered.forEach(c => {
             const avg = getCreatureAverageStars(c);
@@ -2136,7 +2160,7 @@
                         </div>
                     </div>
                     <!-- BACK FACE -->
-                    <div class="magi-card-back rarity-card-${c.rarity}">
+                    <div class="magi-card-back rarity-card-${c.rarity}" onclick="flipCard('${c.id}')">
                         <div class="rarity-reinforced-edge edge-${c.rarity}"></div>
                         <div class="card-back-content" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; width: 100%; flex: 1;">
                             <h4 style="color:var(--magi-accent); margin-bottom:0.8rem; font-size:${c.name.length > 18 ? '0.75rem' : (isLongName ? '0.85rem' : '1.1rem')}; font-family:var(--font-heading); text-transform:uppercase; text-align:center;">
@@ -2160,9 +2184,8 @@
                             </div>
                             <div style="font-size: 0.85rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin: 0.8rem 0; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
                             <div class="card-back-actions">
-                                <button class="magi-btn-round" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')" title="Mais Informações">ⓘ</button>
-                                <button class="magi-btn-round" onclick="event.stopPropagation(); flipCard('${c.id}')" title="Desvirar">🔄</button>
-                                <button class="magi-btn-round danger" onclick="event.stopPropagation(); releaseCreature('${c.id}')" title="Soltar Criatura">❌</button>
+                                <button class="magi-btn-round" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')" title="Mais Informações" style="background-image: url('${getBagAsset('info')}'); background-size: 70%; background-position: center; background-repeat: no-repeat;"></button>
+                                <button class="magi-btn-round danger" onclick="event.stopPropagation(); releaseCreature('${c.id}')" title="Soltar Criatura" style="font-size: 1.5rem; line-height: 1;">×</button>
                             </div>
                         </div>
                     </div>
