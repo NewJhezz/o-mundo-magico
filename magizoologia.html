@@ -1722,6 +1722,79 @@
             font-size: 1.8rem;
         }
     }
+
+    /* Verso Refined Elements */
+    .card-back-stats-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        width: 100%;
+        margin: 0.5rem 0;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .back-stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: var(--font-body);
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .back-stat-val {
+        color: var(--magi-accent);
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .card-back-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        width: 100%;
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .magi-btn-round {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--magi-accent);
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--magi-accent);
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: 0.3s;
+    }
+
+    .magi-btn-round:hover {
+        background: var(--magi-accent);
+        color: #000;
+        transform: scale(1.1);
+    }
+
+    .magi-btn-round.danger {
+        border-color: #ff4757;
+        color: #ff4757;
+        background: rgba(255, 71, 87, 0.1);
+    }
+
+    .magi-btn-round.danger:hover {
+        background: #ff4757;
+        color: #fff;
+    }
 </style>
 
 <script>
@@ -2080,23 +2153,31 @@
                     <!-- BACK FACE -->
                     <div class="magi-card-back rarity-card-${c.rarity}">
                         <div class="rarity-reinforced-edge edge-${c.rarity}"></div>
-                        <div class="card-back-content" style="padding: 1.5rem; display: flex; flex-direction: column; align-items: center; width: 100%; flex: 1;">
-                            <h4 style="color:var(--magi-accent); margin-bottom:1.2rem; font-size:${c.name.length > 18 ? '0.75rem' : (isLongName ? '0.85rem' : '1.2rem')}; font-family:var(--font-heading); text-transform:uppercase; text-align:center;">
+                        <div class="card-back-content" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; width: 100%; flex: 1;">
+                            <h4 style="color:var(--magi-accent); margin-bottom:0.8rem; font-size:${c.name.length > 18 ? '0.75rem' : (isLongName ? '0.85rem' : '1.1rem')}; font-family:var(--font-heading); text-transform:uppercase; text-align:center;">
                                 ${genderHtml} ${c.name}
                             </h4>
                             <div class="card-back-stats-list">
-                                ${STATUS_KEYS.map(k => `
-                                    <div class="back-stat-row">
-                                        <span>${k}</span>
-                                        <div>${renderMagiStars(c.base_stats[k], c.ivs[k])}</div>
-                                    </div>
-                                `).join('')}
+                                ${STATUS_KEYS.map(k => {
+                const base = c.base_stats[k];
+                const bonus = base * (c.ivs[k] - 1) * 0.25;
+                const current = (base + bonus).toFixed(1);
+                const max = (base * 2).toFixed(1);
+                return `
+                                        <div class="back-stat-row">
+                                            <span>${k}</span>
+                                            <div class="back-stat-val">
+                                                ⭐ ${current} <span style="font-size: 0.65rem; opacity: 0.4; font-weight: 400;">/ ${max}</span>
+                                            </div>
+                                        </div>
+                                    `;
+            }).join('')}
                             </div>
+                            <div style="font-size: 0.85rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin: 0.8rem 0; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
                             <div class="card-back-actions">
-                                <div style="font-size: 1rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin-bottom: 12px; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
-                                <button class="magi-btn-primary magi-btn-mini" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')">Mais Informações</button>
-                                <button class="magi-btn-secondary magi-btn-mini" onclick="event.stopPropagation(); flipCard('${c.id}')">Desvirar</button>
-                                <button class="magi-btn-danger magi-btn-mini" onclick="event.stopPropagation(); releaseCreature('${c.id}')">Soltar Criatura</button>
+                                <button class="magi-btn-round" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')" title="Mais Informações">ⓘ</button>
+                                <button class="magi-btn-round" onclick="event.stopPropagation(); flipCard('${c.id}')" title="Desvirar">🔄</button>
+                                <button class="magi-btn-round danger" onclick="event.stopPropagation(); releaseCreature('${c.id}')" title="Soltar Criatura">❌</button>
                             </div>
                         </div>
                     </div>
