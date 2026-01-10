@@ -1852,8 +1852,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
-        margin-top: auto;
+        width: calc(100% - 2.4rem);
+        position: absolute;
+        bottom: 1.2rem;
+        left: 1.2rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -2342,10 +2344,10 @@
             }).join('')}
                             </div>
                             <div style="font-size: 0.85rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin: 0.8rem 0; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
-                            <div class="card-back-actions">
-                                <button class="magi-btn-icon" onclick="event.stopPropagation(); openCreatureDetail('${c.id}')" title="Mais Informações" style="background-image: url('${getBagAsset('info')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
-                                <button class="magi-btn-icon" onclick="event.stopPropagation(); releaseCreature('${c.id}')" title="Soltar no Bioma" style="background-image: url('${getBagAsset('release')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
-                                <button class="magi-btn-icon danger" onclick="event.stopPropagation(); deleteCreature('${c.id}')" title="Excluir Permanentemente" style="font-size: 1.2rem; color: #ff5e5e; font-weight: bold;">✕</button>
+                            <div class="card-back-actions" onclick="event.stopPropagation()">
+                                <button class="magi-btn-icon" onclick="openCreatureDetail('${c.id}')" title="Mais Informações" style="background-image: url('${getBagAsset('info')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
+                                <button class="magi-btn-icon" onclick="releaseCreature('${c.id}')" title="Soltar no Bioma" style="background-image: url('${getBagAsset('release')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
+                                <button class="magi-btn-icon danger" onclick="deleteCreature('${c.id}')" title="Excluir Permanentemente" style="font-size: 1.2rem; color: #ff5e5e; font-weight: bold;">✕</button>
                             </div>
                         </div>
                     </div>
