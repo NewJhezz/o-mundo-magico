@@ -141,6 +141,7 @@
     <div class="magi-tabs-container">
         <button class="magi-tab active" onclick="switchTab('sanctuary')" id="tab-sanctuary">📜 MEU SANTUÁRIO</button>
         <button class="magi-tab" onclick="switchTab('breeding')" id="tab-breeding">💑 ACASALAMENTO</button>
+        <button class="magi-tab" onclick="switchTab('missions')" id="tab-missions">🏆 MISSÕES</button>
         <button class="magi-tab" onclick="switchTab('history')" id="tab-history">🧭 DIÁRIO DE CAMPO</button>
     </div>
 
@@ -180,44 +181,55 @@
         <div class="creature-cards-grid" id="my-creatures"></div>
     </div>
 
-    <div id="breeding-tab" class="tab-pane hidden">
-        <div class="breeding-area">
-            <div class="breeding-slots-container">
-                <div class="breeding-slots">
-                    <div class="breeding-slot" id="parent-1-slot" onclick="openBreedingSelector(1)">
-                        <div class="slot-placeholder">Escolher Pai/Mãe 1</div>
-                    </div>
-                    <div class="breeding-heart-zone">💖</div>
-                    <div class="breeding-slot" id="parent-2-slot" onclick="openBreedingSelector(2)">
-                        <div class="slot-placeholder">Escolher Pai/Mãe 2</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="breeding-preview" class="breeding-preview-container hidden">
-                <div id="breeding-status-label" class="gold-text"
-                    style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Melhoria Genética
-                    Esperada</div>
-                <div id="breeding-success-rate" class="success-percentage">--%</div>
-                <div id="breeding-timer-display" class="gold-text hidden"
-                    style="margin-top: 1rem; font-family: var(--font-body); opacity: 0.8;">Nascendo em: 00:00</div>
-                <button id="start-breeding-btn" class="magi-btn-primary" onclick="executeBreeding()"
-                    style="margin-top: 2rem; padding: 1.5rem 4rem; font-size: 1.2rem;">Iniciar Acasalamento</button>
-            </div>
-
-            <div id="breeding-result-display" class="breeding-preview-container hidden">
-                <div class="gold-text"
-                    style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--rarity-gold);">
-                    ✨ Novo Nascimento! ✨</div>
-                <div id="child-slot" class="parent-slot filled"
-                    style="cursor: default; width: 180px; height: 180px; margin: 0 auto; border-color: var(--rarity-gold);">
-                </div>
-                <button class="magi-btn-primary" onclick="collectBreedingResult()"
-                    style="margin-top: 2rem; padding: 1rem 3rem;">Receber Criatura</button>
-            </div>
+    <div id="missions-tab" class="tab-pane hidden">
+        <div class="missions-hero">
+            <h2 class="gold-text">Expansão do Santuário</h2>
+            <p>Complete as tarefas abaixo para ampliar o espaço e o prestígio da sua reserva magizoológica.</p>
+        </div>
+        <div id="missions-container" class="missions-grid">
+            <!-- Gerado dinamicamente via JS -->
         </div>
     </div>
-    <div class="exploration-log" id="exp-log"></div>
+</div>
+
+<div id="breeding-tab" class="tab-pane hidden">
+    <div class="breeding-area">
+        <div class="breeding-slots-container">
+            <div class="breeding-slots">
+                <div class="breeding-slot" id="parent-1-slot" onclick="openBreedingSelector(1)">
+                    <div class="slot-placeholder">Escolher Pai/Mãe 1</div>
+                </div>
+                <div class="breeding-heart-zone">💖</div>
+                <div class="breeding-slot" id="parent-2-slot" onclick="openBreedingSelector(2)">
+                    <div class="slot-placeholder">Escolher Pai/Mãe 2</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="breeding-preview" class="breeding-preview-container hidden">
+            <div id="breeding-status-label" class="gold-text"
+                style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Melhoria Genética
+                Esperada</div>
+            <div id="breeding-success-rate" class="success-percentage">--%</div>
+            <div id="breeding-timer-display" class="gold-text hidden"
+                style="margin-top: 1rem; font-family: var(--font-body); opacity: 0.8;">Nascendo em: 00:00</div>
+            <button id="start-breeding-btn" class="magi-btn-primary" onclick="executeBreeding()"
+                style="margin-top: 2rem; padding: 1.5rem 4rem; font-size: 1.2rem;">Iniciar Acasalamento</button>
+        </div>
+
+        <div id="breeding-result-display" class="breeding-preview-container hidden">
+            <div class="gold-text"
+                style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--rarity-gold);">
+                ✨ Novo Nascimento! ✨</div>
+            <div id="child-slot" class="parent-slot filled"
+                style="cursor: default; width: 180px; height: 180px; margin: 0 auto; border-color: var(--rarity-gold);">
+            </div>
+            <button class="magi-btn-primary" onclick="collectBreedingResult()"
+                style="margin-top: 2rem; padding: 1rem 3rem;">Receber Criatura</button>
+        </div>
+    </div>
+</div>
+<div class="exploration-log" id="exp-log"></div>
 </div>
 
 <style>
@@ -1871,6 +1883,106 @@
         background: #ff4757;
         color: #fff;
     }
+
+    /* Missions UI */
+    .missions-hero {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1), transparent);
+        border-radius: 20px;
+        margin-bottom: 2rem;
+    }
+
+    .missions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .mission-card {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.3));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mission-card.completed {
+        border-color: var(--magi-accent);
+        background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.5));
+    }
+
+    .mission-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .mission-reward {
+        font-size: 0.7rem;
+        color: #000;
+        background: var(--magi-accent);
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .mission-title {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .mission-description {
+        font-size: 0.85rem;
+        color: #aaa;
+        line-height: 1.4;
+    }
+
+    .mission-progress-container {
+        margin-top: auto;
+    }
+
+    .progress-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+        color: var(--magi-accent);
+        font-weight: bold;
+    }
+
+    .progress-bar-bg {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        background: var(--magi-accent);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mission-check {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        font-size: 3rem;
+        opacity: 0.1;
+        color: var(--magi-accent);
+        transform: rotate(15deg);
+    }
 </style>
 
 <script>
@@ -3082,6 +3194,115 @@
         document.getElementById(`tab-${tab}`).classList.add('active');
         document.getElementById(`${tab}-tab`).classList.remove('hidden');
         if (tab === 'history') renderHistory();
+        if (tab === 'missions') renderMissions();
+    }
+
+    function renderMissions() {
+        const container = document.getElementById('missions-container');
+        if (!container) return;
+
+        const missionsData = [
+            {
+                id: 'cap_silver',
+                title: 'Expansão I: Colecionador Prata',
+                desc: 'Tenha 3 criaturas de raridade Prata ou superior simultaneamente.',
+                target: 3,
+                current: gameState.myCreatures.filter(c => ['silver', 'gold', 'platinum'].includes(c.rarity)).length,
+                reward: '+3 Slots',
+                level: 'silver'
+            },
+            {
+                id: 'cap_gold',
+                title: 'Expansão II: Reserva de Ouro',
+                desc: 'Tenha 5 criaturas de raridade Ouro ou superior em seu santuário.',
+                target: 5,
+                current: gameState.myCreatures.filter(c => ['gold', 'platinum'].includes(c.rarity)).length,
+                reward: '+5 Slots',
+                level: 'gold'
+            },
+            {
+                id: 'cap_platinum',
+                title: 'Expansão III: Elite Alada',
+                desc: 'Recupere 3 criaturas de raridade Platina.',
+                target: 3,
+                current: gameState.myCreatures.filter(c => c.rarity === 'platinum').length,
+                reward: '+5 Slots',
+                level: 'platinum'
+            },
+            {
+                id: 'breed_silver',
+                title: 'Melhoria IV: Linhagem Avançada',
+                desc: 'Consiga completar acasalamentos de categoria Prata.',
+                target: 1,
+                current: gameState.missions.breeding.silver ? 1 : 0,
+                reward: '+3 Slots',
+                level: 'silver'
+            },
+            {
+                id: 'breed_gold',
+                title: 'Melhoria V: Mestre de Criação',
+                desc: 'Consiga completar acasalamentos de categoria Ouro.',
+                target: 1,
+                current: gameState.missions.breeding.gold ? 1 : 0,
+                reward: '+5 Slots',
+                level: 'gold'
+            },
+            {
+                id: 'breed_platinum',
+                title: 'Melhoria VI: Genética Suprema',
+                desc: 'Produza um filhote de categoria Platina.',
+                target: 1,
+                current: gameState.missions.breeding.platinum ? 1 : 0,
+                reward: '+10 Slots',
+                level: 'platinum'
+            },
+            {
+                id: 'cap_perfect',
+                title: 'Expansão VII: Santuário Perfeito',
+                desc: 'Tenha 10 criaturas com genética excelente (IV 5 ou superior).',
+                target: 10,
+                current: gameState.myCreatures.filter(c => getCreatureAverageIV(c.ivs) >= 4).length,
+                reward: '+15 Slots',
+                level: 'gold'
+            }
+        ];
+
+        container.innerHTML = missionsData.map(m => {
+            const progress = Math.min(100, (m.current / m.target) * 100);
+            const isCompleted = progress >= 100;
+
+            // Auto-update mission state if completed
+            if (isCompleted) {
+                if (m.id.startsWith('cap_')) {
+                    const level = m.id.split('_')[1];
+                    if (level === 'perfect') {
+                        // Special case logic could be added here if needed
+                    } else {
+                        gameState.missions.captures[level] = true;
+                    }
+                }
+            }
+
+            return `
+                <div class="mission-card ${isCompleted ? 'completed' : ''}">
+                    <div class="mission-header">
+                        <div class="mission-title">${m.title}</div>
+                        <div class="mission-reward">${m.reward}</div>
+                    </div>
+                    <div class="mission-description">${m.desc}</div>
+                    <div class="mission-progress-container">
+                        <div class="progress-labels">
+                            <span>Progresso</span>
+                            <span>${m.current} / ${m.target}</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: ${progress}%"></div>
+                        </div>
+                    </div>
+                    ${isCompleted ? '<div class="mission-check">✔</div>' : ''}
+                </div>
+            `;
+        }).join('');
     }
 
     function renderLastExplorationSummary() {
