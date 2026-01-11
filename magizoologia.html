@@ -2349,11 +2349,15 @@
                                     `;
             }).join('')}
                             </div>
-                            <div style="font-size: 0.85rem; font-weight: 900; color: var(--magi-accent); text-transform: uppercase; margin: 0.8rem 0; text-align: center; width: 100%; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</div>
                             <div class="card-back-actions" onclick="event.stopPropagation()">
-                                <button class="magi-btn-icon" onclick="openCreatureDetail('${c.id}')" title="Mais Informações" style="background-image: url('${getBagAsset('info')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
-                                <button class="magi-btn-icon" onclick="releaseCreature('${c.id}')" title="Soltar no Bioma" style="background-image: url('${getBagAsset('release')}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></button>
-                                <button class="magi-btn-icon danger" onclick="deleteCreature('${c.id}')" title="Excluir Permanentemente" style="font-size: 1.2rem; color: #ff5e5e; font-weight: bold;">✕</button>
+                                <button class="magi-btn-icon" onclick="openCreatureDetail('${c.id}')" title="Mais Informações" style="background-image: url('${getBagAsset('info')}'); background-size: 85%; background-position: center; background-repeat: no-repeat;"></button>
+                                
+                                <div style="flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                    <span style="font-size: 0.6rem; color: rgba(255,255,255,0.4); font-family: var(--font-heading); letter-spacing: 1px; margin-bottom: -2px;">CATEGORIA</span>
+                                    <span style="font-size: 0.85rem; font-weight: 900; color: var(--magi-accent); font-family: var(--font-heading); text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">${QUALITY_LABELS[getCreatureAverageIV(c.ivs)]}</span>
+                                </div>
+
+                                <button class="magi-btn-icon" onclick="releaseCreature('${c.id}')" title="Soltar no Bioma" style="background-image: url('${getBagAsset('release')}'); background-size: 85%; background-position: center; background-repeat: no-repeat;"></button>
                             </div>
                         </div>
                     </div>
